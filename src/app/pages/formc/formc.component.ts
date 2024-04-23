@@ -3,7 +3,12 @@ import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} fr
 import {NgIf} from "@angular/common";
 import {CreateFormService} from "../../core/services/create-form.service";
 // import {Icard} from "../../core/models/common.model";
+<<<<<<< HEAD
 import {Router, RouterLink} from "@angular/router";
+=======
+import {Router} from "@angular/router";
+import { NavbarComponent } from '../../navbar/navbar.component';
+>>>>>>> 251d6e09384f99e654402b060dd0bb2070699aec
 
 @Component({
   selector: 'app-formc',
@@ -11,7 +16,11 @@ import {Router, RouterLink} from "@angular/router";
   imports: [
     NgIf,
     ReactiveFormsModule,
+<<<<<<< HEAD
     RouterLink
+=======
+    NavbarComponent
+>>>>>>> 251d6e09384f99e654402b060dd0bb2070699aec
   ],
   templateUrl: './formc.component.html',
   styleUrl: './formc.component.scss'
