@@ -4,13 +4,15 @@ import {NgIf} from "@angular/common";
 import {CreateFormService} from "../../core/services/create-form.service";
 // import {Icard} from "../../core/models/common.model";
 import {Router} from "@angular/router";
+import { NavbarComponent } from '../../navbar/navbar.component';
 
 @Component({
   selector: 'app-formc',
   standalone: true,
   imports: [
     NgIf,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NavbarComponent
   ],
   templateUrl: './formc.component.html',
   styleUrl: './formc.component.scss'
