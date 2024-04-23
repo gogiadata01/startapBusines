@@ -1,0 +1,15 @@
+<div [formGroup]="cardForm">
+  <div class="from-field">
+    <label for="Title">Title</label>
+    <input type="text" id="Title" formControlName="title" >
+  </div>
+  <div class="from-field">
+    <label for="Text">Text</label>
+    <input type="text" id="Text" formControlName="text" >
+  </div>
+  <div class="from-field">
+    <label for="Text2">Text2</label>
+    <input type="text" id="Text2" formControlName="text2" >
+  </div>
+</div>
+<button (click)="submit()" >Submit</button>

@@ -1,0 +1,16 @@
+<p>forms works!</p>
+<button><a routerLink="/Formc">asks</a> </button>
+
+<div>
+  @for (Card of cards; track $index){
+    <h1>
+      {{Card.title}}
+    </h1>
+    <h2>
+      {{Card.text}}
+    </h2>
+    <h2>
+      {{Card.text2}}
+    </h2>
+  }
+</div>
