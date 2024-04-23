@@ -1,15 +1,59 @@
-<div [formGroup]="cardForm">
+<div [formGroup]="UserForm">
   <div class="from-field">
-    <label for="Title">Title</label>
-    <input type="text" id="Title" formControlName="title" >
+    <label for="name">Name</label>
+    <input type="text" id="name" formControlName="name" />
+    <div class="error">
+      <div
+        *ngIf="
+          UserForm.get('name')?.hasError('required') &&
+          UserForm.get('name')?.touched
+        "
+      >
+        Name is required
+      </div>
+    </div>
   </div>
   <div class="from-field">
-    <label for="Text">Text</label>
-    <input type="text" id="Text" formControlName="text" >
+    <label for="lastname">Last Name</label>
+    <input type="text" id="lastname" formControlName="lastName" />
+    <div class="error">
+      <div
+        *ngIf="
+          UserForm.get('lastName')?.hasError('required') &&
+          UserForm.get('lastName')?.touched
+        "
+      >
+        Last Name is required
+      </div>
+    </div>
   </div>
   <div class="from-field">
-    <label for="Text2">Text2</label>
-    <input type="text" id="Text2" formControlName="text2" >
+    <label for="email">Email</label>
+    <input type="text" id="email" formControlName="email" />
+    <div class="error">
+      <div
+        *ngIf="
+          UserForm.get('email')?.hasError('required') &&
+          UserForm.get('email')?.touched
+        "
+      >
+        Email is required
+      </div>
+    </div>
+  </div>
+  <div class="from-field">
+    <label for="password">Password</label>
+    <input type="text" id="password" formControlName="password" />
+    <div class="error">
+      <div
+        *ngIf="
+          UserForm.get('password')?.hasError('required') &&
+          UserForm.get('password')?.touched
+        "
+      >
+        Password is required
+      </div>
+    </div>
   </div>
 </div>
-<button (click)="submit()" >Submit</button>
+<button (click)="Submit()">Submit</button>
