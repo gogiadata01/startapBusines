@@ -3,14 +3,15 @@ import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} fr
 import {NgIf} from "@angular/common";
 import {CreateFormService} from "../../core/services/create-form.service";
 // import {Icard} from "../../core/models/common.model";
-import {Router} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-formc',
   standalone: true,
   imports: [
     NgIf,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterLink
   ],
   templateUrl: './formc.component.html',
   styleUrl: './formc.component.scss'
@@ -52,6 +53,9 @@ export class FormcComponent {
     this.UserService.addUser(this.UserForm.value)
         this.router.navigate(['/']);
 
+  }
+  logOut(){
+    console.log("logout")
   }
   // submit(){
   //   this.cardService.AddCard(this.cardForm.value);

@@ -1,0 +1,43 @@
+<form [formGroup]="Form">
+  <div class="from-field">
+    <label for="UserName">UserName</label>
+    <input type="text" id="UserName" formControlName="UserName" />
+    <div class="error">
+      <div
+        *ngIf="
+          Form.get('UserName')?.hasError('required') && Form.get('UserName')?.touched
+        "
+      >
+        Email is required
+      </div>
+    </div>
+  </div>
+  <div class="from-field">
+    <label for="email">Email</label>
+    <input type="text" id="email" formControlName="email" />
+    <div class="error">
+      <div
+        *ngIf="
+          Form.get('email')?.hasError('required') && Form.get('email')?.touched
+        "
+      >
+        Email is required
+      </div>
+    </div>
+  </div>
+  <div class="from-field">
+    <label for="Password">Password</label>
+    <input type="text" id="Password" formControlName="Password" />
+    <div class="error">
+      <div
+        *ngIf="
+          Form.get('Password')?.hasError('required') &&
+          Form.get('Password')?.touched
+        "
+      >
+        Password is required
+      </div>
+    </div>
+  </div>
+</form>
+<button (click)="Submit()" >Submit</button>
