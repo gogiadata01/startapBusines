@@ -6,8 +6,8 @@ import { Observable, from } from "rxjs"
 })
 export class AuthService{
     firebaseAuth = inject(Auth)
-    register(emial:string,username:string,password:string):Observable<void>{
-        const promise = createUserWithEmailAndPassword(this.firebaseAuth,emial,password
+    register(email:string,username:string,password:string):Observable<void>{
+        const promise = createUserWithEmailAndPassword(this.firebaseAuth,email,password
             ).then(response => updateProfile(response.user, {displayName:username}));
             return from(promise)
             

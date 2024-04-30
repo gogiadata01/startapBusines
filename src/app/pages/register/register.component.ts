@@ -17,13 +17,13 @@ export class RegisterComponent {
   authService = inject(AuthService)
   router = inject(Router)
   Form = this.fb.nonNullable.group({
-    UserName :  ["",Validators.required] ,
+    username :  ["",Validators.required] ,
     email :  ["",Validators.required],
-    Password:  ["",Validators.required]
+    password:  ["",Validators.required]
   })
   Submit() : void {
     const rawForm = this.Form.getRawValue();
-    this.authService.register(rawForm.email,rawForm.UserName,rawForm.Password).subscribe(() =>{
+    this.authService.register(rawForm.email,rawForm.username,rawForm.password).subscribe(() =>{
       this.router.navigateByUrl('/')
     })
   }
