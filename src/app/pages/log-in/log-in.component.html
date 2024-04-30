@@ -29,47 +29,51 @@
       </div>
 </form> -->
 
-
 <!-- login.component.-->
-<form [formGroup]="Form">
-
-<div class="login-container">
-  <h2>Login</h2>
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input type="email" id="email" formControlName="email" >    <div class="error">
-      <div
-        *ngIf="
-          Form.get('email')?.hasError('required') && Form.get('email')?.touched
-        "
-      >
-        Email is required
-      </div>
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="password">Password</label>
-    <input type="password" id="password"  formControlName="Password">
-    <div class="error">
-      <div
-        *ngIf="
-          Form.get('Password')?.hasError('required') && Form.get('Password')?.touched
-        "
-      >
-      Password is required
-      </div>
-    </div>
-  </div>
-  <div class="remember-forgot">
-    <div>
-      <input type="checkbox" id="remember-me">
-      <label for="remember-me">Remember me</label>
-    </div>
-    <a href="#">Forgot Password?</a>
-  </div>
-  <button class="login-btn">Login</button>
-  <div class="register-link">
-    Don't have an account? <a routerLink="/Register">Register</a>
-  </div>
+<div *ngIf="errormassage">
+  {{ errormassage }}
 </div>
+<form [formGroup]="Form">
+  <div class="login-container">
+    <h2>Login</h2>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" formControlName="email" />
+      <div class="error">
+        <div
+          *ngIf="
+            Form.get('email')?.hasError('required') &&
+            Form.get('email')?.touched
+          "
+        >
+          Email is required
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" formControlName="Password" />
+      <div class="error">
+        <div
+          *ngIf="
+            Form.get('Password')?.hasError('required') &&
+            Form.get('Password')?.touched
+          "
+        >
+          Password is required
+        </div>
+      </div>
+    </div>
+    <div class="remember-forgot">
+      <div>
+        <input type="checkbox" id="remember-me" />
+        <label for="remember-me">Remember me</label>
+      </div>
+      <a href="#">Forgot Password?</a>
+    </div>
+    <button  (click)="Submit()" class="login-btn">Login</button>
+    <div class="register-link">
+      Don't have an account? <a routerLink="/Register">Register</a>
+    </div>
+  </div>
 </form>
