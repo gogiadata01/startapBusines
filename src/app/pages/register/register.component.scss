@@ -89,4 +89,18 @@ $background-color: #1c1c1c;
       }
     }
   }
+  .register-link {
+    text-align: center;
+    margin-top: 15px;
+ 
+    a {
+      color: #fff;
+      text-decoration: none;
+      
+      &:hover {
+        color: #007bff;
+      }
+  
+    }
+  }
 }

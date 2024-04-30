@@ -4,6 +4,7 @@ import {FormsComponent} from "./pages/forms/forms.component";
 import {FormcComponent} from "./pages/formc/formc.component";
 import { LogInComponent } from './pages/log-in/log-in.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 export const routes: Routes = [
   {
@@ -20,6 +21,6 @@ export const routes: Routes = [
   },
   {
     path:"Home",
-    component:FormcComponent
+    component:NavbarComponent
   }
 ];
