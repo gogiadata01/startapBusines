@@ -8,18 +8,18 @@ import { RegisterComponent } from './pages/register/register.component';
 export const routes: Routes = [
   {
     path : "",
-    component:FormcComponent
+    component:LogInComponent
   },
   // {
   //   path:"CreateForm",
   //   component:FormcComponent
   // }
   {
-    path: "LogIn",
-    component:LogInComponent
-  },
-  {
     path:"Register",
     component:RegisterComponent
+  },
+  {
+    path:"Home",
+    component:FormcComponent
   }
 ];
