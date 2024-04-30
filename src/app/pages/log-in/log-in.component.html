@@ -82,12 +82,22 @@
 <div class="btn-container">
   <h1>შესვლა</h1>
   <div class="form-group">
-    <input type="email" placeholder="Email" />
-    <span class="icon"><i class="fas fa-envelope"></i></span>
+    <input type="email" placeholder="Email" formControlName="email" />
+  </div>
+  <div class="error">
+    <div *ngIf="Form.get('email')?.hasError('required') && Form.get('email')?.touched
+    ">
+    Email is required
+    </div>
   </div>
   <div class="form-group">
-    <input type="password" placeholder="Password" />
-    <span class="icon"><i class="fas fa-lock"></i></span>
+    <input type="password" placeholder="Password"  formControlName="Password"/>
+  </div>
+  <div class="error">
+    <div *ngIf="Form.get('Password')?.hasError('required') && Form.get('Password')?.touched
+    ">
+    Password is required
+    </div>
   </div>
   <div class="remember-forgot">
     <a href="#">დაგავიწყდა პაროლი?</a>
