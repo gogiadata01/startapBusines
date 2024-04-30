@@ -36,7 +36,7 @@
 <div class="login-container">
   <h2>Login</h2>
   <div class="form-group">
-    <label for="email">Email</label>
+    <label for="email">მეილი</label>
     <input type="email" id="email" formControlName="email" >    <div class="error">
       <div
         *ngIf="
@@ -48,7 +48,7 @@
     </div>
   </div>
   <div class="form-group">
-    <label for="password">Password</label>
+    <label for="password">პაროლი</label>
     <input type="password" id="password"  formControlName="Password">
     <div class="error">
       <div
@@ -63,13 +63,13 @@
   <div class="remember-forgot">
     <div>
       <input type="checkbox" id="remember-me">
-      <label for="remember-me">Remember me</label>
+      <label for="remember-me">დაიმახსოვრე</label>
     </div>
-    <a href="#">Forgot Password?</a>
+    <a href="#">დაგავიწყდა პაროლი?</a>
   </div>
-  <button class="login-btn">Login</button>
+  <button class="login-btn">შესვლა</button>
   <div class="register-link">
-    Don't have an account? <a routerLink="/Register">Register</a>
+    Don't have an account? <a routerLink="/Register">ავტორიზაცია</a>
   </div>
 </div>
 </form>
