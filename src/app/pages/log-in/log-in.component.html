@@ -80,7 +80,7 @@
 <!-- register.component.html -->
 <form [formGroup]="Form">
 <div class="btn-container">
-  <h1>შესვლა</h1>
+  <h1>ავტორიზაცია</h1>
   <div class="form-group">
     <input type="email" placeholder="Email" formControlName="email" />
   </div>
@@ -100,11 +100,11 @@
     </div>
   </div>
   <div class="remember-forgot">
-    <a href="#">დაგავიწყდა პაროლი?</a>
+    <a routerLink="/Recovery-password" >დაგავიწყდა პაროლი?</a>
   </div>
   <button (click)="Submit()" class="login-btn">შესვლა</button>
   <div class="register-link">
-    Don't have an account? <a routerLink="/Register">ავტორიზაცია</a>
+    Don't have an account? <a routerLink="/Register">რეგისტრაცია</a>
   </div>
 <div *ngIf="errormassage">
   {{errormassage}}
