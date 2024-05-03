@@ -14,7 +14,7 @@ import { Subject, takeUntil } from 'rxjs';
   templateUrl: './changepassword-email.component.html',
   styleUrl: './changepassword-email.component.scss'
 })
-export class ChangepasswordEmailComponent implements OnInit,OnDestroy {
+export class ChangepasswordEmailComponent implements OnInit {
   fb = inject(FormBuilder);
   authService = inject(AuthService)
   router = inject(Router)
@@ -46,20 +46,20 @@ export class ChangepasswordEmailComponent implements OnInit,OnDestroy {
   }
 
   Submit(){
-    const {oobCode, password} = this.Form.value as {oobCode:string, password:string}
+    const {oobCode, password} = this.Form.value as {password:string,oobCode:string}
 
     const rawForm = this.Form.getRawValue();
-    this.authService.ConfirmPasswordReset(oobCode,password).subscribe({
+    this.authService.passwordreset(password,oobCode).subscribe({
       next: ()=>{
-        // this.router.navigateByUrl('/')
+        this.router.navigateByUrl('/')
       },
       error: (err) => {
         this.errormassage = err.code;
       }
     })
   }
-  ngOnDestroy(): void {
-    this.sub$.next(null),
-    this.sub$.complete()
-  }
+  // ngOnDestroy(): void {
+  //   this.sub$.next(null),
+  //   this.sub$.complete()
+  // }
 }

@@ -40,7 +40,7 @@ export class AuthService{
         return from(promise)
 
     }
-    ConfirmPasswordReset(password:string,oobCode:string):Observable<void>{
+    passwordreset(password:string,oobCode:string):Observable<void>{
         const promise = confirmPasswordReset(this.firebaseAuth,oobCode,password)
         return from(promise)
         this.router.navigateByUrl('/')
