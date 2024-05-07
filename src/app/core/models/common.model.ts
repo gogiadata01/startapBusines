@@ -14,4 +14,5 @@ export interface Iuser{
 export interface IUser{
   email:string,
   Username:string
+  role:string
 }

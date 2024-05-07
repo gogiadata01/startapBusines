@@ -7,6 +7,9 @@ import { RegisterComponent } from './pages/register/register.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RecoveryPasswordComponent } from './pages/recovery-password/recovery-password.component';
 import { ChangepasswordEmailComponent } from './pages/changepassword-email/changepassword-email.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { StudentsComponent } from './pages/students/students.component';
+import { PupilComponent } from './pages/pupil/pupil.component';
 
 export const routes: Routes = [
   {
@@ -31,5 +34,18 @@ export const routes: Routes = [
   {
     path:"Password-recovery",
     component:ChangepasswordEmailComponent
+  },
+  {
+    path:"Admin",
+    component:AdminComponent
+  },
+  {
+    path:"Students",
+    component:StudentsComponent
+  },
+  {
+    path:"Pupil",
+    component:PupilComponent
   }
+
 ];

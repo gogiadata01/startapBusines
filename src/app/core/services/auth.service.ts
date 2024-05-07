@@ -3,6 +3,7 @@ import { Auth, confirmPasswordReset, createUserWithEmailAndPassword, sendPasswor
 import { Observable, from } from "rxjs"
 import { IUser } from "../models/common.model"
 import { Router } from '@angular/router';
+
 @Injectable({
     providedIn: 'root'
 })
@@ -15,9 +16,9 @@ export class AuthService{
     }
     
     CurrentUserSign = signal<IUser | null | undefined>(undefined)
-    register(email:string,username:string,password:string):Observable<void>{
+    register(email:string,username:string,password:string,role:string):Observable<void>{
         const promise = createUserWithEmailAndPassword(this.firebaseAuth,email,password
-            ).then(response => updateProfile(response.user, {displayName:username}));
+            ).then(response => updateProfile(response.user, {displayName:username,photoURL:role}))
             return from(promise)
             
     }
@@ -49,4 +50,6 @@ export class AuthService{
     // sendoobd(email:string){
     //     return this.pos
     // }
+    getusers(){
+        }
 }

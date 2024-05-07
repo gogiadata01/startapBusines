@@ -20,11 +20,16 @@ export class RegisterComponent {
   Form = this.fb.nonNullable.group({
     username :  ["",Validators.required] ,
     email :  ["",Validators.required],
-    password:  ["",Validators.required]
+    password:  ["",Validators.required],
+    role:  ["",Validators.required],
+
   })
+
+
+
   Submit() : void {
     const rawForm = this.Form.getRawValue();
-    this.authService.register(rawForm.email,rawForm.username,rawForm.password).subscribe(() =>{
+    this.authService.register(rawForm.email,rawForm.username,rawForm.password,rawForm.role).subscribe(() =>{
       this.router.navigateByUrl('/')
     })
   }
