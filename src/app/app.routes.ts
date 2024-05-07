@@ -10,7 +10,6 @@ import { ChangepasswordEmailComponent } from './pages/changepassword-email/chang
 import { AdminComponent } from './pages/admin/admin.component';
 import { StudentsComponent } from './pages/students/students.component';
 import { PupilComponent } from './pages/pupil/pupil.component';
-import { HeaderNavbarComponent } from './header-navbar/header-navbar.component';
 
 export const routes: Routes = [
   {
@@ -47,10 +46,6 @@ export const routes: Routes = [
   {
     path:"Pupil",
     component:PupilComponent
-  },
-  {
-    path:"navbar",
-    component:HeaderNavbarComponent
   }
 
 ];
