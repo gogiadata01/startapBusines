@@ -74,6 +74,7 @@
         </div>
       </div>
     </div>
+<<<<<<< Updated upstream
 
     <div class="form-group">
       <input type="password" placeholder="პაროლი" formControlName="password" />
@@ -87,6 +88,19 @@
         >
           Password is required
         </div>
+=======
+  </div>
+  <div class="form-group">
+    <input type="password" placeholder="პაროლი" formControlName="password" />
+    <span class="icon"><i class="fas fa-lock"></i></span>
+    <div class="error">
+      <div
+        *ngIf="
+          Form.get('password')?.hasError('required') && Form.get('password')?.touched
+        "
+      > 
+      Password is required
+>>>>>>> Stashed changes
       </div>
     </div>
     <!-- <label for="">ჩაწერე ტიპი</label> -->
