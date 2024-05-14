@@ -5,13 +5,8 @@ import {CreateFormService} from "../../core/services/create-form.service";
 // import {Icard} from "../../core/models/common.model";
 import {Router, RouterLink} from "@angular/router";
 import { NavbarComponent } from '../../navbar/navbar.component';
-<<<<<<< Updated upstream
 import { AuthService } from '../../core/services/auth.service';
 
-=======
-import { HeaderComponent } from '../../header/header.component';
-import { CarouselBasicComponent } from '../../carousel-basic/carousel-basic.component';
->>>>>>> Stashed changes
 @Component({
   selector: 'app-formc',
   standalone: true,
@@ -19,12 +14,10 @@ import { CarouselBasicComponent } from '../../carousel-basic/carousel-basic.comp
     NgIf,
     ReactiveFormsModule,
     RouterLink,
-    NavbarComponent,
-    HeaderComponent,
-    CarouselBasicComponent,
+    
   ],
-  templateUrl: './formc.component.html',
-  styleUrl: './formc.component.scss'
+  templateUrl:'./formc.component.html',
+  styleUrl:'./formc.component.scss'
 })
 export class FormcComponent  {
   UserForm!: FormGroup
