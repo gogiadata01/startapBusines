@@ -4,12 +4,11 @@
 //   text:string,
 //   text2:string
 // }
-export interface Iuser{
+export interface Icard{
   key?:string,
-  name: string,
-  lastName:string,
-  emial:string,
-  password:string
+  url:string,
+  title:string,
+  mainText:string
 };
 export interface IUser{
   email:string,

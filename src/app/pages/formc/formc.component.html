@@ -1,78 +1,15 @@
-<!-- <app-navbar></app-navbar> -->
-
-
-
-
-
-<div>
-  <a routerLink="/LogIn"> Log In </a>
-  <a routerLink="/Register"> Register </a>
-</div>
-<div>
-  <span (click)="logOut()">Log Out</span>
-</div>
-
-
-<!-- <div [formGroup]="UserForm">
+<div [formGroup]="Form">
   <div class="from-field">
-    <label for="name">Name</label>
-    <input type="text" id="name" formControlName="name" />
-    <div class="error">
-      <div
-        *ngIf="
-          UserForm.get('name')?.hasError('required') &&
-          UserForm.get('name')?.touched
-        "
-      >
-        Name is required
-      </div>
-    </div>
+    <label for="title">ფოტო</label>
+    <input type="text" id="title" formControlName="url" />
   </div>
   <div class="from-field">
-    <label for="lastname">Last Name</label>
-    <input type="text" id="lastname" formControlName="lastName" />
-    <div class="error">
-      <div
-        *ngIf="
-          UserForm.get('lastName')?.hasError('required') &&
-          UserForm.get('lastName')?.touched
-        "
-      >
-        Last Name is required
-      </div>
-    </div>
+    <label for="title">სათაური</label>
+    <input type="text" id="title" formControlName="title" />
   </div>
   <div class="from-field">
-    <label for="email">Email</label>
-    <input type="text" id="email" formControlName="email" />
-    <div class="error">
-      <div
-        *ngIf="
-          UserForm.get('email')?.hasError('required') &&
-          UserForm.get('email')?.touched
-        "
-      >
-        Email is required
-      </div>
-    </div>
-  </div>
-  <div class="from-field">
-    <label for="password">Password</label>
-    <input type="text" id="password" formControlName="password" />
-    <div class="error">
-      <div
-        *ngIf="
-          UserForm.get('password')?.hasError('required') &&
-          UserForm.get('password')?.touched
-        "
-      >
-        Password is required
-      </div>
-    </div>
+    <label for="maintext">მთავარი ტექსტი</label>
+    <input type="text" id="maintext" formControlName="maintext" />
   </div>
 </div>
-<button (click)="Submit()">Submit</button> -->
-
-
-
-
+<button (click)="Submit()">Submit</button>

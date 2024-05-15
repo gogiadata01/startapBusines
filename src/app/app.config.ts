@@ -6,6 +6,7 @@ import {AngularFireAuth} from "@angular/fire/compat/auth";
 import {AngularFireDatabaseModule} from "@angular/fire/compat/database";
 import {AngularFirestoreModule} from "@angular/fire/compat/firestore"
 import {getAuth,provideAuth} from "@angular/fire/auth"
+import {getFirestore,provideFirestore} from "@angular/fire/firestore"
 
 
 
@@ -22,6 +23,8 @@ export const appConfig: ApplicationConfig = {
       AngularFireDatabaseModule,
       AngularFirestoreModule,
       provideFirebaseApp(() =>initializeApp(firebaseConfig) ),
-      provideAuth(() => getAuth() )
+      provideAuth(() => getAuth() ),
+      provideFirebaseApp(() =>initializeApp(firebaseConfig) ),
+      provideFirestore(() => getFirestore() )
     ]) ],
   };

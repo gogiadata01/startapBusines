@@ -46,6 +46,10 @@ export const routes: Routes = [
   {
     path:"Pupil",
     component:PupilComponent
+  },
+  {
+    path:"Home/AddHomeUniCard",
+    component:FormcComponent
   }
 
 ];
