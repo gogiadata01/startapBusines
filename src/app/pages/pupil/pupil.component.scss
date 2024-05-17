@@ -225,7 +225,10 @@ a {
 
 img {
   display: block;
-  max-width: 100%;
+  max-width: 312px;
+  max-height: 193px;
+  min-width: 310px;
+  min-height: 190px;
   height: auto;
 }
 

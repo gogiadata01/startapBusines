@@ -1,16 +1,11 @@
-<p>forms works!</p>
-<button><a routerLink="/CreateForm">asks</a> </button>
-
-<div>
-  <!-- @for (Card of cards; track $index){
-    <h1>
-      {{Card.title}}
-    </h1>
-    <h2>
-      {{Card.text}}
-    </h2>
-    <h2>
-      {{Card.text2}}
-    </h2>
-  } -->
+<div [formGroup]="Form">
+  <div class="from-field">
+    <label for="title">სათაური</label>
+    <input type="text" id="title" formControlName="title" />
+  </div>
+  <div class="from-field">
+    <label for="text">ტექსტი</label>
+    <input type="text" id="text" formControlName="text" />
+  </div>
 </div>
+<button (click)="Submit()">Submit</button>

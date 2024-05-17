@@ -29,7 +29,7 @@ export class FormcComponent  {
   Form = this.fb.nonNullable.group({
     url : <unknown> ["",Validators.required] ,
     title :  ["",Validators.required],
-    maintext:  ["",Validators.required],
+    mainText:  ["",Validators.required],
   })
   Submit() : void {
     this.createform.AddHomeUniCard(this.Form.value as any)
