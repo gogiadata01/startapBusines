@@ -22,10 +22,7 @@ export class RegisterComponent {
     email :  ["",Validators.required],
     password:  ["",Validators.required],
     role:  ["",Validators.required],
-
   })
-
-
 
   Submit() : void {
     const rawForm = this.Form.getRawValue();
@@ -33,4 +30,11 @@ export class RegisterComponent {
       this.router.navigateByUrl('/')
     })
   }
+  
 }
+
+
+
+
+
+
