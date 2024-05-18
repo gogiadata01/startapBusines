@@ -13,6 +13,14 @@
       {{Card.text2}}
     </h2>f
   } -->
-
-  
+<div [formGroup]="Form">
+  <div class="from-field">
+    <label for="title">სათაური</label>
+    <input type="text" id="title" formControlName="title" />
+  </div>
+  <div class="from-field">
+    <label for="text">ტექსტი</label>
+    <input type="text" id="text" formControlName="text" />
+  </div>
 </div>
+<button (click)="Submit()">Submit</button>

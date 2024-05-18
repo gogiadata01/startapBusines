@@ -15,3 +15,8 @@ export interface IUser{
   Username:string
   role:string
 }
+export interface IUniFacultyCard{
+  key?:string,
+  title:string,
+  text:string
+}

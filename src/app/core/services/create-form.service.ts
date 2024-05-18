@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {AngularFireDatabase, AngularFireList} from "@angular/fire/compat/database";
-import { Icard } from '../models/common.model';
+import { IUniFacultyCard, Icard } from '../models/common.model';
 // import {Icard} from "../models/common.model";
 
 @Injectable({
@@ -8,9 +8,12 @@ import { Icard } from '../models/common.model';
 })
 export class CreateFormService {
   private dbPath = '/HomeUniCard'
+  private dbUniFacultyPath = "/UniFacultyCard"
   CardRef:AngularFireList<any>
-  constructor(private db : AngularFireDatabase) {
+  UniFacultyCardRef:AngularFireList<any>
+  constructor(private db : AngularFireDatabase,private UniFacultyCardDb:AngularFireDatabase) {
     this.CardRef = db.list(this.dbPath)
+    this.UniFacultyCardRef = UniFacultyCardDb.list(this.dbUniFacultyPath)
   }
   getAllHomeUniCard(){
     return this.CardRef;
@@ -27,6 +30,22 @@ export class CreateFormService {
   deleteHomeUniCard(key:string){
     return  this.CardRef.remove(key)
   }
+  getAllUniFacultyCard(){
+    return  this.UniFacultyCardRef
+  }
+  AddUniFacultyCard(Card:IUniFacultyCard){
+    this.UniFacultyCardRef.push(Card)
+  }
+  getUniFacultyCardById(key:string){
+    return this.UniFacultyCardDb.object(`${this.dbUniFacultyPath} /${key} `)
+  }
+  updateUniFacultyCard(key:string,Card:IUniFacultyCard){
+    this.UniFacultyCardRef.update(key,Card)
+  }
+  deleteUniFacultyCard(key:string){
+    return  this.UniFacultyCardRef.remove(key)
+  }
+  
   // private dbPath = '/Card';
   // UserRef : AngularFireList<any> 
   // constructor(private db :AngularFireDatabase){

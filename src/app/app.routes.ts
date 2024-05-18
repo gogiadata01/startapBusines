@@ -10,6 +10,7 @@ import { ChangepasswordEmailComponent } from './pages/changepassword-email/chang
 import { AdminComponent } from './pages/admin/admin.component';
 import { StudentsComponent } from './pages/students/students.component';
 import { PupilComponent } from './pages/pupil/pupil.component';
+import { UniFacultyComponent } from './pages/uni-faculty/uni-faculty.component';
 
 export const routes: Routes = [
   {
@@ -26,8 +27,17 @@ export const routes: Routes = [
   },
   {
     path:"Home",
-    component:NavbarComponent
-  },{
+    component:NavbarComponent,
+  },
+  {
+    path:"Home/AddHomeUniCard",
+    component:FormcComponent
+  },
+  {
+    path:"Home/AddUniFacultyCard",
+    component:FormsComponent
+  },
+  {
     path:"Recovery-password",
     component:RecoveryPasswordComponent
   },
@@ -48,8 +58,9 @@ export const routes: Routes = [
     component:PupilComponent
   },
   {
-    path:"Home/AddHomeUniCard",
-    component:FormcComponent
+    path:"Pupil/UniFaculty",
+    component:UniFacultyComponent
   }
+
 
 ];
