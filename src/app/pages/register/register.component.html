@@ -56,8 +56,8 @@
             Form.get('username')?.touched
           "
         >
-        სახელი სავალდებულოა
-      </div>
+          სახელი სავალდებულოა
+        </div>
       </div>
     </div>
     <div class="form-group">
@@ -69,11 +69,10 @@
             Form.get('email')?.touched
           "
         >
-        მეილი სავალდებულოა
-      </div>
+          მეილი სავალდებულოა
+        </div>
       </div>
     </div>
-
     <div class="form-group">
       <input type="password" placeholder="პაროლი" formControlName="password" />
       <div class="error">
@@ -99,7 +98,7 @@
               Form.get('role')?.touched
             "
           >
-             ტიპის ჩაწერა სავალდებულოა
+            ტიპის ჩაწერა სავალდებულოა
           </div>
         </div>
         <button (click)="Submit()" class="register-btn">Register</button>
@@ -107,6 +106,7 @@
           გაქვს უკვე ანგარიში? <a routerLink="/">ავტორიზაცია</a>
         </div>
       </div>
+
       <div *ngIf="errormassage">
         {{ errormassage }}
       </div>
