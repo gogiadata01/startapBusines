@@ -7,6 +7,7 @@ import {AngularFireDatabaseModule} from "@angular/fire/compat/database";
 import {AngularFirestoreModule} from "@angular/fire/compat/firestore"
 import {getAuth,provideAuth} from "@angular/fire/auth"
 import {getFirestore,provideFirestore} from "@angular/fire/firestore"
+import {SweetAlertArrayOptions} from 'sweetalert2'
 
 
 

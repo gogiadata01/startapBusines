@@ -50,6 +50,4 @@ export class AuthService{
     // sendoobd(email:string){
     //     return this.pos
     // }
-    getusers(){
-        }
 }

@@ -4,16 +4,16 @@ import {Icard} from "../../core/models/common.model";
 import {CreateFormService} from "../../core/services/create-form.service";
 import { DrawerComponent } from '../../drawer/drawer.component';
 import {FooterForPupilComponent} from '../footer-for-pupil/footer-for-pupil.component'
-import {HomeCardComponent} from '../home-card/home-card.component'
+
 
 @Component({
-  selector: 'app-pupil',
+  selector: 'app-home-card',
   standalone: true,
-  imports: [NavbarForPupilComponent, DrawerComponent,FooterForPupilComponent,HomeCardComponent],
-  templateUrl: './pupil.component.html',
-  styleUrl: './pupil.component.scss'
+  imports: [],
+  templateUrl: './home-card.component.html',
+  styleUrl: './home-card.component.scss'
 })
-export class PupilComponent implements OnInit {
+export class HomeCardComponent {
   cards:Icard[] = []
 constructor(private cardService: CreateFormService) {
 }
@@ -41,4 +41,3 @@ getAllCard(){
       })
 }
 }
-

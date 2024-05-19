@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FooterForpupilComponent } from './footer-forpupil.component';
+import { HomeCardComponent } from './home-card.component';
 
-describe('FooterForpupilComponent', () => {
-  let component: FooterForpupilComponent;
-  let fixture: ComponentFixture<FooterForpupilComponent>;
+describe('HomeCardComponent', () => {
+  let component: HomeCardComponent;
+  let fixture: ComponentFixture<HomeCardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FooterForpupilComponent]
+      imports: [HomeCardComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(FooterForpupilComponent);
+    fixture = TestBed.createComponent(HomeCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

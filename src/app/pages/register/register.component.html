@@ -56,8 +56,8 @@
             Form.get('username')?.touched
           "
         >
-          UserName is required
-        </div>
+        სახელი სავალდებულოა
+      </div>
       </div>
     </div>
     <div class="form-group">
@@ -69,8 +69,8 @@
             Form.get('email')?.touched
           "
         >
-          email is required
-        </div>
+        მეილი სავალდებულოა
+      </div>
       </div>
     </div>
 
@@ -83,42 +83,35 @@
             Form.get('password')?.touched
           "
         >
-          Password is required
-        </div>
-  </div>
-  <div class="form-group">
-    <input type="password" placeholder="პაროლი" formControlName="password" />
-    <div class="error">
-      <div
-        *ngIf="
-          Form.get('password')?.hasError('required') && Form.get('password')?.touched
-        "
-      > 
-      Password is required
-      </div>
-    </div>
-    <div class="checkbox-group">
-      <h5>აირჩიეთ თქვენი სტატუსი</h5>
-      <input
-        type="checkbox"
-        id="pupil"
-        name="status"
-        value="pupil"
-      />
-      <label class="checkbox-label" for="pupil">მოსწავლე</label>
-      
-      <div class="error">
-        <div
-          *ngIf="
-            Form.get('role')?.hasError('required') && Form.get('role')?.touched
-          "
-        >
-          role is required
+          პაროლი სავალდებულოა
         </div>
       </div>
-    </div>
-    <button (click)="Submit()" class="register-btn">Register</button>
-    <div class="register-link">
-      Do you have an account? <a routerLink="/">ავტორიზაცია</a>
+      <div class="form-group">
+        <input
+          type="text"
+          placeholder="ჩაწერე ტიპი:მოსწავლესტუდენტი"
+          formControlName="role"
+        />
+        <div class="error">
+          <div
+            *ngIf="
+              Form.get('role')?.hasError('required') &&
+              Form.get('role')?.touched
+            "
+          >
+             ტიპის ჩაწერა სავალდებულოა
+          </div>
+        </div>
+        <button (click)="Submit()" class="register-btn">Register</button>
+        <div class="register-link">
+          გაქვს უკვე ანგარიში? <a routerLink="/">ავტორიზაცია</a>
+        </div>
+      </div>
+      <div *ngIf="errormassage">
+        {{ errormassage }}
+      </div>
+
+      <div class="form-group"></div>
     </div>
   </div>
+</form>

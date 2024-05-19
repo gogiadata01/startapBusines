@@ -5,6 +5,7 @@ import { RouterLink } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
 import { IfStmt } from '@angular/compiler';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -20,7 +21,6 @@ export class LogInComponent {
   authService = inject(AuthService)
   router = inject(Router)
   errormassage: string| null = null 
-
   Form = this.fb.nonNullable.group({
     email: ['' , Validators.required],
     Password: ['', Validators.required]
@@ -33,6 +33,19 @@ export class LogInComponent {
       },
       error: (err) => {
         this.errormassage = err.code;
+        if(this.errormassage == "auth/invalid-email"){
+          Swal.fire({
+            title: "შეცდომა",
+            text: "ჩაწერე ვალიდური მაილი",
+            icon: "error"
+          });
+        }else{
+          Swal.fire({
+            title: "შესრულდა",
+            text: "წარმატებით გაიარეთ ავტორიზაცია",
+            icon: "success"
+          });
+        }
       }
     })
   }

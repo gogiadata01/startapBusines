@@ -3,14 +3,15 @@ import { NavbarForPupilComponent } from '../navbar-for-pupil/navbar-for-pupil.co
 import { RouterLink } from '@angular/router';
 import {IUniFacultyCard} from "../../core/models/common.model";
 import {CreateFormService} from "../../core/services/create-form.service";
-import {FooterForpupilComponent} from '../footer-forpupil/footer-forpupil.component'
-
+import { DrawerComponent } from '../../drawer/drawer.component';
+import {FooterForPupilComponent} from '../footer-for-pupil/footer-for-pupil.component'
+import {HomeCardComponent} from '../home-card/home-card.component'
 
 
 @Component({
   selector: 'app-uni-faculty',
   standalone: true,
-  imports: [NavbarForPupilComponent,RouterLink,FooterForpupilComponent],
+  imports: [NavbarForPupilComponent,RouterLink,DrawerComponent,FooterForPupilComponent,HomeCardComponent],
   templateUrl: './uni-faculty.component.html',
   styleUrl: './uni-faculty.component.scss'
 })
