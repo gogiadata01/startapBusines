@@ -12,6 +12,7 @@ import { StudentsComponent } from './pages/students/students.component';
 import { PupilComponent } from './pages/pupil/pupil.component';
 import { UniFacultyComponent } from './pages/uni-faculty/uni-faculty.component';
 
+
 export const routes: Routes = [
   {
     path : "",

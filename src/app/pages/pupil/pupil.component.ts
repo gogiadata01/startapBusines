@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 import { NavbarForPupilComponent } from '../navbar-for-pupil/navbar-for-pupil.component';
 import {FooterForpupilComponent} from '../footer-forpupil/footer-forpupil.component'
 import {Icard} from "../../core/models/common.model";
 import {CreateFormService} from "../../core/services/create-form.service";
-
+import { DrawerComponent } from '../../drawer/drawer.component';
 
 @Component({
   selector: 'app-pupil',
   standalone: true,
-  imports: [NavbarForPupilComponent,FooterForpupilComponent],
+  imports: [NavbarForPupilComponent,FooterForpupilComponent, DrawerComponent],
   templateUrl: './pupil.component.html',
   styleUrl: './pupil.component.scss'
 })
