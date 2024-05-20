@@ -30,6 +30,7 @@ export class RegisterComponent  {
   errormassage: string| null = null 
   @ViewChild('pupil')pupil:any
   @ViewChild('student')student:any
+  asas = document.querySelector("")
 
   // Student(){
   //   this.rawForm.role == "სტუდენტი"
