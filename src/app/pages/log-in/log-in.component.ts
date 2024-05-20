@@ -29,21 +29,36 @@ export class LogInComponent {
     const rawForm = this.Form.getRawValue();
     this.authService.login(rawForm.email,rawForm.Password).subscribe({
       next: ()=>{
-        this.router.navigateByUrl('/Home')
+        Swal.fire({
+          title: "შესრულდა",
+          text: "წარმატებით გაიარეთ ავტორიზაცია",
+          icon: "success"
+        });
+        setTimeout(()=>{
+          this.router.navigateByUrl('/Home')
+        },2000)
       },
       error: (err) => {
         this.errormassage = err.code;
-        if(this.errormassage == "auth/invalid-email"){
+        if(this.errormassage == "auth/invalid-credential"){
+          Swal.fire({
+            title: "შეცდომა",
+            text: "მეილი ან პაროლი არასწორია",
+            icon: "error"
+          });
+        }
+        else if(rawForm.email ="" && rawForm.Password == "") {
+          Swal.fire({
+            title: "შეცდომა",
+            text: "შეავსე ორივე ველი",
+            icon: "error"
+          });     
+        }
+       else  if(this.errormassage == "auth/invalid-email"){
           Swal.fire({
             title: "შეცდომა",
             text: "ჩაწერე ვალიდური მაილი",
             icon: "error"
-          });
-        }else{
-          Swal.fire({
-            title: "შესრულდა",
-            text: "წარმატებით გაიარეთ ავტორიზაცია",
-            icon: "success"
           });
         }
       }
