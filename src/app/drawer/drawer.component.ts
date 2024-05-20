@@ -1,6 +1,4 @@
 import { Component, OnInit,  } from '@angular/core';
-import { trigger,transition, style,animate } from '@angular/animations';
-import { Router, RouterModule,  } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import {CreateFormService} from "../core/services/create-form.service";
 import {IUniFacultyCard} from "../core/models/common.model";
