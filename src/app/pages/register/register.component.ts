@@ -6,8 +6,11 @@ import { Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
 import Swal from 'sweetalert2';
 import { fromEvent, ignoreElements, pipe } from 'rxjs';
-import { event, when } from 'jquery';
+import { event, get, when } from 'jquery';
 import { style } from '@angular/animations';
+import { __values } from 'tslib';
+import { getValueInRange } from '@ng-bootstrap/ng-bootstrap/util/util';
+import { doc } from 'firebase/firestore';
 
 @Component({
   selector: 'app-register',
@@ -28,19 +31,8 @@ export class RegisterComponent  {
     role:  ["",Validators.required],
   })
   errormassage: string| null = null 
-  @ViewChild('pupil')pupil:any
-  @ViewChild('student')student:any
-  asas = document.querySelector("")
-
-  // Student(){
-  //   this.rawForm.role == "სტუდენტი"
-  // }
-  // Pupil(){
-  //   this.rawForm.role == "მოსწავლე"
-  // }
-  //  rawForm = this.Form.getRawValue();
-
   Submit() : void {
+  
     const rawForm = this.Form.getRawValue();
     // this.Student()
     // this.Pupil
@@ -54,7 +46,8 @@ export class RegisterComponent  {
             text: "ყველა ველის შევსება არის საჭირო",
             icon: "info"
           });
-        }else if(rawForm.role == "" ){
+        }
+        else if(rawForm.role == "" ){
           Swal.fire({
             title: "ტიპის ველი ცარიელია",
             text: "ჩაწერე მოსწავლე ან სტუდენტი",
@@ -101,6 +94,8 @@ export class RegisterComponent  {
           this.router.navigateByUrl('/')
         },1500)
       },
+    
+      
     })
   }
   
