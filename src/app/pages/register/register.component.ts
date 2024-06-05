@@ -8,16 +8,24 @@ import Swal from 'sweetalert2';
 import { fromEvent, ignoreElements, pipe } from 'rxjs';
 import { event, when } from 'jquery';
 import { style } from '@angular/animations';
+import { FormsModule  } from '@angular/forms';
+
 
 @Component({
   selector: 'app-register',
   standalone: true,
   imports: [ReactiveFormsModule,
-    NgIf,RouterLink,],
+    NgIf, RouterLink, FormsModule, ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
 export class RegisterComponent  {
+   
+  
+  
+  
+
+
   fb = inject(FormBuilder)
   authService = inject(AuthService)
   router = inject(Router)
@@ -103,7 +111,16 @@ export class RegisterComponent  {
     })
   }
   
+
+
+
+
+
+
+  
 }
+
+
 
 
 
