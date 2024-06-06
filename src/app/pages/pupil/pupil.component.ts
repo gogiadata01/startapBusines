@@ -13,32 +13,32 @@ import {HomeCardComponent} from '../home-card/home-card.component'
   templateUrl: './pupil.component.html',
   styleUrl: './pupil.component.scss'
 })
-export class PupilComponent implements OnInit {
-  cards:Icard[] = []
-constructor(private cardService: CreateFormService) {
-}
-ngOnInit() {
-    this.getAllCard()
-}
-getAllCard(){
-    this.cardService
-      .getAllHomeUniCard()
-      .snapshotChanges()
-      .subscribe({
-        next:(data) =>{
-          this.cards = [];
-          data.forEach((item) => {
-            let Uni = item.payload.toJSON() as Icard
-            this.cards.push({
-              key : item.key || '',
-              title : Uni.title ,
-              mainText: Uni.mainText,
-              url:Uni.url
-              }
-            )
-          })
-        }
-      })
-}
+export class PupilComponent  {
+//   cards:Icard[] = []
+// constructor(private cardService: CreateFormService) {
+// }
+// ngOnInit() {
+//     this.getAllCard()
+// }
+// getAllCard(){
+//     this.cardService
+//       .getAllHomeUniCard()
+//       .snapshotChanges()
+//       .subscribe({
+//         next:(data) =>{
+//           this.cards = [];
+//           data.forEach((item) => {
+//             let Uni = item.payload.toJSON() as Icard
+//             this.cards.push({
+//               key : item.key || '',
+//               title : Uni.title ,
+//               mainText: Uni.mainText,
+//               url:Uni.url
+//               }
+//             )
+//           })
+//         }
+//       })
+// }
 }
 

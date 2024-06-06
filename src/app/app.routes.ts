@@ -11,6 +11,8 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { StudentsComponent } from './pages/students/students.component';
 import { PupilComponent } from './pages/pupil/pupil.component';
 import { UniFacultyComponent } from './pages/uni-faculty/uni-faculty.component';
+import { PupilEventsPageComponent } from './pages/pupil-events-page/pupil-events-page.component';
+import { PupilEventsAddPageComponent } from './pages/pupil-events-add-page/pupil-events-add-page.component';
 
 
 export const routes: Routes = [
@@ -39,6 +41,10 @@ export const routes: Routes = [
     component:FormsComponent
   },
   {
+    path:"Home/AddEventCard",
+    component:PupilEventsAddPageComponent
+  },
+  {
     path:"Recovery-password",
     component:RecoveryPasswordComponent
   },
@@ -61,6 +67,10 @@ export const routes: Routes = [
   {
     path:"Pupil/UniFaculty",
     component:UniFacultyComponent
+  },
+  {
+    path: "Pupil/Events",
+    component:PupilEventsPageComponent
   }
 
 

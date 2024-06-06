@@ -1,0 +1,15 @@
+<div [formGroup]="Form">
+    <div class="from-field">
+      <label for="url">ფოტო</label>
+      <input type="text" id="url" formControlName="url" />
+    </div>
+    <div class="from-field">
+      <label for="title">სათაური</label>
+      <input type="text" id="title" formControlName="title" />
+    </div>
+    <div class="from-field">
+      <label for="text">მთავარი ტექსტი</label>
+      <input type="text" id="text" formControlName="text" />
+    </div>
+    <button (click)="Submit()">Submit</button>
+  </div>

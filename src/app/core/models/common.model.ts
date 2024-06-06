@@ -20,3 +20,9 @@ export interface IUniFacultyCard{
   title:string,
   text:string
 }
+export interface IEventCard{
+  key?:string,
+  url:string,
+  title:string
+  text:string
+}
