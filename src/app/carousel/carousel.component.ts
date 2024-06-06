@@ -16,9 +16,9 @@ export class CarouselComponent implements OnInit {
 
   items = [
     {
-      image: 'https://btu.edu.ge/wp-content/uploads/2021/03/about.jpg',
-      title: 'First slide',
-      description: 'Description for the first slide'
+      image: 'https://tsu.ge/assets/media/files/84/2024%20ivnisi/232.jpg',
+      title: 'ლონდონის ქინგს ქოლეჯის უნივერსიტეტელი მკვლევარი',
+      description: 'Description for the second slide'
     },
     {
       image: 'https://cms.alte.ge/storage/gallery/JlGNyRlDO6.jpg',

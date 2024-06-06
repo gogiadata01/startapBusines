@@ -20,8 +20,8 @@ import { doc } from 'firebase/firestore';
   standalone: true,
   imports: [ReactiveFormsModule,
     NgIf, RouterLink, FormsModule,],
-  templateUrl: './register.component.html',
-  styleUrl: './register.component.scss'
+    templateUrl: './register.component.html',
+    styleUrl: './register.component.scss'
 })
 export class RegisterComponent  {
    

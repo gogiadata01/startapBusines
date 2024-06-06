@@ -1,77 +1,4 @@
-
-
-<!-- register.component.html -->
-<!-- <form [formGroup]="Form">
-  <div class="register-container">
-    <h1>რეგისტრაცია</h1>
-    <div class="form-group">
-      <input type="text" placeholder="სახელი" formControlName="username" />
-     
-      <div class="error">
-        <div
-          *ngIf="
-            Form.get('username')?.hasError('required') &&
-            Form.get('username')?.touched
-          "
-        >
-          სახელი სავალდებულოა
-        </div>
-      </div>
-    </div>
-    <div class="form-group">
-      <input type="email" placeholder="მეილი" formControlName="email" />
-      <div class="error">
-        <div
-          *ngIf="
-            Form.get('email')?.hasError('required') &&
-            Form.get('email')?.touched
-          "
-        >
-          მეილი სავალდებულოა
-        </div>
-      </div>
-    </div>
-    <div class="form-group">
-      <input type="password" placeholder="პაროლი" formControlName="password" />
-      <div class="error">
-        <div
-          *ngIf="
-            Form.get('password')?.hasError('required') &&
-            Form.get('password')?.touched
-          "
-        >
-          პაროლი სავალდებულოა
-        </div>
-      </div>
-
-    </div>
-    <div class="form-group">
-      <input
-        type="text"
-        placeholder="ჩაწერე ტიპი:მოსწავლე ან სტუდენტი"
-        formControlName="role"
-      />
-      <div class="error">
-      <div *ngIf="errormassage">
-        {{ errormassage }}
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="type">
-        <h3>აირჩიე ტიპი</h3>
-      </div>
-      <div class="chooseRole">
-       <div class="role">
-          <div>
-            <input type="checkbox"(click)="getValue()"  class="pupil" />
-            <input type="checkbox" (click)="getValueStudent()"[value]="" class="student" />
-          </div>
-        </div> -->
-        <!-- <select class="form-group col-md-12"  formControlName="role" >
-          <option value="მოსწავლე">მოსწავლე</option>
-          <option value="სტუდენტი">სტუდენტი</option>
-        </select> -->
-        
+   
         <label class="select" >
           <select formControlName="role" >
             <option class="option" value="მოსწავლე">მოსწავლე</option>
@@ -79,38 +6,15 @@
           </select>
         </label>
         <p></p>
-      </div>
+
       <!-- <option  value="admin">Admin</option>  -->
-    </div>
     <div class="form-group">
-      <!-- <input
-        type="text"
-        placeholder="ჩაწერე ტიპი:მოსწავლე ან სტუდენტი"
-        formControlName="role"
-      /> -->
-
-      <!-- <div class="error">
-        <div
-          *ngIf="
-            Form.get('role')?.hasError('required') &&
-            Form.get('role')?.touched
-          "
-        >
-          ტიპის ჩაწერა სავალდებულოა
-        </div>
-        <button (click)="Submit()" class="register-btn">Register</button>
-        <div class="register-link">
-          გაქვს უკვე ანგარიში? <a routerLink="/">ავტორიზაცია</a>
-        </div>
-
-      </div> -->
       <button (click)="Submit()" class="register-btn">Register</button>
       <div class="register-link">
         გაქვს უკვე ანგარიში? <a routerLink="/">ავტორიზაცია</a>
       </div>
     </div>
-  </div>
-</form> 
+
 
 <form [formGroup]="Form">
   <div class="register-container">
