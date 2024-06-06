@@ -119,6 +119,7 @@ $background-color: #1c1c1c;
     margin-bottom: 20px;
 
     input {
+      position: relative;
       width: 300px;
       max-width: 100%;
       padding: 10px 30px 10px 50px;
@@ -138,13 +139,13 @@ $background-color: #1c1c1c;
       }
     }
 
-    .icon {
-      position: absolute;
-      left: 15px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: rgba(255, 255, 255, 0.5);
-     }
+    // .icon {
+    //   position: absolute;
+    //   left: 15px;
+    //   top: 50%;
+    //   transform: translateY(-50%);
+    //   color: rgba(255, 255, 255, 0.5);
+    //  }
   }
 
   .submit-btn {

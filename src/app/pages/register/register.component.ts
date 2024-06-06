@@ -11,11 +11,12 @@ import { style } from '@angular/animations';
 import { FormsModule  } from '@angular/forms';
 
 
+
 @Component({
   selector: 'app-register',
   standalone: true,
   imports: [ReactiveFormsModule,
-    NgIf, RouterLink, FormsModule, ],
+    NgIf, RouterLink, FormsModule,],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
@@ -38,7 +39,7 @@ export class RegisterComponent  {
   errormassage: string| null = null 
   @ViewChild('pupil')pupil:any
   @ViewChild('student')student:any
-  asas = document.querySelector("")
+  // asas = document.querySelector("")
 
   // Student(){
   //   this.rawForm.role == "სტუდენტი"
