@@ -100,6 +100,25 @@
           "
         >
           ტიპის ჩაწერა სავალდებულოა
+      <div class="form-group">
+        <!-- <input
+          type="text"
+          placeholder="ჩაწერე ტიპი:მოსწავლე ან სტუდენტი"
+          formControlName="role"
+        /> -->
+        <div class="error">
+          <div
+            *ngIf="
+              Form.get('role')?.hasError('required') &&
+              Form.get('role')?.touched
+            "
+          >
+            ტიპის ჩაწერა სავალდებულოა
+          </div>
+        </div>
+        <button (click)="Submit()" class="register-btn">Register</button>
+        <div class="register-link">
+          გაქვს უკვე ანგარიში? <a routerLink="/">ავტორიზაცია</a>
         </div>
       </div>
       <button (click)="Submit()" class="register-btn">Register</button>
