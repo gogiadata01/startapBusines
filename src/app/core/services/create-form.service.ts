@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {AngularFireDatabase, AngularFireList} from "@angular/fire/compat/database";
-import { IUniFacultyCard, Icard } from '../models/common.model';
+import { IUniFacultyCard, Icard ,IEventCard } from '../models/common.model';
 // import {Icard} from "../models/common.model";
 
 @Injectable({
@@ -9,11 +9,14 @@ import { IUniFacultyCard, Icard } from '../models/common.model';
 export class CreateFormService {
   private dbPath = '/HomeUniCard'
   private dbUniFacultyPath = "/UniFacultyCard"
+  private dbEventPath = "/EventCard"
   CardRef:AngularFireList<any>
   UniFacultyCardRef:AngularFireList<any>
-  constructor(private db : AngularFireDatabase,private UniFacultyCardDb:AngularFireDatabase) {
+  EventCardRef:AngularFireList<any>
+  constructor(private db : AngularFireDatabase,private UniFacultyCardDb:AngularFireDatabase, private EventcCardDb:AngularFireDatabase) {
     this.CardRef = db.list(this.dbPath)
     this.UniFacultyCardRef = UniFacultyCardDb.list(this.dbUniFacultyPath)
+    this.EventCardRef = EventcCardDb.list(this.dbEventPath)
   }
   getAllHomeUniCard(){
     return this.CardRef;
@@ -44,6 +47,21 @@ export class CreateFormService {
   }
   deleteUniFacultyCard(key:string){
     return  this.UniFacultyCardRef.remove(key)
+  }
+  getAllEventCard(){
+    return  this.EventCardRef
+  }
+  AddEventCard(Card:IEventCard){
+    this.EventCardRef.push(Card)
+  }
+  getEventCardById(key:string){
+    return this.EventcCardDb.object(`${this.dbEventPath} /${key} `)
+  }
+  updateEventCard(key:string,Card:IEventCard){
+    this.EventCardRef.update(key,Card)
+  }
+  deleteEventCard(key:string){
+    return this.EventCardRef.remove(key)
   }
   
   // private dbPath = '/Card';
