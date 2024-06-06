@@ -3,13 +3,14 @@ import { NavbarForPupilComponent } from '../navbar-for-pupil/navbar-for-pupil.co
 import {Icard} from "../../core/models/common.model";
 import {CreateFormService} from "../../core/services/create-form.service";
 import { DrawerComponent } from '../../drawer/drawer.component';
-import {FooterForPupilComponent} from '../footer-for-pupil/footer-for-pupil.component'
-import {HomeCardComponent} from '../home-card/home-card.component'
+import {FooterForPupilComponent} from '../footer-for-pupil/footer-for-pupil.component';
+import {HomeCardComponent} from '../home-card/home-card.component';
+import {CarouselComponent} from '../../carousel/carousel.component';
 
 @Component({
   selector: 'app-pupil',
   standalone: true,
-  imports: [NavbarForPupilComponent, DrawerComponent,FooterForPupilComponent,HomeCardComponent],
+  imports: [NavbarForPupilComponent, DrawerComponent,FooterForPupilComponent,HomeCardComponent, CarouselComponent],
   templateUrl: './pupil.component.html',
   styleUrl: './pupil.component.scss'
 })
