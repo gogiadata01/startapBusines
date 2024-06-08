@@ -5,8 +5,8 @@
 <div class="borderParent"></div>
 <section class="projects section" id="projects">
   <h2 class="section__title-1">მოთხოვნადი უნივერსიტეტები</h2>
-  <div class="projects__container container grid">
-    @for (Uni of cards; track $index){
+  <div  class="projects__container container grid">
+    @for (Uni of cards; track $index ){
     <article class="projects__card">
       <div class="projects__image">
         <img
@@ -24,9 +24,8 @@
       </div>
 
       <div class="projects__buttons">
-        <a href="https://dribbble.com/" target="_blank" class="projects__link">
-          <i class="ri-dribbble-line"></i>გაიგე მეტი
-        </a>
+          <!-- <i class="ri-dribbble-line"></i>გაიგე მეტი -->
+          <button class="Btn" (click)="onCardClicked(Uni.key)">გიაგე მეტი</button>
       </div>
     </article>
     }

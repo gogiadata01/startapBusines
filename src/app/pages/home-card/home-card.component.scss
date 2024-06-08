@@ -327,6 +327,7 @@ img {
     margin-inline: auto;
   }
   .section__title-1{
+    margin-top: 50px;
     color: black;
     font-size: 20px;
     font-weight: 600;
@@ -347,6 +348,14 @@ img {
   .projects__buttons {
     right: 1.25rem;
   }
+}
+.Btn {
+  background-color: transparent;
+  border: 0px;
+}
+.Btn:hover{
+  border-radius: 50px;
+  color:red;
 }
 
 

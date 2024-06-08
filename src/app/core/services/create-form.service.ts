@@ -24,8 +24,9 @@ export class CreateFormService {
   AddHomeUniCard(Card: Icard ){
     this.CardRef.push(Card)
   }
-  getHomeUniCardById(key :string){
-    return this.db.object(`${this.dbPath}/${key}`)
+  getHomeUniCardById(key :any){
+    // return this.db.object(`${this.dbPath}/${key}`)
+    return this.db.object(`/HomeUniCard/${key}`).valueChanges();
   }
   updateHomeUniCard(key:string,Card: Icard){
     this.CardRef.update(key,Card)

@@ -1,4 +1,4 @@
-   
+<!--    
         <label class="select" >
           <select formControlName="role" >
             <option class="option" value="მოსწავლე">მოსწავლე</option>
@@ -7,22 +7,26 @@
         </label>
         <p></p>
 
-      <!-- <option  value="admin">Admin</option>  -->
     <div class="form-group">
       <button (click)="Submit()" class="register-btn">Register</button>
       <div class="register-link">
         გაქვს უკვე ანგარიში? <a routerLink="/">ავტორიზაცია</a>
       </div>
-    </div>
+    </div> -->
 
-
+<!-- <option  value="admin">Admin</option>  -->
 <form [formGroup]="Form">
   <div class="register-container">
     <h1>რეგისტრაცია</h1>
     <div class="form-group">
       <input type="text" placeholder="სახელი" formControlName="username" />
       <div class="error">
-        <div *ngIf="Form.get('username')?.hasError('required') && Form.get('username')?.touched">
+        <div
+          *ngIf="
+            Form.get('username')?.hasError('required') &&
+            Form.get('username')?.touched
+          "
+        >
           სახელი სავალდებულოა
         </div>
       </div>
@@ -30,7 +34,12 @@
     <div class="form-group">
       <input type="email" placeholder="მეილი" formControlName="email" />
       <div class="error">
-        <div *ngIf="Form.get('email')?.hasError('required') && Form.get('email')?.touched">
+        <div
+          *ngIf="
+            Form.get('email')?.hasError('required') &&
+            Form.get('email')?.touched
+          "
+        >
           მეილი სავალდებულოა
         </div>
       </div>
@@ -38,15 +47,32 @@
     <div class="form-group">
       <input type="password" placeholder="პაროლი" formControlName="password" />
       <div class="error">
-        <div *ngIf="Form.get('password')?.hasError('required') && Form.get('password')?.touched">
+        <div
+          *ngIf="
+            Form.get('password')?.hasError('required') &&
+            Form.get('password')?.touched
+          "
+        >
           პაროლი სავალდებულოა
         </div>
       </div>
     </div>
     <div class="form-group">
-      <input type="text" placeholder="ჩაწერე ტიპი:მოსწავლე ან სტუდენტი" formControlName="role" />
+      <div class="type">
+        <h5>აირჩიე ტიპი</h5>
+      </div>
+      <label class="select">
+        <select formControlName="role">
+          <option class="option" value="მოსწავლე">მოსწავლე</option>
+          <option class="option" value="სტუდენტი">სტუდენტი</option>
+        </select>
+      </label>
       <div class="error">
-        <div *ngIf="Form.get('role')?.hasError('required') && Form.get('role')?.touched">
+        <div
+          *ngIf="
+            Form.get('role')?.hasError('required') && Form.get('role')?.touched
+          "
+        >
           ტიპის ჩაწერა სავალდებულოა
         </div>
       </div>

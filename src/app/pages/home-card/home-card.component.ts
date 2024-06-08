@@ -4,6 +4,7 @@ import {Icard} from "../../core/models/common.model";
 import {CreateFormService} from "../../core/services/create-form.service";
 import { DrawerComponent } from '../../drawer/drawer.component';
 import {FooterForPupilComponent} from '../footer-for-pupil/footer-for-pupil.component'
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,12 +16,12 @@ import {FooterForPupilComponent} from '../footer-for-pupil/footer-for-pupil.comp
 })
 export class HomeCardComponent {
   cards:Icard[] = []
-constructor(private cardService: CreateFormService) {
+constructor(private cardService: CreateFormService, private router: Router) {
 }
 ngOnInit() {
-    this.getAllCard()
+    this.getAllCardById()
 }
-getAllCard(){
+getAllCardById(){
     this.cardService
       .getAllHomeUniCard()
       .snapshotChanges()
@@ -39,5 +40,8 @@ getAllCard(){
           })
         }
       })
+}
+onCardClicked(cardkey:any) :void{
+  this.router.navigate(['/Pupil',cardkey])
 }
 }
