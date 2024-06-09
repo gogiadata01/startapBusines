@@ -34,7 +34,17 @@ getAllCardById(){
               key : item.key || '',
               title : Uni.title ,
               mainText: Uni.mainText,
-              url:Uni.url
+              url:Uni.url,
+              history:Uni.history,
+              forpupil:Uni.forpupil,
+              programs:Uni.programs,
+              ScholarshipAndFunding:Uni.ScholarshipAndFunding,
+              ExchangePrograms:Uni.ExchangePrograms,
+              Labs:Uni.Labs,
+              Jobs: Uni.Jobs,
+              StudentsLife:Uni.StudentsLife,
+              PaymentMethods:Uni.PaymentMethods,
+              Events:Uni.Events
               }
             )
           })

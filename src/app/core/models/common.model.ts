@@ -9,6 +9,16 @@ export interface Icard{
   url:string,
   title:string,
   mainText:string
+  history:string,
+  forpupil:string,
+  programs:string,
+  ScholarshipAndFunding:string,
+  ExchangePrograms:string,
+  Labs:string,
+  Jobs:string,
+  StudentsLife:string
+  PaymentMethods:string,
+  Events:string,
 };
 export interface IUser{
   email:string,

@@ -61,6 +61,13 @@ export class LogInComponent {
             icon: "error"
           });
         }
+        else  if(this.errormassage == "auth/network-request-failed"){
+          Swal.fire({
+            title: "შეამოწმე კავშირი",
+            text: "ინტერნეტთან კავშირი დარღვეულია",
+            icon: "info"
+          });
+        }
       }
     })
   }

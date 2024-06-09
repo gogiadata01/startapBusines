@@ -30,6 +30,17 @@ export class FormcComponent  {
     url : <unknown> ["",Validators.required] ,
     title :  ["",Validators.required],
     mainText:  ["",Validators.required],
+    history:  ["",Validators.required],
+    forpupil:  ["",Validators.required],
+    programs:  ["",Validators.required],
+    ScholarshipAndFunding:  ["",Validators.required],
+    ExchangePrograms:  ["",Validators.required],
+    Labs:  ["",Validators.required],
+    Jobs:  ["",Validators.required],
+    StudentsLife:  ["",Validators.required],
+    PaymentMethods:  ["",Validators.required],
+    Events:  ["",Validators.required],
+
   })
   Submit() : void {
     this.createform.AddHomeUniCard(this.Form.value as any)
