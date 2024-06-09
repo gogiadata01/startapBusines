@@ -16,31 +16,5 @@ import { RouterLink } from '@angular/router';
   styleUrl: './pupil.component.scss'
 })
 export class PupilComponent  {
-//   cards:Icard[] = []
-// constructor(private cardService: CreateFormService) {
-// }
-// ngOnInit() {
-//     this.getAllCard()
-// }
-// getAllCard(){
-//     this.cardService
-//       .getAllHomeUniCard()
-//       .snapshotChanges()
-//       .subscribe({
-//         next:(data) =>{
-//           this.cards = [];
-//           data.forEach((item) => {
-//             let Uni = item.payload.toJSON() as Icard
-//             this.cards.push({
-//               key : item.key || '',
-//               title : Uni.title ,
-//               mainText: Uni.mainText,
-//               url:Uni.url
-//               }
-//             )
-//           })
-//         }
-//       })
-// }
 }
 
