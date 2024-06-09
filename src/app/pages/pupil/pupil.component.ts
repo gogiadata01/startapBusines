@@ -6,11 +6,12 @@ import { DrawerComponent } from '../../drawer/drawer.component';
 import {FooterForPupilComponent} from '../footer-for-pupil/footer-for-pupil.component';
 import {HomeCardComponent} from '../home-card/home-card.component';
 import {CarouselComponent} from '../../carousel/carousel.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-pupil',
   standalone: true,
-  imports: [NavbarForPupilComponent, DrawerComponent,FooterForPupilComponent,HomeCardComponent, CarouselComponent],
+  imports: [NavbarForPupilComponent, DrawerComponent,FooterForPupilComponent,HomeCardComponent, CarouselComponent,RouterLink],
   templateUrl: './pupil.component.html',
   styleUrl: './pupil.component.scss'
 })

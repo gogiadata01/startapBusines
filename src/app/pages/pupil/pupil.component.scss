@@ -48,3 +48,29 @@
       font-weight: 600;
     }
   }
+  .section__title-1{
+    color: black;
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .border{
+    margin-top: 24px ;
+    border-bottom: 1px solid black !important;
+  }
+  .ViewMore {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    button{
+      border: 0px;
+      background-color: transparent;
+      border-radius: 50px;
+
+    }:hover{
+      background-color: green;
+    }
+  }
+  .container{
+    display: flex;
+    justify-content: center;
+  }
