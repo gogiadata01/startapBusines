@@ -13,42 +13,75 @@
   </div>
   <div class="from-field">
     <label class="history">ისტორია</label>
-    <textarea class="form-control" formControlName="history" aria-label="With textarea"></textarea>
+    <textarea
+      class="form-control"
+      formControlName="history"
+      aria-label="With textarea"
+    ></textarea>
   </div>
   <div class="from-field">
     <label class="history">აიბიტურიენტებისთვის</label>
-    <textarea class="form-control" formControlName="forpupil" aria-label="With textarea"></textarea>
+    <textarea
+      class="form-control"
+      formControlName="forpupil"
+      aria-label="With textarea"
+    ></textarea>
   </div>
   <div class="from-field">
+    <button (click)="addProgram()">დამატება</button>
+    <div formArrayName="programs">
+      <div *ngFor="let program of "></div>
+    </div>
     <label class="history">პროგრამები</label>
-    <textarea class="form-control" formControlName="programs" aria-label="With textarea"></textarea>
+    <input type="text" id="history" formArrayName="programs" />
   </div>
   <div class="from-field">
     <label class="history">გაცვლითი პროგრამებია</label>
-    <textarea class="form-control" formControlName="ExchangePrograms" aria-label="With textarea"></textarea>
+    <textarea
+      class="form-control"
+      formControlName="ExchangePrograms"
+      aria-label="With textarea"
+    ></textarea>
   </div>
   <div class="from-field">
     <label class="history">ლაბორატორიები</label>
-    <textarea class="form-control" formControlName="Labs" aria-label="With textarea"></textarea>
+    <textarea
+      class="form-control"
+      formControlName="Labs"
+      aria-label="With textarea"
+    ></textarea>
   </div>
   <div class="from-field">
     <label class="history">დასაქმება</label>
-    <textarea class="form-control" formControlName="Jobs" aria-label="With textarea"></textarea>
+    <textarea
+      class="form-control"
+      formControlName="Jobs"
+      aria-label="With textarea"
+    ></textarea>
   </div>
   <div class="from-field">
     <label class="history">სტუდენტური ცხოვრება</label>
-    <textarea class="form-control" formControlName="StudentsLife" aria-label="With textarea"></textarea>
+    <textarea
+      class="form-control"
+      formControlName="StudentsLife"
+      aria-label="With textarea"
+    ></textarea>
   </div>
   <div class="from-field">
     <label class="history">გადახდის მეთოდები</label>
-    <textarea class="form-control" formControlName="PaymentMethods" aria-label="With textarea"></textarea>
+    <textarea
+      class="form-control"
+      formControlName="PaymentMethods"
+      aria-label="With textarea"
+    ></textarea>
   </div>
   <div class="from-field">
     <label class="history">ღონისძიებები</label>
-    <textarea class="form-control" formControlName="Events" aria-label="With textarea"></textarea>
+    <textarea
+      class="form-control"
+      formControlName="Events"
+      aria-label="With textarea"
+    ></textarea>
   </div>
 </div>
 <button (click)="Submit()">Submit</button>
-
-
-

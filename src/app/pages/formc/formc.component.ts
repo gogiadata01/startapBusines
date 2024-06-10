@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {NgIf} from "@angular/common";
+
+import {ControlContainer, FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
+import {NgIf,NgFor} from "@angular/common";
 import {CreateFormService} from "../../core/services/create-form.service";
 import {Icard} from "../../core/models/common.model";
 import {Router, RouterLink, UrlHandlingStrategy} from "@angular/router";
@@ -16,7 +17,8 @@ import { query } from 'firebase/firestore';
     NgIf,
     ReactiveFormsModule,
     RouterLink,
-    NavbarComponent
+    NavbarComponent,
+    NgFor
     
   ],
   templateUrl:'./formc.component.html',
@@ -32,7 +34,6 @@ export class FormcComponent  {
     mainText:  ["",Validators.required],
     history:  ["",Validators.required],
     forpupil:  ["",Validators.required],
-    programs:  ["",Validators.required],
     ScholarshipAndFunding:  ["",Validators.required],
     ExchangePrograms:  ["",Validators.required],
     Labs:  ["",Validators.required],
@@ -40,8 +41,22 @@ export class FormcComponent  {
     StudentsLife:  ["",Validators.required],
     PaymentMethods:  ["",Validators.required],
     Events:  ["",Validators.required],
-
+    // programs: this.fb.array([this.fb.control('')]) ,
+    programs: this.fb.array([])
   })
+  get lessons() {
+    return this.Form.controls["programs"] as FormArray;
+  }
+  addProgram() {
+    const lessonForm = this.fb.group({
+        program: ['', Validators.required],
+    });
+  
+    this.lessons.push(lessonForm);
+  }
+  deleteLesson(i: number) {
+    this.lessons.removeAt(i);
+  }
   Submit() : void {
     this.createform.AddHomeUniCard(this.Form.value as any)
   }

@@ -11,7 +11,7 @@ export interface Icard{
   mainText:string
   history:string,
   forpupil:string,
-  programs:string,
+  programs:Array<string>,
   ScholarshipAndFunding:string,
   ExchangePrograms:string,
   Labs:string,
