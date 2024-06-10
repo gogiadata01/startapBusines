@@ -42,20 +42,29 @@ export class FormcComponent  {
     PaymentMethods:  ["",Validators.required],
     Events:  ["",Validators.required],
     // programs: this.fb.array([this.fb.control('')]) ,
-    programs: this.fb.array([])
+    // programs: this.fb.array([
+    //   new FormGroup({
+    //     program: new FormControl("",Validators.required)
+    //   })
+    // ])
+    programs : new FormArray([
+      new FormGroup({
+        program: new FormControl("" ,Validators.required)
+      })
+    ])
   })
-  get lessons() {
+  get programs() {
     return this.Form.controls["programs"] as FormArray;
   }
   addProgram() {
-    const lessonForm = this.fb.group({
-        program: ['', Validators.required],
+    const programs = this.fb.group({
+      program: new FormControl("",Validators.required)
     });
   
-    this.lessons.push(lessonForm);
+    this.programs.push(programs);
   }
   deleteLesson(i: number) {
-    this.lessons.removeAt(i);
+    this.programs.removeAt(i);
   }
   Submit() : void {
     this.createform.AddHomeUniCard(this.Form.value as any)

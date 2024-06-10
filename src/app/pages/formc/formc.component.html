@@ -29,11 +29,16 @@
   </div>
   <div class="from-field">
     <button (click)="addProgram()">დამატება</button>
-    <div formArrayName="programs">
-      <div *ngFor="let program of "></div>
+    <div
+      *ngFor="let program of programs.controls; let i = index"
+      formArrayName="programs"
+    >
+      <div formGroupName="i">
+        <label for="programs">პროგრამები</label>
+        <input type="text" id="programs" formControlName="program" />
+        <button (click)="deleteLesson(i)">წაშლა</button>
+      </div>
     </div>
-    <label class="history">პროგრამები</label>
-    <input type="text" id="history" formArrayName="programs" />
   </div>
   <div class="from-field">
     <label class="history">გაცვლითი პროგრამებია</label>
