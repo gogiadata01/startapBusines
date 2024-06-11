@@ -26,7 +26,7 @@ export class UniDetailsComponent implements OnInit {
   
   @ViewChild('Program') program!: ElementRef;
   @ViewChild('events') events!: ElementRef;
-
+  @ViewChild('guide') guide!: ElementRef;
 
   card: any;
   cards:Icard[] = []
@@ -81,8 +81,10 @@ ProgramClicked(){
   //   this.program.nativeElement.style.display = displayStyle === 'none' ? 'block' : 'none'
     const displayStyle = this.events.nativeElement.style.display;
     this.events.nativeElement.style.display = displayStyle === 'none' ? 'none' : 'none';
-    const displayStyle1 = this.program.nativeElement.style.display;
-    this.program.nativeElement.style.display = displayStyle1 === 'none' ? 'block' : 'none';
+    const displayStyle2 = this.guide.nativeElement.style.display;
+    this.guide.nativeElement.style.display = displayStyle2 === 'none' ? 'none' : 'none';
+    const displayStyle3 = this.program.nativeElement.style.display;
+    this.program.nativeElement.style.display = displayStyle3 === 'none' ? 'block' : 'none';
   
 
   }
@@ -91,8 +93,17 @@ ProgramClicked(){
     this.events.nativeElement.style.display = displayStyle === 'none' ? 'flex' : 'none';
     const displayStyle1 = this.program.nativeElement.style.display;
     this.program.nativeElement.style.display = displayStyle1 === 'none' ? 'none' : 'none';
+    const displayStyle2 = this.guide.nativeElement.style.display;
+    this.guide.nativeElement.style.display = displayStyle2 === 'none' ? 'none' : 'none';
   }
-
+  GuideClicked(){
+    const displayStyle1 = this.program.nativeElement.style.display;
+    this.program.nativeElement.style.display = displayStyle1 === 'none' ? 'none' : 'none';
+    const displayStyle = this.events.nativeElement.style.display;
+    this.events.nativeElement.style.display = displayStyle === 'none' ? 'none' : 'none';
+    const displayStyle2 = this.guide.nativeElement.style.display;
+    this.guide.nativeElement.style.display = displayStyle2 === 'none' ? 'block' : 'none';
+  }
 
 }
 

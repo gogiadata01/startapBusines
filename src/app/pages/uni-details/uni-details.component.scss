@@ -340,6 +340,17 @@ h1{
 .card-content2 p {
   color: #555;
 }
+.guide{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  .accord{
+    width: 65%;
+  }
+}
+.accordion-item{
+  background-color: transparent;
+}
 
 
 
