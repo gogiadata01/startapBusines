@@ -6,19 +6,19 @@
 // }
 export interface Icard{
   key?:string,
-  url:string,
-  title:string,
-  mainText:string
-  history:string,
-  forpupil:string,
-  programs:Array<string>,
-  ScholarshipAndFunding:string,
-  ExchangePrograms:string,
-  Labs:string,
-  Jobs:string,
-  StudentsLife:string
-  PaymentMethods:string,
-  Events:string,
+  url?:string,
+  title?:string,
+  mainText?:string
+  history?:string,
+  forpupil?:string,
+  sections:Array<string>,
+  ScholarshipAndFunding?:string,
+  ExchangePrograms?:string,
+  Labs?:string,
+  Jobs?:string,
+  StudentsLife?:string
+  PaymentMethods?:string,
+  Events?:Array<string>,
 };
 export interface IUser{
   email:string,

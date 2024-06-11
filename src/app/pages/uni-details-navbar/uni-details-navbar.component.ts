@@ -1,20 +1,25 @@
-import { Component, OnInit, } from '@angular/core';
+import { Component, OnInit, inject, } from '@angular/core';
 import { NavbarForPupilComponent } from '../navbar-for-pupil/navbar-for-pupil.component';
 import {Icard} from "../../core/models/common.model";
 import {CreateFormService} from "../../core/services/create-form.service";
 import { DrawerComponent } from '../../drawer/drawer.component';
 import {FooterForPupilComponent} from '../footer-for-pupil/footer-for-pupil.component'
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NgIf,NgFor } from '@angular/common';
+import { RouterLink } from '@angular/router';
+
+
 
 
 @Component({
-  selector: 'app-home-card',
+  selector: 'app-uni-details-navbar',
   standalone: true,
-  imports: [],
-  templateUrl: './home-card.component.html',
-  styleUrl: './home-card.component.scss'
+  imports: [NgIf,NgFor,RouterLink],
+  templateUrl: './uni-details-navbar.component.html',
+  styleUrl: './uni-details-navbar.component.scss'
 })
-export class HomeCardComponent {
+export class UniDetailsNavbarComponent {
+  routerid:number = 0
   cards:Icard[] = []
 constructor(private cardService: CreateFormService, private router: Router) {
 }
@@ -51,7 +56,11 @@ getAllCardById(){
         }
       })
 }
-onCardClicked(cardkey:any) :void{
-  this.router.navigate(['/Pupil',cardkey])
-}
+// EventClicked(cardkey:any) :void{
+//   this.router.navigate(['/Pupil',cardkey,"/Event"])
+// }
+// ProgramClicked(cardkey:any) :void{
+//   this.router.navigate(['/Pupil',cardkey])
+// }
+
 }

@@ -40,32 +40,82 @@ export class FormcComponent  {
     Jobs:  ["",Validators.required],
     StudentsLife:  ["",Validators.required],
     PaymentMethods:  ["",Validators.required],
-    Events:  ["",Validators.required],
-    // programs: this.fb.array([this.fb.control('')]) ,
-    // programs: this.fb.array([
-    //   new FormGroup({
-    //     program: new FormControl("",Validators.required)
-    //   })
-    // ])
-    programs : new FormArray([
-      new FormGroup({
-        program: new FormControl("" ,Validators.required)
-      })
-    ])
+    Events: this.fb.array([this.createEvent()]),
+
+      sections: this.fb.array([this.createSection()]),
+
+
+
+
+    // ეს არის დალაგებილის ესე დავწერ სხვა დალაგებულს რაც ჭირდება
   })
-  get programs() {
-    return this.Form.controls["programs"] as FormArray;
-  }
-  addProgram() {
-    const programs = this.fb.group({
-      program: new FormControl("",Validators.required)
+
+
+  createSection(): FormGroup {
+    return this.fb.group({
+      title: ['', Validators.required],
+      programNames: this.fb.array([this.createProgramName()])
     });
-  
-    this.programs.push(programs);
   }
-  deleteLesson(i: number) {
-    this.programs.removeAt(i);
+
+  createProgramName(): FormGroup {
+    return this.fb.group({
+      programName: ['', Validators.required]
+    });
   }
+
+  get sections(): FormArray {
+    return this.Form.get('sections') as FormArray;
+  }
+
+  addSection(): void {
+    this.sections.push(this.createSection());
+  }
+
+  removeSection(index: number): void {
+    this.sections.removeAt(index);
+  }
+
+  addProgramName(sectionIndex: number): void {
+    const programNames = this.sections.at(sectionIndex).get('programNames') as FormArray;
+    programNames.push(this.createProgramName());
+  }
+
+
+  removeProgramName(sectionIndex: number, programNameIndex: number): void {
+    const programNames = this.sections.at(sectionIndex).get('programNames') as FormArray;
+    programNames.removeAt(programNameIndex);
+  }
+
+      // ეს არის დალაგებილის ესე დავწერ სხვა დალაგებულს რაც ჭირდება
+
+      createEvent(): FormGroup {
+    return this.fb.group({
+      url: ['', Validators.required],
+      Title: ['', Validators.required],
+      text: ['', Validators.required],
+
+    });
+  }
+      // ეს არის დალაგებილის ესე დავწერ სხვა დალაგებულს რაც ჭირდება
+
+  get Events(): FormArray {
+    return this.Form.get('Events') as FormArray;
+  }
+
+    // ეს არის დალაგებილის ესე დავწერ სხვა დალაგებულს რაც ჭირდება
+
+  addEvents(): void {
+    this.Events.push(this.createEvent());
+  }
+
+      // ეს არის დალაგებილის ესე დავწერ სხვა დალაგებულს რაც ჭირდება
+
+  removeEvent(index: number): void {
+    this.Events.removeAt(index);
+  }
+
+
   Submit() : void {
     this.createform.AddHomeUniCard(this.Form.value as any)
   }
