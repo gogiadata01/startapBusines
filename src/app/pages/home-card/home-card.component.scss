@@ -123,7 +123,8 @@ img {
   gap: 1.5rem;
 }
 
-.section {
+.section { 
+
   margin: 0px;
   padding: 0px;
 }
@@ -299,6 +300,14 @@ img {
   box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 24px;
 }
 
+@media screen  and (max-width: 1130px) {
+  .section  {
+   width: 100% !important;
+  }
+  .projects__container{
+    width: 90%;
+  }
+}
 /*=============== MEDIA QUERIES ===============*/
 /* For small devices */
 @media screen and (max-width: 340px) {
@@ -323,6 +332,7 @@ img {
 
 /* For large devices */
 @media screen and (min-width: 1150px) {
+  
   .container {
     margin-inline: auto;
   }
