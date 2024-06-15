@@ -165,9 +165,9 @@ div.text-container {
 
       transition: transform 0.3s ease;
 
-  // &:hover {
-  //   transform: scale(1.07);
-  // }
+  &:hover {
+    transform: scale(1.07);
+  }
 }
 .actice{
   color: green;
@@ -323,6 +323,7 @@ h1{
   height: 200px;
   object-fit: cover;
   border-radius: 0px;
+  padding-top: 20px;
 }
 
 .card-content2 {
@@ -350,6 +351,10 @@ h1{
 }
 .accordion-item{
   background-color: transparent;
+  margin-bottom: 5px;
+}
+.accordion-button.collapsed{
+  border-radius: 20px !important;
 }
 
 
