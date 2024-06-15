@@ -5,7 +5,8 @@ import { RouterLink } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
 import { IfStmt } from '@angular/compiler';
-import Swal from 'sweetalert2';
+//@ts-ignore
+import Swal from 'sweetalert2'
 
 
 @Component({
