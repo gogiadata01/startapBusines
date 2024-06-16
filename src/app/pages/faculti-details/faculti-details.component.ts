@@ -1,4 +1,6 @@
-import { Component,OnInit,  ViewChild ,ElementRef } from '@angular/core';
+import { Component,OnInit,  ViewChild ,ElementRef, } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
 import { ActivatedRoute } from '@angular/router';
 import {CreateFormService} from "../../core/services/create-form.service";
 import {Icard} from "../../core/models/common.model";
@@ -13,64 +15,67 @@ import { NavbarForPupilComponent } from '../navbar-for-pupil/navbar-for-pupil.co
 import {UniDetailsNavbarComponent} from "../uni-details-navbar/uni-details-navbar.component"
 import { toJSDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-calendar';
 import { snapshotChanges } from '@angular/fire/compat/database';
+import { Observable, } from 'rxjs';
+
 @Component({
   selector: 'app-faculti-details',
   standalone: true,
-  imports: [ NgIf,NgFor,NavbarForPupilComponent,FooterForPupilComponent],
+  imports: [ NgIf,NgFor,NavbarForPupilComponent,FooterForPupilComponent,CommonModule],
   templateUrl: './faculti-details.component.html',
   styleUrl: './faculti-details.component.scss'
 })
 export class FacultiDetailsComponent implements OnInit{
   cards:Icard[] = []
   card:any = []
-  sections: any = [];
+  Card:any = []
+  cards$: Observable<any[]> | undefined;
 
 
-  constructor(private cardService: CreateFormService,private route: ActivatedRoute) {
+  constructor(private cardService: CreateFormService,private route: ActivatedRoute,) {
   }
 
 ngOnInit(): void {
-  //  this.getAllCard()
    const FacultyId = this.route.snapshot.paramMap.get('id');
    this.cardService.getUniFacultyCardById(FacultyId)
-   .subscribe(card =>{
-    this.card = card
+   .subscribe(Card =>{
+    this.Card = Card
    })
-   this.getAllCard()
-   
+  //  this.getAllCard()
+  this.cards$ = this.cardService.getAllHomeUniCard().valueChanges();
+
 }
-getAllCard(){
-  this.cardService
-    .getAllHomeUniCard()
-    .snapshotChanges()
-    .subscribe({
-      next:(data) =>{
-        this.cards = [];
-        data.forEach((item) => {
-          let Uni = item.payload.toJSON() as Icard
-          this.cards.push({
-            key : item.key || '',
-            title : Uni.title ,
-            mainText: Uni.mainText,
-            url:Uni.url,
-            history:Uni.history,
-            forpupil:Uni.forpupil,
-            sections:Uni.sections,
-            ScholarshipAndFunding:Uni.ScholarshipAndFunding,
-            ExchangePrograms:Uni.ExchangePrograms,
-            Labs:Uni.Labs,
-            Jobs: Uni.Jobs,
-            StudentsLife:Uni.StudentsLife,
-            PaymentMethods:Uni.PaymentMethods,
-            Events:Uni.Events,
-          }
-          )
-        })
-      }
-    })
+// getAllCard(){
+//   this.cardService
+//     .getAllHomeUniCard()
+//     .snapshotChanges()
+//     .subscribe({
+//       next:(data) =>{
+//         this.cards = [];
+//         data.forEach((item) => {
+//           let Uni = item.payload.toJSON() as Icard
+//           this.cards.push({
+//             key : item.key || '',
+//             title : Uni.title ,
+//             mainText: Uni.mainText,
+//             url:Uni.url,
+//             history:Uni.history,
+//             forpupil:Uni.forpupil,
+//             sections:Uni.sections,
+//             ScholarshipAndFunding:Uni.ScholarshipAndFunding,
+//             ExchangePrograms:Uni.ExchangePrograms,
+//             Labs:Uni.Labs,
+//             Jobs: Uni.Jobs,
+//             StudentsLife:Uni.StudentsLife,
+//             PaymentMethods:Uni.PaymentMethods,
+//             Events:Uni.Events,
+//           }
+//           )
+//         })
+//       }
+//     })
     
 
-  }
+//   }
 }
 
  
