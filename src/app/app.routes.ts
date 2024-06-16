@@ -16,6 +16,7 @@ import { PupilEventsAddPageComponent } from './pages/pupil-events-add-page/pupil
 import { PupilUniPageComponent } from './pages/pupil-uni-page/pupil-uni-page.component';
 import { UniDetailsComponent } from './pages/uni-details/uni-details.component';
 import { UniEventsComponent } from './pages/uni-events/uni-events.component';
+import { FacultiDetailsComponent } from './pages/faculti-details/faculti-details.component';
 
 
 export const routes: Routes = [
@@ -84,8 +85,8 @@ export const routes: Routes = [
     component:UniDetailsComponent
   },
   {
-    path:"Pupil/:id/:n",
-    component:UniEventsComponent
+    path:"Pupil/UniFaculty/:id/:n",
+    component:FacultiDetailsComponent
   }
 
 

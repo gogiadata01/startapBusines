@@ -19,9 +19,9 @@ export class HomeCardComponent {
 constructor(private cardService: CreateFormService, private router: Router) {
 }
 ngOnInit() {
-    this.getAllCardById()
+    this.getAllCard()
 }
-getAllCardById(){
+getAllCard(){
     this.cardService
       .getAllHomeUniCard()
       .snapshotChanges()

@@ -40,8 +40,8 @@ export class CreateFormService {
   AddUniFacultyCard(Card:IUniFacultyCard){
     this.UniFacultyCardRef.push(Card)
   }
-  getUniFacultyCardById(key:string){
-    return this.UniFacultyCardDb.object(`${this.dbUniFacultyPath} /${key} `)
+  getUniFacultyCardById(key:any){
+    return this.UniFacultyCardDb.object(`/UniFacultyCard/${key}`).valueChanges(); 
   }
   updateUniFacultyCard(key:string,Card:IUniFacultyCard){
     this.UniFacultyCardRef.update(key,Card)

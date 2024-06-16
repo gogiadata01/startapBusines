@@ -2,6 +2,10 @@ import { Component, OnInit,  } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {CreateFormService} from "../core/services/create-form.service";
 import {IUniFacultyCard} from "../core/models/common.model";
+import {Icard} from "../core/models/common.model";
+import { Router } from '@angular/router';
+
+
 
 
 @Component({
@@ -14,13 +18,16 @@ import {IUniFacultyCard} from "../core/models/common.model";
 export class DrawerComponent  {
 
   cards:IUniFacultyCard[] = []
-  constructor(private cardService: CreateFormService) {
+  cards1:Icard[] = []
+
+  constructor(private cardService: CreateFormService,private router: Router) {
     
   }
   ngOnInit(): void {
-    this.getAllCard()
+    this.getAllUniFacultyCard()
   }
-  getAllCard(){
+
+  getAllUniFacultyCard(){
     this.cardService
     .getAllUniFacultyCard()
     .snapshotChanges()
@@ -38,28 +45,9 @@ export class DrawerComponent  {
       }
     })
   }
-  
-  // navigateToOtherPage(){
-    
-  // }
-
-  // cards = [
-  //   { text: 'ინფორმაციული ტექნოლოგიები', link: '' },
-  //   { text: 'სამართალი', link: '' },
-  //   { text: 'სამართალი', link: 'other' },
-  //   { text: 'სამართალი', link: 'other' },
-  //   { text: 'სამართალი', link: 'other' },
-  //   { text: 'სამართალი', link: 'other' },
-  //   { text: 'სამართალი', link: 'other' },
-  //   { text: 'სამართალი', link: 'other' },
-  //   { text: 'სამართალი', link: 'other' }
-  // ];
-
-  // constructor(private router: Router) {}
-
-  // navigateTo(link: string): void {
-  //   this.router.navigate([link]);
-  // }
+  onCardClicked(cardkey:any,cardtitl:any) :void{
+    this.router.navigate(['/Pupil/UniFaculty/',cardkey,cardtitl])
+  }
 
 }
 

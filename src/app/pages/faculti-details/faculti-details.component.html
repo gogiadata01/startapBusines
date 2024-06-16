@@ -1,0 +1,37 @@
+<!-- @for (Uni of cards; track $index ){
+    @for (section of Uni.sections; track $index) {
+        @for (program of section.programNames; track $index) {}
+    }
+} -->
+
+<!-- @for (Uni of cards; track $index) {
+<h1>{{ Uni.title }}</h1>
+} -->
+<app-navbar-for-pupil />
+<!-- <div *ngIf="card">
+  <div class="title">
+    <h2>{{ card.title }}</h2>
+  </div>
+  @for (Card of cards; track $index) {
+    @if (cards) {
+      @for (section of card.sections; track $index) {
+        @for (program of section.programNames; track $index) {
+          @if (program.programName == card.title) {
+            {{Card.title}}
+          }
+        }
+      }
+    }
+  }
+</div> -->
+<div *ngIf="card">
+  <div class="title">
+    <h2>{{ card.title }}</h2>
+  </div>
+  @for (program of cards; track $index) {
+  <h1>
+    {{ program.title }}
+  </h1>
+  }
+</div>
+<app-footer-for-pupil />

@@ -34,29 +34,6 @@ export class UniDetailsComponent implements OnInit {
 
 constructor(private cardService: CreateFormService,private route: ActivatedRoute) {
 }
-// ngOnInit() {
-//     this.getAllCard()
-// }
-// getAllCard(){
-//     this.cardService
-//       .getAllHomeUniCard()
-//       .snapshotChanges()წ
-//       .subscribe({
-//         next:(data) =>{
-//           this.cards = [];
-//           data.forEach((item) => {
-//             let Uni = item.payload.toJSON() as Icard
-//             this.cards.push({
-//               key : item.key || '',
-//               title : Uni.title ,
-//               mainText: Uni.mainText,
-//               url:Uni.url
-//               }
-//             )
-//           })
-//         }
-//       })
-// }
 ngOnInit(): void {
 
 
