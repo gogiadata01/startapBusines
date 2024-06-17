@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormcComponent } from './formc.component';
+import { HomeUniDetailsComponent } from './home-uni-details.component';
 
-describe('FormcComponent', () => {
-  let component: FormcComponent;
-  let fixture: ComponentFixture<FormcComponent>;
+describe('HomeUniDetailsComponent', () => {
+  let component: HomeUniDetailsComponent;
+  let fixture: ComponentFixture<HomeUniDetailsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FormcComponent]
+      imports: [HomeUniDetailsComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(FormcComponent);
+    fixture = TestBed.createComponent(HomeUniDetailsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

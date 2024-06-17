@@ -10,19 +10,14 @@ import {FooterForPupilComponent} from '../footer-for-pupil/footer-for-pupil.comp
 import {UniCardComponent} from '../Uni-card/uni-card.component';
 import {CarouselComponent} from '../../carousel/carousel.component';
 import { NavbarForPupilComponent } from '../navbar-for-pupil/navbar-for-pupil.component';
-
-
-
 @Component({
-  selector: 'app-uni-details',
+  selector: 'app-home-uni-details',
   standalone: true,
   imports: [NgIf,NavbarForPupilComponent,FooterForPupilComponent,NgFor,RouterLink,],
-  templateUrl: './uni-details.component.html',
-  styleUrl: './uni-details.component.scss'
+  templateUrl: './home-uni-details.component.html',
+  styleUrl: './home-uni-details.component.scss'
 })
-export class UniDetailsComponent implements OnInit {
-  
-  
+export class HomeUniDetailsComponent {
   @ViewChild('Program') program!: ElementRef;
   @ViewChild('events') events!: ElementRef;
   @ViewChild('guide') guide!: ElementRef;
@@ -37,12 +32,12 @@ ngOnInit(): void {
 
 
   const cardId = this.route.snapshot.paramMap.get('id');
-  this.cardService.getUniCardById(cardId)
+  this.cardService.getHomeUniCardById(cardId)
   .subscribe( card =>{
     this.card = card
-    console.log(this.cardService.getUniCardById)
+    console.log(this.cardService.getHomeUniCardById)
   })
-  this.cardService.getUniCardById(cardId).subscribe(sections =>{
+  this.cardService.getHomeUniCardById(cardId).subscribe(sections =>{
       this.sections = sections;
   })
   this.route.queryParams.subscribe(params => {
@@ -82,4 +77,3 @@ ProgramClicked(){
   }
 
 }
-

@@ -15,15 +15,14 @@ import { NavbarForPupilComponent } from '../navbar-for-pupil/navbar-for-pupil.co
 import { toJSDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-calendar';
 import { snapshotChanges } from '@angular/fire/compat/database';
 import { Observable, } from 'rxjs';
-
 @Component({
-  selector: 'app-faculti-details',
+  selector: 'app-home-faculty-details',
   standalone: true,
   imports: [ NgIf,NgFor,NavbarForPupilComponent,FooterForPupilComponent,CommonModule],
-  templateUrl: './faculti-details.component.html',
-  styleUrl: './faculti-details.component.scss'
+  templateUrl: './home-faculty-details.component.html',
+  styleUrl: './home-faculty-details.component.scss'
 })
-export class FacultiDetailsComponent implements OnInit{
+export class HomeFacultyDetailsComponent implements OnInit {
   cards:Icard[] = []
   card:any = []
   Card:any = []
@@ -35,7 +34,7 @@ export class FacultiDetailsComponent implements OnInit{
 
 ngOnInit(): void {
    const FacultyId = this.route.snapshot.paramMap.get('id');
-   this.cardService.getUniFacultyCardById(FacultyId)
+   this.cardService.getHomeUniFacultyCardById(FacultyId)
    .subscribe(Card =>{
     this.Card = Card
    })
@@ -43,5 +42,3 @@ ngOnInit(): void {
 
 }
 }
-
- 

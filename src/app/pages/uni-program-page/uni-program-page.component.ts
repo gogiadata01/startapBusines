@@ -3,19 +3,19 @@ import { NavbarForPupilComponent } from '../navbar-for-pupil/navbar-for-pupil.co
 import { RouterLink } from '@angular/router';
 import {IUniFacultyCard} from "../../core/models/common.model";
 import {CreateFormService} from "../../core/services/create-form.service";
-import { DrawerComponent } from '../../drawer/drawer.component';
+import { UniProgramComponent } from '../../core/UniProgram/uni-program.component';
 import {FooterForPupilComponent} from '../footer-for-pupil/footer-for-pupil.component'
-import {HomeCardComponent} from '../home-card/home-card.component'
+import {UniCardComponent} from '../Uni-card/uni-card.component'
 
 
 @Component({
-  selector: 'app-uni-faculty',
+  selector: 'app-uni-program-page',
   standalone: true,
-  imports: [NavbarForPupilComponent,RouterLink,DrawerComponent,FooterForPupilComponent,HomeCardComponent],
-  templateUrl: './uni-faculty.component.html',
-  styleUrl: './uni-faculty.component.scss'
+  imports: [NavbarForPupilComponent,RouterLink,UniProgramComponent,FooterForPupilComponent,UniCardComponent],
+  templateUrl: './uni-program-page.component.html',
+  styleUrl: './uni-program-page.component.scss'
 })
-export class UniFacultyComponent implements OnInit {
+export class UniProgramPageComponent implements OnInit {
   cards:IUniFacultyCard[] = []
   constructor(private cardService: CreateFormService) {
     

@@ -2,19 +2,19 @@ import { Component, OnInit, } from '@angular/core';
 import { NavbarForPupilComponent } from '../navbar-for-pupil/navbar-for-pupil.component';
 import {Icard} from "../../core/models/common.model";
 import {CreateFormService} from "../../core/services/create-form.service";
-import { DrawerComponent } from '../../drawer/drawer.component';
+import { UniProgramComponent } from '../../core/UniProgram/uni-program.component';
 import {FooterForPupilComponent} from '../footer-for-pupil/footer-for-pupil.component'
 import { Router } from '@angular/router';
 
 
 @Component({
-  selector: 'app-home-card',
+  selector: 'app-uni-card',
   standalone: true,
   imports: [],
-  templateUrl: './home-card.component.html',
-  styleUrl: './home-card.component.scss'
+  templateUrl: './uni-card.component.html',
+  styleUrl: './uni-card.component.scss'
 })
-export class HomeCardComponent {
+export class UniCardComponent {
   cards:Icard[] = []
 constructor(private cardService: CreateFormService, private router: Router) {
 }
@@ -23,7 +23,7 @@ ngOnInit() {
 }
 getAllCard(){
     this.cardService
-      .getAllHomeUniCard()
+      .getAllUniCard()
       .snapshotChanges()
       .subscribe({
         next:(data) =>{

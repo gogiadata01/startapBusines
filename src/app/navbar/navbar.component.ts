@@ -52,7 +52,7 @@ export class NavbarComponent implements OnInit {
         this.AuthService.CurrentUserSign.set(null)
         
       }
-      console.log(this.AuthService.CurrentUserSign())
+      // console.log(this.AuthService.CurrentUserSign())
      })
      
     

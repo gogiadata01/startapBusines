@@ -11,20 +11,18 @@ import { reduce } from 'rxjs';
 import { query } from 'firebase/firestore';
 
 @Component({
-  selector: 'app-formc',
+  selector: 'app-add-home-uni-card',
   standalone: true,
-  imports: [
-    NgIf,
+  imports: [ NgIf,
     ReactiveFormsModule,
     RouterLink,
     NavbarComponent,
     NgFor
-    
-  ],
-  templateUrl:'./formc.component.html',
-  styleUrl:'./formc.component.scss'
+    ],
+  templateUrl: './add-home-uni-card.component.html',
+  styleUrl: './add-home-uni-card.component.scss'
 })
-export class FormcComponent  {
+export class AddHomeUniCardComponent {
   fb = inject(FormBuilder)
   createform = inject(CreateFormService)
   router = inject(Router)
@@ -43,11 +41,6 @@ export class FormcComponent  {
     Events: this.fb.array([this.createEvent()]),
 
       sections: this.fb.array([this.createSection()]),
-
-
-
-
-    // ეს არის დალაგებილის ესე დავწერ სხვა დალაგებულს რაც ჭირდება
   })
 
 
@@ -87,7 +80,6 @@ export class FormcComponent  {
     programNames.removeAt(programNameIndex);
   }
 
-      // ეს არის დალაგებილის ესე დავწერ სხვა დალაგებულს რაც ჭირდება
 
       createEvent(): FormGroup {
     return this.fb.group({
@@ -97,19 +89,16 @@ export class FormcComponent  {
 
     });
   }
-      // ეს არის დალაგებილის ესე დავწერ სხვა დალაგებულს რაც ჭირდება
 
   get Events(): FormArray {
     return this.Form.get('Events') as FormArray;
   }
 
-    // ეს არის დალაგებილის ესე დავწერ სხვა დალაგებულს რაც ჭირდება
 
   addEvents(): void {
     this.Events.push(this.createEvent());
   }
 
-      // ეს არის დალაგებილის ესე დავწერ სხვა დალაგებულს რაც ჭირდება
 
   removeEvent(index: number): void {
     this.Events.removeAt(index);
@@ -119,71 +108,4 @@ export class FormcComponent  {
   Submit() : void {
     this.createform.AddHomeUniCard(this.Form.value as any)
   }
-
-  // // UserForm!: FormGroup
-  // AuthService = inject(AuthService)
-
-  // constructor(  private fb:FormBuilder,private UserService: CreateFormService, private router :Router) {
-  //   form  = this.fb.nonNullable.group({
-  //     url : ["",Validators.required] ,
-  //     title :  ["",Validators.required],
-  //     maintext:  ["",Validators.required],
-      
-      
-  //   }    )
-  //    const url =""
-  //   const reader = new FileReader();
-  //   reader.readAsDataURL
-    
-  //   // reader.onload = () => {
-
-  //   // }
-  // }
-  // alreadyUsedEmail = false;
-
-  // GetAllUser(){
-  //   this.UserService.getAllUser()
-  //   .snapshotChanges()
-  //   .subscribe({
-  //     next: (data) => {
-  //       if(data.values == this.UserForm.value)
-  //     {
-  //      this.alreadyUsedEmail = true;
-  //      return
-  //     }
-  //     }
-  //   })
-  //   if(this.alreadyUsedEmail){
-  //     alert("უკვე არსებობს ასეთი ემეილი")
-  //   }
-
-  // }
-
-  // Submit(){
-  //   this.UserService.addUser(this.UserForm.value)
-  //       this.router.navigate(['/']);
-
-  // }
-  // ngOnInit(): void {
-  //   this.AuthService.users$.subscribe((user) =>{
-  //     if(user){
-  //       this.AuthService.CurrentUserSign.set({
-  //         email: user.email!,
-  //         Username:user.displayName!
-  //       })
-  //     }else{
-  //       this.AuthService.CurrentUserSign.set(null)
-  //     }
-  //     console.log(this.AuthService.CurrentUserSign())
-  //    })
-    
-  // }
-
-  // logOut(){
-  //   console.log("logout")
-  // }
-  // submit(){
-  //   this.cardService.AddCard(this.cardForm.value);
-  //   this.router.navigate(['/']);
-  // }
 }

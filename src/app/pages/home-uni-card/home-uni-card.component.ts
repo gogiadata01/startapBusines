@@ -1,34 +1,27 @@
-import { Component, OnInit, inject, } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 import { NavbarForPupilComponent } from '../navbar-for-pupil/navbar-for-pupil.component';
 import {Icard} from "../../core/models/common.model";
 import {CreateFormService} from "../../core/services/create-form.service";
-import { DrawerComponent } from '../../drawer/drawer.component';
+import { UniProgramComponent } from '../../core/UniProgram/uni-program.component';
 import {FooterForPupilComponent} from '../footer-for-pupil/footer-for-pupil.component'
-import { ActivatedRoute, Router } from '@angular/router';
-import { NgIf,NgFor } from '@angular/common';
-import { RouterLink } from '@angular/router';
-
-
-
-
+import { Router } from '@angular/router';
 @Component({
-  selector: 'app-uni-details-navbar',
+  selector: 'app-home-uni-card',
   standalone: true,
-  imports: [NgIf,NgFor,RouterLink],
-  templateUrl: './uni-details-navbar.component.html',
-  styleUrl: './uni-details-navbar.component.scss'
+  imports: [],
+  templateUrl: './home-uni-card.component.html',
+  styleUrl: './home-uni-card.component.scss'
 })
-export class UniDetailsNavbarComponent {
-  routerid:number = 0
+export class HomeUniCardComponent {
   cards:Icard[] = []
-constructor(private cardService: CreateFormService, private router: Router) {
+  constructor(private cardService: CreateFormService, private router: Router) {
+  }
+  ngOnInit() {
+    this.getAllHomeCard()
 }
-ngOnInit() {
-    this.getAllCardById()
-}
-getAllCardById(){
+getAllHomeCard(){
     this.cardService
-      .getAllHomeUniCard()
+      .getHomeAllUniCard()
       .snapshotChanges()
       .subscribe({
         next:(data) =>{
@@ -56,11 +49,7 @@ getAllCardById(){
         }
       })
 }
-// EventClicked(cardkey:any) :void{
-//   this.router.navigate(['/Pupil',cardkey,"/Event"])
-// }
-// ProgramClicked(cardkey:any) :void{
-//   this.router.navigate(['/Pupil',cardkey])
-// }
-
+onCardClicked(cardkey:any) :void{
+  this.router.navigate(['/Pupil/HomeUni/',cardkey])
+}
 }
