@@ -7,11 +7,12 @@ import {FooterForPupilComponent} from '../footer-for-pupil/footer-for-pupil.comp
 import {HomeCardComponent} from '../home-card/home-card.component';
 import {CarouselComponent} from '../../carousel/carousel.component';
 import { RouterLink } from '@angular/router';
+import { UniProgramsComponent } from '../uni-programs/uni-programs.component';
 
 @Component({
   selector: 'app-pupil',
   standalone: true,
-  imports: [NavbarForPupilComponent, DrawerComponent,FooterForPupilComponent,HomeCardComponent, CarouselComponent,RouterLink],
+  imports: [NavbarForPupilComponent, DrawerComponent,FooterForPupilComponent,HomeCardComponent, CarouselComponent,RouterLink, UniProgramsComponent],
   templateUrl: './pupil.component.html',
   styleUrl: './pupil.component.scss'
 })

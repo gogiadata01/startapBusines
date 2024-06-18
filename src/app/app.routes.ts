@@ -9,7 +9,7 @@ import { RecoveryPasswordComponent } from './pages/recovery-password/recovery-pa
 import { ChangepasswordEmailComponent } from './pages/changepassword-email/changepassword-email.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { StudentsComponent } from './pages/students/students.component';
-import { PupilComponent } from './pages/pupil/pupil.component';
+import { PupilComponent } from './pages/pupil-home/pupil.component';
 import { UniFacultyComponent } from './pages/uni-faculty/uni-faculty.component';
 import { PupilEventsPageComponent } from './pages/pupil-events-page/pupil-events-page.component';
 import { PupilEventsAddPageComponent } from './pages/pupil-events-add-page/pupil-events-add-page.component';
