@@ -1,0 +1,126 @@
+
+<div [formGroup]="Form">
+    <div class="from-field">
+      <label for="title">ფოტო</label>
+      <input type="text" id="title" formControlName="url" />
+    </div>
+    <div class="from-field">
+      <label for="title">სათაური</label>
+      <input type="text" id="title" formControlName="title" />
+    </div>
+    <div class="from-field">
+      <label for="maintext">მთავარი ტექსტი</label>
+      <input type="text" id="maintext" formControlName="mainText" />
+    </div>
+    <div class="from-field">
+      <label class="history">ისტორია</label>
+      <textarea
+        class="form-control"
+        formControlName="history"
+        aria-label="With textarea"
+      ></textarea>
+    </div>
+    <div class="from-field">
+      <label class="history">აიბიტურიენტებისთვის</label>
+      <textarea
+        class="form-control"
+        formControlName="forpupil"
+        aria-label="With textarea"
+      ></textarea>
+    </div>
+    <!--  ეს არის დალაგებილის ესე დავწერ სხვა დალაგებულს რაც ჭირდება  -->
+    <div class="from-field">
+      <button type="button" (click)="addEvents()">Add event</button>
+      <div formArrayName="Events">
+        <div
+          *ngFor="let event of Events.controls; let i = index"
+          [formGroupName]="i"
+        >
+          <h3>Event {{ i + 1 }}</h3>
+          <label for="url">ფოტო</label>
+          <input id="url" formControlName="url" />
+          <label for="Title">სათაური</label>
+          <input id="Title" formControlName="Title" />
+          <label for="text">მთავარი ტექსტი</label>
+          <input id="text" formControlName="text" />
+          <button type="button" (click)="removeEvent(i)">Remove event</button>
+        </div>
+      </div>
+    </div>
+  
+    <div class="from-field">
+      <div formArrayName="sections">
+        <div
+          *ngFor="let section of sections.controls; let i = index"
+          [formGroupName]="i"
+        >
+          <h3>Section {{ i + 1 }}</h3>
+          <label for="title">Title:</label>
+          <input id="title" formControlName="title" />
+  
+          <div formArrayName="programNames">
+            <div
+              *ngFor="
+                let programName of section.get('programNames')?.value;
+                let j = index
+              "
+              [formGroupName]="j"
+            >
+              <label for="programName">Program Name:</label>
+              <input id="programName" formControlName="programName" />
+  
+              <button type="button" (click)="removeProgramName(i, j)">
+                Remove Program Name
+              </button>
+            </div>
+          </div>
+          <button type="button" (click)="addProgramName(i)">
+            Add Program Name
+          </button>
+          <button type="button" (click)="removeSection(i)">Remove Section</button>
+          <button type="button" (click)="addSection()">Add Section</button>
+        </div>
+      </div>
+    </div>
+    <div class="from-field">
+      <label class="history">გაცვლითი პროგრამებია</label>
+      <textarea
+        class="form-control"
+        formControlName="ExchangePrograms"
+        aria-label="With textarea"
+      ></textarea>
+    </div>
+    <div class="from-field">
+      <label class="history">ლაბორატორიები</label>
+      <textarea
+        class="form-control"
+        formControlName="Labs"
+        aria-label="With textarea"
+      ></textarea>
+    </div>
+    <div class="from-field">
+      <label class="history">დასაქმება</label>
+      <textarea
+        class="form-control"
+        formControlName="Jobs"
+        aria-label="With textarea"
+      ></textarea>
+    </div>
+    <div class="from-field">
+      <label class="history">სტუდენტური ცხოვრება</label>
+      <textarea
+        class="form-control"
+        formControlName="StudentsLife"
+        aria-label="With textarea"
+      ></textarea>
+    </div>
+    <div class="from-field">
+      <label class="history">გადახდის მეთოდები</label>
+      <textarea
+        class="form-control"
+        formControlName="PaymentMethods"
+        aria-label="With textarea"
+      ></textarea>
+    </div>
+  </div>
+  <button (click)="Submit()">Submit</button>

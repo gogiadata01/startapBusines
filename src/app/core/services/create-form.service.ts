@@ -7,33 +7,61 @@ import { IUniFacultyCard, Icard ,IEventCard } from '../models/common.model';
   providedIn: 'root'
 })
 export class CreateFormService {
-  private dbPath = '/HomeUniCard'
+  private dbPath = '/UniCard'
+  private dbHomeUnicard = "/HomeUniCard"
   private dbUniFacultyPath = "/UniFacultyCard"
   private dbEventPath = "/EventCard"
-  CardRef:AngularFireList<any>
+  private dbHomeFacultyPath = "/HomeUniFacultyCard"
+  UniCardRef:AngularFireList<any>
+  HomeUniCardRef:AngularFireList<any>
   UniFacultyCardRef:AngularFireList<any>
+  HomeUniFacultyCardRef:AngularFireList<any>
   EventCardRef:AngularFireList<any>
-  constructor(private db : AngularFireDatabase,private UniFacultyCardDb:AngularFireDatabase, private EventcCardDb:AngularFireDatabase) {
-    this.CardRef = db.list(this.dbPath)
+  constructor(private db : AngularFireDatabase,private UniFacultyCardDb:AngularFireDatabase, private EventcCardDb:AngularFireDatabase,private HomeUniCardDb:AngularFireDatabase,private HomeUniFacultyCardDb:AngularFireDatabase) {
+    this.UniCardRef = db.list(this.dbPath)
     this.UniFacultyCardRef = UniFacultyCardDb.list(this.dbUniFacultyPath)
     this.EventCardRef = EventcCardDb.list(this.dbEventPath)
+    this.HomeUniCardRef = HomeUniCardDb.list(this.dbHomeUnicard)
+    this.HomeUniFacultyCardRef = HomeUniFacultyCardDb.list(this.dbHomeFacultyPath)
   }
-  getAllHomeUniCard(){
-    return this.CardRef;
+
+  //უნივერსიტეტის გვერდის თემები
+  getAllUniCard(){
+    return this.UniCardRef;
   }
-  AddHomeUniCard(Card: Icard ){
-    this.CardRef.push(Card)
+  AddUniCard(Card: Icard ){
+    this.UniCardRef.push(Card)
   }
-  getHomeUniCardById(key :any){
-    // return this.db.object(`${this.dbPath}/${key}`)
-    return this.db.object(`/HomeUniCard/${key}`).valueChanges();
+  getUniCardById(key :any){
+    return this.db.object(`/UniCard/${key}`).valueChanges();
   }
-  updateHomeUniCard(key:string,Card: Icard){
-    this.CardRef.update(key,Card)
+  updateUniCard(key:string,Card: Icard){
+    this.UniCardRef.update(key,Card)
   }
   deleteHomeUniCard(key:string){
-    return  this.CardRef.remove(key)
+    return  this.UniCardRef.remove(key)
+  } 
+
+
+  //ჰოუმის უნივერსიტეტების ჩამონათვალის თემები
+  getHomeAllUniCard(){
+    return this.HomeUniCardRef;
   }
+  AddHomeUniCard(Card: Icard ){
+    this.HomeUniCardRef.push(Card)
+  }
+  getHomeUniCardById(key :any){
+    return this.HomeUniCardDb.object(`/HomeUniCard/${key}`).valueChanges();
+  }
+  updateHomeUniCard(key:string,Card: Icard){
+    this.HomeUniCardRef.update(key,Card)
+  }
+  deleteUniCard(key:string){
+    return  this.HomeUniCardRef.remove(key)
+  }
+
+
+//ყველა პროგრამის გვერდის თემები
   getAllUniFacultyCard(){
     return  this.UniFacultyCardRef
   }
@@ -41,7 +69,7 @@ export class CreateFormService {
     this.UniFacultyCardRef.push(Card)
   }
   getUniFacultyCardById(key:any){
-    return this.UniFacultyCardDb.object(`/UniFacultyCard/${key}`).valueChanges(); 
+    return this.UniFacultyCardDb.object(`/UniFacultyCard/${key}`).valueChanges();
   }
   updateUniFacultyCard(key:string,Card:IUniFacultyCard){
     this.UniFacultyCardRef.update(key,Card)
@@ -49,6 +77,27 @@ export class CreateFormService {
   deleteUniFacultyCard(key:string){
     return  this.UniFacultyCardRef.remove(key)
   }
+
+
+
+  //ჰოუმის პროგრამის თემები
+  getAllHomeUniFacultyCard(){
+    return  this.HomeUniFacultyCardRef
+  }
+  AddHomeUniFacultyCard(Card:IUniFacultyCard){
+    this.HomeUniFacultyCardRef.push(Card)
+  }
+  getHomeUniFacultyCardById(key:any){
+    return this.HomeUniFacultyCardDb.object(`/HomeUniFacultyCard/${key}`).valueChanges(); 
+  }
+  updateHomeUniFacultyCard(key:string,Card:IUniFacultyCard){
+    this.HomeUniFacultyCardRef.update(key,Card)
+  }
+  deleteHomeUniFacultyCard(key:string){
+    return  this.HomeUniFacultyCardRef.remove(key)
+  }
+
+//უნივერსიტეტის ივენთების გვერდის თემები
   getAllEventCard(){
     return  this.EventCardRef
   }
@@ -65,24 +114,4 @@ export class CreateFormService {
     return this.EventCardRef.remove(key)
   }
   
-  // private dbPath = '/Card';
-  // UserRef : AngularFireList<any> 
-  // constructor(private db :AngularFireDatabase){
-  //   this.UserRef = db.list(this.dbPath)
-  // }
-  // getAllUser (){
-  //   return this.UserRef
-  // }
-  // addUser(User : Iuser){
-  //   this.UserRef.push(User)
-  // }
-  // getUserByid(key :string){
-  //   return this.db.object(`${this.dbPath}/${key}`)
-  // }
-  // updateUser(key:string, User : Iuser){
-  //   this.UserRef.update(key,User)
-  // }
-  // deleteUser(key:string,){
-  //   return this.UserRef.remove(key)
-  // }
 }

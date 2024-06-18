@@ -1,0 +1,111 @@
+:root{
+  --white-color: hsl(0, 0%, 95%);
+
+}
+.title{
+    display: flex;
+    justify-content: center;
+    margin-top: 85px;
+  
+  }
+  .tit{
+    color: black;
+    font-size: 25px !important;
+    font-weight: 600;
+  }
+  .container {
+      padding: 20px;
+    }
+    
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    
+    .col-lg-4 {
+      margin-bottom: 20px;
+    }
+    
+    .card {
+      background-color: #a2cdce;
+      color: black;
+      padding: 20px;
+      border-radius: 25px;
+      text-align: center;
+      background-color: transparent;
+      box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 24px;
+      
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    
+      &:hover {
+        background-color: #8cbbc0;
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 24px;
+      }
+  
+  
+  
+          transition: transform 0.3s ease;
+    
+      &:hover {
+        transform: scale(1.07);
+      }
+    }
+    .viewMore{
+      display: flex;
+      justify-content: center;
+      background-color: re;
+    }
+
+    .btn{
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 1px;
+      cursor:pointer;
+      transition: all .5s;
+      background: transparent;
+      position: relative;
+      
+      &:focus{
+        outline: none;
+      }
+      
+      
+      &--2{
+        background: transparent;
+        position: relative;
+        display: inline-block;
+        
+        &::before,
+        &::after{
+          position: absolute;
+          left: 0;
+          content: '';
+          width: 100%;
+          height: 2px;
+          background: #000;
+          transform: scaleX(0);
+          transform-origin: center;
+          transition: all .4s;
+        }
+        
+        &::before{
+          top: 0;
+        }
+        
+        &::after{
+          bottom: 0;
+        }
+        
+        &:hover{
+          letter-spacing: 3px;
+        }
+        
+        &:hover::before,
+        &:hover::after{
+          transform: scaleX(1);
+        }
+      }}

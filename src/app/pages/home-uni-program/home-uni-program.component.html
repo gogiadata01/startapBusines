@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    @for (Card of cards; track $index){
+
+    <div (click)="onCardClicked(Card.key, Card.title)" class="col-lg-4">
+      <div class="card">
+        {{ Card.title }}
+      </div>
+    </div>
+    }
+  </div>
+  <!-- <div class="viewMore">
+    <div id="viewMore">
+      <div class="card1">ნახე მეტი</div>
+    </div></div> -->
+  <div class="viewMore">
+    <button routerLink="/Pupil/UniFaculty" class="btn btn--2">ნახე მეტი</button>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+<link
+  href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+  rel="stylesheet"
+/>
+<section class="projects section" id="projects">
+  <div class="projects__container container grid">
+    @for (Uni of cards; track $index ){
+    <article class="projects__card">
+      <div class="projects__image">
+        <img
+          src="{{ Uni.url }}"
+          alt="image"
+          class="projects__img"
+          width="312px"
+          height="193px"
+        />
+      </div>
+
+      <div class="projects__content">
+        <h2 class="projects__title">{{ Uni.title }}</h2>
+        <p class="projects__description">{{ Uni.mainText }}</p>
+      </div>
+
+      <div class="projects__buttons">
+        <!-- <i class="ri-dribbble-line"></i>გაიგე მეტი -->
+        <button class="Btn" (click)="onCardClicked(Uni.key)">გაიგე მეტი</button>
+      </div>
+    </article>
+    }
+  </div>
+  <div class="viewMore">
+    <button routerLink="/Pupil/Uni" class="btn btn--2">ნახე მეტი</button>
+  </div>
+</section>
