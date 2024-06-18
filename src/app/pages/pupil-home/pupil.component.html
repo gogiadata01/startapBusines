@@ -1,84 +1,13 @@
 <app-navbar-for-pupil />
 <app-carousel></app-carousel>
-<app-uni-programs></app-uni-programs>
 <div class="title">
   <h1>მოთხოვნადი პროგრამები</h1>
 </div>
-<!-- <div class="container">
-  <div class="row">
-    <div class="col-lg-4">
-      <div class="card">მათემატიკა</div>
-    </div>
-
-    <div class="col-lg-4">
-      <div class="card">ფიზიკა</div>
-    </div>
-
-    <div class="col-lg-4">
-      <div class="card">ქიმია</div>
-    </div>
-
-    <div class="col-lg-4">
-      <div class="card">კომპიუტერული მეცნიერება</div>
-    </div>
-
-    <div class="col-lg-4">
-      <div class="card">ინფორმაციული ტექნოლოგიები</div>
-    </div>
-
-    <div class="col-lg-4">
-      <div class="card">ეკოლოგია</div>
-    </div>
-
-    <div class="col-lg-4">
-      <div class="card">სამართალი</div>
-    </div>
-
-    <div class="col-lg-4">
-      <div class="card">მედიცინა</div>
-    </div>
-
-    <div class="col-lg-4">
-      <div class="card">ელექტრული ინჟინერია</div>
-    </div>
-  </div>
-</div>
-<div class="border"></div>
-<div class="title">
-  <h2 class="section__title-1">მოთხოვნადი უნივერსიტეტები</h2>
-</div> -->
-
 <app-home-uni-program />
-<div class="border">
-
-
-
-<div class="container">
-  <div class="header">
-    <div class="logo">ლოგოს ადგილი</div>
-    <div class="nav-links">
-      <div class="link" *ngFor="let link of navLinks" (click)="navigate(link.url)" [ngClass]="{'active': isActive(link)}">
-        {{ link.label }}
-      </div>
-    </div>
-  </div>
-  <div class="content">
-    <p>კონტენტის ადგილი</p>
-    <div class="action-buttons">
-      <button class="btn">მეტი მასალა</button>
-      <button class="btn">კითხვები</button>
-      <button class="btn">სხვა</button>
-    </div>
-  </div>
-</div>
-
-
-
-<app-footer-for-pupil></app-footer-for-pupil>
-</div>
+<div class="border"></div>
 <div class="title">
   <h1>მოთხოვნადი უნივერსიტეტები</h1>
 </div>
 <app-home-uni-card />
-
+<app-home-uni-cards-program-page></app-home-uni-cards-program-page>
 <app-footer-for-pupil />

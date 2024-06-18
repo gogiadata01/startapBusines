@@ -9,9 +9,6 @@ import { RecoveryPasswordComponent } from './pages/recovery-password/recovery-pa
 import { ChangepasswordEmailComponent } from './pages/changepassword-email/changepassword-email.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { StudentsComponent } from './pages/students/students.component';
-import { PupilComponent } from './pages/pupil-home/pupil.component';
-import { UniFacultyComponent } from './pages/uni-faculty/uni-faculty.component';
-import { PupilComponent } from './pages/pupil/pupil.component';
 import { PupilEventsPageComponent } from './pages/pupil-events-page/pupil-events-page.component';
 import { PupilEventsAddPageComponent } from './pages/pupil-events-add-page/pupil-events-add-page.component';
 import { PupilUniPageComponent } from './pages/pupil-uni-page/pupil-uni-page.component';
@@ -24,6 +21,8 @@ import { HomeUniDetailsComponent } from './pages/home-uni-details/home-uni-detai
 import { UniProgramPageComponent } from './pages/uni-program-page/uni-program-page.component';
 import { AddHomeFacultyCardComponent } from './pages/add-home-faculty-card/add-home-faculty-card.component';
 import { HomeFacultyDetailsComponent } from './pages/home-faculty-details/home-faculty-details.component';
+import {  PupilComponent} from './pages/pupil-home/pupil.component';
+import { HomeUniCardsProgramPageComponent } from './pages/home-uni-cards-program-page/home-uni-cards-program-page.component';
 
 
 export const routes: Routes = [
@@ -112,6 +111,7 @@ export const routes: Routes = [
     path:"Pupil/HomeUniFaculty/:id/:n",
     component:HomeFacultyDetailsComponent
   }
+
 
 
 ];
