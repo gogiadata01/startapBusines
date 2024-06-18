@@ -1,47 +1,54 @@
+:root{
+  --white-color: hsl(0, 0%, 95%);
+
+}
 .title{
-  display: flex;
-  justify-content: center;
-  margin-top: 85px;
-
-}
-.tit{
-  color: black;
-  font-size: 25px !important;
-  font-weight: 600;
-}
-.container {
-    padding: 20px;
-  }
-  
-  .row {
     display: flex;
-    flex-wrap: wrap;
-  }
+    justify-content: center;
+    margin-top: 85px;
   
-  .col-lg-4 {
-    margin-bottom: 20px;
   }
-  
-  .card {
-    background-color: cadetblue;
-    color: white;
-    padding: 20px;
-    border-radius: 25px;
-    text-align: center;
+  .tit{
+    color: black;
+    font-size: 25px !important;
+    font-weight: 600;
+  }
+  .container {
+      padding: 20px;
+    }
     
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  
-    &:hover {
-      background-color: #6aabb2;
+    .row {
+      display: flex;
+      flex-wrap: wrap;
     }
-
-
-
-        transition: transform 0.3s ease;
-  
-    &:hover {
-      transform: scale(1.07);
+    
+    .col-lg-4 {
+      margin-bottom: 20px;
     }
-  }
+    
+    .card {
+      background-color: #a2cdce;
+      color: black;
+      padding: 20px;
+      border-radius: 25px;
+      text-align: center;
+      background-color: transparent;
+      box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 24px;
+      
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    
+      &:hover {
+        background-color: #8cbbc0;
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 24px;
+      }
+  
+  
+  
+          transition: transform 0.3s ease;
+    
+      &:hover {
+        transform: scale(1.07);
+      }
+    }
   

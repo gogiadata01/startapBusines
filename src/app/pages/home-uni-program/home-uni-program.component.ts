@@ -4,11 +4,12 @@ import {CreateFormService} from "../../core/services/create-form.service";
 import {IUniFacultyCard} from "../../core/models/common.model";
 import {Icard} from "../../core/models/common.model";
 import { Router } from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home-uni-program',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './home-uni-program.component.html',
   styleUrl: './home-uni-program.component.scss'
 })

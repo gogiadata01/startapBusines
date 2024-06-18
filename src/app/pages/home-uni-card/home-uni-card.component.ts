@@ -5,10 +5,12 @@ import {CreateFormService} from "../../core/services/create-form.service";
 import { UniProgramComponent } from '../../core/UniProgram/uni-program.component';
 import {FooterForPupilComponent} from '../footer-for-pupil/footer-for-pupil.component'
 import { Router } from '@angular/router';
+import { RouterLink } from '@angular/router';
+
 @Component({
   selector: 'app-home-uni-card',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './home-uni-card.component.html',
   styleUrl: './home-uni-card.component.scss'
 })

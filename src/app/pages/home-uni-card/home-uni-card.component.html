@@ -3,7 +3,7 @@
   rel="stylesheet"
 />
 <section class="projects section" id="projects">
-  <div  class="projects__container container grid">
+  <div class="projects__container container grid">
     @for (Uni of cards; track $index ){
     <article class="projects__card">
       <div class="projects__image">
@@ -22,10 +22,13 @@
       </div>
 
       <div class="projects__buttons">
-          <!-- <i class="ri-dribbble-line"></i>გაიგე მეტი -->
-          <button class="Btn" (click)="onCardClicked(Uni.key)">გიაგე მეტი</button>
+        <!-- <i class="ri-dribbble-line"></i>გაიგე მეტი -->
+        <button class="Btn" (click)="onCardClicked(Uni.key)">გაიგე მეტი</button>
       </div>
     </article>
     }
+  </div>
+  <div class="viewMore">
+    <button routerLink="/Pupil/Uni" class="btn btn--2">ნახე მეტი</button>
   </div>
 </section>
