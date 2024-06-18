@@ -61,4 +61,27 @@
   </div>
 </div>
 
+
+
+<div class="container">
+  <div class="header">
+    <div class="logo">ლოგოს ადგილი</div>
+    <div class="nav-links">
+      <div class="link" *ngFor="let link of navLinks" (click)="navigate(link.url)" [ngClass]="{'active': isActive(link)}">
+        {{ link.label }}
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    <p>კონტენტის ადგილი</p>
+    <div class="action-buttons">
+      <button class="btn">მეტი მასალა</button>
+      <button class="btn">კითხვები</button>
+      <button class="btn">სხვა</button>
+    </div>
+  </div>
+</div>
+
+
+
 <app-footer-for-pupil></app-footer-for-pupil>
