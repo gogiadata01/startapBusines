@@ -5,3 +5,32 @@
     width: 120px;
     height: 100%;
 }
+
+
+/* Remove focus outline */
+
+/* Remove any border properties */
+.no-border {
+    border: none;
+    border-width: 0;
+    box-shadow: none; /* Remove box-shadow if any */
+}:focus{
+    outline: none;
+
+}
+
+/* Ensure other focus states are also handled */
+.no-border:focus-visible {
+    outline: none;
+}
+
+/* Apply to all SVGs if needed */
+svg:focus {
+    outline: none;
+}
+
+svg {
+    border: none;
+    border-width: 0;
+    box-shadow: none;
+}
