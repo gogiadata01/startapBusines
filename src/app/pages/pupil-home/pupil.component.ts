@@ -9,13 +9,14 @@ import {CarouselComponent} from '../../carousel/carousel.component';
 import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
 import { HomeUniCardsProgramPageComponent } from '../home-uni-cards-program-page/home-uni-cards-program-page.component';
+import {UniProgramsComponent} from "../uni-programs/uni-programs.component"
 
 
 
 @Component({
   selector: 'app-pupil',
   standalone: true,
-  imports: [NavbarForPupilComponent,HomeUniProgramComponent,HomeUniCardComponent, FooterForPupilComponent, CarouselComponent,RouterLink,HomeUniCardsProgramPageComponent],
+  imports: [NavbarForPupilComponent,HomeUniProgramComponent,HomeUniCardComponent, FooterForPupilComponent, CarouselComponent,RouterLink,HomeUniCardsProgramPageComponent,UniProgramsComponent],
   templateUrl: './pupil.component.html',
   styleUrl: './pupil.component.scss'
 })
