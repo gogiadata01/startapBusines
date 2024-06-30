@@ -5,6 +5,7 @@ import {Icard} from "../../core/models/common.model";
 import { NgIf,NgFor } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { data } from 'jquery';
+import { Router } from '@angular/router';
 import { UniProgramComponent } from '../../core/UniProgram/uni-program.component';
 import {FooterForPupilComponent} from '../footer-for-pupil/footer-for-pupil.component';
 import {UniCardComponent} from '../Uni-card/uni-card.component';
@@ -26,18 +27,17 @@ export class HomeUniDetailsComponent {
   cards:Icard[] = []
   sections: any = [];
 
-constructor(private cardService: CreateFormService,private route: ActivatedRoute) {
+constructor(private cardService: CreateFormService,private route: ActivatedRoute,private router: Router) {
 }
 ngOnInit(): void {
 
 
-  const cardId = this.route.snapshot.paramMap.get('id');
-  this.cardService.getHomeUniCardById(cardId)
+  this.cardService.getHomeUniCardById(this.getid())
   .subscribe( card =>{
     this.card = card
     console.log(this.cardService.getHomeUniCardById)
   })
-  this.cardService.getHomeUniCardById(cardId).subscribe(sections =>{
+  this.cardService.getHomeUniCardById(this.getid()).subscribe(sections =>{
       this.sections = sections;
   })
   this.route.queryParams.subscribe(params => {
@@ -46,6 +46,11 @@ ngOnInit(): void {
       this.sections = JSON.parse(data);
     }
   });
+}
+
+getid(){
+  const cardId = this.route.snapshot.paramMap.get('id');
+return cardId
 }
 ProgramClicked(){
   // const displayStyle = this.program.nativeElement.style.display;
@@ -75,5 +80,11 @@ ProgramClicked(){
     const displayStyle2 = this.guide.nativeElement.style.display;
     this.guide.nativeElement.style.display = displayStyle2 === 'none' ? 'block' : 'none';
   }
+  // OnFacultyClicked(cardkey: ,FacultyId:any){
+  //   this.router.navigate(['/Pupil/HomeUni/',cardkey,FacultyId])
 
+  // }
+  FaclutyClicked(name:any){
+    this.router.navigate(['/Pupil/HomeUni/',this.getid(),name])
+  }
 }

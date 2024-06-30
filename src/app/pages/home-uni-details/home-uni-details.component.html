@@ -37,23 +37,22 @@
       </div>
     </div>
   </div>
-
-  <div style="display: block" #Program *ngFor="let section of card.sections">
-    <div class="title">
-      <h2>{{ section.title }}</h2>
-    </div>
-    <div class="container1">
-      <div class="row1">
-        @for (program of section.programNames; track $index) {
-        <div class="col-lg-4" id="col-lg-4">
-          <div class="card1">
-            {{ program.programName }}
+    <div style="display: block" #Program *ngFor="let section of card.sections">
+      <div class="title">
+        <h2>{{ section.title }}</h2>
+      </div>
+      <div class="container1">
+        <div class="row1">
+          @for  (program of section.programNames; track $index) {
+          <div (click)="FaclutyClicked(program.programName)"  class="col-lg-4" id="col-lg-4">
+            <div class="card1">
+              {{ program.programName }}
+            </div>
           </div>
+          }
         </div>
-        }
       </div>
     </div>
-  </div>
 
   <div style="display: none" #events class="card-container2">
     @for (event of card.Events; track $index){

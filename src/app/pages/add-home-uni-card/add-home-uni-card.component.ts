@@ -47,13 +47,34 @@ export class AddHomeUniCardComponent {
   createSection(): FormGroup {
     return this.fb.group({
       title: ['', Validators.required],
-      programNames: this.fb.array([this.createProgramName()])
+      programNames: this.fb.array([this.createProgramName()]),
+      SavaldebuloSagnebi: this.fb.array([this.createSavaldebuloSagani()]),
+      ArchevitiSavaldebuloSagnebi: this.fb.array([this.createArchevitiSavaldebuloSagani()])
+
     });
   }
 
   createProgramName(): FormGroup {
     return this.fb.group({
       programName: ['', Validators.required]
+    });
+  }
+  createSavaldebuloSagani(): FormGroup {
+    return this.fb.group({
+      SagnisSaxeli: ['', Validators.required],
+      Koeficienti: ['', Validators.required],
+      MinimaluriZgvari: ['', Validators.required],
+      Prioriteti: ['', Validators.required]
+
+    });
+  }
+  createArchevitiSavaldebuloSagani(): FormGroup {
+    return this.fb.group({
+      SagnisSaxeli: ['', Validators.required],
+      Koeficienti: ['', Validators.required],
+      MinimaluriZgvari: ['', Validators.required],
+      Prioriteti: ['', Validators.required]
+
     });
   }
 
@@ -78,6 +99,78 @@ export class AddHomeUniCardComponent {
   removeProgramName(sectionIndex: number, programNameIndex: number): void {
     const programNames = this.sections.at(sectionIndex).get('programNames') as FormArray;
     programNames.removeAt(programNameIndex);
+  }
+
+  addSagnisSaxeli(sectionIndex: number): void {
+    const SavaldebuloSagnebi = this.sections.at(sectionIndex).get('SavaldebuloSagnebi') as FormArray;
+    SavaldebuloSagnebi.push(this.createSavaldebuloSagani());
+  }
+
+  removeSagnisSaxeli(sectionIndex: number, SagnisSaxelisIndex: number): void {
+    const SavaldebuloSagnebi = this.sections.at(sectionIndex).get('SavaldebuloSagnebi') as FormArray;
+    SavaldebuloSagnebi.removeAt(SagnisSaxelisIndex);
+  }
+
+  addKoeficienti(sectionIndex: number): void {
+    const SavaldebuloSagnebi = this.sections.at(sectionIndex).get('SavaldebuloSagnebi') as FormArray;
+    SavaldebuloSagnebi.push(this.createSavaldebuloSagani());
+  }
+  removeKoeficientebi(sectionIndex: number, KoeficientiIndex: number): void {
+    const SavaldebuloSagnebi = this.sections.at(sectionIndex).get('SavaldebuloSagnebi') as FormArray;
+    SavaldebuloSagnebi.removeAt(KoeficientiIndex);
+  }
+  addMinimaluriZgvarebi(sectionIndex: number): void {
+    const SavaldebuloSagnebi = this.sections.at(sectionIndex).get('SavaldebuloSagnebi') as FormArray;
+    SavaldebuloSagnebi.push(this.createSavaldebuloSagani());
+  }
+  removeMinimaluriZgvarebi(sectionIndex: number, MinimaluriZgvariIndex: number): void {
+    const SavaldebuloSagnebi = this.sections.at(sectionIndex).get('SavaldebuloSagnebi') as FormArray;
+    SavaldebuloSagnebi.removeAt(MinimaluriZgvariIndex);
+  }
+  addPrioritetebi(sectionIndex: number): void {
+    const SavaldebuloSagnebi = this.sections.at(sectionIndex).get('SavaldebuloSagnebi') as FormArray;
+    SavaldebuloSagnebi.push(this.createSavaldebuloSagani());
+  }
+  removePrioritetebi(sectionIndex: number, PrioritetiIndex: number): void {
+    const SavaldebuloSagnebi = this.sections.at(sectionIndex).get('SavaldebuloSagnebi') as FormArray;
+    SavaldebuloSagnebi.removeAt(PrioritetiIndex);
+  }
+  
+
+  //
+  addArchevitiSagnisSaxeli(sectionIndex: number): void {
+    const ArchevitiSavaldebuloSagnebi = this.sections.at(sectionIndex).get('ArchevitiSavaldebuloSagnebi') as FormArray;
+    ArchevitiSavaldebuloSagnebi.push(this.createArchevitiSavaldebuloSagani());
+  }
+
+  removeArchevitiSagnisSaxeli(sectionIndex: number, SagnisSaxelisIndex: number): void {
+    const ArchevitiSavaldebuloSagnebi = this.sections.at(sectionIndex).get('ArchevitiSavaldebuloSagnebi') as FormArray;
+    ArchevitiSavaldebuloSagnebi.removeAt(SagnisSaxelisIndex);
+  }
+
+  addArchevitiKoeficienti(sectionIndex: number): void {
+    const ArchevitiSavaldebuloSagnebi = this.sections.at(sectionIndex).get('ArchevitiSavaldebuloSagnebi') as FormArray;
+    ArchevitiSavaldebuloSagnebi.push(this.createArchevitiSavaldebuloSagani());
+  }
+  removeArchevitiKoeficientebi(sectionIndex: number, KoeficientebiIndex: number): void {
+    const ArchevitiSavaldebuloSagnebi = this.sections.at(sectionIndex).get('ArchevitiSavaldebuloSagnebi') as FormArray;
+    ArchevitiSavaldebuloSagnebi.removeAt(KoeficientebiIndex);
+  }
+  addArchevitiMinimaluriZgvarebi(sectionIndex: number): void {
+    const ArchevitiSavaldebuloSagnebi = this.sections.at(sectionIndex).get('ArchevitiSavaldebuloSagnebi') as FormArray;
+    ArchevitiSavaldebuloSagnebi.push(this.createArchevitiSavaldebuloSagani());
+  }
+  removeArchevitiMinimaluriZgvarebi(sectionIndex: number, MinimaluriZgvariIndex: number): void {
+    const ArchevitiSavaldebuloSagnebi = this.sections.at(sectionIndex).get('ArchevitiSavaldebuloSagnebi') as FormArray;
+    ArchevitiSavaldebuloSagnebi.removeAt(MinimaluriZgvariIndex);
+  }
+  addArchevitiPrioritetebi(sectionIndex: number): void {
+    const ArchevitiSavaldebuloSagnebi = this.sections.at(sectionIndex).get('ArchevitiSavaldebuloSagnebi') as FormArray;
+    ArchevitiSavaldebuloSagnebi.push(this.createArchevitiSavaldebuloSagani());
+  }
+  removeArchevitiPrioritetebi(sectionIndex: number, PrioritetiIndex: number): void {
+    const ArchevitiSavaldebuloSagnebi = this.sections.at(sectionIndex).get('Prioritetebi') as FormArray;
+    ArchevitiSavaldebuloSagnebi.removeAt(PrioritetiIndex);
   }
 
 

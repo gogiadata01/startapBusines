@@ -23,6 +23,7 @@ import { AddHomeFacultyCardComponent } from './pages/add-home-faculty-card/add-h
 import { HomeFacultyDetailsComponent } from './pages/home-faculty-details/home-faculty-details.component';
 import {  PupilComponent} from './pages/pupil-home/pupil.component';
 import { HomeUniCardsProgramPageComponent } from './pages/home-uni-cards-program-page/home-uni-cards-program-page.component';
+import { UniProgramsComponent } from './pages/uni-programs/uni-programs.component';
 
 
 export const routes: Routes = [
@@ -102,6 +103,10 @@ export const routes: Routes = [
    path:"Pupil/HomeUni/:id",
     component:HomeUniDetailsComponent
   },
+  {
+    path:"Pupil/HomeUni/:id/:n",
+     component:UniProgramsComponent
+   },
   {
     path:"Pupil/UniFaculty/:id/:n",
     component:FacultiDetailsComponent

@@ -5,6 +5,8 @@ import {Icard} from "../../core/models/common.model";
 import { NgIf,NgFor } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { data } from 'jquery';
+import { Router } from '@angular/router';
+
 import { UniProgramComponent } from '../../core/UniProgram/uni-program.component';
 import {FooterForPupilComponent} from '../footer-for-pupil/footer-for-pupil.component';
 import {UniCardComponent} from '../Uni-card/uni-card.component';
@@ -31,7 +33,7 @@ export class UniDetailsComponent implements OnInit {
   cards:Icard[] = []
   sections: any = [];
 
-constructor(private cardService: CreateFormService,private route: ActivatedRoute) {
+constructor(private cardService: CreateFormService,private route: ActivatedRoute,private router: Router) {
 }
 ngOnInit(): void {
 
@@ -80,6 +82,8 @@ ProgramClicked(){
     const displayStyle2 = this.guide.nativeElement.style.display;
     this.guide.nativeElement.style.display = displayStyle2 === 'none' ? 'block' : 'none';
   }
-
+  // FaclutyClicked(id:any){
+  //   this.router.navigate(['/Pupil/HomeUni/Faculty/',id])
+  // }
 }
 
