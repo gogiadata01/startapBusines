@@ -155,11 +155,15 @@ h1 {
 .search-box {
   margin-bottom: 20px;
 
+
   input {
-    width: 100%;
-    padding: 10px;
+    width: 55%;
+    margin-left: 280px;
+    margin-top: 15px;
+    padding: 12px;
     border: 1px solid #4682b4;
     border-radius: 5px;
+    text-align: center;
   }
 }
 
