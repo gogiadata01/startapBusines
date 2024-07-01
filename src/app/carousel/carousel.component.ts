@@ -18,27 +18,27 @@ export class CarouselComponent implements OnInit {
     {
       image: 'https://tsu.ge/assets/media/files/84/2024%20ivnisi/232.jpg',
       title: 'ლონდონის ქინგს ქოლეჯის უნივერსიტეტელი მკვლევარი',
-      description: 'Description for the second slide'
+      description: ''
     },
     {
       image: 'https://cms.alte.ge/storage/gallery/JlGNyRlDO6.jpg',
-      title: 'Second slide',
-      description: 'Description for the second slide'
+      title: 'ალტე უნივერსიტეტის სიახლე',
+      description: ''
     },
     {
       image: 'https://ugschool.edu.ge/storage/school-news/April2020/6pQYdGsh6ZZlaV9PQm7g.jpg',
-      title: 'Second slide',
-      description: 'Description for the second slide'
+      title: 'საქართვეოს უნივერსიტეტის სიახლე',
+      description: ''
     },
     {
       image: 'https://tsu.ge/assets/media/files/21/Untitled-1.jpg',
-      title: 'Second slide',
-      description: 'Description for the second slide'
+      title: 'სიახლე',
+      description: ''
     },
     {
       image: 'https://ugschool.edu.ge/storage/school-news/April2020/6pQYdGsh6ZZlaV9PQm7g.jpg',
-      title: 'Second slide',
-      description: 'Description for the second slide'
+      title: 'სიახლე',
+      description: ''
     },
     
   ];
