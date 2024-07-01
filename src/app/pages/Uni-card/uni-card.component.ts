@@ -38,6 +38,8 @@ getAllCard(){
               history:Uni.history,
               forpupil:Uni.forpupil,
               sections:Uni.sections,
+              sections2:Uni.sections2,
+              archevitisavaldebulosagani:Uni.archevitisavaldebulosagani,
               ScholarshipAndFunding:Uni.ScholarshipAndFunding,
               ExchangePrograms:Uni.ExchangePrograms,
               Labs:Uni.Labs,

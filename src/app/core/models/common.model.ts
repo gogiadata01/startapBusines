@@ -12,6 +12,8 @@ export interface Icard{
   history?:string,
   forpupil?:string,
   sections:Array<any>,
+  sections2:Array<any>,
+  archevitisavaldebulosagani:Array<any>,
   ScholarshipAndFunding?:string,
   ExchangePrograms?:string,
   Labs?:string,

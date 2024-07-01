@@ -24,6 +24,7 @@ import { HomeFacultyDetailsComponent } from './pages/home-faculty-details/home-f
 import {  PupilComponent} from './pages/pupil-home/pupil.component';
 import { HomeUniCardsProgramPageComponent } from './pages/home-uni-cards-program-page/home-uni-cards-program-page.component';
 import { UniProgramsComponent } from './pages/uni-programs/uni-programs.component';
+import { HomeFacultyUniDetailsComponent } from './pages/home-faculty-uni-details/home-faculty-uni-details.component';
 
 
 export const routes: Routes = [
