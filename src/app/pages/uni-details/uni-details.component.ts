@@ -54,6 +54,10 @@ ngOnInit(): void {
     }
   });
 }
+getid(){
+  const cardId = this.route.snapshot.paramMap.get('id');
+return cardId
+}
 ProgramClicked(){
   // const displayStyle = this.program.nativeElement.style.display;
   //   this.program.nativeElement.style.display = displayStyle === 'none' ? 'block' : 'none'
@@ -85,5 +89,8 @@ ProgramClicked(){
   // FaclutyClicked(id:any){
   //   this.router.navigate(['/Pupil/HomeUni/Faculty/',id])
   // }
+  FaclutyClicked(name:any){
+    this.router.navigate(['/Pupil/Uni/',this.getid(),name])
+  }
 }
 

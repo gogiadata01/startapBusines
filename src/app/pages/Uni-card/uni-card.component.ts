@@ -54,6 +54,6 @@ getAllCard(){
       })
 }
 onCardClicked(cardkey:any) :void{
-  this.router.navigate(['/Pupil',cardkey])
+  this.router.navigate(['/Pupil/Uni',cardkey])
 }
 }

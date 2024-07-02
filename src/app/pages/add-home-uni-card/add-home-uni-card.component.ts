@@ -57,12 +57,14 @@ export class AddHomeUniCardComponent {
   }
   createSection2(): FormGroup {
     return this.fb.group({
+      title: ['', Validators.required],
       SavaldebuloSagnebi: this.fb.array([this.createSavaldebuloSagani()]),
 
     });
   }
   createarchevitisavaldebulosagani(): FormGroup {
     return this.fb.group({
+      title: ['', Validators.required],
       ArchevitiSavaldebuloSagnebi: this.fb.array([this.createArchevitiSavaldebuloSagani()])
 
     });
@@ -199,7 +201,7 @@ export class AddHomeUniCardComponent {
     ArchevitiSavaldebuloSagnebi.push(this.createArchevitiSavaldebuloSagani());
   }
   removeArchevitiPrioritetebi(sectionIndex: number, PrioritetiIndex: number): void {
-    const ArchevitiSavaldebuloSagnebi = this.archevitisavaldebulosagani.at(sectionIndex).get('Prioritetebi') as FormArray;
+    const ArchevitiSavaldebuloSagnebi = this.archevitisavaldebulosagani.at(sectionIndex).get('ArchevitiSavaldebuloSagnebi') as FormArray;
     ArchevitiSavaldebuloSagnebi.removeAt(PrioritetiIndex);
   }
 

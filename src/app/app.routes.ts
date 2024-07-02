@@ -25,17 +25,14 @@ import {  PupilComponent} from './pages/pupil-home/pupil.component';
 import { HomeUniCardsProgramPageComponent } from './pages/home-uni-cards-program-page/home-uni-cards-program-page.component';
 import { UniProgramsComponent } from './pages/uni-programs/uni-programs.component';
 import { HomeFacultyUniDetailsComponent } from './pages/home-faculty-uni-details/home-faculty-uni-details.component';
-
+import { UniFacultyDetailsComponent } from './pages/uni-faculty-details/uni-faculty-details.component';
+import { FacultyUniDetailsComponent } from './pages/faculty-uni-details/faculty-uni-details.component';
 
 export const routes: Routes = [
   {
     path : "",
     component:LogInComponent
   },
-  // {
-  //   path:"CreateForm",
-  //   component:FormcComponent
-  // }
   {
     path:"Register",
     component:RegisterComponent
@@ -89,16 +86,28 @@ export const routes: Routes = [
     component:PupilUniPageComponent
   },
   {
+    path:"Pupil/Uni/:id",
+    component:UniDetailsComponent
+  },
+  {
+    path:"Pupil/Uni/:id/:n",
+    component:UniFacultyDetailsComponent
+  },
+  {
     path:"Pupil/UniFaculty",
     component:UniProgramPageComponent
   },
   {
-    path: "Pupil/Events",
-    component:PupilEventsPageComponent
+    path:"Pupil/UniFaculty/:id/:n",
+    component:FacultiDetailsComponent
   },
   {
-   path:"Pupil/:id",
-    component:UniDetailsComponent
+    path:"Pupil/UniFaculty/:id/:n/:id2/:n2",
+    component:FacultyUniDetailsComponent
+  },
+  {
+    path: "Pupil/Events",
+    component:PupilEventsPageComponent
   },
   {
    path:"Pupil/HomeUni/:id",
@@ -109,15 +118,11 @@ export const routes: Routes = [
      component:UniProgramsComponent
    },
   {
-    path:"Pupil/UniFaculty/:id/:n",
-    component:FacultiDetailsComponent
-  }
-  ,
-  {
     path:"Pupil/HomeUniFaculty/:id/:n",
     component:HomeFacultyDetailsComponent
+  },
+  {
+    path:"Pupil/HomeUniFaculty/:id/:n/:id2/:n2",
+    component:HomeFacultyUniDetailsComponent
   }
-
-
-
 ];

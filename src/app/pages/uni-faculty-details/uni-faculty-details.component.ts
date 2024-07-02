@@ -14,23 +14,20 @@ import {CarouselComponent} from '../../carousel/carousel.component';
 import { NavbarForPupilComponent } from '../navbar-for-pupil/navbar-for-pupil.component';
 import { toJSDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-calendar';
 import { snapshotChanges } from '@angular/fire/compat/database';
-
 @Component({
-  selector: 'app-uni-programs',
+  selector: 'app-uni-faculty-details',
   standalone: true,
   imports: [NavbarForPupilComponent,FooterForPupilComponent,NgIf,NgFor,CommonModule],
-  templateUrl: './uni-programs.component.html',
-  styleUrl: './uni-programs.component.scss'
+  templateUrl: './uni-faculty-details.component.html',
+  styleUrl: './uni-faculty-details.component.scss'
 })
-export class UniProgramsComponent implements OnInit {
+export class UniFacultyDetailsComponent {
   card: Icard | null = null;
   Card: any = [];
   matchedProgram: any = null;
   mathcedSavaldebuloSagani:any = []
   mathcedAraSavaldebuloSagani:any = []
-
-
-constructor(private cardService: CreateFormService, private route: ActivatedRoute, private router: Router) {}
+  constructor(private cardService: CreateFormService, private route: ActivatedRoute, private router: Router) {}
 
 ngOnInit() {
 const cardId = this.getId();
@@ -39,7 +36,7 @@ const programName = this.getProgramName();
 console.log('Card ID:', cardId);
 console.log('Program Name:', programName);
 
-this.cardService.getHomeUniCardByIdAndProgramName(cardId, programName).subscribe(
+this.cardService.getUniCardByIdAndProgramName(cardId, programName).subscribe(
   card => {
     this.card = card;
     console.log('Fetched Card:', this.card);
@@ -83,7 +80,7 @@ this.cardService.getHomeUniCardByIdAndProgramName(cardId, programName).subscribe
   }
 );
 
-this.cardService.getHomeUniFacultyCardById(programName).subscribe(
+this.cardService.getUniFacultyCardById(programName).subscribe(
   card => {
     this.Card = card;
     console.log('Fetched Card Faculty:', this.Card);
@@ -102,5 +99,3 @@ getProgramName(): string | null {
 return this.route.snapshot.paramMap.get('n');
 }
 }
-
-

@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import {AngularFireDatabase, AngularFireList} from "@angular/fire/compat/database";
 import { IUniFacultyCard, Icard ,IEventCard } from '../models/common.model';
 // import {Icard} from "../models/common.model";
+import { Observable, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +37,53 @@ export class CreateFormService {
   getUniCardById(key :any){
     return this.db.object(`/UniCard/${key}`).valueChanges();
   }
+  getUniCardByIdAndProgramName(key: any, programName: any): Observable<Icard | null> {
+    if (!key || !programName) {
+      return of(null); // Return null or an empty observable if key or programName is not provided
+    }
+
+    return this.db.object<Icard>(`/UniCard/${key}`).valueChanges().pipe(
+      map(card => {
+        if (card) {
+          const hasProgramName = card.sections.some(section => 
+            section.programNames.some(p => p.programName === programName)
+          );
+          return hasProgramName ? card : null;
+        } else {
+          throw new Error('Card not found or program name does not match');
+        }
+      }),
+      catchError(error => {
+        console.error('Error fetching card:', error);
+        return of(null); // Return null or handle error as needed
+      })
+    );
+  }
+  getUniCardByTitleAndProgramName(title: any, programName: any): Observable<Icard | null> {
+    if (!title || !programName) {
+      return of(null); // Return null or an empty observable if title or programName is not provided
+    }
+
+    return this.db.list<Icard>('/UniCard').valueChanges().pipe(
+      map(cards => {
+        for (const card of cards) {
+          if (card.title === title) {
+            const hasProgramName = card.sections.some(section => 
+              section.programNames.some(p => p.programName === programName)
+            );
+            if (hasProgramName) {
+              return card;
+            }
+          }
+        }
+        throw new Error('Card not found or program name does not match');
+      }),
+      catchError(error => {
+        console.error('Error fetching card:', error);
+        return of(null); // Return null or handle error as needed
+      })
+    );
+  }
   updateUniCard(key:string,Card: Icard){
     this.UniCardRef.update(key,Card)
   }
@@ -52,6 +101,29 @@ export class CreateFormService {
   }
   getHomeUniCardById(key :any){
     return this.HomeUniCardDb.object(`/HomeUniCard/${key}`).valueChanges();
+  }
+
+  getHomeUniCardByIdAndProgramName(key: any, programName: any): Observable<Icard | null> {
+    if (!key || !programName) {
+      return of(null); // Return null or an empty observable if key or programName is not provided
+    }
+
+    return this.HomeUniCardDb.object<Icard>(`/HomeUniCard/${key}`).valueChanges().pipe(
+      map(card => {
+        if (card) {
+          const hasProgramName = card.sections.some(section => 
+            section.programNames.some(p => p.programName === programName)
+          );
+          return hasProgramName ? card : null;
+        } else {
+          throw new Error('Card not found or program name does not match');
+        }
+      }),
+      catchError(error => {
+        console.error('Error fetching card:', error);
+        return of(null); // Return null or handle error as needed
+      })
+    );
   }
   updateHomeUniCard(key:string,Card: Icard){
     this.HomeUniCardRef.update(key,Card)
