@@ -1,9 +1,29 @@
 .navbar{
-    background-color:#C3E3E3;
+    background-color: #77b1e0;
+
 }
 #svg{
     width: 120px;
     height: 100%;
+}
+
+.nav-link{
+    padding: 10px;
+    border-radius: 25px;
+    text-align: center;
+    
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  
+    &:hover {
+        background-color: #77b1e0;
+    }
+
+        transition: transform 0.3s ease;
+  
+    &:hover {
+      transform: scale(1.07);
+    }
 }
 
 
