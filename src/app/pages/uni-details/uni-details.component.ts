@@ -42,7 +42,7 @@ ngOnInit(): void {
   this.cardService.getUniCardById(cardId)
   .subscribe( card =>{
     this.card = card
-    console.log(this.cardService.getUniCardById)
+    // console.log(this.cardService.getUniCardById)
   })
   this.cardService.getUniCardById(cardId).subscribe(sections =>{
       this.sections = sections;

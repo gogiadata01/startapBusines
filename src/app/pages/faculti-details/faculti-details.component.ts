@@ -37,7 +37,7 @@ export class FacultiDetailsComponent implements OnInit{
 ngOnInit(): void {
    const FacultyId = this.route.snapshot.paramMap.get('id');
    const ProgramName = this.route.snapshot.paramMap.get('n')
-   console.log(FacultyId,ProgramName)
+  //  console.log(FacultyId,ProgramName)
    this.cardService.getUniFacultyCardById(FacultyId)
    .subscribe(Card =>{
     this.Card = Card

@@ -1,5 +1,5 @@
 import { NgIf } from '@angular/common';
-import { Component, NgModule, Pipe, ViewChild, inject, AfterViewInit, asNativeElements, ElementRef, Renderer2 } from '@angular/core';
+import { Component,OnInit , Pipe, ViewChild, inject, AfterViewInit, asNativeElements, ElementRef, Renderer2 } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgModel, ReactiveFormsModule, Validators, } from '@angular/forms';
 import { AuthService } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
@@ -23,13 +23,15 @@ import { doc } from 'firebase/firestore';
     templateUrl: './register.component.html',
     styleUrl: './register.component.scss'
 })
-export class RegisterComponent  {
-   
-  
-  
-  
-
-
+export class RegisterComponent implements OnInit {
+  ngOnInit(): void {
+    setTimeout(()=>{
+      Swal.fire({
+        title: "აუცილებლად აირჩიე ტიპი",
+        icon: "info"
+      }); 
+    },1000)
+  }
   fb = inject(FormBuilder)
   authService = inject(AuthService)
   router = inject(Router)
@@ -52,7 +54,6 @@ export class RegisterComponent  {
   // }
   //  rawForm = this.Form.getRawValue();
 
-
   Submit() : void {
   
     const rawForm = this.Form.getRawValue();
@@ -69,13 +70,13 @@ export class RegisterComponent  {
             icon: "info"
           });
         }
-        else if(rawForm.role == "" ){
-          Swal.fire({
-            title: "ტიპის ველი ცარიელია",
-            text: "ჩაწერე მოსწავლე ან სტუდენტი",
-            icon: "info"
-          }); 
-        }
+        // if(rawForm.role == "" ){
+        //   Swal.fire({
+        //     title: "ტიპის ველი ცარიელია",
+        //     text: "აირჩიე მოსწავლე ან სტუდენტი",
+        //     icon: "info"
+        //   }); 
+        // }
         else if(this.errormassage == "auth/missing-password"){
           Swal.fire({
             title: "შეცდომა",
@@ -109,8 +110,10 @@ export class RegisterComponent  {
       ,next: ()=>{
         Swal.fire({
           title: "შესრულდა",
-          text: "წარმატებით გაიარეთ რეგისტრაცია",
-          icon: "success"
+          text: "წარმატებით გაიარეთ ავტორიზაცია",
+          icon: "success",
+          showConfirmButton: false,
+          timer: 1800
         });
         setTimeout(()=>{
           this.router.navigateByUrl('/')

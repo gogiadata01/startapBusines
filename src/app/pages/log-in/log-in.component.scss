@@ -116,7 +116,7 @@ $background-color: #1c1c1c;
 
   .form-group {
     position: relative;
-    margin-bottom: 20px;
+    margin-top: 15px;
 
     input {
       position: relative;
@@ -226,6 +226,8 @@ $background-color: #1c1c1c;
   }
 }
 .error{
-  color: red!important;
+  color: red;
+  display: flex;
+  justify-content: center;
 }
 

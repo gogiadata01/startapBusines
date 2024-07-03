@@ -33,8 +33,17 @@ export class LogInComponent {
         Swal.fire({
           title: "შესრულდა",
           text: "წარმატებით გაიარეთ ავტორიზაცია",
-          icon: "success"
+          icon: "success",
+          showConfirmButton: false,
+          timer: 1800
         });
+        // Swal.fire({
+        //   position: "top",
+        //   icon: "success",
+        //   title: "წარმატებით გაიარეთ ავტორიზაცია",
+        //   showConfirmButton: false,
+        //   timer: 1500
+        // });
         setTimeout(()=>{
           this.router.navigateByUrl('/Home')
         },2000)

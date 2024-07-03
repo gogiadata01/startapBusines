@@ -33,13 +33,13 @@ ngOnInit() {
 const cardId = this.getId();
 const programName = this.getProgramName();
 
-console.log('Card ID:', cardId);
-console.log('Program Name:', programName);
+// console.log('Card ID:', cardId);
+// console.log('Program Name:', programName);
 
 this.cardService.getUniCardByTitleAndProgramName(cardId, programName).subscribe(
   card => {
     this.card = card;
-    console.log('Fetched Card:', this.card);
+    // console.log('Fetched Card:', this.card);
 
     if (this.card?.sections) {
       for (const section of this.card.sections) {
@@ -51,14 +51,14 @@ this.cardService.getUniCardByTitleAndProgramName(cardId, programName).subscribe(
         }
       }
     }
-    console.log('Matched Program:', this.matchedProgram);
+    // console.log('Matched Program:', this.matchedProgram);
 
     if (this.card?.sections2) {
       for (const section of this.card.sections2) {
         if (section.title === programName) {
-          console.log('Found SavaldebunoSagnebi:', section.SavaldebuloSagnebi);
+          // console.log('Found SavaldebunoSagnebi:', section.SavaldebuloSagnebi);
           this.mathcedSavaldebuloSagani = section.SavaldebuloSagnebi; // Assign the array directly
-          console.log('Matched Savaldebulo Sagani:', this.mathcedSavaldebuloSagani);
+          // console.log('Matched Savaldebulo Sagani:', this.mathcedSavaldebuloSagani);
           break;
         }
       }
@@ -67,9 +67,9 @@ this.cardService.getUniCardByTitleAndProgramName(cardId, programName).subscribe(
     if (this.card?.archevitisavaldebulosagani) {
       for (const archevitiSection of this.card.archevitisavaldebulosagani) {
         if (archevitiSection.title === programName) {
-          console.log('Found Archeviti Savaldebuno Sagnebi:', archevitiSection.ArchevitiSavaldebuloSagnebi);
+          // console.log('Found Archeviti Savaldebuno Sagnebi:', archevitiSection.ArchevitiSavaldebuloSagnebi);
           this.mathcedAraSavaldebuloSagani = archevitiSection.ArchevitiSavaldebuloSagnebi; // Assign the array directly
-          console.log('Matched Ara Savaldebulo Sagani:', this.mathcedAraSavaldebuloSagani);
+          // console.log('Matched Ara Savaldebulo Sagani:', this.mathcedAraSavaldebuloSagani);
           break;
         }
       }
@@ -83,7 +83,7 @@ this.cardService.getUniCardByTitleAndProgramName(cardId, programName).subscribe(
 this.cardService.getUniFacultyCardById(programName).subscribe(
   card => {
     this.Card = card;
-    console.log('Fetched Card Faculty:', this.Card);
+    // console.log('Fetched Card Faculty:', this.Card);
   },
   error => {
     console.error('Error:', error);
