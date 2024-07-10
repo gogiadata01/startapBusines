@@ -223,7 +223,15 @@ h1{
   justify-content: center;
 }
 
-
+@media screen and (max-width: 2631px) {
+  #col-lg-4{
+    display: flex;
+    justify-content: center;
+  }
+  .card1 {
+    width: 90%;
+  }
+}
 @media screen and (max-width: 1492px) {
   .card1 {
     width: 450px;
