@@ -40,7 +40,7 @@ export class UniProgramComponent  {
             key: item.key|| "",
             title:Card.title,
             text:Card.text,
-            ChackBoxNames:Card.ChackBoxNames
+            sections:Card.sections
           })
         })
       }

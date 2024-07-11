@@ -8,6 +8,7 @@ import {FooterForPupilComponent} from '../footer-for-pupil/footer-for-pupil.comp
 import {UniCardComponent} from '../Uni-card/uni-card.component'
 
 
+
 @Component({
   selector: 'app-uni-program-page',
   standalone: true,
@@ -36,7 +37,7 @@ export class UniProgramPageComponent implements OnInit {
             key: item.key|| "",
             title:Card.title,
             text:Card.text,
-            ChackBoxNames:Card.ChackBoxNames
+            sections:Card.sections
           })
         })
       }

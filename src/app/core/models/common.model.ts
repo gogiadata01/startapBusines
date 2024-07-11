@@ -23,10 +23,10 @@ export interface IUser{
   role:string
 }
 export interface IUniFacultyCard{
-  key?:string,
-  title:string,
-  text:string,
-  ChackBoxNames: {ChackBoxName:any[] }[];
+  key?: string | null;
+  title: string;
+  text: string;
+  sections: { checkBoxNames: { checkBoxName: string }[] }[];
 }
 export interface IEventCard{
   key?:string,

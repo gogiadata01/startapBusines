@@ -186,33 +186,6 @@ export class CreateFormService {
   //     })
   //   );
   // }
-  getUniFacultyCardByChackBoxName(ChackBoxName: any,): Observable<IUniFacultyCard | null> {
-    if (!ChackBoxName) {
-      return of(null); // Return null or an empty observable if title or programName is not provided
-    }
-
-    return this.db.list<IUniFacultyCard>('/IUniFacultyCard').valueChanges().pipe(
-      map(cards => {
-        for (const card of cards) {
-          for(const programname of card.ChackBoxNames){
-            if (programname.ChackBoxName === ChackBoxName ) {
-              const hasProgramName = card.ChackBoxNames.some(section => 
-                section.ChackBoxName.some(p => p.programName === ChackBoxName)
-              );
-              if (hasProgramName) {
-                return card;
-              }
-            }
-          }
-        }
-        throw new Error('Card not found or program name does not match');
-      }),
-      catchError(error => {
-        console.error('Error fetching card:', error);
-        return of(null); // Return null or handle error as needed
-      })
-    );
-  }
   updateHomeUniFacultyCard(key:string,Card:IUniFacultyCard){
     this.HomeUniFacultyCardRef.update(key,Card)
   }

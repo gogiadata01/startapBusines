@@ -24,37 +24,6 @@ import { query } from 'firebase/firestore';
   styleUrl: './forms.component.scss'
 })
 export class FormsComponent {
-  // fb = inject(FormBuilder)
-  // createform = inject(CreateFormService)
-  // router = inject(Router)
-  // Form = this.fb.nonNullable.group({
-  //   title: ["",Validators.required] ,
-  //   text :  ["",Validators.required],
-  //   ChackBoxNames: this.fb.array([this.createChackBoxNames()]),
-
-  // })
-
-  // createChackBoxNames(): FormGroup {
-  //   return this.fb.group({
-  //     ChackBoxName: ['', Validators.required],
-  //   });
-  // }
-  
-  // get ChackBoxNames(): FormArray {
-  //   return this.Form.get('ChackBoxNames') as FormArray;
-  // }
-  
-  // addChackBoxName(): void {
-  //   this.ChackBoxNames.push(this.createChackBoxNames());
-  // }
-
-
-  // removeChackBoxName(index: number): void {
-  //   this.ChackBoxNames.removeAt(index);
-  // }
-  // Submit() : void {
-  //   this.createform.AddUniFacultyCard(this.Form.value as any)
-  // }
   fb = inject(FormBuilder);
   createFormService = inject(CreateFormService);
   router = inject(Router);
@@ -62,26 +31,44 @@ export class FormsComponent {
   form = this.fb.nonNullable.group({
     title: ["", Validators.required],
     text: ["", Validators.required],
-    checkBoxNames: this.fb.array([this.createCheckBoxNames()]),
+    sections: this.fb.array([this.createSection()]),
+    // checkBoxNames: this.fb.array([this.createCheckBoxNames()]),
   });
 
+  createSection(): FormGroup {
+    return this.fb.group({
+      checkBoxNames: this.fb.array([this.createCheckBoxNames()]),
+      // SavaldebuloSagnebi: this.fb.array([this.createSavaldebuloSagani()]),
+      // ArchevitiSavaldebuloSagnebi: this.fb.array([this.createArchevitiSavaldebuloSagani()])
+
+    });
+  }
+  get sections(): FormArray {
+    return this.form.get('sections') as FormArray;
+  }
+  addSection(): void {
+    this.sections.push(this.createSection());
+  }
+  removeSection(index: number): void {
+    this.sections.removeAt(index);
+  }
   createCheckBoxNames(): FormGroup {
     return this.fb.group({
       checkBoxName: ['', Validators.required],
     });
   }
 
-  get checkBoxNames(): FormArray {
-    return this.form.get('checkBoxNames') as FormArray;
-  }
+  // get checkBoxNames(): FormArray {
+  //   return this.form.get('checkBoxNames') as FormArray;
+  // }
 
-  addCheckBoxName(): void {
-    this.checkBoxNames.push(this.createCheckBoxNames());
-  }
+  addCheckBoxName(sectionIndex: number): void {
+    const checkBoxNames = this.sections.at(sectionIndex).get('checkBoxNames') as FormArray;
+    checkBoxNames.push(this.createCheckBoxNames());  }
 
-  removeCheckBoxName(index: number): void {
-    this.checkBoxNames.removeAt(index);
-  }
+  removeCheckBoxName(sectionIndex: number, checkBoxNameIndex: number): void {
+    const checkBoxNames = this.sections.at(sectionIndex).get('checkBoxNames') as FormArray;
+    checkBoxNames.removeAt(checkBoxNameIndex);  }
 
   submit(): void {
     this.createFormService.AddUniFacultyCard(this.form.value as any);
