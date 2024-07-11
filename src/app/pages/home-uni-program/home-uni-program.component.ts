@@ -35,7 +35,8 @@ export class HomeUniProgramComponent {
           this.cards.push({
             key: item.key|| "",
             title:Card.title,
-            text:Card.text
+            text:Card.text,
+            ChackBoxNames:Card.ChackBoxNames
           })
         })
       }

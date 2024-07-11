@@ -10,43 +10,18 @@ import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
 import { HomeUniCardsProgramPageComponent } from '../home-uni-cards-program-page/home-uni-cards-program-page.component';
 import {UniProgramsComponent} from "../uni-programs/uni-programs.component"
+import {StupidUserComponent} from "../stupid-user/stupid-user.component"
 
 
 
 @Component({
   selector: 'app-pupil',
   standalone: true,
-  imports: [NavbarForPupilComponent,HomeUniProgramComponent,HomeUniCardComponent, FooterForPupilComponent, CarouselComponent,RouterLink,HomeUniCardsProgramPageComponent,UniProgramsComponent],
+  imports: [NavbarForPupilComponent,HomeUniProgramComponent,HomeUniCardComponent, FooterForPupilComponent, CarouselComponent,RouterLink,HomeUniCardsProgramPageComponent,UniProgramsComponent,StupidUserComponent],
   templateUrl: './pupil.component.html',
   styleUrl: './pupil.component.scss'
 })
 export class PupilComponent  {
-//   cards:Icard[] = []
-// constructor(private cardService: CreateFormService) {
-// }
-// ngOnInit() {
-//     this.getAllCard()
-// }
-// getAllCard(){
-//     this.cardService
-//       .getAllHomeUniCard()
-//       .snapshotChanges()
-//       .subscribe({
-//         next:(data) =>{
-//           this.cards = [];
-//           data.forEach((item) => {
-//             let Uni = item.payload.toJSON() as Icard
-//             this.cards.push({
-//               key : item.key || '',
-//               title : Uni.title ,
-//               mainText: Uni.mainText,
-//               url:Uni.url
-//               }
-//             )
-//           })
-//         }
-//       })
-// }
 
 
 

@@ -162,6 +162,57 @@ export class CreateFormService {
   getHomeUniFacultyCardById(key:any){
     return this.HomeUniFacultyCardDb.object(`/HomeUniFacultyCard/${key}`).valueChanges(); 
   }
+  // getUniFacultyCardByChackBoxName(ChackBoxName: any): Observable<IUniFacultyCard | null> {
+  //   if (!ChackBoxName) {
+  //     return of(null); // Return null or an empty observable if ChackBoxName is not provided
+  //   }
+
+  //   return this.UniFacultyCardDb.list<IUniFacultyCard>('/UniFacultyCard').valueChanges().pipe(
+  //     map(cards => {
+  //       for (const card of cards) {
+  //         if (card.ChackBoxNames && Array.isArray(card.ChackBoxNames)) {
+  //           for (const chackBox of card.ChackBoxNames) {
+  //             if (chackBox.ChackBoxName && chackBox.ChackBoxName.includes(ChackBoxName)) {
+  //               return card;
+  //             }
+  //           }
+  //         }
+  //       }
+  //       throw new Error('Card not found or ChackBoxName does not match');
+  //     }),
+  //     catchError(error => {
+  //       console.error('Error fetching card:', error);
+  //       return of(null); // Return null or handle error as needed
+  //     })
+  //   );
+  // }
+  getUniFacultyCardByChackBoxName(ChackBoxName: any,): Observable<IUniFacultyCard | null> {
+    if (!ChackBoxName) {
+      return of(null); // Return null or an empty observable if title or programName is not provided
+    }
+
+    return this.db.list<IUniFacultyCard>('/IUniFacultyCard').valueChanges().pipe(
+      map(cards => {
+        for (const card of cards) {
+          for(const programname of card.ChackBoxNames){
+            if (programname.ChackBoxName === ChackBoxName ) {
+              const hasProgramName = card.ChackBoxNames.some(section => 
+                section.ChackBoxName.some(p => p.programName === ChackBoxName)
+              );
+              if (hasProgramName) {
+                return card;
+              }
+            }
+          }
+        }
+        throw new Error('Card not found or program name does not match');
+      }),
+      catchError(error => {
+        console.error('Error fetching card:', error);
+        return of(null); // Return null or handle error as needed
+      })
+    );
+  }
   updateHomeUniFacultyCard(key:string,Card:IUniFacultyCard){
     this.HomeUniFacultyCardRef.update(key,Card)
   }

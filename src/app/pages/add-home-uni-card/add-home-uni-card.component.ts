@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 
 import {ControlContainer, FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {NgIf,NgFor} from "@angular/common";
+import {NgIf,NgFor,CommonModule } from "@angular/common";
 import {CreateFormService} from "../../core/services/create-form.service";
 import {Icard} from "../../core/models/common.model";
 import {Router, RouterLink, UrlHandlingStrategy} from "@angular/router";

@@ -25,7 +25,8 @@ export interface IUser{
 export interface IUniFacultyCard{
   key?:string,
   title:string,
-  text:string
+  text:string,
+  ChackBoxNames: {ChackBoxName:any[] }[];
 }
 export interface IEventCard{
   key?:string,

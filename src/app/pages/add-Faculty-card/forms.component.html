@@ -1,24 +1,23 @@
-<div>
-  <!-- @for (Card of cards; track $index){
-    <h1>
-      {{Card.title}}
-    </h1>
-    <h2>
-      {{Card.text}}
-    </h2>
-    <h2>
-      {{Card.text2}}
-    </h2>f
-  } -->
-  <div [formGroup]="Form">
-    <div class="from-field">
-      <label for="title">სათაური</label>
-      <input type="text" id="title" formControlName="title" />
-    </div>
-    <div class="from-field">
-      <label for="text">ტექსტი</label>
-      <input type="text" id="text" formControlName="text" />
-    </div>
+
+<div [formGroup]="form">
+  <div class="form-field">
+    <label for="title">Title</label>
+    <input type="text" id="title" formControlName="title" />
   </div>
-  <button (click)="Submit()">Submit</button>
+  <div class="form-field">
+    <label for="text">Text</label>
+    <input type="text" id="text" formControlName="text" />
+  </div>
+  <div formArrayName="checkBoxNames">
+    <div *ngFor="let checkBoxName of checkBoxNames.controls; let i = index" [formGroupName]="i">
+      <h3>CheckBox Name {{ i + 1 }}</h3>
+      <div>
+        <label for="checkBoxName">CheckBox Name</label>
+        <input id="checkBoxName" formControlName="checkBoxName" type="text" required />
+      </div>
+      <button type="button" (click)="removeCheckBoxName(i)">Remove CheckBox Name</button>
+    </div>
+    <button type="button" (click)="addCheckBoxName()">Add CheckBox Name</button>
+  </div>
 </div>
+<button (click)="submit()">Submit</button>

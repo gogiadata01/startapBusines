@@ -1,5 +1,5 @@
 import { Component,OnInit,  ViewChild ,ElementRef, } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import {CreateFormService} from "../../core/services/create-form.service";
 import {Icard} from "../../core/models/common.model";

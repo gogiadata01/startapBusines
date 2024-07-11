@@ -1,0 +1,27 @@
+<div class="form-check">
+    <input class="form-check-input" type="checkbox" value="მათემატიკა" id="flexCheck1" #checkbox />
+    <label class="form-check-label" for="flexCheck1">მათემატიკა</label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="ისტორია" id="flexCheck2" #checkbox />
+    <label class="form-check-label" for="flexCheck2">ისტორია</label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="ქიმია" id="flexCheck3" #checkbox />
+    <label class="form-check-label" for="flexCheck3">ქიმია</label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="ფიზიკა" id="flexCheck4" #checkbox />
+    <label class="form-check-label" for="flexCheck4">ფიზიკა</label>
+  </div>
+  <button type="button" (click)="submit()">დააჭირე</button>
+  
+  <div class="container mt-3">
+    <div class="row">
+      <div class="col-lg-4" >
+        @for (item of card; track $index) {
+            {{item.title}}
+        }
+    </div>
+    </div>
+  </div>
