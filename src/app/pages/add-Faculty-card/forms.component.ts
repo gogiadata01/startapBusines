@@ -54,7 +54,7 @@ export class FormsComponent {
   }
   createCheckBoxNames(): FormGroup {
     return this.fb.group({
-      checkBoxName: ['', Validators.required],
+      checkBoxName: [String, Validators.required],
     });
   }
 
