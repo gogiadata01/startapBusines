@@ -9,7 +9,6 @@ import { NavbarComponent } from '../../navbar/navbar.component';
 import { AuthService } from '../../core/services/auth.service';
 import { reduce } from 'rxjs';
 import { query } from 'firebase/firestore';
-import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-add-home-uni-card',
@@ -234,61 +233,7 @@ export class AddHomeUniCardComponent {
   Submit() : void {
     this.createform.AddHomeUniCard(this.Form.value as any)
   }
-   exportToExcel(): void {
-    const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.prepareDataForExport());
-    const wb: XLSX.WorkBook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, 'HomeUniCard');
-
-    XLSX.writeFile(wb, 'HomeUniCard.xlsx');
-  }
-
-  prepareDataForExport(): any[] {
-    const formData = this.Form.value;
-  
-    const exportData = [
-      { A: 'Title', B: formData.title },
-      { A: 'Url', B: formData.url },
-      { A: 'Main Text', B: formData.mainText },
-      { A: 'History', B: formData.history },
-      { A: 'For Pupil', B: formData.forpupil },
-      { A: 'Scholarship and Funding', B: formData.ScholarshipAndFunding },
-      { A: 'Exchange Programs', B: formData.ExchangePrograms },
-      { A: 'Labs', B: formData.Labs },
-      { A: 'Jobs', B: formData.Jobs },
-      { A: 'Students Life', B: formData.StudentsLife },
-      { A: 'Payment Methods', B: formData.PaymentMethods },
-      { A: 'Events:' },
-    ];
-  
-    if (formData.Events) {
-      formData.Events.forEach((event: any, index: number) => {
-        exportData.push({ A: `Event Url ${index + 1}`, B: event.url });
-        exportData.push({ A: `Event Title ${index + 1}`, B: event.Title });
-        exportData.push({ A: `Event Text ${index + 1}`, B: event.text });
-      });
-    }
-  
-    if (formData.sections) {
-      formData.sections.forEach((section: any, index: number) => {
-        exportData.push({ A: 'Section', B: section.title });
-        section.programNames.forEach((programName: any, idx: number) => {
-          exportData.push({ A: `Program Name ${idx + 1}`, B: programName.programName });
-        });
-      });
-    }
-  
-    if (formData.sections2) {
-      formData.sections2.forEach((section: any, index: number) => {
-        exportData.push({ A: 'Section2', B: section.title });
-        section.SavaldebuloSagnebi.forEach((sagani: any, idx: number) => {
-          exportData.push({ A: `For which program ${idx + 1}`, B: sagani.SagnisSaxeli });
-          exportData.push({ A: `Coefficient ${idx + 1}`, B: sagani.Koeficienti });
-        });
-      });
-    }
-  
-    return exportData;
-  }
+   
   
 }
 
