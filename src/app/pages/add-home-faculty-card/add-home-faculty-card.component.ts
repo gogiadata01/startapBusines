@@ -26,6 +26,7 @@ export class AddHomeFacultyCardComponent {
   Form = this.fb.nonNullable.group({
     title: ["",Validators.required] ,
     text :  ["",Validators.required],
+
   })
   Submit() : void {
     this.createform.AddHomeUniFacultyCard(this.Form.value as any)
