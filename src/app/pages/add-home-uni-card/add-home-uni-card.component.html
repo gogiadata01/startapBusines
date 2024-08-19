@@ -282,3 +282,170 @@
 
   <button type="submit">Submit</button>
 </form>
+
+
+
+<!-- 
+<form [formGroup]="form" (ngSubmit)="submitForm()">
+  <div>
+    <label for="url">URL:</label>
+    <input id="url" formControlName="url">
+  </div>
+  <div>
+    <label for="title">Title:</label>
+    <input id="title" formControlName="title">
+  </div>
+  <div>
+    <label for="mainText">Main Text:</label>
+    <textarea id="mainText" formControlName="mainText"></textarea>
+  </div>
+  <div>
+    <label for="history">History:</label>
+    <textarea id="history" formControlName="history"></textarea>
+  </div>
+  <div>
+    <label for="forpupil">For Pupil:</label>
+    <textarea id="forpupil" formControlName="forpupil"></textarea>
+  </div>
+  <div>
+    <label for="scholarshipAndFunding">Scholarship And Funding:</label>
+    <textarea id="scholarshipAndFunding" formControlName="scholarshipAndFunding"></textarea>
+  </div>
+  <div>
+    <label for="exchangePrograms">Exchange Programs:</label>
+    <textarea id="exchangePrograms" formControlName="exchangePrograms"></textarea>
+  </div>
+  <div>
+    <label for="labs">Labs:</label>
+    <textarea id="labs" formControlName="labs"></textarea>
+  </div>
+  <div>
+    <label for="jobs">Jobs:</label>
+    <textarea id="jobs" formControlName="jobs"></textarea>
+  </div>
+  <div>
+    <label for="studentsLife">Students Life:</label>
+    <textarea id="studentsLife" formControlName="studentsLife"></textarea>
+  </div>
+  <div>
+    <label for="paymentMethods">Payment Methods:</label>
+    <textarea id="paymentMethods" formControlName="paymentMethods"></textarea>
+  </div> -->
+
+  <!-- Events -->
+  <!-- <div formArrayName="events">
+    <div *ngFor="let event of events.controls; let i = index" [formGroupName]="i">
+      <div>
+        <label for="eventUrl">Event URL:</label>
+        <input id="eventUrl" formControlName="url">
+      </div>
+      <div>
+        <label for="eventTitle">Event Title:</label>
+        <input id="eventTitle" formControlName="title">
+      </div>
+      <div>
+        <label for="eventText">Event Text:</label>
+        <textarea id="eventText" formControlName="text"></textarea>
+      </div>
+      <button type="button" (click)="removeEvent(i)">Remove Event</button>
+    </div>
+  </div>
+  <button type="button" (click)="addEvent()">Add Event</button> -->
+
+  <!-- Sections -->
+  <!-- <div formArrayName="sections">
+    <div *ngFor="let section of sections.controls; let i = index" [formGroupName]="i">
+      <div>
+        <label for="sectionTitle">Section Title:</label>
+        <input id="sectionTitle" formControlName="title">
+      </div> -->
+      <!-- Program Names -->
+      <!-- <div formArrayName="programNames">
+        <div *ngFor="let programName of section.get('programNames')?.value; let j = index" [formGroupName]="j">
+          <div>
+            <label for="programName">Program Name:</label>
+            <input id="programName" formControlName="programName">
+          </div>
+          <button type="button" (click)="removeProgramName(i, j)">Remove Program Name</button>
+        </div>
+      </div>
+      <button type="button" (click)="addProgramName(i)">Add Program Name</button>
+      <button type="button" (click)="removeSection(i)">Remove Section</button>
+    </div>
+  </div>
+  <button type="button" (click)="addSection()">Add Section</button> -->
+
+  <!-- Sections2 -->
+  <!-- <div formArrayName="sections2">
+    <div *ngFor="let section of sections2.controls; let i = index" [formGroupName]="i">
+      <div>
+        <label for="section2Title">Section2 Title:</label>
+        <input id="section2Title" formControlName="title">
+      </div> -->
+      <!-- Savaldebulo Sagnebi -->
+      <!-- <div formArrayName="savaldebuloSagnebi">
+        <div *ngFor="let savaldebuloSagani of section.get('savaldebuloSagnebi')?.value; let j = index" [formGroupName]="j">
+          <div>
+            <label for="sagnisSaxeli">Sagnis Saxeli:</label>
+            <input id="sagnisSaxeli" formControlName="sagnisSaxeli">
+          </div>
+          <div>
+            <label for="koeficienti">Koeficienti:</label>
+            <input id="koeficienti" formControlName="koeficienti">
+          </div>
+          <div>
+            <label for="minimaluriZgvari">Minimaluri Zgvari:</label>
+            <input id="minimaluriZgvari" formControlName="minimaluriZgvari">
+          </div>
+          <div>
+            <label for="prioriteti">Prioriteti:</label>
+            <input id="prioriteti" formControlName="prioriteti">
+          </div>
+          <button type="button" (click)="removeSagnisSaxeli(i, j)">Remove Sagnis Saxeli</button>
+        </div>
+      </div>
+      <button type="button" (click)="addSagnisSaxeli(i)">Add Sagnis Saxeli</button>
+      <button type="button" (click)="removeSection2(i)">Remove Section2</button>
+    </div>
+  </div>
+  <button type="button" (click)="addSection2()">Add Section2</button> -->
+
+  <!-- Archeviti Savaldebulo Sagani -->
+  <!-- <div formArrayName="archevitisavaldebulosagani">
+    <div *ngFor="let archeviti of archevitisavaldebulosagani.controls; let i = index" [formGroupName]="i">
+      <div>
+        <label for="archevitiTitle">Archeviti Title:</label>
+        <input id="archevitiTitle" formControlName="title">
+      </div> -->
+      <!-- Archeviti Savaldebulo Sagnebi -->
+      <!-- <div formArrayName="archevitiSavaldebuloSagnebi">
+        <div *ngFor="let archevitiItem of archeviti.get('archevitiSavaldebuloSagnebi')?.value; let j = index" [formGroupName]="j">
+          <div>
+            <label for="archevitiSagnisSaxeli">Sagnis Saxeli:</label>
+            <input id="archevitiSagnisSaxeli" formControlName="sagnisSaxeli">
+          </div>
+          <div>
+            <label for="archevitiKoeficienti">Koeficienti:</label>
+            <input id="archevitiKoeficienti" formControlName="koeficienti">
+          </div>
+          <div>
+            <label for="archevitiMinimaluriZgvari">Minimaluri Zgvari:</label>
+            <input id="archevitiMinimaluriZgvari" formControlName="minimaluriZgvari">
+          </div>
+          <div>
+            <label for="archevitiPrioriteti">Prioriteti:</label>
+            <input id="archevitiPrioriteti" formControlName="prioriteti">
+          </div>
+          <button type="button" (click)="removeArchevitiSagnisSaxeli(i, j)">Remove Sagnis Saxeli</button>
+        </div>
+      </div>
+      <button type="button" (click)="addArchevitiSagnisSaxeli(i)">Add Sagnis Saxeli</button>
+      <button type="button" (click)="removearchevitisavaldebulosagani(i)">Remove Archeviti</button>
+    </div>
+  </div>
+  <button type="button" (click)="addarchevitisavaldebulosagani()">Add Archeviti</button>
+
+  <button type="submit">Submit</button>
+</form> --> -->
+
+

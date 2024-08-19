@@ -1,0 +1,189 @@
+<form [formGroup]="UniCardForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="url">URL</label>
+    <input id="url" formControlName="url">
+  </div>
+
+  <div>
+    <label for="title">title</label>
+    <input id="title" formControlName="title">
+  </div>
+
+  <div>
+    <label for="mainText">Main Text</label>
+    <textarea id="mainText" formControlName="mainText"></textarea>
+  </div>
+
+  <div>
+    <label for="history">history </label>
+    <textarea id="history" formControlName="history"></textarea>
+  </div>
+  
+  <div>
+    <label for="forPupil">forPupil</label>
+    <textarea id="forPupil" formControlName="forPupil"></textarea>
+  </div>
+  
+  <div>
+    <label for="scholarshipAndFunding">scholarshipAndFunding</label>
+    <textarea id="scholarshipAndFunding" formControlName="scholarshipAndFunding"></textarea>
+  </div>
+  
+  <div>
+    <label for="exchangePrograms">exchangePrograms</label>
+    <textarea id="exchangePrograms" formControlName="exchangePrograms"></textarea>
+  </div>
+  
+  <div>
+    <label for="labs">labs</label>
+    <textarea id="labs" formControlName="labs"></textarea>
+  </div>
+
+  <div>
+    <label for="studentsLife">studentsLife</label>
+    <textarea id="studentsLife" formControlName="studentsLife"></textarea>
+  </div>
+
+  <div>
+    <label for="paymentMethods">paymentMethods</label>
+    <textarea id="paymentMethods" formControlName="paymentMethods"></textarea>
+  </div>
+
+  <!-- Add other input fields here -->
+
+  <div formArrayName="events">
+    <h3>Events</h3>
+    <div *ngFor="let event of events.controls; let i = index" [formGroupName]="i">
+      <label for="event-url-{{i}}">Event URL</label>
+      <input id="event-url-{{i}}" formControlName="url">
+
+      <label for="event-title-{{i}}">Event Title</label>
+      <input id="event-title-{{i}}" formControlName="title">
+
+      <label for="event-text-{{i}}">Event Text</label>
+      <textarea id="event-text-{{i}}" formControlName="text"></textarea>
+
+      <button type="button" (click)="removeEvent(i)">Remove Event</button>
+    </div>
+    <button type="button" (click)="addEvent()">Add Event</button>
+  </div>
+
+  <div formArrayName="sections">
+    <h3>Sections</h3>
+    <div *ngFor="let section of sections.controls; let i = index" [formGroupName]="i">
+      <label for="section-title-{{i}}">Section Title</label>
+      <input id="section-title-{{i}}" formControlName="title">
+
+      <div formArrayName="programNames">
+        <h4>Program Names</h4>
+        <div *ngFor="let programName of section.get('programNames')?.value; let j = index" [formGroupName]="j">
+          <label for="program-name-{{i}}-{{j}}">Program Name</label>
+          <input id="program-name-{{i}}-{{j}}" formControlName="programName">
+
+          <label for="Jobs-{{i}}-{{j}}">Jobs</label>
+          <input id="Jobs-{{i}}-{{j}}" formControlName="Jobs">
+
+          <label for="SwavlebisEna-{{i}}-{{j}}">SwavlebisEna</label>
+          <input id="SwavlebisEna-{{i}}-{{j}}" formControlName="SwavlebisEna">
+
+          <label for="Kvalifikacia-{{i}}-{{j}}">Kvalifikacia</label>
+          <input id="Kvalifikacia-{{i}}-{{j}}" formControlName="Kvalifikacia">
+          
+          <label for="Dafinanseba-{{i}}-{{j}}">Dafinanseba</label>
+          <input id="Dafinanseba-{{i}}-{{j}}" formControlName="Dafinanseba">
+
+          <label for="KreditebisRaodenoba-{{i}}-{{j}}">KreditebisRaodenoba</label>
+          <input id="KreditebisRaodenoba-{{i}}-{{j}}" formControlName="KreditebisRaodenoba">
+
+          <label for="AdgilebisRaodenoba-{{i}}-{{j}}">AdgilebisRaodenoba</label>
+          <input id="AdgilebisRaodenoba-{{i}}-{{j}}" formControlName="AdgilebisRaodenoba">
+          
+          <label for="Fasi-{{i}}-{{j}}">Fasi</label>
+          <input id="Fasi-{{i}}-{{j}}" formControlName="Fasi">
+
+          <label for="Kodi-{{i}}-{{j}}">Kodi</label>
+          <input id="Kodi-{{i}}-{{j}}" formControlName="Kodi">
+
+          <label for="ProgramisAgwera-{{i}}-{{j}}">ProgramisAgwera</label>
+          <input id="ProgramisAgwera-{{i}}-{{j}}" formControlName="ProgramisAgwera">
+
+          <button type="button" (click)="removeProgramName(i, j)">Remove Program Name</button>
+        </div>
+        <button type="button" (click)="addProgramName(i)">Add Program Name</button>
+      </div>
+
+      <button type="button" (click)="removeSection(i)">Remove Section</button>
+    </div>
+    <button type="button" (click)="addSection()">Add Section</button>
+  </div>
+
+  <div formArrayName="sections2">
+    <h3>Sections 2</h3>
+    <div *ngFor="let section2 of sections2.controls; let i = index" [formGroupName]="i">
+      <label for="section2-title-{{i}}">Section Title</label>
+      <input id="section2-title-{{i}}" formControlName="title">
+
+      <div formArrayName="savaldebuloSagnebi">
+        <h4>Savaldebulo Sagnebi</h4>
+        <div *ngFor="let sagani of section2.get('savaldebuloSagnebi')?.value; let j = index" [formGroupName]="j">
+          <label for="sagnis-saxeli-{{i}}-{{j}}">Sagnis Saxeli</label>
+          <input id="sagnis-saxeli-{{i}}-{{j}}" formControlName="sagnisSaxeli">
+
+          <label for="koeficienti-{{i}}-{{j}}">Koeficienti</label>
+          <input id="koeficienti-{{i}}-{{j}}" formControlName="koeficienti">
+
+          <label for="minimaluri-zgvari-{{i}}-{{j}}">Minimaluri Zgvari</label>
+          <input id="minimaluri-zgvari-{{i}}-{{j}}" formControlName="minimaluriZgvari">
+
+          <label for="prioriteti-{{i}}-{{j}}">Prioriteti</label>
+          <input id="prioriteti-{{i}}-{{j}}" formControlName="prioriteti">
+
+          <label for="adgilebisRaodenoba-{{i}}-{{j}}">AdgilebisRaodenoba</label>
+          <input id="adgilebisRaodenoba-{{i}}-{{j}}" formControlName="AdgilebisRaodenoba">
+
+          <button type="button" (click)="removeSavaldebuloSagnebi(i, j)">Remove Savaldebulo Sagani</button>
+        </div>
+        <button type="button" (click)="addSavaldebuloSagnebi(i)">Add Savaldebulo Sagani</button>
+      </div>
+
+      <button type="button" (click)="removeSection2(i)">Remove Section</button>
+    </div>
+    <button type="button" (click)="addSection2()">Add Section 2</button>
+  </div>
+
+  <div formArrayName="archevitiSavaldebuloSaganebi">
+    <h3>Archeviti Savaldebulo Saganebi</h3>
+    <div *ngFor="let archeviti of archevitiSavaldebuloSaganebi.controls; let i = index" [formGroupName]="i">
+      <label for="archeviti-title-{{i}}">Title</label>
+      <input id="archeviti-title-{{i}}" formControlName="title">
+
+      <div formArrayName="archevitiSavaldebuloSagnebi">
+        <h4>Archeviti Savaldebulo Sagnebi</h4>
+        <div *ngFor="let sagani of archeviti.get('archevitiSavaldebuloSagnebi')?.value; let j = index" [formGroupName]="j">
+          <label for="archeviti-sagnis-saxeli-{{i}}-{{j}}">Sagnis Saxeli</label>
+          <input id="archeviti-sagnis-saxeli-{{i}}-{{j}}" formControlName="sagnisSaxeli">
+
+          <label for="archeviti-koeficienti-{{i}}-{{j}}">Koeficienti</label>
+          <input id="archeviti-koeficienti-{{i}}-{{j}}" formControlName="koeficienti">
+
+          <label for="archeviti-minimaluri-zgvari-{{i}}-{{j}}">Minimaluri Zgvari</label>
+          <input id="archeviti-minimaluri-zgvari-{{i}}-{{j}}" formControlName="minimaluriZgvari">
+
+          <label for="archeviti-prioriteti-{{i}}-{{j}}">Prioriteti</label>
+          <input id="archeviti-prioriteti-{{i}}-{{j}}" formControlName="prioriteti">
+
+          <label for="archeviti-AdgilebisRaodenoba-{{i}}-{{j}}">AdgilebisRaodenoba</label>
+          <input id="archeviti-AdgilebisRaodenoba-{{i}}-{{j}}" formControlName="AdgilebisRaodenoba">
+
+          <button type="button" (click)="removeArchevitiSavaldebuloSagnebi(i, j)">Remove Archeviti Sagani</button>
+        </div>
+        <button type="button" (click)="addArchevitiSavaldebuloSagnebi(i)">Add Archeviti Sagani</button>
+      </div>
+
+      <button type="button" (click)="removeArcheviti(i)">Remove Archeviti</button>
+    </div>
+    <button type="button" (click)="addArcheviti()">Add Archeviti</button>
+  </div>
+
+  <button type="submit" [disabled]="!UniCardForm.valid">Submit</button>
+</form>

@@ -8,6 +8,8 @@ import {Router, RouterLink, UrlHandlingStrategy} from "@angular/router";
 import { NavbarComponent } from '../../navbar/navbar.component';
 import { AuthService } from '../../core/services/auth.service';
 import { reduce } from 'rxjs';
+import { HttpClient,HttpClientModule } from '@angular/common/http';
+
 import { query } from 'firebase/firestore';
 
 @Component({
@@ -42,8 +44,10 @@ export class AddHomeUniCardComponent {
 
       sections: this.fb.array([this.createSection()]),
       sections2: this.fb.array([this.createSection2()]),
-      archevitisavaldebulosagani: this.fb.array([this.createSection2()]),
+      archevitisavaldebulosagani: this.fb.array([this.createarchevitisavaldebulosagani()]),
   })
+
+
 
 
   createSection(): FormGroup {
@@ -233,6 +237,7 @@ export class AddHomeUniCardComponent {
   Submit() : void {
     this.createform.AddHomeUniCard(this.Form.value as any)
   }
+
    
   
 }

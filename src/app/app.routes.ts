@@ -27,6 +27,11 @@ import { UniProgramsComponent } from './pages/uni-programs/uni-programs.componen
 import { HomeFacultyUniDetailsComponent } from './pages/home-faculty-uni-details/home-faculty-uni-details.component';
 import { UniFacultyDetailsComponent } from './pages/uni-faculty-details/uni-faculty-details.component';
 import { FacultyUniDetailsComponent } from './pages/faculty-uni-details/faculty-uni-details.component';
+import { AddWithApiHomeUniCardComponent } from './pages/add-with-api-uni-card/add-with-api-home-uni-card.component';
+import { AddWithApiProgramCardComponent } from './pages/add-with-api-program-card/add-with-api-program-card.component';
+import { AddWithApiEventCardComponent } from './pages/add-with-api-event-card/add-with-api-event-card.component';
+import { RegisterWithApiComponent } from './pages/register-with-api/register-with-api.component';
+import { SignUpWithApiComponent } from './pages/sign-up-with-api/sign-up-with-api.component';
 
 export const routes: Routes = [
   {
@@ -48,6 +53,18 @@ export const routes: Routes = [
   {
     path:"Home/AddHomeUniCard",
     component:AddHomeUniCardComponent
+  },
+  {
+    path:"Home/AddHomeUniCardWithApi",
+    component:AddWithApiHomeUniCardComponent
+  },
+  {
+    path:"Home/AddProgramCardWithApi",
+    component:AddWithApiProgramCardComponent
+  },
+  {
+    path:"Home/AddEventCardWithApi",
+    component:AddWithApiEventCardComponent
   },
   {
     path:"Home/AddUniFacultyCard",

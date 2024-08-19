@@ -1,0 +1,61 @@
+<form [formGroup]="RegisterForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="Name">Name:</label>
+      <input id="Name" formControlName="Name" />
+      <div
+      *ngIf="
+        RegisterForm.get('Name')?.hasError('required') &&
+        RegisterForm.get('Name')?.touched
+      "
+    >
+      სახელი სავალდებულოა
+    </div>
+    </div>
+  
+    <div>
+      <label for="Email">Email:</label>
+      <input id="Email" formControlName="Email" />
+      <div *ngIf="RegisterForm.get('Email')?.hasError('required') && RegisterForm.get('Email')?.touched">
+        Valid email is required.
+      </div>
+    </div>
+  
+    <div>
+      <label for="Password">Password:</label>
+      <input id="Password" type="password" formControlName="Password" />
+      <div *ngIf="RegisterForm.get('Password')?.hasError('required') && RegisterForm.get('Password')?.touched">
+        Password is required.
+      </div>
+    </div>
+  
+    <div class="form-group">
+        <div class="type">
+          <h5>აირჩიე ტიპი</h5>
+        </div>
+        <label class="select">
+          <select formControlName="Type">
+            <option class="option" value="მოსწავლე IX კლასელი">მოსწავლე IX კლასელი</option>
+            <option class="option" value="მოსწავლე X კლასელი">მოსწავლე X კლასელი</option>
+            <option class="option" value="მოსწავლე XI კლასელი">მოსწავლე XI კლასელი</option>
+            <option class="option" value="მოსწავლე XII კლასელი">მოსწავლე XII კლასელი</option>
+        </select>
+        </label>
+        <div class="error">
+          <div
+            *ngIf="
+              RegisterForm.get('Type')?.hasError('required') && RegisterForm.get('Type')?.touched
+            "
+          >
+            ტიპის ჩაწერა სავალდებულოა
+          </div>
+        </div>
+      </div>
+  
+    <div>
+      <label for="Img">Image URL:</label>
+      <input id="Img" formControlName="Img" />
+    </div>
+  
+    <button type="submit" [disabled]="RegisterForm.invalid">Submit</button>
+  </form>
+  

@@ -17,6 +17,120 @@ export interface Icard{
   sections2: { title:any, SavaldebuloSagnebi: {  SagnisSaxeli: any, Koeficienti: any, MinimaluriZgvari: any, Prioriteti: any }[] }[];
   archevitisavaldebulosagani: { title: string, ArchevitiSavaldebuloSagnebi: {SagnisSaxeli: string, Koeficienti: string, MinimaluriZgvari: string, Prioriteti: string }[] }[];
 };
+
+// home-uni-card-dto.model.ts
+
+export interface UniCardDto {
+  url: string;
+  title: string;
+  mainText?: string;
+  history?: string;
+  forPupil?: string;
+  scholarshipAndFunding?: string;
+  exchangePrograms?: string;
+  labs?: string;
+  studentsLife?: string;
+  paymentMethods?: string;
+  events?: EventDto[];
+  sections?: SectionDto[];
+  sections2?: Section2Dto[];
+  archevitiSavaldebuloSaganebi?: ArchevitiSavaldebuloSaganiDto[];
+}
+
+export interface EventDto {
+  url: string;
+  title: string;
+  text: string;
+}
+
+export interface SectionDto {
+  title: string;
+  programNames?: ProgramnameDto[];
+}
+
+export interface Section2Dto {
+  title: string;
+  savaldebuloSagnebi?: SavaldebuloSagnebiDto[];
+}
+
+export interface ArchevitiSavaldebuloSaganiDto {
+  title: string;
+  archevitiSavaldebuloSagnebi?: ArchevitiSavaldebuloSagnebiDto[];
+}
+
+export interface ProgramnameDto {
+  programName: string;
+  Jobs: string;
+  SwavlebisEna: string;
+  Kvalifikacia: string;
+  Dafinanseba: string;
+  KreditebisRaodenoba: string;
+  AdgilebisRaodenoba: string;
+  Fasi: string;
+  Kodi: string;
+  ProgramisAgwera: string;
+
+}
+
+export interface SavaldebuloSagnebiDto {
+  sagnisSaxeli: string;
+  koeficienti: string;
+  minimaluriZgvari: string;
+  prioriteti: string;
+  AdgilebisRaodenoba: string;
+}
+
+export interface ArchevitiSavaldebuloSagnebiDto {
+  sagnisSaxeli: string;
+  koeficienti: string;
+  minimaluriZgvari: string;
+  prioriteti: string;
+  AdgilebisRaodenoba: string;
+
+}
+
+export interface ProgramCardDto {
+  Fields?:FieldDto[];
+}
+
+export interface FieldDto{
+  FieldName:string;
+  ProgramNames:ProgramNamesDto[]
+}
+
+export interface ProgramNamesDto{
+  programname:string;
+  CheckBoxes:CheckBoxesDto[]
+}
+
+export interface CheckBoxesDto{
+  ChackBoxName:string
+}
+
+export interface EventCardDto{
+  Url:string;
+  Title:string;
+  Text:string;
+  Time:string
+  Types:EventTypeDto[];
+}
+
+export interface EventTypeDto{
+  Type:string
+}
+
+export interface UserDto{
+  Name:string;
+  Email:string;
+  Password:string;
+  Type:string;
+  Img:string
+}
+export interface UserSignInDto{
+  Email:string;
+  Password:string
+}
+
 export interface IUser{
   email:string,
   Username:string

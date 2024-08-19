@@ -7,5 +7,10 @@
       <label for="text">ტექსტი</label>
       <input type="text" id="text" formControlName="text" />
     </div>
+    @for (item of Card; track $index) {
+      <div>
+        {{item.Title}}
+      </div>
+    }
   </div>
   <button (click)="Submit()">Submit</button>
