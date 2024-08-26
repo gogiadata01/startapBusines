@@ -1,65 +1,43 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { AuthService } from '../core/services/auth.service';
+import { AuthenticationService} from '../authentication.service';
 import {Router} from "@angular/router";
-import { getAuth } from "firebase/auth";
-
+import { User, getAuth } from "firebase/auth";
+import { ActivatedRoute } from '@angular/router';
+import { UserService } from '../user.service';
+import {UserDto} from '../core/models/common.model'
+import { idToken } from '@angular/fire/auth';
+import {AddWithApiHomeUniCardComponent} from '../pages/add-with-api-uni-card/add-with-api-home-uni-card.component'
+import {AddWithApiProgramCardComponent} from '../pages/add-with-api-program-card/add-with-api-program-card.component'
+import {AddWithApiEventCardComponent} from '../pages/add-with-api-event-card/add-with-api-event-card.component'
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink,AddWithApiHomeUniCardComponent,AddWithApiProgramCardComponent,AddWithApiEventCardComponent],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent implements OnInit {
-   auth = getAuth()
-   User = this.auth.currentUser;
+  user: UserDto | null = null; // Initialize user as null to ensure it's defined
+  currentUser: UserDto | null = null;
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router // Include router in the constructor
+    ,
+    private authService: AuthenticationService
+  ) {}
 
-  AuthService = inject(AuthService)
-  router = inject(Router)
-    ngOnInit(): void {
-    this.AuthService.users$.subscribe((user) =>{
-      if(user){
-        this.AuthService.CurrentUserSign.set({
-          email: user.email!,
-          Username:user.displayName!,
-          role:user.photoURL!
-          
-    }
-    )
-    {
+  ngOnInit(): void {
+    const id = this.route.snapshot.paramMap.get('id') ?? ''; // Provide an empty string as a default
+    this.authService.currentUser$.subscribe((user) => {
+      this.currentUser = user;
+      console.log(this.currentUser)
+    })
 
+    if(this.currentUser?.type === "admin") {
+
+    }else if(this.currentUser?.type === "მოსწავლე IX კლასელი"|| "მოსწავლე X კლასელი"){
+     this.router.navigateByUrl('/Pupil');
     }
-      }
-      if (this.User?.photoURL == "admin") {
-        // console.log(this.User)
-        this.router.navigateByUrl('/Admin')
-      }
-      if (this.User?.photoURL == "student" || this.User?.photoURL == "სტუდენტი"|| this.User?.photoURL == "studenti") {
-        // console.log(this.User)
-        this.router.navigateByUrl('/Students')
-      }
-      if (this.User?.photoURL == "pupil"|| this.User?.photoURL == "მოსწავლე"|| this.User?.photoURL == "moswavle") {
-        // console.log(this.User)
-        this.router.navigateByUrl('/Pupil')
-      }
-      
-      // if(user){
-      //   this.AuthService.CurrentUserSign.arguments.Username == "guest"
-      //   this.router.navigateByUrl('/test')
-      // }
-      else{
-        this.AuthService.CurrentUserSign.set(null)
-        
-      }
-      // console.log(this.AuthService.CurrentUserSign())
-     })
-     
-    
   }
-  logOut(){
-    this.AuthService.logout()
-    this.router.navigateByUrl('/')
-  }
-  
 }

@@ -1,11 +1,5 @@
-<nav class="navbar navbar-expand-lg fixed-top" data-bs-theam="dark">
+<!-- <nav class="navbar navbar-expand-lg fixed-top" data-bs-theam="dark">
   <div class="container">
-    <a class="navbar-brand"
-      ><img
-        class="img"
-        src="https://scontent.ftbs5-3.fna.fbcdn.net/v/t39.30808-6/438169759_122095455674324671_4155143826964932541_n.jpg?stp=cp6_dst-jpg&_nc_cat=102&ccb=1-7&_nc_sid=5f2048&_nc_ohc=TD7ee7cKCuAQ7kNvgE5fvcR&_nc_ht=scontent.ftbs5-3.fna&oh=00_AYDYUMQ0Py0Q7Y67ZFTVo-DhvyxAooUzdVPQ6er-UbIzPQ&oe=66485C70"
-        alt=""
-    /></a>
     <button
       class="navbar-toggler"
       type="button"
@@ -48,10 +42,7 @@
             სტუდენტებისთვის
           </a>
           <ul class="dropdown-menu">
-            <!-- <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+        
             <li><a class="dropdown-item" href="#">კოლეჯის ფაკულტეტი</a></li>
             <li><a class="dropdown-item" href="#">აკადემიის ფაკულტეტი</a></li>
           </ul>
@@ -59,7 +50,6 @@
       </ul>
 
       <div>
-        <span class="logOut" (click)="logOut()">log out</span>
         <nav
           class="navbar navbar-expand-lg navbar-warning bg-warning fixed-top"
           data-bs-theam="info"
@@ -92,29 +82,30 @@
                   </a>
                   <ul class="dropdown-menu">
                     <li>
-                      <a class="dropdown-item" routerLink="/Home/AddHomeUniCard"
-                        >ჰოუმის უნის დამატება</a
+                      <a
+                        class="dropdown-item"
+                        routerLink="/Home/AddHomeUniCardWithApi"
+                         ></a
                       >
                     </li>
                     <li>
-                      <a class="dropdown-item" routerLink="/Home/AddHomeUniCardWithApi"
-                        >უნის დამატება api</a
-                      >
-                    </li>
-                    <li>
-                      <a class="dropdown-item" routerLink="/Home/AddProgramCardWithApi"
+                      <a
+                        class="dropdown-item"
+                        routerLink="/Home/AddProgramCardWithApi"
                         >პროგამის დამატება api</a
                       >
                     </li>
                     <li>
-                      <a class="dropdown-item" routerLink="/Home/AddEventCardWithApi"
+                      <a
+                        class="dropdown-item"
+                        routerLink="/Home/AddEventCardWithApi"
                         >ივენთის დამატება api</a
                       >
                     </li>
-                   
+
                     <li>
-                      <a class="dropdown-item" routerLink="/Home/AddUniCard"
-                        > უნის დამატება</a
+                      <a class="dropdown-item" routerLink="/Home/AddUniCard">
+                        უნის დამატება</a
                       >
                     </li>
                     <li>
@@ -132,7 +123,9 @@
                       >
                     </li>
                     <li>
-                      <a class="dropdown-item" routerLink="/Home/AddEventCard">სიახლეების დამატება</a>
+                      <a class="dropdown-item" routerLink="/Home/AddEventCard"
+                        >სიახლეების დამატება</a
+                      >
                     </li>
                   </ul>
                 </li>
@@ -188,4 +181,17 @@
       </div>
     </div>
   </div>
-</nav>
+</nav> -->
+
+<h1>დაამატე უნივერსიტეტის ქარდი აქ</h1>
+<app-add-with-api-home-uni-card/>
+
+
+<h1 class="event">დაამატე ივენთის ქარდი აქ</h1>
+<app-add-with-api-event-card/>
+
+
+<h1 class="program">დამატე პროგრამის ქარდი აქ</h1>
+
+<app-add-with-api-program-card/>
+

@@ -44,16 +44,6 @@ export class RegisterComponent implements OnInit {
   errormassage: string| null = null 
   @ViewChild('pupil')pupil:any
   @ViewChild('student')student:any
-  // asas = document.querySelector("")
-
-  // Student(){
-  //   this.rawForm.role == "სტუდენტი"
-  // }
-  // Pupil(){
-  //   this.rawForm.role == "მოსწავლე"
-  // }
-  //  rawForm = this.Form.getRawValue();
-
   Submit() : void {
   
     const rawForm = this.Form.getRawValue();
@@ -70,13 +60,6 @@ export class RegisterComponent implements OnInit {
             icon: "info"
           });
         }
-        // if(rawForm.role == "" ){
-        //   Swal.fire({
-        //     title: "ტიპის ველი ცარიელია",
-        //     text: "აირჩიე მოსწავლე ან სტუდენტი",
-        //     icon: "info"
-        //   }); 
-        // }
         else if(this.errormassage == "auth/missing-password"){
           Swal.fire({
             title: "შეცდომა",
@@ -122,15 +105,7 @@ export class RegisterComponent implements OnInit {
     
       
     })
-  }
-  
-
-
-
-
-
-
-  
+  }  
 }
 
 

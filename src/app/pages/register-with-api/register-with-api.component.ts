@@ -4,6 +4,8 @@ import { UserService } from '../../user.service';
 import { UserDto } from '../../core/models/common.model';
 import { HttpClient } from '@angular/common/http';
 import { NgFor, NgIf } from '@angular/common';
+import { RouterLink } from '@angular/router';
+
 
 @Component({
   selector: 'app-register-with-api',
@@ -11,7 +13,7 @@ import { NgFor, NgIf } from '@angular/common';
   imports: [    
     NgFor,
     NgIf,
-    ReactiveFormsModule],
+    ReactiveFormsModule,RouterLink],
   templateUrl: './register-with-api.component.html',
   styleUrl: './register-with-api.component.scss'
 })
@@ -25,8 +27,9 @@ export class RegisterWithApiComponent {
       Name: ['', Validators.required],
       Email: ['', Validators.required],
       Password: ['', Validators.required],
-      Type: [''],
-      Img: [''],
+      Type: ['',Validators.required],
+      Img: ['',],
+      Coin:[0]
     })
 
   }
@@ -41,7 +44,7 @@ export class RegisterWithApiComponent {
           console.error('Error adding UniCard', err);
         }
       })
-      console.log(this.RegisterForm.value);
+      // console.log(this.RegisterForm.value);
     }
   }
 }

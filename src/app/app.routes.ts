@@ -36,26 +36,18 @@ import { SignUpWithApiComponent } from './pages/sign-up-with-api/sign-up-with-ap
 export const routes: Routes = [
   {
     path : "",
-    component:LogInComponent
+    component:SignUpWithApiComponent
   },
   {
     path:"Register",
-    component:RegisterComponent
+    component:RegisterWithApiComponent
   },
   {
-    path:"Home",
+    path:"Home/:id",
     component:NavbarComponent,
   },
   {
-    path:"Home/AddUniCard",
-    component:AddUniCardComponent
-  },
-  {
-    path:"Home/AddHomeUniCard",
-    component:AddHomeUniCardComponent
-  },
-  {
-    path:"Home/AddHomeUniCardWithApi",
+    path:"Home/:id/AddHomeUniCardWithApi",
     component:AddWithApiHomeUniCardComponent
   },
   {

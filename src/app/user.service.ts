@@ -16,7 +16,7 @@ export class UserService {
     return this.http.get(`${this.apiUrl}`);
   }
 
-  getUserById(id: number): Observable<any> {
+  getUserById(id:any): Observable<any> {
     return this.http.get(`${this.apiUrl}/${id}`);
   }
 
@@ -26,5 +26,8 @@ export class UserService {
 
   signInUser(loginDto: UserSignInDto): Observable<any> {
     return this.http.post(`${this.apiUrl}/signin`, loginDto);
+  }
+  updateUserCoin(id: number, newCoinValue: number): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${id}/coin`, newCoinValue)
   }
 }

@@ -123,11 +123,12 @@ export interface UserDto{
   Name:string;
   Email:string;
   Password:string;
-  Type:string;
-  Img:string
+  type:string;
+  Img:string;
+  Coin:number;
 }
 export interface UserSignInDto{
-  Email:string;
+  Email:any;
   Password:string
 }
 

@@ -1,4 +1,4 @@
-<form [formGroup]="RegisterForm" (ngSubmit)="onSubmit()">
+<!-- <form [formGroup]="RegisterForm" (ngSubmit)="onSubmit()">
     <div>
       <label for="Name">Name:</label>
       <input id="Name" formControlName="Name" />
@@ -57,5 +57,87 @@
     </div>
   
     <button type="submit" [disabled]="RegisterForm.invalid">Submit</button>
+  </form>
+  
+
+
+ -->
+
+
+
+
+  <form [formGroup]="RegisterForm" (ngSubmit)="onSubmit()" >
+    <div class="register-container">
+      <h1>რეგისტრაცია</h1>
+      <div class="form-group">
+        <input type="text" placeholder="სახელი" formControlName="Name" />
+        <div class="error">
+          <div
+            *ngIf="
+              RegisterForm.get('Name')?.hasError('required') &&
+              RegisterForm.get('Name')?.touched
+            "
+          >
+            სახელი სავალდებულოა
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="email" placeholder="მეილი" formControlName="Email" />
+        <div class="error">
+          <div
+            *ngIf="
+              RegisterForm.get('Email')?.hasError('required') &&
+              RegisterForm.get('Email')?.touched
+            "
+          >
+            მეილი სავალდებულოა
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="password" placeholder="პაროლი" formControlName="Password" />
+        <div class="error">
+          <div
+            *ngIf="
+              RegisterForm.get('Password')?.hasError('required') &&
+              RegisterForm.get('Password')?.touched
+            "
+          >
+            პაროლი სავალდებულოა
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="type">
+          <h5>აირჩიე ტიპი</h5>
+        </div>
+        <label class="select">
+          <select formControlName="Type">
+            <option class="option" value="მოსწავლე IX კლასელი">მოსწავლე IX კლასელი</option>
+            <option class="option" value="მოსწავლე X კლასელი">მოსწავლე X კლასელი</option>
+            <option class="option" value="მოსწავლე XI კლასელი">მოსწავლე XI კლასელი</option>
+            <option class="option" value="მოსწავლე XII კლასელი">მოსწავლე XII კლასელი</option>            <!-- <option class="option" value="სტუდენტი">სტუდენტი</option> -->
+          </select>
+        </label>
+        <div class="error">
+          <div
+            *ngIf="
+              RegisterForm.get('Type')?.hasError('required') && RegisterForm.get('Type')?.touched
+            "
+          >
+            ტიპის ჩაწერა სავალდებულოა
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="Img"></label>
+        <input type="file" id="Img" placeholder="Img" formControlName="Img" />
+      </div>
+      <button type="submit" [disabled]="RegisterForm.invalid">Submit</button>
+      <div class="register-link">
+        გაქვს უკვე ანგარიში? <a routerLink="/">ავტორიზაცია</a>
+      </div>
+    </div>
   </form>
   
