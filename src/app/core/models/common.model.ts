@@ -126,6 +126,7 @@ export interface UserDto{
   type:string;
   Img:string;
   Coin:number;
+  ResetToken:string;
 }
 export interface UserSignInDto{
   Email:any;

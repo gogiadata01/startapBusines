@@ -7,22 +7,55 @@
     </div>
   </div> -->
 
-  <div class="title">
-    <h2 class="tit" >პროგრამები</h2>
-  </div>
-<div  class="container">
+<!-- <div class="title">
+  <h2 class="tit">პროგრამები</h2>
+</div>
+<div class="container">
   <div class="row">
     @for (Card of cards; track $index){
 
-    <div (click)="onCardClicked(Card.key,Card.title)" class="col-lg-4">
+    <div (click)="onCardClicked(Card.key, Card.title)" class="col-lg-4">
       <div class="card">
         {{ Card.title }}
       </div>
     </div>
-  }
+    }
+  </div>
+</div> -->
+
+<div class="Title">
+  <h3>პროგრამები</h3>
+</div>
+<div class="Bottom">
+  <div class="timeline">
+    <div *ngFor="let circle of circles; let i = index" class="circle-container">
+      <div
+        [ngClass]="{
+          circle: true,
+          green: activeCircleIndex === i
+        }"
+        (click)="onCircleClick(i)"
+      ></div>
+      <div *ngIf="i < circles.length - 1" class="line dashed"></div>
+    </div>
+  </div>
+  <div class="program">
+    <div class="FacultyTitle">
+      <h2>კომპიუტერული მეცნიერება</h2>
+    </div>
+    <div class="ProgramNames">
+      <div class="container">
+        <div class="row">
+          @for (Card of cards; track $index){
+
+          <div (click)="onCardClicked(Card.key, Card.title)" class="col-lg-4">
+            <div class="card">
+              {{ Card.title }}
+            </div>
+          </div>
+          }
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-
-
-
-

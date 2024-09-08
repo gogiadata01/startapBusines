@@ -91,11 +91,11 @@ a {
 
 img {
   display: block;
-  max-width: 312px;
-  max-height: 193px;
-  min-width: 310px;
+  max-width: 235px;
+  max-height: 190px;
+  min-width: 199px;
   min-height: 190px;
-  height: auto;
+  height: 100px;
 }
 
 /*=============== THEME ===============*/
@@ -217,18 +217,24 @@ img {
 }
 
 .projects__card {
+  width: 90%;
+  height: 102%;
   padding: 1rem 1rem 2rem;
-  border-radius: 0.75rem;
+  border-radius: 40px;
   transition: background-color 0.4s;
+  background-color: #F1F3BE;
+  // margin-left: 25px;
 }
 
 .projects__image {
+  display: flex;
+  justify-content: center;
   position: relative;
   margin-bottom: 0.75rem;
 }
 
 .projects__img {
-  border-radius: 0.75rem;
+  border-radius: 25px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 24px;
 }
 
@@ -266,6 +272,7 @@ img {
 .projects__title {
   font-size: var(--h3-font-size);
   margin-bottom: 0.75rem;
+  color: black;
 }
 
 .projects__buttons {
@@ -321,6 +328,9 @@ img {
   .projects__container {
     grid-template-columns: 350px;
     justify-content: center;
+  }
+  .projects__card {
+    margin-left: 15px;
   }
 }
 

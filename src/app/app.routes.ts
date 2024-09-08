@@ -32,11 +32,16 @@ import { AddWithApiProgramCardComponent } from './pages/add-with-api-program-car
 import { AddWithApiEventCardComponent } from './pages/add-with-api-event-card/add-with-api-event-card.component';
 import { RegisterWithApiComponent } from './pages/register-with-api/register-with-api.component';
 import { SignUpWithApiComponent } from './pages/sign-up-with-api/sign-up-with-api.component';
+import { EventDetailsComponent } from './pages/event-details/event-details.component';
 
 export const routes: Routes = [
+  // {
+  //   path : "",
+  //   component:SignUpWithApiComponent
+  // },
   {
-    path : "",
-    component:SignUpWithApiComponent
+    path:"",
+    component:EventDetailsComponent
   },
   {
     path:"Register",

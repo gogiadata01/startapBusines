@@ -5,6 +5,7 @@ import { RouterLink } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
 import { IfStmt } from '@angular/compiler';
+import {UserService} from '../../user.service'
 
 @Component({
   selector: 'app-recovery-password',
@@ -15,23 +16,29 @@ import { IfStmt } from '@angular/compiler';
   styleUrl: './recovery-password.component.scss'
 })
 export class RecoveryPasswordComponent {
-  fb = inject(FormBuilder);
-  authService = inject(AuthService)
-  router = inject(Router)
-  errormassage: string| null = null 
+  recoveryForm: FormGroup;
+  message: string = '';
 
-  Form = this.fb.nonNullable.group({
-    email: ['' , Validators.required],
-  }) 
-  Submit(){
-    const rawForm = this.Form.getRawValue();
-    this.authService.ResetPassword(rawForm.email).subscribe({
-      next: ()=>{
-        this.router.navigateByUrl('/')
-      },
-      error: (err) => {
-        this.errormassage = err.code;
-      }
-    })
+  constructor(
+    private passwordRecoveryService: UserService,
+    private fb: FormBuilder
+  ) {
+    this.recoveryForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+    });
+  }
+
+  onSubmit() {
+    if (this.recoveryForm.valid) {
+      const email = this.recoveryForm.get('email')?.value;
+      this.passwordRecoveryService.sendRecoveryLink(email).subscribe(
+        (response) => {
+          this.message = 'Password recovery link has been sent to your email.';
+        },
+        (error) => {
+          this.message = 'There was an error sending the recovery link.';
+        }
+      );
+    }
   }
 }

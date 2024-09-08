@@ -29,7 +29,8 @@ export class RegisterWithApiComponent {
       Password: ['', Validators.required],
       Type: ['',Validators.required],
       Img: ['',],
-      Coin:[0]
+      Coin:[0],
+      ResetToken:['ResetToken']
     })
 
   }

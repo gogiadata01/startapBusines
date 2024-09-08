@@ -47,7 +47,8 @@ export class SignUpWithApiComponent {
             Password: response.password,
             type: response.type, // Adjust according to your API response
             Img: response.img,
-            Coin:response.coin
+            Coin:response.coin,
+            ResetToken:response.resettoken
           };
       
           // Save the user information in the AuthenticationService

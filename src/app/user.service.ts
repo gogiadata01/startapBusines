@@ -30,4 +30,14 @@ export class UserService {
   updateUserCoin(id: number, newCoinValue: number): Observable<any> {
     return this.http.put(`${this.apiUrl}/${id}/coin`, newCoinValue)
   }
+
+  sendRecoveryLink(email: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/send-recovery-link`, { email })
+  }
+
+  resetPassword(token: string, newPassword: string): Observable<any> {
+    const body = { token, newPassword };
+    return this.http.post(`${this.apiUrl}/reset-password`, body)
+  }
+ 
 }
