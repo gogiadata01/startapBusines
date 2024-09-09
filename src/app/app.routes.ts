@@ -33,6 +33,7 @@ import { AddWithApiEventCardComponent } from './pages/add-with-api-event-card/ad
 import { RegisterWithApiComponent } from './pages/register-with-api/register-with-api.component';
 import { SignUpWithApiComponent } from './pages/sign-up-with-api/sign-up-with-api.component';
 import { EventDetailsComponent } from './pages/event-details/event-details.component';
+import { HomeComponent } from './pages/home/home.component';
 
 export const routes: Routes = [
   // {
@@ -41,7 +42,7 @@ export const routes: Routes = [
   // },
   {
     path:"",
-    component:EventDetailsComponent
+    component:HomeComponent
   },
   {
     path:"Register",
