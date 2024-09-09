@@ -1,0 +1,285 @@
+
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+  
+  //header and navbar
+  .site-header {
+    width: 100%;
+    height: 600px;;
+    background-image: url('../../assets/photo/stu.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .site-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
+  .header-content {
+    position: relative;
+    z-index: 1; 
+    width: 100%;
+    padding: 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box; 
+  }
+  
+  h1 {
+    color: white;
+    text-align: center;
+    font-size: 2.5em;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  
+  nav {
+    display: flex;
+    justify-content: space-between;
+  
+   
+  }
+  
+  .logo {
+    height: 40px;
+  }
+  
+  
+  
+  nav ul {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  nav ul li {
+    margin-left: 20px;
+  }
+  
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    
+    &:hover {
+      color: #3e8e41;
+     
+    }
+  
+  }
+  
+  h1 {
+    color: rgb(238, 233, 233);
+    text-align: center;
+    position: relative;
+    bottom: 200px;
+    font-size: 1.9em;
+    max-width: 1000px;
+  }
+  .wave-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+  
+    svg {
+      position: relative;
+      display: block;
+      width: calc(100% + 1.3px);
+      height: 150px;
+    }
+  
+   
+    // .nav-container{
+      
+      // }
+    }
+    //header and navbar//
+    
+    
+    
+    
+    
+    //button
+    .container {
+      padding: 30px 0;
+      justify-content: center;
+      
+    }
+  
+    // .row{
+    //   display: flex;
+    //   width: 100%;
+    //   margin-bottom: 20px;
+    // }
+  
+    
+  
+  .cta-button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 12px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px auto;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-left: 5%;
+    margin-right: 4%;
+   
+    
+    &:hover {
+      background-color: #3e8e41;
+    }
+  }
+    
+    
+    .btn {
+    width: 100%;
+    margin-bottom: 10px;
+    background-color: #a0c4a0;
+    border: none;
+    color: #fff;
+    padding: 10px 20px ;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 15px;
+    
+    &:hover {
+    background-color: #84a984;
+    }
+    }
+    
+    @media (max-width: 767px) {
+    .btn {
+    font-size: 14px;
+    padding: 10px 16px;
+    }
+  }
+    
+    .dot-container {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    margin-right: 20px;
+    }
+    
+    .dot {
+    width: 20px;
+    height: 20px;
+    background-color: #a0c4a0;
+    border-radius: 50%;
+    margin: 10px 0;
+    
+    }
+    
+    .line {
+    width: 1px;
+    height: 50px;
+    background-color: #54ac54;
+    border-style: dashed;
+    border-width: 3px;
+    margin-left: 7px;
+    }
+    
+    
+    
+    @media (max-width: 767px) {
+    .container {
+    flex-direction: column;
+    }
+    
+    .dot-container {
+    flex-direction: row;
+    margin-right: 0;
+    margin-bottom: 20px;
+    }
+    
+    .dot {
+    width: 15px;
+    height: 15px;
+    margin: 0 10px;
+    }
+    
+    .line {
+    width: 30px;
+    height: 1px;
+    }
+    
+    }
+  
+  
+    //ლიდერთა სია
+  
+    .leaderboard {
+      width: 900px;
+      max-width: 100%;
+      margin: 0 auto;
+      background-color:#5d737e;
+      border-radius: 20px;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    
+      h2 {
+        margin-bottom: 20px;
+        font-family: Arial, sans-serif;
+        color: #333;
+      }
+  
+  
+      .bi{
+  
+       position: relative;
+       right: 60px;
+       bottom: 50px;
+  
+  
+      }
+  
+     
+      .entries {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    
+        .entry {        
+          padding: 50px;
+          margin: 5px;
+          text-align: center;
+          font-family: Arial, sans-serif;
+          color:floralwhite;
+          width: calc(25% - 10px); // 4 entries per row
+        }
+      }
+    
+      .footer {
+        margin-top: 20px;
+        font-family: Arial, sans-serif;
+        color: #252020;
+      }
+    }
+  
+   
