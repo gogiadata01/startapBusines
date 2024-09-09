@@ -10,7 +10,7 @@ body, html {
   .site-header {
     width: 100%;
     height: 600px;;
-    background-image: url('../../assets/photo/stu.jpg');
+    background-image: url('../../../assets/stu.jpg');
     background-size: cover;
     background-position: center;
     position: relative;
@@ -205,81 +205,180 @@ body, html {
     
     
     
-    @media (max-width: 767px) {
-    .container {
-    flex-direction: column;
-    }
+    // @media (max-width: 767px) {
+    // .container {
+    // flex-direction: column;
+    // }
     
-    .dot-container {
-    flex-direction: row;
-    margin-right: 0;
-    margin-bottom: 20px;
-    }
+    // .dot-container {
+    // flex-direction: row;
+    // margin-right: 0;
+    // margin-bottom: 20px;
+    // }
     
-    .dot {
-    width: 15px;
-    height: 15px;
-    margin: 0 10px;
-    }
+    // .dot {
+    // width: 15px;
+    // height: 15px;
+    // margin: 0 10px;
+    // }
     
-    .line {
-    width: 30px;
-    height: 1px;
-    }
+    // .line {
+    // width: 30px;
+    // height: 1px;
+    // }
     
-    }
+    // }
   
   
     //ლიდერთა სია
   
-    .leaderboard {
-      width: 900px;
-      max-width: 100%;
-      margin: 0 auto;
-      background-color:#5d737e;
-      border-radius: 20px;
-      padding: 15px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    // .leaderboard {
+    //   width: 900px;
+    //   max-width: 100%;
+    //   margin: 0 auto;
+    //   background-color:#5d737e;
+    //   border-radius: 20px;
+    //   padding: 15px;
+    //   display: flex;
+    //   flex-direction: column;
+    //   align-items: center;
     
-      h2 {
-        margin-bottom: 20px;
-        font-family: Arial, sans-serif;
-        color: #333;
-      }
+    //   h2 {
+    //     margin-bottom: 20px;
+    //     font-family: Arial, sans-serif;
+    //     color: #333;
+    //   }
   
   
-      .bi{
+    //   .bi{
   
-       position: relative;
-       right: 60px;
-       bottom: 50px;
+    //    position: relative;
+    //    right: 60px;
+    //    bottom: 50px;
   
   
-      }
+    //   }
   
      
-      .entries {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+    //   .entries {
+    //     display: flex;
+    //     flex-wrap: wrap;
+    //     justify-content: center;
     
-        .entry {        
-          padding: 50px;
-          margin: 5px;
-          text-align: center;
-          font-family: Arial, sans-serif;
-          color:floralwhite;
-          width: calc(25% - 10px); // 4 entries per row
-        }
-      }
+    //     .entry {        
+    //       padding: 50px;
+    //       margin: 5px;
+    //       text-align: center;
+    //       font-family: Arial, sans-serif;
+    //       color:floralwhite;
+    //       width: calc(25% - 10px); // 4 entries per row
+    //     }
+    //   }
     
-      .footer {
-        margin-top: 20px;
-        font-family: Arial, sans-serif;
-        color: #252020;
-      }
-    }
+    //   .footer {
+    //     margin-top: 20px;
+    //     font-family: Arial, sans-serif;
+    //     color: #252020;
+    //   }
+    // }
+
+
+//     .navbar{
+//       background-color: #85A98D;
   
+//   }
+//   #svg{
+//       width: 120px;
+//       height: 100%;
+//   }
+//   #svg2{
+//       width: 35px;
+//       height: 100%;
+//       color: #F0F3BD;
+//   }
+  
+  
+//   .nav-link{
+//       padding: 10px;
+//       border-radius: 25px;
+//       text-align: center;
+      
+//       cursor: pointer;
+//       transition: background-color 0.3s ease;
+    
+//       &:hover {
+//           background-color: #77b1e0;
+//       }
+  
+//           transition: transform 0.3s ease;
+    
+//       &:hover {
+//         transform: scale(1.07);
+//       }
+//   }
+  
+  
+
+// .navbar{
+//   background-color: #85A98D;
+
+// }
+#svg{
+  width: 120px;
+  height: 100%;
+}
+#svg2{
+  width: 35px;
+  height: 100%;
+  color: #F0F3BD;
+}
+
+
+.nav-link{
+  padding: 10px;
+  border-radius: 25px;
+  text-align: center;
+  
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+      background-color: #77b1e0;
+  }
+
+      transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.07);
+  }
+}
+
+
+/* Remove focus outline */
+
+/* Remove any border properties */
+.no-border {
+  border: none;
+  border-width: 0;
+  box-shadow: none; /* Remove box-shadow if any */
+}:focus{
+  outline: none;
+
+}
+
+/* Ensure other focus states are also handled */
+.no-border:focus-visible {
+  outline: none;
+}
+
+/* Apply to all SVGs if needed */
+svg:focus {
+  outline: none;
+}
+
+svg {
+  border: none;
+  border-width: 0;
+  box-shadow: none;
+}
    
