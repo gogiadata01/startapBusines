@@ -1,1 +1,35 @@
-<p>quize works!</p>
+<!-- If quiz is loaded and questions are available, display the current question -->
+<!-- Use a local variable to simplify the condition -->
+<div *ngIf="!isLoading && quiz?.questions as questions; else showResults">
+    <!-- Check if there are any questions and if the current index is within range -->
+    <ng-container *ngIf="questions.length > 0 && currentQuestionIndex < questions.length">
+      <h3>Question {{ currentQuestionIndex + 1 }}: {{ questions[currentQuestionIndex].question }}</h3>
+  
+      <!-- Only display image if it's available -->
+      <img *ngIf="questions[currentQuestionIndex].img" 
+           [src]="questions[currentQuestionIndex].img" 
+           alt="question image" 
+           class="question-image">
+  
+      <!-- Display answers as radio buttons -->
+      <ul>
+        <li *ngFor="let answer of allAnswers">
+          <input type="radio" 
+                 [value]="answer" 
+                 name="answer" 
+                 (change)="selectAnswer(answer)">
+          {{ answer }}
+        </li>
+      </ul>
+  
+      <button (click)="nextQuestion()">Next</button>
+    </ng-container>
+  </div>
+  
+  <!-- Show results when the quiz is finished -->
+  <ng-template #showResults>
+    <h2>Your Results</h2>
+    <p>You answered {{ correctAnswersCount }} out of {{ quiz?.questions?.length }} questions correctly!</p>
+    <button (click)="restartQuiz()">Restart Quiz</button>
+  </ng-template>
+  

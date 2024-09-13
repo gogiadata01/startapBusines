@@ -23,7 +23,124 @@
   </div>
 </div> -->
 
+<!-- <div class="Title">
+  <h3>პროგრამები</h3>
+</div>
+<div class="Bottom">
+  <div class="timeline">
+    <div *ngFor="let circle of circles; let i = index" class="circle-container">
+      <div
+        [ngClass]="{
+          circle: true,
+          green: activeCircleIndex === i
+        }"
+        (click)="onCircleClick(i)"
+      ></div>
+      <div *ngIf="i < circles.length - 1" class="line dashed"></div>
+    </div>
+  </div>
+  <div class="program">
+    <div class="FacultyTitle"></div>
+    <div class="ProgramNames">
+      <div class="container">
+        <div
+          style="
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px; /* Space between buttons */
+          "
+        >
+          <div class="d-flex" *ngFor="let fieldContainer of programCards">
+            <div *ngFor="let field of fieldContainer.fields">
+              <h2>{{ field.fieldName }}</h2>
+              <div class="d-flex gap-4" style="max-width: 800px">
+                <div *ngFor="let program of field.programNames">
+                  <div
+                    [ngStyle]="{
+                      'background-color': '#A0C4A0',
+                      'flex-wrap': 'wrap',
+                      color: '#fff',
+                      'border-radius': '50px',
+                      padding: '10px',
+                      'max-width': '450px',
+                      'box-sizing': 'border-box',
+                      display: 'flex',
+                      'align-items': 'center',
+                      'justify-content': 'center',
+
+                      width: getButtonWidth(program.programname)
+                    }"
+                    class="btn rounded-pill"
+                  >
+                    <div>{{ program.programname }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
 <div class="Title">
+  <h3>პროგრამები</h3>
+</div>
+<div class="Bottom">
+  <div class="timeline">
+    <div *ngFor="let circle of circles; let i = index" class="circle-container">
+      <div
+        [ngClass]="{
+          circle: true,
+          green: activeCircleIndex === i
+        }"
+        (click)="onCircleClick(i)"
+      ></div>
+      <div *ngIf="i < circles.length - 1" class="line dashed"></div>
+    </div>
+  </div>
+  <div class="program">
+    <div class="FacultyTitle"></div>
+    <div class="ProgramNames">
+      <div class="container">
+        @for (item of programCards; track $index) { @for (field of item.fields;
+        track $index) {
+        <div class="top">
+          <h2>{{ field.fieldName }}</h2>
+        </div>
+        <div class="top1">
+          @for (program of field.programNames; track $index) {
+          <div>
+            <div
+              [ngStyle]="{
+                'background-color': '#A0C4A0',
+                'flex-wrap': 'wrap',
+                color: '#fff',
+                'border-radius': '50px',
+                padding: '10px',
+                'max-width': '450px',
+                'box-sizing': 'border-box',
+                display: 'flex',
+                'align-items': 'center',
+                'justify-content': 'center',
+
+                width: getButtonWidth(program.programname)
+              }"
+              class="btn rounded-pill"
+            >
+              <div>{{ program.programname }}</div>
+            </div>
+          </div>
+          }
+        </div>
+        } }
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="Title">
   <h3>პროგრამები</h3>
 </div>
 <div class="Bottom">
@@ -46,16 +163,19 @@
     <div class="ProgramNames">
       <div class="container">
         <div class="row">
-          @for (Card of cards; track $index){
+          @for (Card of programCards; track $index){
+            @for (item of Card.fields; track $index) {
+              @for (field of item.programNames; track $index) {
 
-          <div (click)="onCardClicked(Card.key, Card.title)" class="col-lg-4">
-            <div class="card">
-              {{ Card.title }}
-            </div>
-          </div>
+                <div class="card">
+                  {{ field }}
+                </div>
+              }
+            }
           }
         </div>
       </div>
     </div>
   </div>
-</div>
+</div> -->
+<app-footer-for-pupil />

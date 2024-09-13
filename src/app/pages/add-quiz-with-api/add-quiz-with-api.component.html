@@ -1,0 +1,35 @@
+<form [formGroup]="quizForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="Time">Time:</label>
+      <input id="Time" formControlName="Time" />
+    </div>
+  
+    <div formArrayName="questions">
+      <div *ngFor="let question of questions.controls; let i = index" [formGroupName]="i">
+        <label for="question-{{i}}">Question:</label>
+        <input id="question-{{i}}" formControlName="question" />
+  
+        <label for="correctanswer-{{i}}">Correct Answer:</label>
+        <input id="correctanswer-{{i}}" formControlName="correctanswer" />
+
+        <label for="img-{{i}}">Img:</label>
+        <input id="img-{{i}}" formControlName="img" />
+  
+        <div formArrayName="incorrectAnswers">
+          <div *ngFor="let incorrectAnswer of getIncorrectAnswers(i).controls; let j = index" [formGroupName]="j">
+            <label for="incorrectAnswer-{{i}}-{{j}}">Incorrect Answer:</label>
+            <input id="incorrectAnswer-{{i}}-{{j}}" formControlName="inccorectAnswer" />
+            <button type="button" (click)="removeIncorrectAnswer(i, j)">Remove Incorrect Answer</button>
+          </div>
+          <button type="button" (click)="addIncorrectAnswer(i)">Add Incorrect Answer</button>
+        </div>
+  
+        <button type="button" (click)="removeQuestion(i)">Remove Question</button>
+      </div>
+      <button type="button" (click)="addQuestion()">Add Question</button>
+    </div>
+  
+    <button type="submit">Submit</button>
+  </form>
+  
+  

@@ -90,21 +90,23 @@ export interface ArchevitiSavaldebuloSagnebiDto {
 }
 
 export interface ProgramCardDto {
-  Fields?:FieldDto[];
+  fields?:FieldDto[];
 }
 
 export interface FieldDto{
-  FieldName:string;
-  ProgramNames:ProgramNamesDto[]
+  fieldName:string;
+  programNames:ProgramNamesDto[]
 }
 
 export interface ProgramNamesDto{
   programname:string;
-  CheckBoxes:CheckBoxesDto[]
+  checkBoxes:CheckBoxesDto[]
+  width:string
+
 }
 
 export interface CheckBoxesDto{
-  ChackBoxName:string
+  chackBoxName:string
 }
 
 export interface EventCardDto{
@@ -144,6 +146,22 @@ export interface IUniFacultyCard{
   text: string;
   sections: { checkBoxNames: { checkBoxName: string }[] }[];
 }
+export interface QuizDto {
+  Time:string
+  questions: QuestionDto[];
+}
+
+export interface QuestionDto {
+  question: string;
+  correctanswer: string;
+  img:string | null
+  incorrectAnswers: IncorrectAnswerDto[];
+}
+
+export interface IncorrectAnswerDto {
+  inccorectAnswer: string;
+}
+
 export interface IEventCard{
   key?:string,
   url:string,

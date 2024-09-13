@@ -34,6 +34,9 @@ import { RegisterWithApiComponent } from './pages/register-with-api/register-wit
 import { SignUpWithApiComponent } from './pages/sign-up-with-api/sign-up-with-api.component';
 import { EventDetailsComponent } from './pages/event-details/event-details.component';
 import { HomeComponent } from './pages/home/home.component';
+import { AddQuizWithApiComponent } from './pages/add-quiz-with-api/add-quiz-with-api.component';
+import { UniProgramComponent } from './core/UniProgram/uni-program.component';
+import { QuizeComponent } from './pages/quize/quize.component';
 
 export const routes: Routes = [
   // {
@@ -42,7 +45,7 @@ export const routes: Routes = [
   // },
   {
     path:"",
-    component:HomeComponent
+    component:UniProgramComponent
   },
   {
     path:"Register",

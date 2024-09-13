@@ -94,6 +94,7 @@
     }
     .program{
       width: 90%;
+      height: 100%;
     .FacultyTitle{
       width: 40%;
       display: flex;
@@ -101,9 +102,18 @@
 
     }
     }
+    .top{
+      width: 100%;
+      display: flex;
+      justify-content: start;
+    }
+    .top1{
+      display: flex;
+    }
     .ProgramNames .container {
       width: 100%;
       display: flex;
+      flex-direction: column;
     }
     @media screen and (max-width: 1345px) {
       div.FacultyTitle{
