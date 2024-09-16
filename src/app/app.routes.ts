@@ -46,7 +46,7 @@ export const routes: Routes = [
   // },
   {
     path:"",
-    component:HomeUniCardComponent
+    component:HomeComponent
   },
   {
     path:"Register",
