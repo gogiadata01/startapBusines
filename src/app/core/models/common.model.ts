@@ -21,6 +21,7 @@ export interface Icard{
 // home-uni-card-dto.model.ts
 
 export interface UniCardDto {
+  id?:number;
   url: string;
   title: string;
   mainText?: string;

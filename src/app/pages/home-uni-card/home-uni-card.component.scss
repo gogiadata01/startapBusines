@@ -214,6 +214,8 @@ img {
 
 .projects__container {
   row-gap: 2rem;
+  position: relative;
+  bottom: 375px;
 }
 
 .projects__card {
@@ -435,3 +437,73 @@ img {
       transform: scaleX(1);
     }
   }}
+  .navbar{
+    background-color: #85A98D;
+
+}
+#svg{
+    width: 120px;
+    height: 100%;
+}
+#svg2{
+    width: 35px;
+    height: 100%;
+    color: #F0F3BD;
+}
+
+
+.nav-link{
+    padding: 10px;
+    border-radius: 25px;
+    text-align: center;
+    
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  
+    &:hover {
+        background-color: #77b1e0;
+    }
+
+        transition: transform 0.3s ease;
+  
+    &:hover {
+      transform: scale(1.07);
+    }
+}
+
+
+/* Remove focus outline */
+
+/* Remove any border properties */
+.no-border {
+    border: none;
+    border-width: 0;
+    box-shadow: none; /* Remove box-shadow if any */
+}:focus{
+    outline: none;
+
+}
+
+/* Ensure other focus states are also handled */
+.no-border:focus-visible {
+    outline: none;
+}
+
+/* Apply to all SVGs if needed */
+svg:focus {
+    outline: none;
+}
+
+svg {
+    border: none;
+    border-width: 0;
+    box-shadow: none;
+}
+.header-content{
+    height: 265px;
+    background-color: #85A98D;
+  }
+  .wave-container{
+    background-color: #85A98D;
+  
+  }

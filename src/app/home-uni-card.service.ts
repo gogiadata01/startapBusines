@@ -18,7 +18,7 @@ export class HomeUniCardService {
     );
   }
 
-  getUniCard(id: number): Observable<UniCardDto> {
+  getUniCard(id: any): Observable<UniCardDto> {
     return this.http.get<UniCardDto>(`${this.apiUrl}/${id}`).pipe(
       catchError(this.handleError)
     );

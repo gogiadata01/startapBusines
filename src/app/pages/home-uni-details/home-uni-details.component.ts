@@ -11,6 +11,8 @@ import {FooterForPupilComponent} from '../footer-for-pupil/footer-for-pupil.comp
 import {UniCardComponent} from '../Uni-card/uni-card.component';
 import {CarouselComponent} from '../../carousel/carousel.component';
 import { NavbarForPupilComponent } from '../navbar-for-pupil/navbar-for-pupil.component';
+import {HomeUniCardService} from '../../home-uni-card.service'
+import {UniCardDto} from '../../core/models/common.model'
 @Component({
   selector: 'app-home-uni-details',
   standalone: true,
@@ -26,26 +28,40 @@ export class HomeUniDetailsComponent {
   card: any;
   cards:Icard[] = []
   sections: any = [];
-
-constructor(private cardService: CreateFormService,private route: ActivatedRoute,private router: Router) {
+  UniCard!: UniCardDto;
+  constructor(private cardService: CreateFormService,private route: ActivatedRoute,private router: Router,private HomeUniCardService:HomeUniCardService, 
+  ) {
 }
 ngOnInit(): void {
 
 
-  this.cardService.getHomeUniCardById(this.getid())
-  .subscribe( card =>{
-    this.card = card
-    console.log(this.cardService.getHomeUniCardById)
-  })
-  this.cardService.getHomeUniCardById(this.getid()).subscribe(sections =>{
-      this.sections = sections;
-  })
-  this.route.queryParams.subscribe(params => {
-    const data = params['data'];
-    if (data) {
-      this.sections = JSON.parse(data);
+  // this.cardService.getHomeUniCardById(this.getid())
+  // .subscribe( card =>{
+  //   this.card = card
+  //   console.log(this.cardService.getHomeUniCardById)
+  // })
+  // this.cardService.getHomeUniCardById(this.getid()).subscribe(sections =>{
+  //     this.sections = sections;
+  // })
+  // this.route.queryParams.subscribe(params => {
+  //   const data = params['data'];
+  //   if (data) {
+  //     this.sections = JSON.parse(data);
+  //   }
+  // });
+  this.HomeUniCardService.getUniCard(this.getid())
+  .subscribe({
+    next:(Unicard)=> {
+     this.UniCard = Unicard
+      console.log('Program Cards:',this.UniCard); // Check if data is correctly coming
+    },
+    error: (err) => {
+      console.error('Error fetching program data:', err);
     }
-  });
+  })
+  //   this.HomeUniCardService.getUniCard(this.getid()).subscribe(sections =>{
+  //     this.sections = sections;
+  // })
 }
 
 getid(){

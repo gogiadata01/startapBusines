@@ -158,55 +158,55 @@ body, html {
   
     //ლიდერთა სია
   
-    // .leaderboard {
-    //   width: 900px;
-    //   max-width: 100%;
-    //   margin: 0 auto;
-    //   background-color:#5d737e;
-    //   border-radius: 20px;
-    //   padding: 15px;
-    //   display: flex;
-    //   flex-direction: column;
-    //   align-items: center;
+    .leaderboard {
+      width: 900px;
+      max-width: 100%;
+      margin: 0 auto;
+      background-color:#5d737e;
+      border-radius: 20px;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     
-    //   h2 {
-    //     margin-bottom: 20px;
-    //     font-family: Arial, sans-serif;
-    //     color: #333;
-    //   }
+      h2 {
+        margin-bottom: 20px;
+        font-family: Arial, sans-serif;
+        color: #333;
+      }
   
   
-    //   .bi{
+      .bi{
   
-    //    position: relative;
-    //    right: 60px;
-    //    bottom: 50px;
+       position: relative;
+       right: 60px;
+       bottom: 50px;
   
   
-    //   }
+      }
   
      
-    //   .entries {
-    //     display: flex;
-    //     flex-wrap: wrap;
-    //     justify-content: center;
+      .entries {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
     
-    //     .entry {        
-    //       padding: 50px;
-    //       margin: 5px;
-    //       text-align: center;
-    //       font-family: Arial, sans-serif;
-    //       color:floralwhite;
-    //       width: calc(25% - 10px); // 4 entries per row
-    //     }
-    //   }
+        .entry {        
+          padding: 50px;
+          margin: 5px;
+          text-align: center;
+          font-family: Arial, sans-serif;
+          color:floralwhite;
+          width: calc(25% - 10px); // 4 entries per row
+        }
+      }
     
-    //   .footer {
-    //     margin-top: 20px;
-    //     font-family: Arial, sans-serif;
-    //     color: #252020;
-    //   }
-    // }
+      .footer {
+        margin-top: 20px;
+        font-family: Arial, sans-serif;
+        color: #252020;
+      }
+    }
 
 
 //     .navbar{

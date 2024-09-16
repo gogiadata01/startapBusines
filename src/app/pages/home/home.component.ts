@@ -7,10 +7,12 @@ import {CreateFormService} from "../../core/services/create-form.service";
 import { Router } from '@angular/router';
 import {UniProgramComponent} from '../../core/UniProgram/uni-program.component'
 import { UniCardComponent } from "../Uni-card/uni-card.component";
+import { FooterForPupilComponent } from "../../pages/footer-for-pupil/footer-for-pupil.component";
+
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, UniProgramComponent, UniCardComponent],
+  imports: [CommonModule, UniProgramComponent, UniCardComponent,FooterForPupilComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
@@ -46,6 +48,58 @@ export class HomeComponent {
       }
     })
   }
+containerStyle = {
+    backgroundColor: 'rgba(93,115,126,0.9)',
+    padding: '20px',
+    borderRadius: '8px',
+    width: '100%', // შეიტანეთ თქვენი საჭიროება
+    maxWidth: '1200px', // მაქსიმალური სიგანე
+    height: '350px',
+    margin: '0 auto', // ცენტრში განლაგება
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    
+    };
+    
+    headerStyle = {
+    display: 'flex',
+    justifyContent: 'flex-start',
+    marginBottom: '20px',
+    width: '100%',
+    };
+    
+    buttonStyle = {
+    backgroundColor: 'transparent',
+    color: 'white',
+    padding: '4px 3px',
+    fontSize: '16px',
+    cursor: 'pointer',
+    borderRadius: '10px',
+    transition: 'background-color 0.3s',
+    display: 'flex',
+    marginRight: '10px',
+    
+    };
+    
+    activeButtonStyle = {
+    ...this.buttonStyle,
+    backgroundColor: '#ee964b',
+    };
+    
+    contentStyle = {
+    display: 'flex', // აქ არის შეცვლილი
+    justifyContent: 'space-between',
+    gap: '20px', // სივრცე შორის
+    flexWrap: 'wrap',
+    width: '100%',
+    };
+    
+    cardStyle = {
+    backgroundColor: '#ced4da',
+    height: '80px',
+
+    };
   onCardClicked(cardkey:any,cardtitl:any) :void{
     this.router.navigate(['/Pupil/UniFaculty/',cardkey,cardtitl])
   }

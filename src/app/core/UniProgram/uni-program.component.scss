@@ -59,7 +59,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 30px; /* Increase the gap to match the spacing */
+      gap: 15px; /* Increase the gap to match the spacing */
     }
     .circle-container {
       display: flex;
@@ -75,6 +75,7 @@
       background-color:white; /* Default green color */
       cursor: pointer;
       transition: background-color 0.3s;
+      margin-bottom: 10px;
     }    
     
     .line {
@@ -135,8 +136,39 @@
     font-size: 20px;
   }
 }
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 325px) {
   div.FacultyTitle h2{
     font-size: 18px;
   }
+  .Title{
+    width: 77% !important;
+  }
+}
+@media screen and (max-width: 768px) {
+  h2{
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
+  }
+  .top1{
+    gap: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .Title{
+    width: 65%;
+    display: flex;
+    justify-content: right;
+  }
+}
+@media screen and (max-width: 430px) {
+  .Title{
+    width: 72%;
+  }
+h2{
+  font-size: 18px;
+text-align: center;
+
+}
 }

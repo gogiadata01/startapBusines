@@ -37,6 +37,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { AddQuizWithApiComponent } from './pages/add-quiz-with-api/add-quiz-with-api.component';
 import { UniProgramComponent } from './core/UniProgram/uni-program.component';
 import { QuizeComponent } from './pages/quize/quize.component';
+import { UniCardComponent } from './pages/Uni-card/uni-card.component';
 
 export const routes: Routes = [
   // {
@@ -45,7 +46,7 @@ export const routes: Routes = [
   // },
   {
     path:"",
-    component:UniProgramComponent
+    component:HomeUniCardComponent
   },
   {
     path:"Register",

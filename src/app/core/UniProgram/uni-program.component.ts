@@ -9,6 +9,7 @@ import { FooterForPupilComponent } from "../../pages/footer-for-pupil/footer-for
 import {ProgramCardService} from '../../program-card.service'
 import {ProgramCardDto} from '../models/common.model'
 import { ChangeDetectorRef } from '@angular/core';
+import { HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-uni-program',
@@ -159,21 +160,61 @@ cards: IUniFacultyCard[] = [];
     this.activeCircleIndex = index;
   }
 
+  // getButtonWidth(programName: string): string {
+  //   // Function to generate a random width between 320px and 450px
+  //   function getRandomWidth(min: number, max: number): string {
+  //     const randomWidth = Math.floor(Math.random() * (max - min + 1)) + min;
+  //     return `${randomWidth}px`;
+  //   }
+  
+  //   // Return different widths based on the length of programname
+  //   if (programName.length > 20) {
+  //     return getRandomWidth(320, 450); // Random width between 320px and 450px for long names
+  //   }
+  
+  //   return '240px'; // Default width for shorter names
+  // }
+  updateButtonWidths(): void {
+    // Update button widths after window resize
+    this.programCards.forEach((program) => {
+      program.fields?.forEach((field) => {
+        field.programNames = field.programNames.map((program) => {
+          program.width = this.getButtonWidth(program.programname);
+          return program;
+        });
+      });
+    });
+    this.cdr.detectChanges(); // Ensure change detection runs after resize
+  }
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event): void {
+    // Recalculate widths on window resize
+    this.updateButtonWidths();
+  }
   getButtonWidth(programName: string): string {
-    // Function to generate a random width between 320px and 450px
+    // Function to generate a random width between min and max values
     function getRandomWidth(min: number, max: number): string {
       const randomWidth = Math.floor(Math.random() * (max - min + 1)) + min;
       return `${randomWidth}px`;
     }
-  
-    // Return different widths based on the length of programname
-    if (programName.length > 20) {
-      return getRandomWidth(320, 450); // Random width between 320px and 450px for long names
+
+    // Check if the window width is considered "mobile" (e.g., < 768px)
+    const isMobile = window.innerWidth < 500;
+
+    if (isMobile) {
+      // For mobile, generate a random width between 180px and 240px
+
+      return '280px'; // Default width for shorter names on mobile
     }
-  
-    return '240px'; // Default width for shorter names
+    else {
+      // For non-mobile, use the original logic
+      if (programName.length > 20) {
+        return getRandomWidth(320, 450); // Random width between 320px and 450px for long names
+      }
+      return '240px'; // Default width for shorter names
+    }
+    
   }
-  
 
   getPadding(Card: any): string {
     return Card.title.length < 20 ? '2px' : '10px';
