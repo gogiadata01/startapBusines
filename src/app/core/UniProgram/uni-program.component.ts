@@ -1,6 +1,5 @@
 import { Component, OnInit,  } from '@angular/core';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
-import {CreateFormService} from "../services/create-form.service";
 import {IUniFacultyCard} from "../models/common.model";
 import {Icard} from "../models/common.model";
 import { Router } from '@angular/router';
@@ -118,7 +117,6 @@ cards: IUniFacultyCard[] = [];
   activeCircleIndex: number = 0;
 
   constructor(
-    private cardService: CreateFormService,
     private cdr: ChangeDetectorRef,
     private router: Router,
     private programCardService: ProgramCardService

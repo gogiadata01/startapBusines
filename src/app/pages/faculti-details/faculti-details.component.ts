@@ -2,14 +2,12 @@ import { Component,OnInit,  ViewChild ,ElementRef, } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ActivatedRoute } from '@angular/router';
-import {CreateFormService} from "../../core/services/create-form.service";
 import {ProgramCardDto, UniCardDto} from "../../core/models/common.model";
 import { NgIf,NgFor } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { data } from 'jquery';
 import { UniProgramComponent } from '../../core/UniProgram/uni-program.component';
 import {FooterForPupilComponent} from '../footer-for-pupil/footer-for-pupil.component';
-import {UniCardComponent} from '../Uni-card/uni-card.component';
 import {CarouselComponent} from '../../carousel/carousel.component';
 import { NavbarForPupilComponent } from '../navbar-for-pupil/navbar-for-pupil.component';
 import { toJSDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-calendar';
@@ -34,7 +32,7 @@ export class FacultiDetailsComponent implements OnInit{
   UniCard:UniCardDto[]=[]
   ProgramName:any
 
-  constructor(private programCardService:ProgramCardService,private UniCardService: HomeUniCardService,private cardService: CreateFormService,private route: ActivatedRoute,private router: Router) {
+  constructor(private programCardService:ProgramCardService,private UniCardService: HomeUniCardService,private route: ActivatedRoute,private router: Router) {
   }
 
 ngOnInit(): void {

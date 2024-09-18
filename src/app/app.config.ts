@@ -19,13 +19,6 @@ import { provideHttpClient } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideRouter(routes,),
-    importProvidersFrom([AngularFireModule.initializeApp(firebaseConfig),
-      AngularFireAuthModule,
-      AngularFireDatabaseModule,
-      AngularFirestoreModule,
-      provideFirebaseApp(() =>initializeApp(firebaseConfig) ),
-      provideAuth(() => getAuth() ),
-      provideFirebaseApp(() =>initializeApp(firebaseConfig) ),
-      provideFirestore(() => getFirestore() )
-    ]) ],
+
+    ]
   };

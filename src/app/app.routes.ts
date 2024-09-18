@@ -1,12 +1,8 @@
 import { Routes } from '@angular/router';
 import {createComponent} from "@angular/core";
-import {FormsComponent} from "./pages/add-Faculty-card/forms.component";
-import {AddUniCardComponent,} from "./pages/Add-Uni-Card/add-uni-card.component";
 import { LogInComponent } from './pages/log-in/log-in.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { RecoveryPasswordComponent } from './pages/recovery-password/recovery-password.component';
-import { ChangepasswordEmailComponent } from './pages/changepassword-email/changepassword-email.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { StudentsComponent } from './pages/students/students.component';
 import { PupilEventsPageComponent } from './pages/pupil-events-page/pupil-events-page.component';
@@ -15,16 +11,11 @@ import { PupilUniPageComponent } from './pages/pupil-uni-page/pupil-uni-page.com
 import { UniDetailsComponent } from './pages/uni-details/uni-details.component';
 import { UniEventsComponent } from './pages/uni-events/uni-events.component';
 import { FacultiDetailsComponent } from './pages/faculti-details/faculti-details.component';
-import { AddHomeUniCardComponent } from './pages/add-home-uni-card/add-home-uni-card.component';
 import { HomeUniCardComponent } from './pages/home-uni-card/home-uni-card.component';
 import { HomeUniDetailsComponent } from './pages/home-uni-details/home-uni-details.component';
 import { UniProgramPageComponent } from './pages/uni-program-page/uni-program-page.component';
-import { AddHomeFacultyCardComponent } from './pages/add-home-faculty-card/add-home-faculty-card.component';
-import { HomeFacultyDetailsComponent } from './pages/home-faculty-details/home-faculty-details.component';
 import {  PupilComponent} from './pages/pupil-home/pupil.component';
 import { HomeUniCardsProgramPageComponent } from './pages/home-uni-cards-program-page/home-uni-cards-program-page.component';
-import { UniProgramsComponent } from './pages/uni-programs/uni-programs.component';
-import { HomeFacultyUniDetailsComponent } from './pages/home-faculty-uni-details/home-faculty-uni-details.component';
 import { UniFacultyDetailsComponent } from './pages/uni-faculty-details/uni-faculty-details.component';
 import { FacultyUniDetailsComponent } from './pages/faculty-uni-details/faculty-uni-details.component';
 import { AddWithApiHomeUniCardComponent } from './pages/add-with-api-uni-card/add-with-api-home-uni-card.component';
@@ -37,71 +28,14 @@ import { HomeComponent } from './pages/home/home.component';
 import { AddQuizWithApiComponent } from './pages/add-quiz-with-api/add-quiz-with-api.component';
 import { UniProgramComponent } from './core/UniProgram/uni-program.component';
 import { QuizeComponent } from './pages/quize/quize.component';
-import { UniCardComponent } from './pages/Uni-card/uni-card.component';
 
 export const routes: Routes = [
-  // {
-  //   path : "",
-  //   component:SignUpWithApiComponent
-  // },
   {
-    path:"",
-    component:UniProgramPageComponent
+    path : "",
+    component:HomeComponent
   },
   {
-    path:"Register",
-    component:RegisterWithApiComponent
-  },
-  {
-    path:"Home/:id",
-    component:NavbarComponent,
-  },
-  {
-    path:"Home/:id/AddHomeUniCardWithApi",
-    component:AddWithApiHomeUniCardComponent
-  },
-  {
-    path:"Home/AddProgramCardWithApi",
-    component:AddWithApiProgramCardComponent
-  },
-  {
-    path:"Home/AddEventCardWithApi",
-    component:AddWithApiEventCardComponent
-  },
-  {
-    path:"Home/AddUniFacultyCard",
-    component:FormsComponent
-  },
-  {
-    path:"Home/AddHomeUniFacultyCard",
-    component:AddHomeFacultyCardComponent
-  },
-  {
-    path:"Home/AddEventCard",
-    component:PupilEventsAddPageComponent
-  },
-  {
-    path:"Recovery-password",
-    component:RecoveryPasswordComponent
-  },
-  {
-    path:"Password-recovery",
-    component:ChangepasswordEmailComponent
-  },
-  {
-    path:"Admin",
-    component:AdminComponent
-  },
-  {
-    path:"Students",
-    component:StudentsComponent
-  },
-  {
-    path:"Pupil",
-    component:PupilComponent
-  },
-  {
-    path:"Pupil/Uni",
+    path:"Uni",
     component:PupilUniPageComponent
   },
   {
@@ -137,15 +71,36 @@ export const routes: Routes = [
     component:HomeUniDetailsComponent
   },
   {
-    path:"Pupil/HomeUni/:id/:n",
-     component:UniProgramsComponent
-   },
-  {
-    path:"Pupil/HomeUniFaculty/:id/:n",
-    component:HomeFacultyDetailsComponent
+    path:"Register",
+    component:RegisterWithApiComponent
   },
   {
-    path:"Pupil/HomeUniFaculty/:id/:n/:id2/:n2",
-    component:HomeFacultyUniDetailsComponent
-  }
+    path:"Home/:id",
+    component:NavbarComponent,
+  },
+  {
+    path:"Home/:id/AddHomeUniCardWithApi",
+    component:AddWithApiHomeUniCardComponent
+  },
+  {
+    path:"Home/AddProgramCardWithApi",
+    component:AddWithApiProgramCardComponent
+  },
+  {
+    path:"Home/AddEventCardWithApi",
+    component:AddWithApiEventCardComponent
+  },
+  {
+    path:"Home/AddEventCard",
+    component:PupilEventsAddPageComponent
+  },
+  {
+    path:"Admin",
+    component:AdminComponent
+  },
+  {
+    path:"Students",
+    component:StudentsComponent
+  },
+
 ];

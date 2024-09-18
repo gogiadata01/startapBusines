@@ -1,6 +1,5 @@
 import { Component, OnInit,  } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {CreateFormService} from "../../core/services/create-form.service";
 import {EventCardDto, IEventCard} from "../../core/models/common.model";
 import { data } from 'jquery';
 import {EventCardService} from '../../event-card.service'
@@ -16,7 +15,7 @@ import { RouterLink } from '@angular/router';
 export class EventCardsComponent {
   EventCard:EventCardDto[] = []
   
-  constructor(private router: Router,private cardService: CreateFormService,private EventCardService: EventCardService) {
+  constructor(private router: Router,private EventCardService: EventCardService) {
     
   }
   ngOnInit(): void {

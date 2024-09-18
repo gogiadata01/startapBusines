@@ -32,9 +32,7 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link mx-2" routerLink="/Pupil/Uni"
-                >უნივერსიტეტები</a
-              >
+              <a class="nav-link mx-2" routerLink="/Uni">უნივერსიტეტები</a>
             </li>
             <li class="nav-item">
               <a class="nav-link mx-2" routerLink="/Pupil/UniFaculty"
@@ -93,7 +91,9 @@
 </header>
 <button class="cta-button">აირჩიე თქვენთვის სასურველი პროგრამა</button>
 <!-- ჰედერი და ნავბარი მთავრდება აქ -->
+
 <app-uni-program />
+
 <!-- ლიდერთა სია -->
 <div class="leaderboard">
   <h2>ლიდერთა სია</h2>
@@ -171,8 +171,8 @@
       </svg>
     </div>
   </div>
-  <!-- <div class="footer">იხილეთ ყველა ...</div> -->
 </div>
+
 <div [ngStyle]="containerStyle">
   <div [ngStyle]="headerStyle">
     <button [ngStyle]="activeButtonStyle">სია</button>
@@ -188,5 +188,4 @@
   </div>
 </div>
 
-<app-quize></app-quize>
 <app-footer-for-pupil />

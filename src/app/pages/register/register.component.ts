@@ -1,7 +1,6 @@
 import { NgIf } from '@angular/common';
 import { Component,OnInit , Pipe, ViewChild, inject, AfterViewInit, asNativeElements, ElementRef, Renderer2 } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgModel, ReactiveFormsModule, Validators, } from '@angular/forms';
-import { AuthService } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -23,40 +22,40 @@ import { doc } from 'firebase/firestore';
     templateUrl: './register.component.html',
     styleUrl: './register.component.scss'
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent  {
 
 
-  ngOnInit(): void {
+//   ngOnInit(): void {
     
     
-  }
+//   }
 
 
-  registrationForm: FormGroup;
+//   registrationForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
-    this.registrationForm = this.fb.group({
-      username: ['', [Validators.required, Validators.minLength(3)]],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', Validators.required]
-    }, { validator: this.passwordMatchValidator });
-  }
+//   constructor(private fb: FormBuilder) {
+//     this.registrationForm = this.fb.group({
+//       username: ['', [Validators.required, Validators.minLength(3)]],
+//       email: ['', [Validators.required, Validators.email]],
+//       password: ['', [Validators.required, Validators.minLength(6)]],
+//       confirmPassword: ['', Validators.required]
+//     }, { validator: this.passwordMatchValidator });
+//   }
 
-  passwordMatchValidator(form: FormGroup) {
-    const password = form.get('password');
-    const confirmPassword = form.get('confirmPassword');
-    return password && confirmPassword && password.value === confirmPassword.value
-      ? null : { mismatch: true };
-  }
+//   passwordMatchValidator(form: FormGroup) {
+//     const password = form.get('password');
+//     const confirmPassword = form.get('confirmPassword');
+//     return password && confirmPassword && password.value === confirmPassword.value
+//       ? null : { mismatch: true };
+//   }
 
-  onSubmit() {
-    if (this.registrationForm.valid) {
-      console.log('Form submitted:', this.registrationForm.value);
-      // Handle form submission here
-    }
-  }
-}
+//   onSubmit() {
+//     if (this.registrationForm.valid) {
+//       console.log('Form submitted:', this.registrationForm.value);
+//       // Handle form submission here
+//     }
+//   }
+// }
 
   // ngOnInit(): void {
   //   setTimeout(()=>{
@@ -145,7 +144,7 @@ export class RegisterComponent implements OnInit {
 
 
 
-
+}
 
 
 

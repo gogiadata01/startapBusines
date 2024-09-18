@@ -1,6 +1,5 @@
 import { Component,OnInit,  ViewChild ,ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {CreateFormService} from "../../core/services/create-form.service";
 import {Icard} from "../../core/models/common.model";
 import { NgIf,NgFor } from '@angular/common';
 import { RouterLink } from '@angular/router';
@@ -8,7 +7,6 @@ import { data } from 'jquery';
 import { Router } from '@angular/router';
 import { UniProgramComponent } from '../../core/UniProgram/uni-program.component';
 import {FooterForPupilComponent} from '../footer-for-pupil/footer-for-pupil.component';
-import {UniCardComponent} from '../Uni-card/uni-card.component';
 import {CarouselComponent} from '../../carousel/carousel.component';
 import { NavbarForPupilComponent } from '../navbar-for-pupil/navbar-for-pupil.component';
 import {HomeUniCardService} from '../../home-uni-card.service'
@@ -29,7 +27,7 @@ export class HomeUniDetailsComponent {
   cards:Icard[] = []
   sections: any = [];
   UniCard!: UniCardDto;
-  constructor(private cardService: CreateFormService,private route: ActivatedRoute,private router: Router,private HomeUniCardService:HomeUniCardService, 
+  constructor(private route: ActivatedRoute,private router: Router,private HomeUniCardService:HomeUniCardService, 
   ) {
 }
 ngOnInit(): void {

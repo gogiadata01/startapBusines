@@ -3,7 +3,6 @@ import { NavbarForPupilComponent } from '../navbar-for-pupil/navbar-for-pupil.co
 import {Icard} from "../../core/models/common.model";
 import {UniCardDto} from "../../core/models/common.model";
 
-import {CreateFormService} from "../../core/services/create-form.service";
 import { UniProgramComponent } from '../../core/UniProgram/uni-program.component';
 import {FooterForPupilComponent} from '../footer-for-pupil/footer-for-pupil.component'
 import { Router } from '@angular/router';
@@ -21,7 +20,7 @@ export class HomeUniCardComponent {
   cards:Icard[] = []
   UniCard:UniCardDto[]=[]
 
-  constructor(private cardService: CreateFormService, private router: Router,private HomeUniCardService:HomeUniCardService) {
+  constructor( private router: Router,private HomeUniCardService:HomeUniCardService) {
   }
   ngOnInit() {
     this.GetAllUniCard()
