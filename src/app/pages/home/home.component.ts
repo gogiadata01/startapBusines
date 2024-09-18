@@ -8,11 +8,12 @@ import { Router } from '@angular/router';
 import {UniProgramComponent} from '../../core/UniProgram/uni-program.component'
 import { UniCardComponent } from "../Uni-card/uni-card.component";
 import { FooterForPupilComponent } from "../../pages/footer-for-pupil/footer-for-pupil.component";
+import { QuizeComponent } from '../quize/quize.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, UniProgramComponent, UniCardComponent,FooterForPupilComponent],
+  imports: [CommonModule, UniProgramComponent, UniCardComponent,FooterForPupilComponent, QuizeComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
