@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ActivatedRoute } from '@angular/router';
 import {CreateFormService} from "../../core/services/create-form.service";
-import {Icard} from "../../core/models/common.model";
+import {ProgramCardDto, UniCardDto} from "../../core/models/common.model";
 import { NgIf,NgFor } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { data } from 'jquery';
@@ -16,7 +16,8 @@ import { toJSDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-calendar';
 import { snapshotChanges } from '@angular/fire/compat/database';
 import { Observable, } from 'rxjs';
 import { Router } from '@angular/router';
-
+import {HomeUniCardService} from '../../home-uni-card.service'
+import {ProgramCardService} from '../../program-card.service'
 @Component({
   selector: 'app-faculti-details',
   standalone: true,
@@ -25,25 +26,40 @@ import { Router } from '@angular/router';
   styleUrl: './faculti-details.component.scss'
 })
 export class FacultiDetailsComponent implements OnInit{
-  cards:Icard[] = []
-  card:any = []
-  Card:any = []
-  cards$: Observable<any[]> | undefined;
+  // cards:Icard[] = []
+  // card:any = []
+  // Card:any = []
+  // cards$: Observable<any[]> | undefined;
+  ProgramCard!:ProgramCardDto
+  UniCard:UniCardDto[]=[]
+  ProgramName:any
 
-
-  constructor(private cardService: CreateFormService,private route: ActivatedRoute,private router: Router) {
+  constructor(private programCardService:ProgramCardService,private UniCardService: HomeUniCardService,private cardService: CreateFormService,private route: ActivatedRoute,private router: Router) {
   }
 
 ngOnInit(): void {
    const FacultyId = this.route.snapshot.paramMap.get('id');
-   const ProgramName = this.route.snapshot.paramMap.get('n')
+   this.ProgramName = this.route.snapshot.paramMap.get('n')
+  
   //  console.log(FacultyId,ProgramName)
-   this.cardService.getUniFacultyCardById(FacultyId)
-   .subscribe(Card =>{
-    this.Card = Card
-   })
-  this.cards$ = this.cardService.getAllUniCard().valueChanges();
+  //  this.cardService.getUniFacultyCardById(FacultyId)
+  //  .subscribe(Card =>{
+  //   this.Card = Card
+  //  })
+  // this.cards$ = this.cardService.getAllUniCard().valueChanges();
 
+  this.GetAllUniCard()
+}
+GetAllUniCard(){
+  this.UniCardService.getData().subscribe({
+    next:(Unicard) => {
+      this.UniCard = Unicard;
+      console.log('Uni Cards:', this.UniCard); // Check if data is correctly coming
+    },
+    error: (err) => {
+      console.error('Error fetching program data:', err);
+    }
+  })
 }
 getId(): string | null {
   return this.route.snapshot.paramMap.get('id');

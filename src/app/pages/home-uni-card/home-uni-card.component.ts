@@ -13,7 +13,7 @@ import {HomeUniCardService} from '../../home-uni-card.service'
 @Component({
   selector: 'app-home-uni-card',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, FooterForPupilComponent],
   templateUrl: './home-uni-card.component.html',
   styleUrl: './home-uni-card.component.scss'
 })

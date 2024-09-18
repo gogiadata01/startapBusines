@@ -32,13 +32,14 @@ export interface UniCardDto {
   labs?: string;
   studentsLife?: string;
   paymentMethods?: string;
-  events?: EventDto[];
-  sections?: SectionDto[];
-  sections2?: Section2Dto[];
-  archevitiSavaldebuloSaganebi?: ArchevitiSavaldebuloSaganiDto[];
+  events: EventDto[];
+  sections: SectionDto[];
+  sections2: Section2Dto[];
+  archevitiSavaldebuloSaganebi: ArchevitiSavaldebuloSaganiDto[];
 }
 
 export interface EventDto {
+  id?:number
   url: string;
   title: string;
   text: string;
@@ -51,25 +52,25 @@ export interface SectionDto {
 
 export interface Section2Dto {
   title: string;
-  savaldebuloSagnebi?: SavaldebuloSagnebiDto[];
+  savaldebuloSagnebi: SavaldebuloSagnebiDto[];
 }
 
 export interface ArchevitiSavaldebuloSaganiDto {
   title: string;
-  archevitiSavaldebuloSagnebi?: ArchevitiSavaldebuloSagnebiDto[];
+  archevitiSavaldebuloSagnebi: ArchevitiSavaldebuloSagnebiDto[];
 }
 
 export interface ProgramnameDto {
   programName: string;
-  Jobs: string;
-  SwavlebisEna: string;
-  Kvalifikacia: string;
-  Dafinanseba: string;
-  KreditebisRaodenoba: string;
-  AdgilebisRaodenoba: string;
-  Fasi: string;
-  Kodi: string;
-  ProgramisAgwera: string;
+  jobs: string;
+  swavlebisEna: string;
+  kvalifikacia: string;
+  dafinanseba: string;
+  kreditebisRaodenoba: string;
+  adgilebisRaodenoba: string;
+  fasi: string;
+  kodi: string;
+  programisAgwera: string;
 
 }
 
@@ -78,7 +79,7 @@ export interface SavaldebuloSagnebiDto {
   koeficienti: string;
   minimaluriZgvari: string;
   prioriteti: string;
-  AdgilebisRaodenoba: string;
+  adgilebisRaodenoba: string;
 }
 
 export interface ArchevitiSavaldebuloSagnebiDto {
@@ -86,7 +87,7 @@ export interface ArchevitiSavaldebuloSagnebiDto {
   koeficienti: string;
   minimaluriZgvari: string;
   prioriteti: string;
-  AdgilebisRaodenoba: string;
+  adgilebisRaodenoba: string;
 
 }
 
@@ -100,6 +101,7 @@ export interface FieldDto{
 }
 
 export interface ProgramNamesDto{
+  id?:number
   programname:string;
   checkBoxes:CheckBoxesDto[]
   width:string
@@ -111,11 +113,12 @@ export interface CheckBoxesDto{
 }
 
 export interface EventCardDto{
-  Url:string;
-  Title:string;
-  Text:string;
-  Time:string
-  Types:EventTypeDto[];
+  id?:number
+  url:string;
+  title:string;
+  text:string;
+  time:string
+  types:EventTypeDto[];
 }
 
 export interface EventTypeDto{

@@ -1,70 +1,199 @@
-<app-navbar-for-pupil/>
-<div class="container">
-    <div class="header">
-      <div class="program-logo">
-        <p>ფოტო</p>
-      </div>
-      <div class="container1">
-        <div class="grid">
-          <div class="column">
-            <h2>უნივერსიტეტი</h2>
-            <p>{{ card?.title }}</p>
-          </div>
-          <div *ngIf="matchedProgram" class="column">
-            <h2>პროგრამა</h2>
-  
-            <p>{{ matchedProgram.programName }}</p>
-          </div>
-          <div class="column">
-            @for (section of card?.sections; track $index) {
-            <h2>ფაკულტეტი</h2>
-            <p>{{ section.title }}</p>
-            }
-          </div>
+<!-- <div class="container" *ngIf="UniCard">
+  <div class="header">
+    <div class="program-logo">
+      <p>ფოტო</p>
+    </div>
+    <div class="container1">
+      <div class="grid">
+        <div class="column">
+          <h2>უნივერსიტეტი</h2>
         </div>
-      </div>
-      <div class="search-box">
-        <label class="content">
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod,
-            perspiciatis quos tempora, voluptates, architecto commodi ullam
-            mollitia quasi harum quae laudantium tempore excepturi porro! Minima
-            reprehenderit quam tenetur ipsum voluptates. Lorem ipsum dolor sit
-            amet consectetur adipisicing elit. Unde voluptatibus soluta, est illum
-            distinctio dignissimos dolores reiciendis tenetur explicabo,
-            temporibus enim ducimus cumque vitae. Nam quibusdam a blanditiis
-            facere distinctio.
-          </p>
-        </label>
+        {{ UniCard.title }}
+        <div class="column">
+          @for (section of UniCard.sections; track $index) { @for (program of
+          section.programNames; track $index) { @if (program.programName ==
+          programname) {
+          <h2>{{ section.title }}</h2>
+          } } }
+        </div>
       </div>
     </div>
-    <div class="content">
-      <div class="main-button">საგნები</div>
-      <div class="sub-sections">
-        <div class="sub-section left">
-          <h3>სავალდებულო საგნები</h3>
-          <div *ngFor="let item of mathcedSavaldebuloSagani">
-            <div class="subject">
-              <p>{{ item.SagnisSaxeli }}</p>
-              <p class="coefficient">{{ item.Koeficienti }}</p>
-              <p class="minimum">{{ item.MinimaluriZgvari }}</p>
-              <p class="priority">{{ item.Prioriteti }}</p>
-            </div>
+    <div class="search-box">
+      <label class="content">
+        <p>Lorem ipsum...</p>
+      </label>
+    </div>
+  </div>
+  <div class="content">
+    <div class="main-button">საგნები</div>
+    <div class="sub-sections">
+      <div class="sub-section left">
+        <h3>სავალდებულო საგნები</h3>
+        <div *ngFor="let item of UniCard.archevitiSavaldebuloSaganebi">
+          @for (archeviti of item.archevitiSavaldebuloSagnebi; track $index) {
+          @if (item.title == programname) {
+
+          <p>{{ archeviti.adgilebisRaodenoba }}</p>
+          <p class="coefficient">{{ archeviti.koeficienti }}</p>
+          <p class="minimum">{{ archeviti.minimaluriZgvari }}</p>
+          <p class="priority">{{ archeviti.prioriteti }}</p>
+          } }
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div> -->
+
+<main>
+  <div class="top">
+    <div class="left">
+      <div class="img">
+        <img
+          src="https://i0.wp.com/pireport.org/wp-content/uploads/2024/06/joshua-hoehne-iggWDxHTAUQ-unsplash.png?resize=1200%2C600&ssl=1"
+          alt=""
+        />
+      </div>
+    </div>
+    <div class="right">
+      <div class="title">
+        <h3>საქართველოს ტექნიკური უნივერსიტეტი</h3>
+      </div>
+      <div class="price">
+        <div>
+          <h4>2500₾</h4>
+        </div>
+      </div>
+      <div class="code">
+        <div>
+          <p>123456789</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bottom">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="card">
+            <h1>პროგრამის აღწერა</h1>
           </div>
         </div>
-  
-        <div class="sub-section right">
-          <h3>არჩევითი სავალდებულო საგნები</h3>
-          <div *ngFor="let item of mathcedAraSavaldebuloSagani">
-            <div class="subject">
-              <p>{{ item.SagnisSaxeli }}</p>
-              <p class="coefficient">{{ item.Koeficienti }}</p>
-              <p class="minimum">{{ item.MinimaluriZgvari }}</p>
-              <p class="priority">{{ item.Prioriteti }}</p>
-            </div>
+        <div class="col-lg-4">
+          <div class="card">
+            <h1>ეროვნული გამოცდებისთვის</h1>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="card">
+            <h1>მიზნები</h1>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="card">
+            <h1>დასაქმება</h1>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <app-footer-for-pupil/>
+  <div class="static">
+    <div class="title">
+      <h3>კომპიუტერული მეცნიერება</h3>
+    </div>
+    <div class="Bottom">
+      <div>
+        <div class="stadinglanguage">
+          <div>
+            <h2>სწავლების ენა</h2>
+          </div>
+          <div class="divbottom">
+            <h4>ქართული ენა</h4>
+          </div>
+        </div>
+        <div class="kvalifikacia">
+          <div>
+            <h2>კვალიფიკაცია</h2>
+          </div>
+          <div class="divbottom">
+            <h4>კომპიუტერული მეცნიერების ბაკალავრი</h4>
+          </div>
+        </div>
+        <div class="dafinanseba">
+          <div>
+            <h2>დაფინანსება</h2>
+          </div>
+          <div class="divbottom">
+            <h4>ფინანსდება</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="lowerPart">
+    <div class="box">
+      <div class="kreditebi">
+        <div>
+          <h4>კრედიტების რაოდენობა</h4>
+        </div>
+        <div class="kreditebitext">
+          <p>240</p>
+        </div>
+      </div>
+      <div class="adgilebisraodenoba">
+        <div>
+          <h4>ადგილების რაოდენობა</h4>
+        </div>
+        <div class="adgilebisraodenobatext">
+          <p>15</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="savaldebuloSagnebi">
+    <div class="text">
+      <h4>სავალდებულო საგნები</h4>
+    </div>
+  </div>
+  <div class="maxasiateblevbi">
+    <div>
+      <div class="koeficienti">
+        <h3>კოეფიციენტი</h3>
+      </div>
+      <div class="minimanulizgvari">
+        <h3>მინ.ზღვარი</h3>
+      </div>
+      <div class="prioriteti">
+        <h3>პრიორიტეტი</h3>
+      </div>
+      <div class="adgilebisraodeonab">
+        <h3>ადგ. რაოდენობა</h3>
+      </div>
+    </div>
+  </div>
+  <div class="language">
+    <div class="left">
+      <div class="studlanguage">
+        <div>
+          <h4>ქართული ენა</h4>
+        </div>
+      </div>
+    </div>
+    <div class="right">
+      <div>
+        <div class="koeficientitext">
+          <p>2</p>
+        </div>
+        <div class="minimanulizgvaritext">
+          <p>25%</p>
+        </div>
+        <div class="prioritetitext">
+          <p>3</p>
+        </div>
+        <div class="adgilebisraodeonabtext">
+          <p>-</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

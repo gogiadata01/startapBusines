@@ -17,7 +17,7 @@ export class EventCardService {
     )
   }
 
-  getEventCardById(id:number):Observable<EventCardDto>{
+  getEventCardById(id:any):Observable<EventCardDto>{
     return this.http.get<EventCardDto>(`${this.apiUrl}/${id}`).pipe(
       catchError(this.handleError)
     )

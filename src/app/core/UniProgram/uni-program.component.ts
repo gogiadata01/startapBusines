@@ -150,7 +150,7 @@ cards: IUniFacultyCard[] = [];
   
   
 
-  onCardClicked(cardkey: string, cardtitle: string): void {
+  onCardClicked(cardkey: any, cardtitle: any): void {
     this.router.navigate(['/Pupil/UniFaculty/', cardkey, cardtitle]);
   }
 
