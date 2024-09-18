@@ -3,11 +3,12 @@ import { QuizService } from '../../quiz.service';
 import { QuizDto } from '../../core/models/common.model';
 import { Subscription, interval } from 'rxjs';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
+import { RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-quize',
   standalone: true,
-  imports: [CommonModule, NgIf, NgFor],
+  imports: [CommonModule, NgIf, NgFor,RouterLink],
   templateUrl: './quize.component.html',
   styleUrls: ['./quize.component.scss']
 })

@@ -45,7 +45,7 @@
               <a class="nav-link mx-2" routerLink="/Pupil/Events">სიახლეები</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link mx-2" routerLink="/Pupil/Events">ქვიზები</a>
+              <a class="nav-link mx-2" routerLink="/Pupil/Quize">ქვიზები</a>
             </li>
           </ul>
           <ul class="navbar-nav ms-auto">
@@ -114,14 +114,14 @@
       <h4>სიახლე</h4>
     </div>
     <div class="All">
-        <h4>ყველა </h4>
-      </div>
+      <h4>ყველა</h4>
+    </div>
   </div>
 </div>
 <main>
   <div class="card-container">
     @for (Card of EventCard; track $index){
-    <div class="card" (click)="onCardClicked(Card.id)" >
+    <div class="card" (click)="onCardClicked(Card.id)">
       <img src="{{ Card.url }}" />
       <div class="card-content">
         <p>{{ Card.title }}</p>
@@ -130,7 +130,7 @@
         </p>
       </div>
 
-      <div class="Date">{{Card.time}}</div>
+      <div class="Date">{{ Card.time }}</div>
       <div class="Buttons">
         <div class="Btn1">
           <button>

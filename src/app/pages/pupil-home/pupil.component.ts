@@ -6,8 +6,6 @@ import {FooterForPupilComponent} from '../footer-for-pupil/footer-for-pupil.comp
 import {CarouselComponent} from '../../carousel/carousel.component';
 import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
-import { HomeUniCardsProgramPageComponent } from '../home-uni-cards-program-page/home-uni-cards-program-page.component';
-import {UniProgramsComponent} from "../uni-programs/uni-programs.component"
 import {StupidUserComponent} from "../stupid-user/stupid-user.component"
 import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, FormsModule, Validators} from "@angular/forms";
 import {NgIf,CommonModule} from "@angular/common";
@@ -22,7 +20,7 @@ import {TestComponentsComponent} from '../test-components/test-components.compon
 @Component({
   selector: 'app-pupil',
   standalone: true,
-  imports: [TestComponentsComponent,NavbarForPupilComponent,HomeUniCardComponent, FooterForPupilComponent, CarouselComponent,RouterLink,HomeUniCardsProgramPageComponent,StupidUserComponent
+  imports: [TestComponentsComponent,NavbarForPupilComponent,HomeUniCardComponent, FooterForPupilComponent, CarouselComponent,RouterLink,StupidUserComponent
     ,ReactiveFormsModule,
     RouterLink,
     NavbarComponent,

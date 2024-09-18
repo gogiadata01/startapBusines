@@ -24,40 +24,7 @@ export class HomeUniCardComponent {
   }
   ngOnInit() {
     this.GetAllUniCard()
-    // this.getAllHomeCard()
 }
-// getAllHomeCard(){
-//     this.cardService
-//       .getHomeAllUniCard()
-//       .snapshotChanges()
-//       .subscribe({
-//         next:(data) =>{
-//           this.cards = [];
-//           data.forEach((item) => {
-//             let Uni = item.payload.toJSON() as Icard
-//             this.cards.push({
-//               key : item.key || '',
-//               title : Uni.title ,
-//               mainText: Uni.mainText,
-//               url:Uni.url,
-//               history:Uni.history,
-//               forpupil:Uni.forpupil,
-//               sections:Uni.sections,
-//               sections2:Uni.sections2,
-//               archevitisavaldebulosagani:Uni.archevitisavaldebulosagani,
-//               ScholarshipAndFunding:Uni.ScholarshipAndFunding,
-//               ExchangePrograms:Uni.ExchangePrograms,
-//               Labs:Uni.Labs,
-//               Jobs: Uni.Jobs,
-//               StudentsLife:Uni.StudentsLife,
-//               PaymentMethods:Uni.PaymentMethods,
-//               Events:Uni.Events
-//               }
-//             )
-//           })
-//         }
-//       })
-// }
 GetAllUniCard(){
   this.HomeUniCardService.getData().subscribe({
     next:(Unicard) => {

@@ -15,10 +15,11 @@ import { snapshotChanges } from '@angular/fire/compat/database';
 import {HomeUniCardService} from '../../home-uni-card.service'
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
+
 @Component({
   selector: 'app-faculty-uni-details',
   standalone: true,
-  imports: [NavbarForPupilComponent,FooterForPupilComponent,NgIf,NgFor,CommonModule],
+  imports: [NavbarForPupilComponent,FooterForPupilComponent,NgIf,NgFor,CommonModule,RouterLink],
   templateUrl: './faculty-uni-details.component.html',
   styleUrl: './faculty-uni-details.component.scss'
 })

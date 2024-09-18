@@ -15,7 +15,6 @@ import { HomeUniCardComponent } from './pages/home-uni-card/home-uni-card.compon
 import { HomeUniDetailsComponent } from './pages/home-uni-details/home-uni-details.component';
 import { UniProgramPageComponent } from './pages/uni-program-page/uni-program-page.component';
 import {  PupilComponent} from './pages/pupil-home/pupil.component';
-import { HomeUniCardsProgramPageComponent } from './pages/home-uni-cards-program-page/home-uni-cards-program-page.component';
 import { UniFacultyDetailsComponent } from './pages/uni-faculty-details/uni-faculty-details.component';
 import { FacultyUniDetailsComponent } from './pages/faculty-uni-details/faculty-uni-details.component';
 import { AddWithApiHomeUniCardComponent } from './pages/add-with-api-uni-card/add-with-api-home-uni-card.component';
@@ -35,7 +34,7 @@ export const routes: Routes = [
     component:HomeComponent
   },
   {
-    path:"Uni",
+    path:"Pupil/Uni",
     component:PupilUniPageComponent
   },
   {
@@ -69,6 +68,10 @@ export const routes: Routes = [
   {
    path:"Pupil/HomeUni/:id",
     component:HomeUniDetailsComponent
+  },
+  {
+    path:"Pupil/Quize",
+    component:QuizeComponent
   },
   {
     path:"Register",

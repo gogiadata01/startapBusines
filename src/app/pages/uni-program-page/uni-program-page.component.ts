@@ -10,7 +10,7 @@ import {FooterForPupilComponent} from '../footer-for-pupil/footer-for-pupil.comp
 @Component({
   selector: 'app-uni-program-page',
   standalone: true,
-  imports: [NavbarForPupilComponent,RouterLink,FooterForPupilComponent,],
+  imports: [NavbarForPupilComponent, RouterLink, FooterForPupilComponent, UniProgramComponent],
   templateUrl: './uni-program-page.component.html',
   styleUrl: './uni-program-page.component.scss'
 })

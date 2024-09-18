@@ -8,7 +8,7 @@ import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-event-cards',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './event-cards.component.html',
   styleUrl: './event-cards.component.scss'
 })

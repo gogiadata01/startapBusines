@@ -7,11 +7,12 @@ import { Router } from '@angular/router';
 import {UniProgramComponent} from '../../core/UniProgram/uni-program.component'
 import { FooterForPupilComponent } from "../../pages/footer-for-pupil/footer-for-pupil.component";
 import { QuizeComponent } from '../quize/quize.component';
+import { RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, FooterForPupilComponent, QuizeComponent, UniProgramComponent],
+  imports: [CommonModule, FooterForPupilComponent, QuizeComponent, UniProgramComponent,RouterLink],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
