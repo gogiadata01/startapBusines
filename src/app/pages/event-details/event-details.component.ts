@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import {FooterForPupilComponent} from '../footer-for-pupil/footer-for-pupil.component'
 import {NavbarForPupilComponent}from '../navbar-for-pupil/navbar-for-pupil.component'
-import {Icard} from "../../core/models/common.model";
-import {CreateFormService} from "../../core/services/create-form.service";
-import { UniProgramComponent } from '../../core/UniProgram/uni-program.component';
+import {EventCardDto} from "../../core/models/common.model";
 import { Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
+import {EventCardService} from '../../event-card.service'
+import { ActivatedRoute } from '@angular/router';
+
 @Component({
   selector: 'app-event-details',
   standalone: true,
@@ -14,45 +15,24 @@ import { RouterLink } from '@angular/router';
   styleUrl: './event-details.component.scss'
 })
 export class EventDetailsComponent {
-  cards:Icard[] = []
-  constructor(private cardService: CreateFormService, private router: Router) {
+  EventCard!:EventCardDto
+  constructor(private route: ActivatedRoute,private EventCardService: EventCardService, private router: Router) {
   }
   ngOnInit() {
-    this.getAllHomeCard()
+    this.EventCardService.getEventCardById(this.getid())
+    .subscribe({
+      next:(Eventcard) =>{
+        this.EventCard = Eventcard
+        console.log('Event Cards:',this.EventCard); // Check if data is correctly coming
+
+      },
+      error: (err) => {
+        console.error('Error fetching program data:', err);
+      }
+    })
 }
-getAllHomeCard(){
-    this.cardService
-      .getHomeAllUniCard()
-      .snapshotChanges()
-      .subscribe({
-        next:(data) =>{
-          this.cards = [];
-          data.forEach((item) => {
-            let Uni = item.payload.toJSON() as Icard
-            this.cards.push({
-              key : item.key || '',
-              title : Uni.title ,
-              mainText: Uni.mainText,
-              url:Uni.url,
-              history:Uni.history,
-              forpupil:Uni.forpupil,
-              sections:Uni.sections,
-              sections2:Uni.sections2,
-              archevitisavaldebulosagani:Uni.archevitisavaldebulosagani,
-              ScholarshipAndFunding:Uni.ScholarshipAndFunding,
-              ExchangePrograms:Uni.ExchangePrograms,
-              Labs:Uni.Labs,
-              Jobs: Uni.Jobs,
-              StudentsLife:Uni.StudentsLife,
-              PaymentMethods:Uni.PaymentMethods,
-              Events:Uni.Events
-              }
-            )
-          })
-        }
-      })
-}
-onCardClicked(cardkey:any) :void{
-  this.router.navigate(['/Pupil/HomeUni/',cardkey])
+getid(){
+  const cardId = this.route.snapshot.paramMap.get('id');
+return cardId
 }
 }

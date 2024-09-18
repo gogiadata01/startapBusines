@@ -57,6 +57,9 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  border: none;
+box-shadow: none;
+
 }
 
 html {
@@ -213,9 +216,13 @@ img {
 
 
 .projects__container {
-  row-gap: 2rem;
-  position: relative;
-  bottom: 375px;
+  gap: 20px; /* Add some spacing between the cards */
+  position: absolute;
+  top: 160px; /* Adjust as needed to align with your layout */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  padding: 20px;
 }
 
 .projects__card {
@@ -506,4 +513,13 @@ svg {
   .wave-container{
     background-color: #85A98D;
   
+  }
+  .navbar, .navbar-nav {
+    border: none; /* Remove border */
+  }
+  
+  .nav-link {
+    border-bottom: none; /* Remove underline or bottom border from links */
+    text-decoration: none; /* Remove underline from links */
+
   }

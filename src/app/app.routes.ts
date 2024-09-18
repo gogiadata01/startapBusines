@@ -46,7 +46,7 @@ export const routes: Routes = [
   // },
   {
     path:"",
-    component:HomeComponent
+    component:UniProgramPageComponent
   },
   {
     path:"Register",
@@ -127,6 +127,10 @@ export const routes: Routes = [
   {
     path: "Pupil/Events",
     component:PupilEventsPageComponent
+  },
+  {
+    path: "Pupil/Events/:id",
+    component:EventDetailsComponent
   },
   {
    path:"Pupil/HomeUni/:id",

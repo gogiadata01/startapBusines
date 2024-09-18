@@ -2,7 +2,7 @@ import { Component,OnInit,  ViewChild ,ElementRef, } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import {CreateFormService} from "../../core/services/create-form.service";
-import {Icard} from "../../core/models/common.model";
+import {ProgramCardDto,ProgramnameDto,SavaldebuloSagnebiDto,ArchevitiSavaldebuloSagnebiDto, UniCardDto} from "../../core/models/common.model";
 import { NgIf,NgFor } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
@@ -14,6 +14,9 @@ import {CarouselComponent} from '../../carousel/carousel.component';
 import { NavbarForPupilComponent } from '../navbar-for-pupil/navbar-for-pupil.component';
 import { toJSDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-calendar';
 import { snapshotChanges } from '@angular/fire/compat/database';
+import {HomeUniCardService} from '../../home-uni-card.service'
+import { catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 @Component({
   selector: 'app-faculty-uni-details',
   standalone: true,
@@ -22,80 +25,41 @@ import { snapshotChanges } from '@angular/fire/compat/database';
   styleUrl: './faculty-uni-details.component.scss'
 })
 export class FacultyUniDetailsComponent {
-  card: Icard | null = null;
-  Card: any = [];
-  matchedProgram: any = null;
-  mathcedSavaldebuloSagani:any = []
-  mathcedAraSavaldebuloSagani:any = []
-  constructor(private cardService: CreateFormService, private route: ActivatedRoute, private router: Router) {}
+  UniCard!: UniCardDto;  // Ensure UniCard is of type UniCardDto
+  programname:any
+  constructor(
+    private uniCardService: HomeUniCardService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
-ngOnInit() {
-const cardId = this.getId();
-const programName = this.getProgramName();
+  ngOnInit(): void {
+    const programName = this.getProgramName();
+    this.programname = this.getId();
 
-// console.log('Card ID:', cardId);
-// console.log('Program Name:', programName);
+    console.log('Fetching data for title:', this.programname, 'and programName:', programName);
 
-this.cardService.getUniCardByTitleAndProgramName(cardId, programName).subscribe(
-  card => {
-    this.card = card;
-    // console.log('Fetched Card:', this.card);
-
-    if (this.card?.sections) {
-      for (const section of this.card.sections) {
-        for (const program of section.programNames) {
-          if (program.programName === programName) {
-            this.matchedProgram = program;
-            break;
-          }
+    this.uniCardService.getUniCardByTitleAndProgramName(programName , this.programname).subscribe({
+      next: (data: UniCardDto[]) => {
+        if (data.length > 0) {
+          this.UniCard = data[0];  // Extract the single object from the array
+          console.log('Fetched uniCard:', this.UniCard);
+        } else {
+          console.error('No data found');
         }
+      },
+      error: (err) => {
+        console.error('Error fetching program data:', err);
       }
-    }
-    // console.log('Matched Program:', this.matchedProgram);
-
-    if (this.card?.sections2) {
-      for (const section of this.card.sections2) {
-        if (section.title === programName) {
-          // console.log('Found SavaldebunoSagnebi:', section.SavaldebuloSagnebi);
-          this.mathcedSavaldebuloSagani = section.SavaldebuloSagnebi; // Assign the array directly
-          // console.log('Matched Savaldebulo Sagani:', this.mathcedSavaldebuloSagani);
-          break;
-        }
-      }
-    }
-
-    if (this.card?.archevitisavaldebulosagani) {
-      for (const archevitiSection of this.card.archevitisavaldebulosagani) {
-        if (archevitiSection.title === programName) {
-          // console.log('Found Archeviti Savaldebuno Sagnebi:', archevitiSection.ArchevitiSavaldebuloSagnebi);
-          this.mathcedAraSavaldebuloSagani = archevitiSection.ArchevitiSavaldebuloSagnebi; // Assign the array directly
-          // console.log('Matched Ara Savaldebulo Sagani:', this.mathcedAraSavaldebuloSagani);
-          break;
-        }
-      }
-    }
-  },
-  error => {
-    console.error('Error:', error);
+    });
   }
-);
 
-this.cardService.getUniFacultyCardById(programName).subscribe(
-  card => {
-    this.Card = card;
-    // console.log('Fetched Card Faculty:', this.Card);
-  },
-  error => {
-    console.error('Error:', error);
+  getId(): string | null {
+    return this.route.snapshot.paramMap.get('id2');
   }
-);
-}
 
-getId(): string | null {
-return this.route.snapshot.paramMap.get('id2');
-}
+  getProgramName(): string | null {
+    return this.route.snapshot.paramMap.get('n2');
+  }
 
-getProgramName(): string | null {
-return this.route.snapshot.paramMap.get('n2');
-}
 }

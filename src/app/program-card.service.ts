@@ -19,7 +19,7 @@ export class ProgramCardService {
     )
   }
 
-  getProgramCardById(id:number):Observable<ProgramCardDto>{
+  getProgramCardById(id:any):Observable<ProgramCardDto>{
     return this.http.get<ProgramCardDto>(`${this.apiUrl}/${id}`).pipe(
       catchError(this.handleError)
     );
@@ -31,7 +31,9 @@ export class ProgramCardService {
       catchError(this.handleError)
     )
   }
-
+  getProgramCardByProgramName(programname: any): Observable<ProgramCardDto> {
+    return this.http.get<ProgramCardDto>(`${this.apiUrl}/byProgramName/${programname}`);
+  }
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred.

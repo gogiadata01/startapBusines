@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse,HttpParams  } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { UniCardDto } from './core/models/common.model';
@@ -30,6 +30,12 @@ export class HomeUniCardService {
       catchError(this.handleError)
     );
   }
+  getUniCardByTitleAndProgramName(title: any, programName: any): Observable<UniCardDto[]> {
+    let params = new HttpParams().set('title', title).set('programName', programName);
+  
+    return this.http.get<UniCardDto[]>(`${this.apiUrl}/search`, { params });
+  }
+  
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
