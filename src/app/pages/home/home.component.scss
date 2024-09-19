@@ -194,129 +194,162 @@ body, html {
     }
 
 
-    .card-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-  }
-  
-  .card {
-      background-color:#CED4DA;
-      border-radius: 35px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-      width: 275px;
-      height: 248px;
-      margin: 1rem;
-      transition: transform 0.2s;
-      border: 1px dashed;
-  }
-  
-  .card:hover {
-      transform: scale(1.05);
-  }
-  
-  .card img {
-      width: 100%;
-      height: 130px;
-      object-fit: cover;
-  }
-  
-  .card-content {
-      padding-top: 9px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-  }
-  
-  .card-content h2 {
-      margin-top: 0;
-      font-size: 1.5rem;
-  }
-  
-  .card-content p {
-      font-size: 12px;
-      color: black;
-      font-weight: 600;
-      text-align: center;
-  }
-  
-  .Date{
-      display: flex;
-      width: 245px;
-      justify-content: center;
-      align-items: center;
-  }
-  .Buttons{
-      display: flex;
-      justify-content: center;
-      margin-top: 10px;
-  }
-  .Btn1{
-      margin-right: 17px;
-      button{
-          display: flex;
-          color: white;
-          border-radius: 10px;
-          border: 1px dashed;
-          background-color: #5D737E
-      }
-  }
-  .Btn2{
-      button{
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          width: 40px;
-          height: 26px;
-          color: white;
-          border-radius: 10px;
-          border: 1px dashed;
-          background-color: #5D737E;
-      }
-  }
-  footer {
-      text-align: center;
-      padding: 1rem 0;
-      background-color: #ff6347;
-      color: white;
-      margin-top: 2rem; /* Add this line for more space between main content and footer */
-  }
-  
-  @media screen and (max-width: 1024px) {
-      .filter .Types{
-          width: 50%;
-      }
-  }
-  
-  @media screen and (max-width: 775px) {
-      .filter .Types{
-          width: 65%;
-      }
-  }
-  @media screen and (max-width: 600px) {
-      .filter .Types{
-          width: 85%;
-      }
-  }
-  @media screen and (max-width: 426px) {
-      .filter .Types{
-          width: 95%;
-      }
-      h4{
-          font-size: 13px;
-      }
-  }
-  @media screen and (max-width: 321px) {
-      .filter .Types{
-          width: 100%;
-      }
-      h4{
-          font-size:11px;
-      }
-  }
+.title{
+    display: flex;
+    justify-content: center;
+    h2{
+        color: white;
+        font-size: 20px;
+        font-weight: 600;  
+        border-bottom: 2px solid white;
+        padding-bottom: 5px;
+    }
+}
+.filter{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    .Types{
+        width: 35%;
+        display: flex;
+        justify-content: space-around;
+    }
+}
+h4{
+    color: white;
+    font-size: 16px;
+}
 
+main {
+    flex: 1;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.card {
+    background-color:#CED4DA;
+    border-radius: 35px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 275px;
+    height: 248px;
+    margin: 1rem;
+    transition: transform 0.2s;
+    border: 1px dashed;
+}
+
+
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card img {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding-top: 9px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.card-content h2 {
+    margin-top: 0;
+    font-size: 1.5rem;
+}
+
+.card-content p {
+    font-size: 12px;
+    color: black;
+    font-weight: 600;
+    text-align: center;
+}
+
+.Date{
+    display: flex;
+    width: 245px;
+    justify-content: center;
+    align-items: center;
+}
+.Buttons{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+.Btn1{
+    margin-right: 17px;
+    button{
+        display: flex;
+        color: white;
+        border-radius: 10px;
+        border: 1px dashed;
+        background-color: #5D737E
+    }
+}
+.Btn2{
+    button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 26px;
+        color: white;
+        border-radius: 10px;
+        border: 1px dashed;
+        background-color: #5D737E;
+    }
+}
+footer {
+    text-align: center;
+    padding: 1rem 0;
+    background-color: #ff6347;
+    color: white;
+    margin-top: 2rem; /* Add this line for more space between main content and footer */
+}
+
+@media screen and (max-width: 1024px) {
+    .filter .Types{
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 775px) {
+    .filter .Types{
+        width: 65%;
+    }
+}
+@media screen and (max-width: 600px) {
+    .filter .Types{
+        width: 85%;
+    }
+}
+@media screen and (max-width: 426px) {
+    .filter .Types{
+        width: 95%;
+    }
+    h4{
+        font-size: 13px;
+    }
+}
+@media screen and (max-width: 321px) {
+    .filter .Types{
+        width: 100%;
+    }
+    h4{
+        font-size:11px;
+    }
+}
 
 // }
 #svg{

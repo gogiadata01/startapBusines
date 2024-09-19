@@ -48,18 +48,6 @@ main {
 }
 
 
-.second-navbar {
-    transition: top 0.3s ease-in-out;
-    position: fixed;
-    opacity: 1;
-    background-color: #ced4da;
-    top: 0;
-    left:0;
-    right:0;
-    width: 100%;
-    transform: translateY(-100%);
-    z-index: 1030;
-  }
 
 .card:hover {
     transform: scale(1.05);

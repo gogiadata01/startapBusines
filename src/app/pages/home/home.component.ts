@@ -165,7 +165,7 @@ export class HomeComponent implements OnInit, OnDestroy   {
   }
   @ViewChildren('circle') circlesRef!: QueryList<ElementRef>;
 
-  @HostListener('window:scroll', [])
+  // @HostListener('window:scroll', [])
   onWindowScroll() {
     const scrolled = window.scrollY > 200;
 
@@ -191,6 +191,7 @@ export class HomeComponent implements OnInit, OnDestroy   {
     this.destroy$.complete();
   }
 
+
   // When a circle is clicked
   updateButtonWidths(): void {
     // Update button widths after window resize
@@ -204,7 +205,7 @@ export class HomeComponent implements OnInit, OnDestroy   {
     });
     this.cdr.detectChanges(); // Ensure change detection runs after resize
   }
-  @HostListener('window:resize', ['$event'])
+  // @HostListener('window:resize', ['$event'])
   onResize(event: Event): void {
     // Recalculate widths on window resize
     this.updateButtonWidths();
