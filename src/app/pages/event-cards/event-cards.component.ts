@@ -59,3 +59,7 @@ onCardClicked(cardkey:any) :void{
 }
 
 }
+
+
+// secodnavabr
+
