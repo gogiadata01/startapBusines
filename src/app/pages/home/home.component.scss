@@ -4,6 +4,24 @@ body, html {
     width: 100%;
   }
   
+  .second-navbar {
+    transition: top 0.3s ease-in-out;
+    position: fixed;
+    opacity: 1;
+    background-color: #ced4da;
+    top: 0;
+    left:0;
+    right:0;
+    width: 100%;
+    transform: translateY(-100%);
+    z-index: 1030; 
+  }
+  
+  .content {
+    margin-top: 100px;
+    height: 2000px; 
+  }
+
   //header and navbar
   .site-header {
     width: 100%;
@@ -37,13 +55,17 @@ body, html {
     box-sizing: border-box; 
   }
   
-  h1 {
-    color: white;
-    text-align: center;
-    font-size: 2.5em;
-    max-width: 800px;
-    margin: 0 auto;
-  }
+ h1 {
+  color: white;
+  text-align: center;
+  font-size: 1.9em; 
+  max-width: 1000px;
+  margin: 150px auto; 
+}
+
+
+
+
   nav ul li a {
     color: white;
     text-decoration: none;
@@ -52,15 +74,6 @@ body, html {
       color: #3e8e41;
      
     }
-  }
-  
-  h1 {
-    color: rgb(238, 233, 233);
-    text-align: center;
-    position: relative;
-    bottom: 200px;
-    font-size: 1.9em;
-    max-width: 1000px;
   }
   .wave-container {
     position: absolute;
@@ -303,6 +316,9 @@ body, html {
           font-size:11px;
       }
   }
+
+
+// }
 #svg{
   width: 120px;
   height: 100%;
@@ -320,11 +336,11 @@ body, html {
   text-align: center;
   
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.5s ease;
 
-  &:hover {
-      background-color: #77b1e0;
-  }
+  // &:hover {
+  //     background-color: #c1ccd5;
+  // }
 
       transition: transform 0.3s ease;
 
@@ -332,9 +348,6 @@ body, html {
     transform: scale(1.07);
   }
 }
-
-
-/* Remove focus outline */
 
 /* Remove any border properties */
 .no-border {
@@ -482,4 +495,64 @@ font-size: 18px;
 text-align: center;
 
 }
+}
+
+   
+.button-container {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  padding-left: 2rem; 
+}
+
+.georgian-button {
+  background-color: #8fbc8f;
+  color: black;
+  padding: 0.625rem 1.25rem; 
+  border: none;
+  border-radius: 1.25rem; 
+  font-size: 1rem; 
+  cursor: pointer;
+  font-family: 'Noto Sans Georgian', sans-serif;
+  transition: background-color 0.3s;
+}
+
+.georgian-button:hover {
+  background-color: #7fbf7f; 
+}
+
+.dotted-arrow {
+  position: absolute;
+  top: 4.5rem; 
+  right: -1.5rem; 
+  transform: translateY(-100%);
+  border-radius: 0.9375rem;
+  max-width: 100%;
+}
+
+@media (max-width: 500px) {
+  .button-container {
+    display: flex;
+    // padding-left: 0.5rem; 
+    justify-content: center;
+    // padding: 10px; 
+    max-width: calc(100% - 1rem); 
+    overflow: hidden; 
+  }
+
+  .georgian-button {
+    padding: 0.5rem 0.75rem; 
+    
+  }
+  .georgian-button {
+    padding: 0.5rem 0.75rem; 
+    
+    width: 100%; 
+  }
+
+  .dotted-arrow {
+    top: 4rem; 
+    right: -0.3rem; 
+  }
 }
