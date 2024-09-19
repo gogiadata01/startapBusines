@@ -1,4 +1,4 @@
-<!-- <header>
+<header>
   <div class="header-content">
     <nav class="navbar fixed-top navbar-expand-lg navbar-light">
       <div class="container-fluid">
@@ -94,7 +94,7 @@
     href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
     rel="stylesheet"
   />
-</header> -->
+</header>
 <div class="Title">
   <h3>პროგრამები</h3>
 </div>
@@ -115,14 +115,14 @@
     <div class="FacultyTitle"></div>
     <div class="ProgramNames col">
       <div class="container">
-        @for (item of programCards; track $index) { @for (field of item.fields; track
-        $index) {
+        @for (item of programCards; track $index) { @for (field of item.fields;
+        track $index) {
         <div style="margin-bottom: 40px">
           <h2>{{ field.fieldName }}</h2>
 
           <div style="gap: 34px; align-items: center" class="top1 flex-wrap">
             @for (program of field.programNames; track $index) {
-            <div (click)="onCardClicked(program.id,program.programname)">
+            <div (click)="onCardClicked(program.id, program.programname)">
               <div
                 [ngStyle]="{
                   'background-color': '#A0C4A0',

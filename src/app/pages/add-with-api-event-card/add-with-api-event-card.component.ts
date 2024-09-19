@@ -27,6 +27,7 @@ export class AddWithApiEventCardComponent {
       Title: ['', Validators.required],
       Text: [''],
       Time: [''],
+      isFeatured: [false], // Add isFeatured field (default: false)
       Types: this.fb.array([])
     });
   }

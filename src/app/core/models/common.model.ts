@@ -117,7 +117,8 @@ export interface EventCardDto{
   url:string;
   title:string;
   text:string;
-  time:string
+  time:string;
+  isFeatured:boolean
   types:EventTypeDto[];
 }
 

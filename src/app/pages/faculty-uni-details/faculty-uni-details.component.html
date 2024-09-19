@@ -44,7 +44,7 @@
     </div>
   </div>
 </div> -->
-
+<app-navbar-for-pupil />
 <main>
   <div class="top">
     <div class="left">
@@ -74,126 +74,373 @@
   <div class="bottom">
     <div class="container">
       <div class="row">
+        @for (card of categories; track $index){
         <div class="col-lg-4">
-          <div class="card">
-            <h1>პროგრამის აღწერა</h1>
+          <div (click)="category = card.title" class="card">
+            <h1 [ngClass]="{ 'selected-card': category === card.title }">
+              {{ card.title }}
+            </h1>
           </div>
         </div>
-        <div class="col-lg-4">
-          <div class="card">
-            <h1>ეროვნული გამოცდებისთვის</h1>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="card">
-            <h1>მიზნები</h1>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="card">
-            <h1>დასაქმება</h1>
-          </div>
-        </div>
+        }
       </div>
     </div>
   </div>
-  <div class="static">
-    <div class="title">
-      <h3>კომპიუტერული მეცნიერება</h3>
-    </div>
-    <div class="Bottom">
-      <div>
-        <div class="stadinglanguage">
+  <div [ngSwitch]="category">
+    <!-- Default case when no category is selected -->
+    <div *ngSwitchDefault>
+      <div class="static">
+        <div class="title">
+          <h3>კომპიუტერული მეცნიერება</h3>
+        </div>
+        <div class="Bottom">
           <div>
-            <h2>სწავლების ენა</h2>
-          </div>
-          <div class="divbottom">
-            <h4>ქართული ენა</h4>
+            <div class="stadinglanguage">
+              <div>
+                <h2>სწავლების ენა</h2>
+              </div>
+              <div class="divbottom">
+                <h4>ქართული ენა</h4>
+              </div>
+            </div>
+            <div class="kvalifikacia">
+              <div>
+                <h2>კვალიფიკაცია</h2>
+              </div>
+              <div class="divbottom">
+                <h4>კომპიუტერული მეცნიერების ბაკალავრი</h4>
+              </div>
+            </div>
+            <div class="dafinanseba">
+              <div>
+                <h2>დაფინანსება</h2>
+              </div>
+              <div class="divbottom">
+                <h4>ფინანსდება</h4>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="kvalifikacia">
+      </div>
+      <div class="lowerPart">
+        <div class="box">
+          <div class="kreditebi">
+            <div>
+              <h4>კრედიტების რაოდენობა</h4>
+            </div>
+            <div class="kreditebitext">
+              <p>240</p>
+            </div>
+          </div>
+          <div class="adgilebisraodenoba">
+            <div>
+              <h4>ადგილების რაოდენობა</h4>
+            </div>
+            <div class="adgilebisraodenobatext">
+              <p>15</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="title">
+        <h3>პროგრამის აღწერა</h3>
+      </div>
+      <div class="programisAgwera">
+        <div>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
+            quam quis, quos iusto obcaecati blanditiis error. Commodi voluptatem
+            tempore cumque debitis sequi similique eaque quia! Doloremque odio
+            officia at pariatur. Voluptatum beatae aut ratione quas asperiores
+            sequi alias, tempora doloribus maxime dolorem facere molestias
+            repellendus corporis. Ab qui porro animi fugiat voluptatum nemo
+            provident culpa itaque, voluptate vitae officiis. Architecto.
+            Perferendis facilis alias soluta exercitationem optio sed. Ex
+            perferendis in reiciendis, provident, amet iure dolorum ab eos non
+            atque neque. Ipsa dicta deserunt sed deleniti libero iure quas, sit
+            provident. Dicta modi cum ut at aut! Quia atque consequuntur, qui
+            praesentium saepe eum amet, officiis laborum itaque beatae iusto
+            velit omnis at quidem dolores laudantium placeat cupiditate,
+            consequatur illo veniam. Quisquam consequatur, ea, ducimus hic
+            explicabo doloremque nesciunt unde necessitatibus vero blanditiis
+            iure enim quia cumque incidunt exercitationem temporibus quos
+            similique ipsum eius et illo! Debitis fugiat fugit veniam accusamus?
+            Eum impedit est doloribus obcaecati, autem quod corrupti blanditiis
+            enim deleniti quam culpa dolorum illo sequi quis quisquam illum
+            amet? Et rerum nesciunt nihil voluptate similique, ipsam fugiat
+            explicabo qui? Corrupti saepe excepturi qui enim minima veniam, nisi
+            perferendis, earum dolorum illo pariatur debitis autem ullam sed
+            delectus ducimus molestiae, doloremque sint officia? Tempore nisi
+            similique consequuntur, voluptate ea quam. Dolorum hic adipisci
+            dolorem tempora porro totam voluptatibus dolore exercitationem
+            nostrum facilis reiciendis veritatis enim, consectetur temporibus!
+            Aliquam cum exercitationem culpa deserunt autem nostrum ratione vel,
+            et sunt repudiandae odit.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Case for the first category -->
+    <div *ngSwitchCase="'ეროვნული გამოცდებისთვის'">
+      <div class="static">
+        <div class="title">
+          <h3>კომპიუტერული მეცნიერება</h3>
+        </div>
+        <div class="Bottom">
           <div>
-            <h2>კვალიფიკაცია</h2>
-          </div>
-          <div class="divbottom">
-            <h4>კომპიუტერული მეცნიერების ბაკალავრი</h4>
+            <div class="stadinglanguage">
+              <div>
+                <h2>სწავლების ენა</h2>
+              </div>
+              <div class="divbottom">
+                <h4>ქართული ენა</h4>
+              </div>
+            </div>
+            <div class="kvalifikacia">
+              <div>
+                <h2>კვალიფიკაცია</h2>
+              </div>
+              <div class="divbottom">
+                <h4>კომპიუტერული მეცნიერების ბაკალავრი</h4>
+              </div>
+            </div>
+            <div class="dafinanseba">
+              <div>
+                <h2>დაფინანსება</h2>
+              </div>
+              <div class="divbottom">
+                <h4>ფინანსდება</h4>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="dafinanseba">
+      </div>
+      <div class="lowerPart">
+        <div class="box">
+          <div class="kreditebi">
+            <div>
+              <h4>კრედიტების რაოდენობა</h4>
+            </div>
+            <div class="kreditebitext">
+              <p>240</p>
+            </div>
+          </div>
+          <div class="adgilebisraodenoba">
+            <div>
+              <h4>ადგილების რაოდენობა</h4>
+            </div>
+            <div class="adgilebisraodenobatext">
+              <p>15</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="savaldebuloSagnebi">
+        <div class="text">
+          <h4>სავალდებულო საგნები</h4>
+        </div>
+      </div>
+      <div class="maxasiateblevbi">
+        <div>
+          <div class="koeficienti">
+            <h3>კოეფიციენტი</h3>
+          </div>
+          <div class="minimanulizgvari">
+            <h3>მინ.ზღვარი</h3>
+          </div>
+          <div class="prioriteti">
+            <h3>პრიორიტეტი</h3>
+          </div>
+          <div class="adgilebisraodeonab">
+            <h3>ადგ. რაოდენობა</h3>
+          </div>
+        </div>
+      </div>
+      <div class="language">
+        <div class="left">
+          <div class="studlanguage">
+            <div>
+              <h4>ქართული ენა</h4>
+            </div>
+          </div>
+        </div>
+        <div class="right">
           <div>
-            <h2>დაფინანსება</h2>
+            <div class="koeficientitext">
+              <p>2</p>
+            </div>
+            <div class="minimanulizgvaritext">
+              <p>25%</p>
+            </div>
+            <div class="prioritetitext">
+              <p>3</p>
+            </div>
+            <div class="adgilebisraodeonabtext">
+              <p>-</p>
+            </div>
           </div>
-          <div class="divbottom">
-            <h4>ფინანსდება</h4>
+        </div>
+      </div>
+      <!-- Add any content specific to Category 1 here -->
+    </div>
+
+    <!-- Case for the second category -->
+    <div *ngSwitchCase="'მიზანი'">
+      <div class="static">
+        <div class="title">
+          <h3>კომპიუტერული მეცნიერება</h3>
+        </div>
+        <div class="Bottom">
+          <div>
+            <div class="stadinglanguage">
+              <div>
+                <h2>სწავლების ენა</h2>
+              </div>
+              <div class="divbottom">
+                <h4>ქართული ენა</h4>
+              </div>
+            </div>
+            <div class="kvalifikacia">
+              <div>
+                <h2>კვალიფიკაცია</h2>
+              </div>
+              <div class="divbottom">
+                <h4>კომპიუტერული მეცნიერების ბაკალავრი</h4>
+              </div>
+            </div>
+            <div class="dafinanseba">
+              <div>
+                <h2>დაფინანსება</h2>
+              </div>
+              <div class="divbottom">
+                <h4>ფინანსდება</h4>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="lowerPart">
-    <div class="box">
-      <div class="kreditebi">
+      <div class="lowerPart">
+        <div class="box">
+          <div class="kreditebi">
+            <div>
+              <h4>კრედიტების რაოდენობა</h4>
+            </div>
+            <div class="kreditebitext">
+              <p>240</p>
+            </div>
+          </div>
+          <div class="adgilebisraodenoba">
+            <div>
+              <h4>ადგილების რაოდენობა</h4>
+            </div>
+            <div class="adgilebisraodenobatext">
+              <p>15</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="title">
+        <h3>მიზანი</h3>
+      </div>
+      <div class="programisAgwera">
         <div>
-          <h4>კრედიტების რაოდენობა</h4>
-        </div>
-        <div class="kreditebitext">
-          <p>240</p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
+            quam quis, quos iusto obcaecati blanditiis error. Commodi voluptatem
+            tempore cumque debitis sequi similique eaque quia! Doloremque odio
+            officia at pariatur. Voluptatum beatae aut ratione quas asperiores
+            sequi alias, tempora doloribus maxime dolorem facere molestias
+            repellendus corporis. Ab qui porro animi fugiat voluptatum nemo
+            provident culpa itaque, voluptate vitae officiis. Architecto.
+            Perferendis facilis alias soluta exercitationem optio sed. Ex
+            perferendis in reiciendis, provident, amet iure dolorum ab eos non
+            atque neque. Ipsa dicta deserunt sed deleniti libero iure quas, sit
+            provident. Dicta modi cum ut at aut! Quia atque consequuntur, qui
+            praesentium saepe eum amet, officiis laborum itaque beatae iusto
+          </p>
         </div>
       </div>
-      <div class="adgilebisraodenoba">
+    </div>
+
+    <!-- Add more cases for other categories as needed -->
+    <div *ngSwitchCase="'დასაქმება'">
+      <div class="static">
+        <div class="title">
+          <h3>კომპიუტერული მეცნიერება</h3>
+        </div>
+        <div class="Bottom">
+          <div>
+            <div class="stadinglanguage">
+              <div>
+                <h2>სწავლების ენა</h2>
+              </div>
+              <div class="divbottom">
+                <h4>ქართული ენა</h4>
+              </div>
+            </div>
+            <div class="kvalifikacia">
+              <div>
+                <h2>კვალიფიკაცია</h2>
+              </div>
+              <div class="divbottom">
+                <h4>კომპიუტერული მეცნიერების ბაკალავრი</h4>
+              </div>
+            </div>
+            <div class="dafinanseba">
+              <div>
+                <h2>დაფინანსება</h2>
+              </div>
+              <div class="divbottom">
+                <h4>ფინანსდება</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="lowerPart">
+        <div class="box">
+          <div class="kreditebi">
+            <div>
+              <h4>კრედიტების რაოდენობა</h4>
+            </div>
+            <div class="kreditebitext">
+              <p>240</p>
+            </div>
+          </div>
+          <div class="adgilebisraodenoba">
+            <div>
+              <h4>ადგილების რაოდენობა</h4>
+            </div>
+            <div class="adgilebisraodenobatext">
+              <p>15</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="title">
+        <h3>დასაქმება</h3>
+      </div>
+      <div class="programisAgwera">
         <div>
-          <h4>ადგილების რაოდენობა</h4>
-        </div>
-        <div class="adgilebisraodenobatext">
-          <p>15</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="savaldebuloSagnebi">
-    <div class="text">
-      <h4>სავალდებულო საგნები</h4>
-    </div>
-  </div>
-  <div class="maxasiateblevbi">
-    <div>
-      <div class="koeficienti">
-        <h3>კოეფიციენტი</h3>
-      </div>
-      <div class="minimanulizgvari">
-        <h3>მინ.ზღვარი</h3>
-      </div>
-      <div class="prioriteti">
-        <h3>პრიორიტეტი</h3>
-      </div>
-      <div class="adgilebisraodeonab">
-        <h3>ადგ. რაოდენობა</h3>
-      </div>
-    </div>
-  </div>
-  <div class="language">
-    <div class="left">
-      <div class="studlanguage">
-        <div>
-          <h4>ქართული ენა</h4>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
+            quam quis, quos iusto obcaecati blanditiis error. Commodi voluptatem
+            tempore cumque debitis sequi similique eaque quia! Doloremque odio
+            officia at pariatur. Voluptatum beatae aut ratione quas asperiores
+            sequi alias, tempora doloribus maxime dolorem facere molestias
+            repellendus corporis. Ab qui porro animi fugiat voluptatum nemo
+            provident culpa itaque, voluptate vitae officiis. Architecto.
+            Perferendis facilis alias soluta exercitationem optio sed. Ex
+            perferendis in reiciendis, provident, amet iure dolorum ab eos non
+            atque neque. Ipsa dicta deserunt sed deleniti libero iure quas, sit
+            provident. Dicta modi cum ut at aut! Quia atque consequuntur, qui
+            praesentium saepe eum amet, officiis laborum itaque beatae iusto
+          </p>
         </div>
       </div>
-    </div>
-    <div class="right">
-      <div>
-        <div class="koeficientitext">
-          <p>2</p>
-        </div>
-        <div class="minimanulizgvaritext">
-          <p>25%</p>
-        </div>
-        <div class="prioritetitext">
-          <p>3</p>
-        </div>
-        <div class="adgilebisraodeonabtext">
-          <p>-</p>
-        </div>
-      </div>
+      <!-- Add any content specific to Category 3 here -->
     </div>
   </div>
 </main>
+<app-footer-for-pupil />

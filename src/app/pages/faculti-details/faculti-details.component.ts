@@ -16,10 +16,11 @@ import { Observable, } from 'rxjs';
 import { Router } from '@angular/router';
 import {HomeUniCardService} from '../../home-uni-card.service'
 import {ProgramCardService} from '../../program-card.service'
+
 @Component({
   selector: 'app-faculti-details',
   standalone: true,
-  imports: [ NgIf,NgFor,NavbarForPupilComponent,FooterForPupilComponent,CommonModule],
+  imports: [ NgIf,NgFor,NavbarForPupilComponent,FooterForPupilComponent,CommonModule,RouterLink],
   templateUrl: './faculti-details.component.html',
   styleUrl: './faculti-details.component.scss'
 })

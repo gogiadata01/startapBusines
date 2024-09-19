@@ -9,108 +9,16 @@ import {ProgramCardService} from '../../program-card.service'
 import {ProgramCardDto} from '../models/common.model'
 import { ChangeDetectorRef } from '@angular/core';
 import { HostListener } from '@angular/core';
+import { RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-uni-program',
   standalone: true,
-  imports: [CommonModule, NgIf, NgFor, FooterForPupilComponent],
+  imports: [CommonModule, NgIf, NgFor, FooterForPupilComponent,RouterLink],
   templateUrl: './uni-program.component.html',
   styleUrl: './uni-program.component.scss',
 })
 export class UniProgramComponent   {
-
-//   cards:IUniFacultyCard[] = []
-//   cards1:Icard[] = []
-//   programCards:ProgramCardDto[] = []
-//   getButtonWidth(Card: any): string {
-//     // Function to generate a random width between 320px and 450px
-//     function getRandomWidth(min: number, max: number): string {
-//       const randomWidth = Math.floor(Math.random() * (max - min + 1)) + min;
-//       return `${randomWidth}px`;
-//     }
-    
-//     // Example logic to return different widths based on Card properties
-//     if (Card.title.length > 20) {
-//       return getRandomWidth(320, 450); // Random width between 320px and 450px
-//     }
-  
-//     if (Card.someCondition) {
-//       return '340px'; // Example fixed width
-//     }
-  
-//     return '240px'; // Default width
-//   }
-  
-//   getPadding(Card: any): string {
-//     // Check the length of the title and return the appropriate padding
-//     return Card.title.length < 20 ? '2px' : '10px';
-//   }
-  
-  
-//   data = [
-//     {"title":"სტატისტიკა"},
-//     {"title":" ციფრული სატელეკომუნიკაციო ტექნოლოგიები "},
-//     {"title":" კომპიუტერული ინფორმაციული ტექნოლოგიები "},
-//     {"title":"საინფორმაციო ტექნოლოგიები"},
-//     {"title":" მონაცემთა მეცნიერება და ხელოვნური ინტელექტი "},
-//     {"title":" ინფორმაციული ტექნოლოგიები(ინგლისურენოვანი) "},
-//     {"title":"მათემატიკა (ინგლისურენოვანი)"},
-//     {"title":" კომპიუტერული მეცნიერება"},
-//     {"title":" კომპიუტერული მეცნიერება "},
-//     {"title":"კომპიუტერული მეცნიერება"},
-//     {"title":" კომპიუტერული მეცნიერება (ინგლისურენოვანი) "},
-//     {"title":" კომპიუტერული მეცნიერება"}
-// ]
-//   constructor(private cardService: CreateFormService,private router: Router,private programCardService:ProgramCardService) {
-    
-//   }
-//   ngOnInit(): void {
-//     this.getHomeUniFacultyCard()
-//     this.fetchProgramCards()
-//   }
-
-//   getHomeUniFacultyCard(){
-//     this.cardService
-//     .getAllUniFacultyCard()
-//     .snapshotChanges()
-//     .subscribe({
-//       next:(data) => {
-//         this.cards = [];
-//         data.forEach((item) => {
-//           let Card = item.payload.toJSON() as IUniFacultyCard
-//           this.cards.push({
-//             key: item.key|| "",
-//             title:Card.title,
-//             text:Card.text,
-//             sections:Card.sections
-//           })
-//         })
-//       }
-//     })
-//   }
-//   fetchProgramCards(): void {
-//     this.programCardService.getProgramCard().subscribe({
-//       next:(program) => {
-//         this.programCards = program;
-//         console.log(program)
-//       },
-//       error: (err) => {
-//         console.error('Error fetching program', err);
-//       }
-//     })
-//   }
-//   onCardClicked(cardkey:any,cardtitl:any) :void{
-//     this.router.navigate(['/Pupil/UniFaculty/',cardkey,cardtitl])
-//   }
-//   @ViewChildren('circle') circlesRef!: QueryList<ElementRef>;
-
-//   circles = [1, 2, 3, 4, 5, 6]; // Adjust the number of circles as needed
-//   activeCircleIndex: number = 0; // By default, the first circle is green
-
-//   // When a circle is clicked
-//   onCircleClick(index: number): void {
-//     this.activeCircleIndex = index; // Set the clicked circle as active
-//   }
 cards: IUniFacultyCard[] = [];
   programCards: ProgramCardDto[] = [];
   circles = [1, 2, 3, 4, 5, 6];

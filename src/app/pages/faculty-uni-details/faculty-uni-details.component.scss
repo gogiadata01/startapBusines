@@ -77,6 +77,29 @@ body{
     }
   }
 }
+.title{
+  margin-top: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+  h3{
+    font-size: 25px;
+  }
+}
+.programisAgwera{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+div{
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  p{
+    font-size: 15px;
+  }
+}
+}
 
 .static{
   width: 100%;
@@ -221,17 +244,10 @@ h1{
   font-size: 17px;
   color:white;
 }
-  &:hover {
-    color: green;
-  }
-
-
-
-      transition: transform 0.3s ease;
-
-  &:hover {
-    transform: scale(1.07);
-  }
+:hover{
+  color: black;
+  cursor: pointer;
+}
 }
 .actice{
   color: green;
@@ -437,5 +453,196 @@ h1{
         .language .left .studlanguage div h4 {
         font-size: 15px;
         }
+}
+@media screen and (max-width: 430px) {
+  .top{
+      flex-direction: column;
+
+      .left{
+        width: 100%;
+
+      }
+      .img{
+        padding-left: 35px;
+
+      }
+      .right{
+        padding: 0px;
+        width: 100%;
+      }
+  }
+  .container{
+    width: 90%;
+    .row{
+
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+    .col-lg-4{
+      width: 100%;
+
+    }
+    }
+
+  }
+  .static{
+    .title{
+      h3{
+        font-size: 20px;
+      }
+    }
+    .Bottom{
+      div{
+        width: 100%;
+        flex-direction: column;
+        .stadinglanguage{
+          width: 141px;
+        }
+        .kvalifikacia{
+          width: 141px;
+    
+        }
+        .dafinanseba{
+          width: 245px;
+          margin-top: 15px;
+    
+        }
+        .divbottom{
+          width: 230px;
+
+        }
+      }
+      h2{
+        font-size: 15px;
+
+      }
+    }
+  }
+  .lowerPart{
+    .box{
+      width: 100%;
+      display: flex;
+      justify-content: space-evenly;
+      .adgilebisraodenoba {
+        justify-content: center;
+        .adgilebisraodenobatext{
+          justify-content: center;
+          padding: 0px;
+        }
+        div{
+          padding: 0px;
+          justify-content: center;
+        }
+      }
+      h4{
+        font-size: 13px;
+
+      }
+      .kreditebi{
+        justify-content: center;
+        div{
+          justify-content: center;
+          padding: 0px;
+        }
+        .kreditebitext{
+          padding: 0px;
+          justify-content: center;
+        }
+
+      }
+    }
+  }
+  .savaldebuloSagnebi .text{
+    width: 250px;
+    h4{
+      font-size: 16px;
+
+    }
+  }
+  .top, .row, .lowerPart, .container {
+    gap: 10px; /* Example value */
+  }
+  .price, .code {
+    width: 100%;
+    height: 17%;
+    display: flex;
+    justify-content: center;
+  
+    div {
+      border: 1px solid #EE964B;
+      width: 270px;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 20px;
+  
+      h4, p {
+        font-size: 20px !important;
+        font-weight: 400 !important;
+      }
+    }
+  }
+    .maxasiateblevbi div h3{
+      font-size: 9px;
+    }
+    .language .right div p{
+      font-size: 10px;
+    }
+    .language .left .studlanguage div{
+      width: 75px;
+      h4{
+        font-size: 10px;
+        text-align: center;
+      }
+
+    }
+    .top .left .img{
+      padding-left: 35px;
+  
+    }
+}
+@media screen and (max-width: 325px) {
+  .top .left .img{
+    padding-left: 25px;
+
+  }
+  .static .title h3{
+    font-size: 15px;
+  }
+  .static .Bottom h2{
+    font-size: 12px;
+  }
+  .static .Bottom div h4{
+    font-size: 11px;
+  }
+  .lowerPart .box h4{
+    font-size: 10px;
+  }
+  .lowerPart .box .kreditebi .kreditebitext p{
+    font-size: 12px;
+  }
+  .lowerPart .box .adgilebisraodenoba .adgilebisraodenobatext p {
+  font-size: 12px;
+  }
+  .savaldebuloSagnebi .text{
+    width: 150px;
+    height: 55px;
+  }
+  .savaldebuloSagnebi .text h4{
+    font-size: 13px;
+  }
+  .maxasiateblevbi div h3{
+    font-size: 7px;
+  }
+  .language .right div p {
+    font-size: 9px;
+  }
+  .language .left .studlanguage div h4 {
+    font-size: 8px;
+  }
+  }
+.selected-card {
+  color: black !important;
 }
 

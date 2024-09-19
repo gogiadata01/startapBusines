@@ -181,46 +181,128 @@ body, html {
     }
 
 
-//     .navbar{
-//       background-color: #85A98D;
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+  }
   
-//   }
-//   #svg{
-//       width: 120px;
-//       height: 100%;
-//   }
-//   #svg2{
-//       width: 35px;
-//       height: 100%;
-//       color: #F0F3BD;
-//   }
+  .card {
+      background-color:#CED4DA;
+      border-radius: 35px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      width: 275px;
+      height: 248px;
+      margin: 1rem;
+      transition: transform 0.2s;
+      border: 1px dashed;
+  }
   
+  .card:hover {
+      transform: scale(1.05);
+  }
   
-//   .nav-link{
-//       padding: 10px;
-//       border-radius: 25px;
-//       text-align: center;
-      
-//       cursor: pointer;
-//       transition: background-color 0.3s ease;
-    
-//       &:hover {
-//           background-color: #77b1e0;
-//       }
+  .card img {
+      width: 100%;
+      height: 130px;
+      object-fit: cover;
+  }
   
-//           transition: transform 0.3s ease;
-    
-//       &:hover {
-//         transform: scale(1.07);
-//       }
-//   }
+  .card-content {
+      padding-top: 9px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
   
+  .card-content h2 {
+      margin-top: 0;
+      font-size: 1.5rem;
+  }
   
-
-// .navbar{
-//   background-color: #85A98D;
-
-// }
+  .card-content p {
+      font-size: 12px;
+      color: black;
+      font-weight: 600;
+      text-align: center;
+  }
+  
+  .Date{
+      display: flex;
+      width: 245px;
+      justify-content: center;
+      align-items: center;
+  }
+  .Buttons{
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+  }
+  .Btn1{
+      margin-right: 17px;
+      button{
+          display: flex;
+          color: white;
+          border-radius: 10px;
+          border: 1px dashed;
+          background-color: #5D737E
+      }
+  }
+  .Btn2{
+      button{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 40px;
+          height: 26px;
+          color: white;
+          border-radius: 10px;
+          border: 1px dashed;
+          background-color: #5D737E;
+      }
+  }
+  footer {
+      text-align: center;
+      padding: 1rem 0;
+      background-color: #ff6347;
+      color: white;
+      margin-top: 2rem; /* Add this line for more space between main content and footer */
+  }
+  
+  @media screen and (max-width: 1024px) {
+      .filter .Types{
+          width: 50%;
+      }
+  }
+  
+  @media screen and (max-width: 775px) {
+      .filter .Types{
+          width: 65%;
+      }
+  }
+  @media screen and (max-width: 600px) {
+      .filter .Types{
+          width: 85%;
+      }
+  }
+  @media screen and (max-width: 426px) {
+      .filter .Types{
+          width: 95%;
+      }
+      h4{
+          font-size: 13px;
+      }
+  }
+  @media screen and (max-width: 321px) {
+      .filter .Types{
+          width: 100%;
+      }
+      h4{
+          font-size:11px;
+      }
+  }
 #svg{
   width: 120px;
   height: 100%;
@@ -278,4 +360,126 @@ svg {
   border-width: 0;
   box-shadow: none;
 }
-   
+.Bottom{
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.timeline {
+  width: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px; /* Increase the gap to match the spacing */
+}
+.circle-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.circle {
+  width: 25px; /* Increase the size of the circles */
+  height: 25px;
+  border-radius: 50%;
+  background-color:white; /* Default green color */
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-bottom: 10px;
+}    
+
+.line {
+  width: 2px;
+  height: 50px;
+}
+
+.dashed {
+  width: 2px;
+  height: 80px; /* Increase the height to match the connectors in the image */
+  border-right: 2px dashed #000; /* Keep the dashed connector between circles */
+}
+
+/* When the circle is active, it turns green */
+.circle.green {
+  background-color: #6abf69;
+}
+.program{
+  width: 90%;
+  height: 100%;
+.FacultyTitle{
+  width: 40%;
+  display: flex;
+  justify-content: center;
+
+}
+}
+.top{
+  width: 100%;
+  display: flex;
+  justify-content: start;
+}
+.top1{
+  display: flex;
+}
+.ProgramNames .container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+@media screen and (max-width: 1345px) {
+  div.FacultyTitle{
+    width: 50% !important;
+  }
+}
+@media screen and (max-width: 1025px) {
+div.FacultyTitle{
+  width: 58% !important;
+}
+}
+@media screen and (max-width: 990px) {
+div.FacultyTitle{
+width: 100% !important;
+}
+}
+@media screen and (max-width: 400px) {
+div.FacultyTitle h2{
+font-size: 20px;
+}
+}
+@media screen and (max-width: 325px) {
+div.FacultyTitle h2{
+font-size: 18px;
+}
+.Title{
+width: 77% !important;
+}
+}
+@media screen and (max-width: 768px) {
+h2{
+display: flex;
+justify-content: center;
+font-size: 25px;
+}
+.top1{
+gap: 34px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.Title{
+width: 65%;
+display: flex;
+justify-content: right;
+}
+}
+@media screen and (max-width: 430px) {
+.Title{
+width: 72%;
+}
+h2{
+font-size: 18px;
+text-align: center;
+
+}
+}

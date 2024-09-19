@@ -26,6 +26,11 @@ import { of } from 'rxjs';
 export class FacultyUniDetailsComponent {
   UniCard!: UniCardDto;  // Ensure UniCard is of type UniCardDto
   programname:any
+  categories:any=[      {title:"პროგრამის აღწერა"},
+  {title:"ეროვნული გამოცდებისთვის"},
+  {title:"მიზანი"},
+  {title:"დასაქმება"}]
+  category = ""
   constructor(
     private uniCardService: HomeUniCardService,
     private route: ActivatedRoute,
