@@ -1,27 +1,17 @@
 
 
 .footer {
-  position: relative;
   width: 100%;
-  height: 100%;
-  background: #85A98D;
+  background: #342833;
   min-height: 100px;
-  padding: 20px 50px;
+  padding: 20px;
+  display: flex;
 }
 section{
   width: 100%;
-  display: flex;
+
 }
-.left{
-  width: 38%;
-  display: flex;
-  flex-direction: column;
-}
-.right{
-  width: 20%;
-  display: flex;
-  flex-direction: column;
-}
+
 svg{
   color: white;
 }
@@ -33,37 +23,28 @@ h2{
   color: white;
   font-size: 20px;
 }
-.text{
-  display: flex;
-  align-items: center;
-}
+
 .title{
-  width: 140px;
-    border: 2px dashed #F1F3BE;
-    border-radius: 14px;
+  // text-align: center;
+  border: 2px dashed #F1F3BE;
+  border-radius: 14px;
 }
 
-
-.footer {
-  position: relative;
-  width: 100%;
-  background: #85A98D;
-  min-height: 100px;
-  padding: 20px 50px;
-}
 
 section {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+}
+.both{
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  gap: 20px;
+
 }
 
-.left, .right {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-}
 
 svg {
   color: white;
@@ -85,12 +66,6 @@ h2 {
   align-items: center;
 }
 
-.title {
-  width: 140px;
-  border: 2px dashed #F1F3BE;
-  border-radius: 14px;
-  margin-bottom: 10px;
-}
 
 /* Responsive styles */
 @media (max-width: 768px) {
@@ -111,11 +86,6 @@ h2 {
   h2 {
     font-size: 18px;
   }
-
-  .title {
-    width: 100%;
-    margin: 0 auto;
-  }
 }
 
 @media (max-width: 576px) {
@@ -129,6 +99,12 @@ h2 {
 
   .title {
     font-size: 14px;
+    display: flex;
+    justify-content: center;
+  }
+  .both{
+    flex-direction: column;
+    align-items: center;
   }
 }
 
