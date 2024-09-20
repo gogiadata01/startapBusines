@@ -123,7 +123,7 @@ export interface EventCardDto{
 }
 
 export interface EventTypeDto{
-  Type:string
+  type:string
 }
 
 export interface UserDto{

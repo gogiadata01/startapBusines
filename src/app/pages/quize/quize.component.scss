@@ -1,4 +1,3 @@
-
 // ნავბარი და ჰედერი
 #svg{
   width: 120px;
@@ -58,14 +57,24 @@ svg {
   border-width: 0;
   box-shadow: none;
 }
+
 .header-content{
   height: 265px;
   background-color: #85A98D;
 }
 .wave-container{
+  height: 180px;
+
+  // height: 63px;
   background-color: #85A98D;
 
 }
+@media (max-width: 850px) {
+  .wave-container{ 
+     height: 63px;
+  }
+}
+
 .navbar, .navbar-nav {
   border: none; /* Remove border */
 }
@@ -75,282 +84,650 @@ svg {
   text-decoration: none; /* Remove underline from links */
 
 }
-// ნავბარი და ჰედერი
-
-
-
+// ნავბარი და ჰედერი მთავრდება აქ...
 
 // ბექგრაუნდი და დრო
+// .background {
+//   background-image: url('../../../assets/im01.jpg'); 
+//   background-size: cover;
+//   background-position: center;
+//   width: 1250px; // Fixed width
+//   max-width: 100%;
+//   height: 450px;
+//   // border: 25px solid transparent; // Border color and size
+//   border-radius: 25px; // Optional: rounded corners
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   margin: auto; // Center the component
+//   position: relative;
+//   bottom: 500px;
 
-.background {
-    background-image: url('../../../assets/im01.jpg'); 
-    background-size: cover;
-    background-position: center;
-    width: 1250px; // Fixed width
-    max-width: 100%;
-    height:450px;
-    // height: 300px; // Fixed height
-    border:25px ; // Border color and size
-    border-radius: 25px; // Optional: rounded corners
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: auto ; // Center the component
-    position: relative;
-    bottom: 500px;
-    // margin-top: 40px;
-    
-  }
-  
-  .overlay {
-    background-color: rgba(0, 0, 0, 0.5); // Semi-transparent background
-    padding: 70px;
-    border-radius: 25px;
-    height: 450px;
-    max-width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 100%; // Full width of the background
-  }
-  
-  .time-container {
-    display: flex; 
-    position: relative;
-    top: 200px;
-    justify-content:space-between; 
-    width: 100%; 
+//   .overlay {
+//       background-color: rgba(0, 0, 0, 0.5); // Semi-transparent background
+//       padding: 70px;
+//       border-radius: 25px;
+//       height: 450px;
+//       max-width: 100%;
+//       display: flex;
+//       flex-direction: column;
+//       align-items: center;
+//       text-align: center;
+//       width: 100%; // Full width of the background
 
-    @media (max-width: 400px) {
-      flex-direction: column;
-      
+//       .time-container {
+//           display: flex; 
+//           justify-content: space-between; 
+//           width: 100%; 
+//           position: relative;
+//           top: 200px;
 
-    }
-  }
-  
-  .time-block {
-    margin: 0 10px; 
-   
-   
-  }
-  
-  .text {
-    color: white;
-    font-size: 18px;
-    
-  }
-  
-  .time {
-    color: white;
-    font-size: 24px;
-    font-weight: bold;
-    
-  }
-  .btn01{
-    border-radius: 10px;
-    padding: 5px 10px;
-    background-color: #85A98D;
-    color: white;
-    cursor: pointer;
-    // margin-top: 1px;
-    width: 100px;
-    height: 34px;
-    max-width: 100%;
-    position: relative;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    top: 70px;
+//           @media (max-width: 400px) {
+//               flex-direction: column;
+//           }
+//       }
 
-    @media (max-width: 400px ) and ( min-width: 300px) {
-    position: relative;
-    top: 101px;
-    left: 80px;
-    }    
-  }
+//       .time-block {
+//           margin: 0 10px; 
+//       }
 
-.expired-text {
-  background-image: url('../../../assets/im02.jpg');
-  background-size: cover;
-  background-position: center;
-  width: 1000px;
-  max-width: 100%;
-  height: 100px;
-  position: relative;
-  border-radius: 25px;
-  margin-top: 370px;
+//       .text {
+//           color: white;
+//           font-size: 18px;
+//       }
+
+//       .time {
+//           color: white;
+//           font-size: 24px;
+//           font-weight: bold;
+//       }
+
+//       .btn01 {
+//           border-radius: 10px;
+//           padding: 5px 10px;
+//           background-color: #85A98D;
+//           color: white;
+//           cursor: pointer;
+//           width: 100px;
+//           height: 34px;
+//           display: flex;
+//           justify-content: center;
+//           align-items: center;
+//           position: relative;
+//           top: 70px;
+
+//           @media (max-width: 400px) and (min-width: 300px) {
+//               top: 101px;
+//               left: 80px;
+//           }    
+//       }
+//   }
+// }
+line{
+  height: 10px;
 }
+// .bottom{
+//   width: 100%;
+//   height: 500px;
+//   display: flex;
+//   justify-content: center;
+//   .div{
+//     width: 80%;
 
-.tx01 {
-  color: #ee964b;
-  font-weight: bold;
-  font-size: 18px;
-  position: absolute;
-  top: 30px;
-  right: 30px;
-}
-.overlay01 {
-  background-color: rgba(0, 0, 0, 0.5); 
-  border-radius: 25px;
-  height: 100px;
-  max-width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  width: 100%; 
-  // position: relative;
-  bottom: 43px;  
-}
-
-
-
-.card-container {
-  position: relative; 
-  // max-width: 80%;
-  width: 88%; 
-  height: 80vh; 
-}
-
-.card {
-  position: absolute;
-  bottom:800px; 
-  right: -70px; 
-  width: 145px; 
-  border-radius: 20px;
-  background-color: #f0f0f0;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
-// ბექგრაუნდი, დრო და ქარდი...
-
-
-   /* ზედა ორი თეთრი ხაზი */
-   .line {
-    height: 2px;
-    background-color: white; 
-    margin: 1 auto; 
-    width: 50%; 
-  }
-
-  .line:first-of-type {
-    position: absolute;
-    top: -30px; 
-    transform: rotate(90deg);
-  }
-
-  .line:last-of-type {
-    position: absolute;
-    top: -10px; 
-    transform: rotate(90deg);
-  }
-
-  .title {
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 5px;
-    border-bottom: 2px solid #000;
-    padding: 5px 0;
-  }
-
-  .time {
-    color: #0000009f;
-    font-size: 20px;
-    font-weight: 600;
-    margin: 2px 0;
-  }
-
-  .year {
-    font-size: 18px;
-    color: orange;
-  }
-}
-/* ზედა ორი თეთრი ხაზი */
-
-// ქვიზი
-.quiz-container {
-  padding: 20px;
-  background-color: #ced4da;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+//     .background{
+//       width: 100%;
+//       height: 100%;
+//       background-image: url('../../../assets/im01.jpg'); 
+//       background-position: center;
+//       background-size: cover;  
+//       .overlay{
+//         width: 100%;
+//         height: 100%;
+//         background-color: #0005;
+//       }
+//       .carddiv{
+//         width: 100%;
+//       }
+//       .card-container{
+//         width: 100%;
+//         .card{
+//           width: 100%;
+//           background-color: transparent;
+//           div{
+//             display: flex;
+//             justify-content: end;
+//           }
+//         }
+//       }
+//       #div{
+//         width: 100%;
+//         height: 20%;
+//         display: flex;
+//         justify-content: center;
+//         align-items: center;
+//         margin-top: 150px;
+//         .timediv{
+//           width: 100%;
+//           height: 100%;
+//           display: flex;
+//         .time-block{
+//           width: 20%;
+//           display: flex;
+//           justify-content: center;
+//           flex-direction: column;
+//           .text{
+//             display: flex;
+//             justify-content: center;
+//           }
+//           .time{
+//             display: flex;
+//             justify-content: center;
+//           }
+//         }
+//         .BTN{
+//           width: 60%;
+//           .btn{
+//             width: 100%;
+//             display: flex;
+//             justify-content: center;
+//             align-items: center;
+//             .btn01{
+//               border: 0px;
+//               border-radius: 20px;
+//               background-color: #5E727E;
+//               width: 250px;
+//               height: 50px;
+//             }
+//           }
+//         }
+//         .time-block{
+//           width: 20%;
+//           display: flex;
+//           justify-content: center;
+//           flex-direction: column;
+//         }
+//         } 
+//       }
+//     }
+//   }
+// }
+.bottom {
   width: 100%;
-  max-width: 800px;
-  margin: 50px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+}
 
-  .header {
-    margin-bottom: 20px;
+.div {
+  width: 80%;
+  border-radius: 20px;
 
-    .score, .progress, .status {
-      height: 50px; 
-      font-size: 16px;
-      text-align: center;
+
+  .background {
+    width: 100%;
+    height: 100%;
+    background-image: url('../../../assets/im01.jpg');
+    background-position: center;
+    background-size: cover;
+
+    .overlay {
+      width: 100%;
+      height: 100%;
+      background-color: #0005;
+    }
+
+    .carddiv {
+      width: 100%;
+    }
+
+    .card-container {
+      width: 100%;
+
+      .card {
+        width: 100%;
+        background-color: transparent;
+
+        div {
+          display: flex;
+          justify-content: end;
+        }
+      }
+    }
+
+    #div {
+      width: 100%;
+      height: 20%;
       display: flex;
       justify-content: center;
       align-items: center;
 
-      &.score {
-        color: #4caf50;
-      }
+      .timediv {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-wrap: wrap; /* Enables wrapping for smaller screens */
 
-      &.progress {
-        color: #ff9800; 
-      }
+        .time-block {
+          width: 20%;
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
 
-      &.status {
-        color: #f44336; 
-      }
-    }
-  }
+          .text,
+          .time {
+            display: flex;
+            justify-content: center;
+          }
+        }
 
-  .question {
-    height: 50px; 
-    font-size: 18px;
-    font-weight: bold;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+        .BTN {
+          width: 60%;
+          .btn {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
-  .answers {
-    .row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin-top: 20px;
+            .btn01 {
+              border: 0px;
+              border-radius: 20px;
+              background-color: #5e727e;
+              width: 250px;
+              height: 50px;
+            }
+          }
+        }
 
-      .answer {
-        display: block;
-        margin: auto;
-        width: 46%;
-        height: 45px;
-        background-color: #5d737e;
-        border: 2px dashed #EE5a36;
-        border-radius: 15px;
-        font-size: 16px;
-        cursor: pointer;
-        transition: background-color 0.4s;
-        // display: flex;
-        // justify-content: center;
-        // align-items: center;
-        overflow: hidden; 
-        white-space: nowrap; 
-        text-overflow: ellipsis; 
-        max-width: 100%; 
-
-        &:hover {
-          background-color: #e8f5e9; 
+        .time-block {
+          width: 20%;
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
         }
       }
     }
   }
 }
 
-@media (max-width: 394px) {
-  .quiz-container {
-    .answers .col-lg-5 {
-      flex: 1 1 100%;
+/* Responsive media queries */
+
+/* Tablet size */
+@media (max-width: 1125px) {
+  h5{
+    font-size: 17px;
+  }
+}
+@media (max-width: 770px) {
+  .bottom {
+    height: 100vh; /* Makes full height for tablets */
+  }
+  .div .background #div {
+    margin-top: 15px;
+}
+.div .background #div .timediv .BTN {
+  width: 40%;
+}
+.div .background #div .timediv .time-block {
+  width: 30%;
+}
+  .div {
+    width: 90%; /* Adjusts container width */
+
+    .timediv {
+      flex-direction: column; /* Stacks time blocks vertically */
+      align-items: center; /* Center the content */
+    }
+
+    .time-block,
+    .BTN {
+      width: 100%; /* Full width for each section */
+      margin-bottom: 10px; /* Adds spacing between items */
+    }
+
+    .btn01 {
+      width: 200px;
+      height: 45px; /* Adjust button size */
     }
   }
 }
+
+/* Mobile size */
+@media (max-width: 480px) {
+  .bottom {
+    height: 100vh;
+  }
+  .div .background #div {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+#div .timediv .BTN .btn .btn01 {
+  width: 204px;
+  height: 45px;
+}
+  .div {
+    width: 100%; /* Full width for smaller screens */
+    display: flex;
+    justify-content: center;
+    .background {
+      width: 90%;
+    }
+    .timediv {
+      flex-direction: column; /* Stack everything */
+      align-items: center;
+
+      .time-block,
+      .BTN {
+        width: 100%; /* Full width for mobile */
+      }
+
+      .btn01 {
+        width: 150px; /* Smaller button size */
+        height: 40px;
+      }
+    }
+  }
+  h3{
+    font-size: 17px; 
+  }
+  h5{
+    font-size: 10px;
+  }
+}
+
+
+.bcontainer{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  .expired-text{
+    width: 60%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    .img{
+      width: 100%;
+      height: 100%;
+      background-image: url('../../../assets/im02.jpg');
+      background-size: cover;  
+      background-position: center;
+      border-radius: 25px;
+
+      .overlay01{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: right;
+        align-items: center;
+        background-color: #0005;
+        border-radius: 25px;
+
+        .tx01{
+          padding: 15px 50px 0px 0px;     
+        
+        }
+      } 
+    }
+  }
+}
+h5{
+  color: white;
+}
+h3{
+  color: white;
+}
+.column{
+  display: flex;
+  flex-direction: column;
+}
+// .expired-text {
+//   background-image: url('../../../assets/im02.jpg');
+//   background-size: cover;
+//   background-position: center;
+//   width: 1000px;
+//   max-width: 100%;
+//   height: 85px;
+//   border-radius: 25px;
+//   display: flex; // Enable Flexbox
+//   justify-content: center; // Center content horizontally
+//   align-items: center; // Center content vertically
+//   margin: auto; // Center the component
+//   position: relative;
+//   top:-400px;
+ 
+  
+
+
+//   .overlay01 {
+//     background-color: rgba(0, 0, 0, 0.5); 
+//     border-radius: 25px;
+//     height: 85px;
+//     max-width: 100%;
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     text-align: center;
+//     width: 100%; 
+
+// }
+
+//   .tx01 {
+//       color: #ee964b; // Text color
+//       font-weight: bold; // Bold text
+//       font-size: 18px; // Font size
+//       margin: 10px; // Remove default margin
+//       margin-left: 400px;
+//   }
+// }
+
+// .card-container {
+//   display: flex; // Flexbox for card layout
+//   flex-wrap: wrap; // Allow wrapping
+//   justify-content: flex-end; // Center cards
+//   position: relative; 
+//   width: 88%; 
+//   height: 20vh; 
+
+//   // @media (max-width: 400px) {
+//   //     width: 100%;
+//   // }
+
+//   .card {
+//       position: relative; // Adjust to prevent overlap
+//       margin: 10px; // Space between cards
+//       width: 145px; 
+//       max-width: 100%; ;
+//       border-radius: 20px;
+//       background-color: #f0f0f0;
+//       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+//       text-align: center;
+
+//       .line {
+//           height: 2px;
+//           background-color: white; 
+//           margin: 1 auto; 
+//           width: 50%; 
+
+//           &:first-of-type {
+//               position: absolute;
+//               top: -30px; 
+//               transform: rotate(90deg);
+//           }
+
+//           &:last-of-type {
+//               position: absolute;
+//               top: -10px; 
+//               transform: rotate(90deg);
+//           }
+//       }
+
+//       .title {
+//           font-size: 16px;
+//           font-weight: bold;
+//           margin-bottom: 5px;
+//           border-bottom: 2px solid #000;
+//           padding: 5px 0;
+//       }
+
+//       .time {
+//           color: #0000009f;
+//           font-size: 20px;
+//           font-weight: 600;
+//           margin: 2px 0;
+//       }
+
+//       .year {
+//           font-size: 18px;
+//           color: orange;
+//       }
+//   }
+// }
+
+// .quiz-container {
+//   display: flex; // Flexbox for quiz layout
+//   flex-direction: column; // Stack items vertically
+//   padding: 20px;
+//   background-color: #ced4da;
+//   border-radius: 10px;
+//   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+//   width: 100%;
+//   max-width: 800px;
+//   margin: 50px auto; // Center the container
+
+//   .header {
+//       margin-bottom: 20px;
+//       display: flex; // Flexbox for header layout
+//       flex-direction: column; // Stack items vertically
+
+//       .score, .progress, .status {
+//           height: 50px; 
+//           font-size: 16px;
+//           text-align: center;
+//           display: flex;
+//           justify-content: center;
+//           align-items: center;
+
+//           &.score {
+//               color: #4caf50;
+//           }
+
+//           &.progress {
+//               color: #ff9800; 
+//           }
+
+//           &.status {
+//               color: #f44336; 
+//           }
+//       }
+//   }
+
+//   .question {
+//       height: 50px; 
+//       font-size: 18px;
+//       font-weight: bold;
+//       text-align: center;
+//       display: flex;
+//       justify-content: center;
+//       align-items: center;
+//   }
+
+//   .answers {
+//       display: flex; // Flexbox for answers layout
+//       flex-wrap: wrap; // Allow wrapping
+//       gap: 15px;
+//       margin-top: 20px;
+
+//       .answer {
+//           display: block;
+//           width: 46%;
+//           height: 45px;
+//           background-color: #5d737e;
+//           border: 2px dashed #EE5a36;
+//           border-radius: 15px;
+//           font-size: 16px;
+//           cursor: pointer;
+//           transition: background-color 0.4s;
+//           overflow: hidden; 
+//           white-space: nowrap; 
+//           text-overflow: ellipsis; 
+//           max-width: 100%; 
+
+//           &:hover {
+//               background-color: #e8f5e9; 
+//           }
+//       }
+//   }
+// }
+
+// .navbar {
+//   background-color: #85A98D;
+// }
+
+// @media (max-width: 394px) {
+//   .quiz-container {
+//       .answers {
+//           flex-direction: column; // Stack answers on small screens
+//       }
+//   }
+// }
+
+// .time-container {
+//   display: flex; 
+//   justify-content: space-between; 
+//   align-items: center; 
+// }
+
+// .answers {
+//   display: flex; 
+//   flex-direction: column; 
+//   gap: 15px; // Space between answers
+// }
+
+// .row {
+//   display: flex; 
+//   flex-wrap: wrap; 
+//   justify-content: center; 
+// }
+
+// .col-lg-4, .col-lg-8 {
+//   flex: 1; // Allowing flex-grow
+//   max-width: 100%; // Ensuring it doesn’t exceed container width
+// }
+
+
+// .footer {
+//   background-color: #85A98D; // Match with your theme color
+//   color: white;
+//   padding: 20px;
+//   text-align: center;
+
+//   .footer-content {
+//       display: flex;
+//       flex-direction: column;
+//       align-items: center;
+
+//       p {
+//           margin: 0;
+//           font-size: 14px;
+//       }
+
+//       .footer-links {
+//           margin-top: 10px;
+
+//           a {
+//               color: white;
+//               text-decoration: none;
+//               margin: 0 10px;
+
+//               &:hover {
+//                   text-decoration: underline;
+//               }
+//           }
+//       }
+//   }
+// }
 // ქვიზი სრულდება აქ...

@@ -47,16 +47,22 @@ export class EventCardsComponent {
     if (this.category === "ყველა" || this.category === "") {
       this.filteredEventCards = this.EventCard;
     } else {
-      this.filteredEventCards = this.EventCard.filter(event =>
-        event.types.some(type => type.Type === this.category)
-      );
+      // Log events and types to check data
+      console.log('Filtering for category:', this.category);
+      this.filteredEventCards = this.EventCard.filter(event => {
+        return event.types.some(type => type.type === this.category); // Change 'Type' to 'type' to match your structure
+      });
+      console.log('Filtered events:', this.filteredEventCards);
     }
   }
-
+  
+  
   onCategoryClick(category: string) {
+    console.log('Selected Category:', category);  // Check if this logs the correct category
     this.category = category;
-    this.filterEvents(); // Filter events based on the selected category
+    this.filterEvents(); // Apply filter after setting category
   }
+  
 
 onCardClicked(cardkey:any) :void{
   this.router.navigate(['/Pupil/Events/',cardkey])

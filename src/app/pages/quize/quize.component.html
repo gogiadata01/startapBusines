@@ -1,9 +1,11 @@
+
 <!-- ნავბარი და ჰედერი -->
-<header>
+<header class="relative">
   <div class="header-content">
     <nav class="navbar fixed-top navbar-expand-lg navbar-light">
       <div class="container-fluid">
-        <svg
+        <svg  routerLink="/"
+
           id="svg"
           xmlns="http://www.w3.org/2000/svg"
           width="639"
@@ -99,7 +101,79 @@
 <!-- ნავბარი და ჰედერი მთავრდება აქ -->
 
 <!-- ბექგრაუნდი და დრო -->
-<div class="background"> 
+  <div style="top: 27%; position: absolute; ;" class="bottom">
+    <div class="div">
+      <div class="background"> 
+        <div class="overlay">
+          <div class="carddiv">
+            <div class="card-container">
+              <div class="card">
+                <div>
+                  <svg width="200" height="350" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Upper lines with 50px height and spacing between them -->
+                    <line x1="60" y1="0" x2="60" y2="50" stroke="white" stroke-width="2"/>
+                    <line x1="120" y1="0" x2="120" y2="50" stroke="white" stroke-width="2"/>
+                    
+                    <!-- Outer Rounded Rectangle -->
+                    <rect x="10" y="50" rx="20" ry="20" width="180" height="120" fill="#e0e0e0" stroke="gray" stroke-width="1"/>
+                  
+                    <!-- Top Text -->
+                    <text x="50%" y="80" font-size="16" font-family="Arial" fill="black" text-anchor="middle" dominant-baseline="middle">
+                      დაინტერესების დრო
+                    </text>
+                  
+                    <!-- Horizontal Line -->
+                    <line x1="30" y1="100" x2="170" y2="100" stroke="black" stroke-width="1"/>
+                  
+                    <!-- Time Text -->
+                    <text x="50%" y="130" font-size="20" font-family="Arial" fill="black" text-anchor="middle" dominant-baseline="middle">
+                      19:30
+                    </text>
+                  
+                    <!-- Year Text -->
+                    <text x="50%" y="155" font-size="18" font-family="Arial" fill="orange" text-anchor="middle" dominant-baseline="middle">
+                      2025
+                    </text>
+                  </svg>
+                </div>
+                </div>
+            </div>
+          </div>
+          <div id="div">
+            <div class="timediv">
+              <div class="time-block">
+                <div class="text"><h5>დაწყების დრო</h5></div>
+                <div class="time"><h5>8:20</h5></div>
+              </div>
+              <div class="BTN">
+                <div class="btn">
+                  <button class="btn01"><h3>დაწყება</h3></button>
+                </div>
+              </div>
+              <div class="time-block">
+                <div class="text"><h5>დარჩენილი დრო</h5></div>
+                <div class="time"><h5>19:30</h5></div>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+    </div>
+</div>
+<!-- <div class="bcontainer mb-4">
+  <div class="expired-text">
+    <div class="img">
+      <div class="overlay01">
+        <p class="tx01">ვადაგასული</p> 
+        </div>
+    </div>
+   </div>
+</div> -->
+<div style="margin-top:400px"><app-footer-for-pupil />
+</div>
+
+<!-- 
+<div class="background">
   <div class="overlay">
     <div class="time-container">
       <div class="time-block">
@@ -110,53 +184,98 @@
       <div class="time-block">
         <div class="text">დარჩენილი დრო</div>
         <div class="time">19:30</div>
-      </div> 
-</div>
-  <div class="expired-text"> 
-    <p class="tx01">
-    ვადაგასული
-  </p> 
-    <div class="overlay01">
-    </div>
-    <div class="card-container">
-      <div class="card">
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="title">დაწყების დრო</div>
-        <div class="time">19:30</div>
-        <div class="year">2025</div>
       </div>
+    </div>
+    <div class="expired-text">
+      <p class="tx01">ვადაგასული</p>
+      <div class="overlay01"></div>
+      <div class="card-container">
+        <div class="card">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="title">დაწყების დრო</div>
+          <div class="time">19:30</div>
+          <div class="year">2025</div>
+        </div>
+      </div>
+    </div>
+    <div class="quiz-container" *ngIf="!isLoading && quiz?.questions?.length; else showResults">
+      <div class="header row">
+        <div class="col-lg-3 score">სწორი {{ correctAnswersCount }}</div>
+        <div class="col-lg-3 progress">
+          კითხვა {{ currentQuestionIndex + 1 }} / {{ quiz?.questions?.length }}
+        </div>
+        <div class="col-lg-3 status">არასწორი {{ incorrectAnswersCount }}</div>
+        <div class="col-lg-3 timer">დარჩენილი დრო: {{ formatTime(timeLeftForQuiz) }}</div>
+      </div>
+    
+      <div class="question">
+        {{ quiz?.questions?.[currentQuestionIndex]?.question }}
+      </div>
+      
+      <div class="answers">
+        <div class="row">
+          <div class="col-lg-12 text-center" *ngFor="let answer of allAnswers; let i = index">
+            <button
+            class="answer"
+            [class.selected]="selectedAnswers[currentQuestionIndex] === answer"
+              (click)="selectAnswer(answer)"
+              style="margin: 10px 0; padding: 10px; width: 100%;"
+              >
+              {{ answer }}
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <button
+        (click)="nextQuestion()"
+        [disabled]="!selectedAnswers[currentQuestionIndex]"
+        style="margin-top: 20px;"
+      >
+        Next
+      </button>
+    
+      <p>Selected Answer for Current Question: {{ selectedAnswers[currentQuestionIndex] }}</p>
     </div>
     
-  </div>
-  <!-- ბექგაუნდი,დრო და ქარდი მთავრდება აქ -->
+    <ng-template #showResults>
+      <div class="results">
+        <h2>Quiz Completed!</h2>
+        <p>Correct Answers: {{ correctAnswersCount }}</p>
+        <p>Incorrect Answers: {{ incorrectAnswersCount }}</p>
+        <button (click)="restartQuiz()">Restart Quiz</button>
+      </div>
+    </ng-template>
+    
   
+  </div>
+</div> -->
+
+<!-- ბექგაუნდი,დრო და ქარდი მთავრდება აქ -->
+
 <!-- ქვიზი -->
-  <div class="quiz-container">
-    <div class="header row">
-      <div class="col-lg-4 score">სწორი 6</div>
-      <div class="col-lg-4 progress">კითხვა 13 / 20</div>
-      <div class="col-lg-4 status">არასწორი 7</div>
-    </div>
-    <div class="question">რომელ წელს მოხდა კრწანისის ბრძოლა?</div>
-    <div class="answers">
-      <div class="row">
-        <div class="col-lg-8 m-auto">
-          <button class="answer">1795 წელს</button>
-        </div>
-        <div class="col-lg-8 m-auto ">
-          <button class="answer">1790 წელს</button>
-        </div>
-        <div class="col-lg-8 m-auto">
-          <button class="answer">1800 წელს</button>
-        </div>
-        <div class="col-lg-8 m-auto">
-          <button class="answer">1750 წელს</button>
-        </div>
+<!-- <div class="quiz-container">
+  <div class="header row">
+    <div class="col-lg-4 score">სწორი 6</div>
+    <div class="col-lg-4 progress">კითხვა 13 / 20</div>
+    <div class="col-lg-4 status">არასწორი 7</div>
+  </div>
+  <div class="question">რომელ წელს მოხდა კრწანისის ბრძოლა?</div>
+  <div class="answers">
+    <div class="row">
+      <div class="col-lg-8 m-auto">
+        <button class="answer">1795 წელს</button>
+      </div>
+      <div class="col-lg-8 m-auto">
+        <button class="answer">1790 წელს</button>
+      </div>
+      <div class="col-lg-8 m-auto">
+        <button class="answer">1800 წელს</button>
+      </div>
+      <div class="col-lg-8 m-auto">
+        <button class="answer">1750 წელს</button>
       </div>
     </div>
   </div>
-  <!-- ქვიზი მთავრდება აქ -->
-
-
-  
+</div> -->

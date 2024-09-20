@@ -223,9 +223,12 @@ img {
   // transform: translateX(-50%);
   width: 100%;
   padding: 20px;
+  position: relative;
 }
 
 .projects__card {
+  position: relative;
+  bottom: 350px;
   width: 90%;
   height: 102%;
   padding: 1rem 1rem 2rem;

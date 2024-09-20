@@ -4,11 +4,12 @@ import { QuizDto } from '../../core/models/common.model';
 import { Subscription, interval } from 'rxjs';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { RouterLink} from '@angular/router';
+import {FooterForPupilComponent} from '../footer-for-pupil/footer-for-pupil.component'
 
 @Component({
   selector: 'app-quize',
   standalone: true,
-  imports: [CommonModule, NgIf, NgFor,RouterLink],
+  imports: [CommonModule, NgIf, NgFor,RouterLink,FooterForPupilComponent],
   templateUrl: './quize.component.html',
   styleUrls: ['./quize.component.scss']
 })
@@ -117,7 +118,6 @@ export class QuizeComponent implements OnInit, OnDestroy {
       [array[i], array[j]] = [array[j], array[i]];
     }
   }
-
   formatTime(seconds: number): string {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
