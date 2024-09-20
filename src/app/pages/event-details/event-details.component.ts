@@ -55,9 +55,21 @@ onWindowScroll() {
   if (scrolled && !this.isNavbarVisible) {
     this.isNavbarVisible = true;
     this.slideDownNavbar();
+    const button =  document.getElementById("firstNavbarl")
+    if (button){
+      const isExpanded = button.getAttribute("aria-expanded") === "true";
+      if(isExpanded){
+        button.click()}
+    }
   } else if (!scrolled && this.isNavbarVisible) {
     this.isNavbarVisible = false;
     this.slideUpNavbar();
+    const button =  document.getElementById("secondNavbar2")
+  
+    if (button){
+      const isExpanded = button.getAttribute("aria-expanded") === "true";
+      if(isExpanded){button.click()}
+    }
   }
 }
 slideDownNavbar() {

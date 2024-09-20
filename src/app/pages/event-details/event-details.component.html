@@ -1,7 +1,7 @@
 <header class="site-header">
   <div class="header-content">
-    <nav class="navbar navbar-expand-lg navbar-light">
-      <!-- first navbar -->
+    <nav id="firstNavbar" class="navbar navbar-expand-lg navbar-light">
+      <!-- First Navbar -->
       <div class="container-fluid">
         <svg
           id="svg"
@@ -19,17 +19,17 @@
           />
         </svg>
         <button
+          id="firstNavbarl"
           class="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNavDropdown"
           aria-controls="navbarNavDropdown"
           aria-expanded="false"
-          aria-label="Toggle navigation"
+          aria-label="Toggle navigation first"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
@@ -52,7 +52,7 @@
               <a
                 class="nav-link text-dark h5"
                 href="https://www.tiktok.com/@_fspace_"
-                target="blank"
+                target="_blank"
               >
                 <svg
                   id="svg2"
@@ -96,18 +96,19 @@
             />
           </svg>
           <button
+            id="secondNavbar2"
             class="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
-            data-bs-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown"
+            data-bs-target="#secondNavbar"
+            aria-controls="secondNav"
             aria-expanded="false"
-            aria-label="Toggle navigation"
+            aria-label="Toggle navigation second"
           >
             <span class="navbar-toggler-icon"></span>
           </button>
 
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <div class="collapse navbar-collapse" id="secondNavbar">
             <ul class="navbar-nav ms-auto text-dark">
               <li class="nav-item">
                 <a class="nav-link mx-2" routerLink="Pupil/Uni"
@@ -158,7 +159,6 @@
       </nav>
     </div>
 
-    <h1>{{EventCard.text}}</h1>
   </div>
   <div class="wave-container">
     <svg

@@ -1,4 +1,4 @@
-import { Component, OnInit,  } from '@angular/core';
+import { Component, HostListener, Input, OnInit, OnDestroy, NgZone, ViewChild } from '@angular/core';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
 import {IUniFacultyCard} from "../models/common.model";
 import {Icard} from "../models/common.model";
@@ -8,9 +8,10 @@ import { FooterForPupilComponent } from "../../pages/footer-for-pupil/footer-for
 import {ProgramCardService} from '../../program-card.service'
 import {ProgramCardDto} from '../models/common.model'
 import { ChangeDetectorRef } from '@angular/core';
-import { HostListener } from '@angular/core';
 import { RouterLink} from '@angular/router';
-
+import { gsap } from 'gsap';
+import { Subject, fromEvent } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 @Component({
   selector: 'app-uni-program',
   standalone: true,
@@ -18,22 +19,72 @@ import { RouterLink} from '@angular/router';
   templateUrl: './uni-program.component.html',
   styleUrl: './uni-program.component.scss',
 })
-export class UniProgramComponent   {
+export class UniProgramComponent implements OnInit, OnDestroy  {
 cards: IUniFacultyCard[] = [];
   programCards: ProgramCardDto[] = [];
   circles = [1, 2, 3, 4, 5, 6];
   activeCircleIndex: number = 0;
 
   constructor(
-    private cdr: ChangeDetectorRef,
     private router: Router,
-    private programCardService: ProgramCardService
+    private programCardService: ProgramCardService,
+    private cdr: ChangeDetectorRef, private ngZone: NgZone
   ) {}
 
   ngOnInit(): void {
     this.getProgram(); // Fetch the program data when the component initializes
-  }
+    const photoElement = document.querySelector('.photo-class') as HTMLElement;
+    if (photoElement) {
+      this.photoHeight = photoElement.offsetHeight;
+    }
 
+    this.ngZone.runOutsideAngular(() => {
+      fromEvent(window, 'scroll')
+        .pipe(takeUntil(this.destroy$))
+        .subscribe(() => {
+          this.onWindowScroll();
+        });
+    });
+  }
+  onWindowScroll() {
+    const scrolled = window.scrollY > 200;
+  
+    if (scrolled && !this.isNavbarVisible) {
+      this.isNavbarVisible = true;
+      this.slideDownNavbar();
+      const button =  document.getElementById("firstNavbarl")
+      if (button){
+        const isExpanded = button.getAttribute("aria-expanded") === "true";
+        if(isExpanded){
+          button.click()}
+      }
+    } else if (!scrolled && this.isNavbarVisible) {
+      this.isNavbarVisible = false;
+      this.slideUpNavbar();
+      const button =  document.getElementById("secondNavbar2")
+    
+      if (button){
+        const isExpanded = button.getAttribute("aria-expanded") === "true";
+        if(isExpanded){button.click()}
+      }
+    }
+  }
+  slideDownNavbar() {
+    gsap.to(this.secondNavbar.nativeElement, { y: 0, duration: 0.3, ease: 'power2.out' });
+  }
+  
+  slideUpNavbar() {
+    gsap.to(this.secondNavbar.nativeElement, { y: -100, duration: 0.3, ease: 'power2.in' }); // Adjust -60 based on your navbar height
+  }
+  
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+  @ViewChild('secondNavbar') secondNavbar!: ElementRef;
+  private isNavbarVisible = false;
+  private destroy$ = new Subject<void>();
+  private photoHeight = 0;
   getProgram(): void {
     this.programCardService.getProgramCard().subscribe({
       next: (programs) => {
