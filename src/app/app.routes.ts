@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import {createComponent} from "@angular/core";
 import { LogInComponent } from './pages/log-in/log-in.component';
-import { RegisterComponent } from './pages/register/register.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { StudentsComponent } from './pages/students/students.component';

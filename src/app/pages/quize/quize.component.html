@@ -365,9 +365,11 @@
       <h2>Quiz Completed!</h2>
       <p>Correct Answers: {{ correctAnswersCount }}</p>
       <p>Incorrect Answers: {{ incorrectAnswersCount }}</p>
-      <button (click)="restartQuiz()">Restart Quiz</button>
     </div>
   </ng-template>
+  <div *ngIf="!showQuiz">
+    <button (click)="quizCompleted()">Complete Quiz</button>
+  </div>
 </div>
 <div style="margin-top: 400px">
   <app-footer-for-pupil />

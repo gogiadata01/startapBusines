@@ -21,7 +21,7 @@ export class AddQuizWithApiComponent implements OnInit {
     private quizService: QuizService
   ) {
     this.quizForm = this.fb.group({
-      Time: ['', Validators.required],
+      time: ['', Validators.required],
       questions: this.fb.array([])
     });
   }
