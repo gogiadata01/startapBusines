@@ -78,6 +78,10 @@ export const routes: Routes = [
     component:RegisterWithApiComponent
   },
   {
+    path:"SignUp",
+    component:SignUpWithApiComponent
+  },
+  {
     path:"Home/:id",
     component:NavbarComponent,
   },
