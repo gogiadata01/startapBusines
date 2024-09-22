@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { Observable, catchError,throwError } from 'rxjs';
+import { Observable, catchError,throwError,of } from 'rxjs';
 import {QuizDto} from './core/models/common.model'
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import {QuizDto} from './core/models/common.model'
 export class QuizService {
 
   private apiUrl = 'https://localhost:7144/api/Quiz'; 
-
+  private quizCache: { [time: string]: { quizzes: QuizDto[], timestamp: number } } = {};
   constructor(private http: HttpClient) {}
 
   // GET all quizzes
@@ -39,11 +40,31 @@ export class QuizService {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 
-  getQuizByTime(time: string): Observable<QuizDto[]> {
-  return this.http.get<QuizDto[]>(`${this.apiUrl}/ByTime/${time}`).pipe(
-    catchError(this.handleError)
-  );
+  // Get quizzes by time and cache them for 1 hour
+  getQuizByTime(time: any): Observable<QuizDto[]> {
+    const cachedQuizData = this.quizCache[time];
+    const currentTime = new Date().getTime();
+
+    // Check if the cache is valid (within 1 hour)
+    if (cachedQuizData && (currentTime - cachedQuizData.timestamp < 3600000)) {
+      return of(cachedQuizData.quizzes);  // Return cached quizzes if still valid
+    }
+
+    return this.http.get<QuizDto[]>(`${this.apiUrl}/time/${time}`).pipe(
+      map((quizzes) => {
+        // Cache the quizzes and set the timestamp
+        this.quizCache[time] = { quizzes, timestamp: currentTime };
+        return quizzes;
+      }),
+      catchError(this.handleError)
+    );
   }
+  // getQuizByTime(time: any): Observable<QuizDto[]> {
+  // return this.http.get<QuizDto[]>(`${this.apiUrl}/time/${time}`).pipe(
+  //   catchError(this.handleError)
+  // );
+  // }
+
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {

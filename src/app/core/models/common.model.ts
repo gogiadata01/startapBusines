@@ -152,7 +152,7 @@ export interface IUniFacultyCard{
   sections: { checkBoxNames: { checkBoxName: string }[] }[];
 }
 export interface QuizDto {
-  Time:string
+  time:string
   questions: QuestionDto[];
 }
 
