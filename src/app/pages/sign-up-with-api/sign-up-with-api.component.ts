@@ -22,60 +22,77 @@ import Swal from 'sweetalert2';
   styleUrl: './sign-up-with-api.component.scss'
 })
 export class SignUpWithApiComponent {
-  SignIn: FormGroup;
-  constructor(
-    private fb: FormBuilder,
-    private UserService : UserService,
-    private router: Router,
-    private authService:AuthenticationService
-  ){
-    this.SignIn = this.fb.group({
-      Email: ['',],
-      Password: ['',]  
-    })
+  // SignIn: FormGroup;
+  // constructor(
+  //   private fb: FormBuilder,
+  //   private UserService : UserService,
+  //   private router: Router,
+  //   private authService:AuthenticationService
+  // ){
+  //   this.SignIn = this.fb.group({
+  //     Email: ['',],
+  //     Password: ['',]  
+  //   })
+  // }
+
+  // onSubmit(): void {
+  //   if (this.SignIn.valid) {
+  //     const UserSignInDto:UserSignInDto  = this.SignIn.value;
+  //     this.UserService.signInUser(UserSignInDto).subscribe({
+  //       next: (response) => {
+  //         console.log('User added successfully', response); 
+  //         const user: UserDto = {
+  //           Name: response.userName,
+  //           Email: response.email,
+  //           Password: response.password,
+  //           type: response.type, // Adjust according to your API response
+  //           Img: response.img,
+  //           Coin:response.coin,
+  //           ResetToken:response.resettoken
+  //         };
+      
+  //         // Save the user information in the AuthenticationService
+  //         this.authService.setCurrentUser(user);
+  //         const userId = response.userId; // Adjust this according to your API response
+  //         Swal.fire({
+  //           title: "შესრულდა",
+  //           text: "წარმატებით გაიარეთ ავტორიზაცია",
+  //           icon: "success",
+  //           showConfirmButton: false,
+  //           timer: 1800
+  //         });
+  //         // Use navigate with parameters after successful sign-in
+  //         setTimeout(()=>{
+  //           this.router.navigate(['Home', userId]); // Navigate to 'Home/:id' route
+  //         },1500)
+  //       },
+  //       error: (err) => {
+  //         Swal.fire({
+  //           title: "შეცდომა",
+  //           text: "მეილი და პაროლი არასწორია",
+  //           icon: "info"
+  //         }); 
+  //         console.error('Error adding UniCard', err);
+  //       }
+  //     })
+  //     console.log(this.SignIn.value);
+  //   }
+  // }
+
+
+  authForm: FormGroup;
+
+  constructor(private fb: FormBuilder) {
+    this.authForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+    });
   }
 
-  onSubmit(): void {
-    if (this.SignIn.valid) {
-      const UserSignInDto:UserSignInDto  = this.SignIn.value;
-      this.UserService.signInUser(UserSignInDto).subscribe({
-        next: (response) => {
-          console.log('User added successfully', response); 
-          const user: UserDto = {
-            Name: response.userName,
-            Email: response.email,
-            Password: response.password,
-            type: response.type, // Adjust according to your API response
-            Img: response.img,
-            Coin:response.coin,
-            ResetToken:response.resettoken
-          };
-      
-          // Save the user information in the AuthenticationService
-          this.authService.setCurrentUser(user);
-          const userId = response.userId; // Adjust this according to your API response
-          Swal.fire({
-            title: "შესრულდა",
-            text: "წარმატებით გაიარეთ ავტორიზაცია",
-            icon: "success",
-            showConfirmButton: false,
-            timer: 1800
-          });
-          // Use navigate with parameters after successful sign-in
-          setTimeout(()=>{
-            this.router.navigate(['Home', userId]); // Navigate to 'Home/:id' route
-          },1500)
-        },
-        error: (err) => {
-          Swal.fire({
-            title: "შეცდომა",
-            text: "მეილი და პაროლი არასწორია",
-            icon: "info"
-          }); 
-          console.error('Error adding UniCard', err);
-        }
-      })
-      console.log(this.SignIn.value);
+  onSubmit() {
+    if (this.authForm.valid) {
+      console.log('Form submitted', this.authForm.value);
+      // Here you would typically call an authentication service
     }
   }
 }
