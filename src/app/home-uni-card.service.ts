@@ -3,50 +3,58 @@ import { HttpClient, HttpHeaders, HttpErrorResponse,HttpParams  } from '@angular
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { UniCardDto } from './core/models/common.model';
+import { environment } from '../environments/environment.development';  // Import environment
 
 @Injectable({
   providedIn: 'root'
 })
 export class HomeUniCardService {
-  private apiUrl = 'https://localhost:7144/api/UniCard';
+  private apiUrl = `${environment.apiUrl}/UniCard`;  // Use environment variable for API URL
 
   constructor(private http: HttpClient) {}
 
+  // GET all UniCard data
   getData(): Observable<UniCardDto[]> {
     return this.http.get<UniCardDto[]>(this.apiUrl).pipe(
-      catchError(this.handleError)
+      catchError(this.handleError)  // Error handling
     );
   }
 
+  // GET UniCard by ID
   getUniCard(id: any): Observable<UniCardDto> {
     return this.http.get<UniCardDto>(`${this.apiUrl}/${id}`).pipe(
-      catchError(this.handleError)
+      catchError(this.handleError)  // Error handling
     );
   }
 
+  // POST (add) a new UniCard
   addUniCard(uniCardDto: UniCardDto): Observable<UniCardDto> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post<UniCardDto>(this.apiUrl, uniCardDto, { headers }).pipe(
-      catchError(this.handleError)
+      catchError(this.handleError)  // Error handling
     );
   }
-  getUniCardByTitleAndProgramName(title: any, programName: any): Observable<UniCardDto[]> {
-    let params = new HttpParams().set('title', title).set('programName', programName);
-  
-    return this.http.get<UniCardDto[]>(`${this.apiUrl}/search`, { params });
-  }
-  
 
-  private handleError(error: HttpErrorResponse) {
+  // GET UniCard by title and program name (with query params)
+  getUniCardByTitleAndProgramName(title: any, programName: any): Observable<UniCardDto[]> {
+    const params = new HttpParams().set('title', title).set('programName', programName);
+
+    return this.http.get<UniCardDto[]>(`${this.apiUrl}/search`, { params }).pipe(
+      catchError(this.handleError)  // Added error handling
+    );
+  }
+
+  // Centralized error handling
+  private handleError(error: HttpErrorResponse): Observable<never> {
+    let errorMessage = 'Unknown error!';
     if (error.error instanceof ErrorEvent) {
-      // A client-side or network error occurred.
-      console.error('An error occurred:', error.error.message);
+      // A client-side or network error occurred
+      errorMessage = `Error: ${error.error.message}`;
     } else {
-      // The backend returned an unsuccessful response code.
-      console.error(`Backend returned code ${error.status}, ` +
-                    `body was: ${error.error}`);
+      // The backend returned an unsuccessful response code
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
-    return throwError('Something bad happened; please try again later.');
+    return throwError(() => new Error(errorMessage));
   }
 }
 

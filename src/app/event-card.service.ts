@@ -3,41 +3,48 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { EventCardDto } from './core/models/common.model';
+import { environment } from '../environments/environment.development';  // Import environment
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventCardService {
-  private apiUrl ='https://localhost:7144/EventCard'
+  private apiUrl = `${environment.apiUrl}/EventCard`;  // Use environment variable for API URL
+
   constructor(private http: HttpClient) { }
 
-  getAllEventCard():Observable<EventCardDto[]>{
+  // GET all EventCards
+  getAllEventCard(): Observable<EventCardDto[]> {
     return this.http.get<EventCardDto[]>(this.apiUrl).pipe(
-      catchError(this.handleError)
-    )
+      catchError(this.handleError)  // Error handling
+    );
   }
 
-  getEventCardById(id:any):Observable<EventCardDto>{
+  // GET EventCard by ID
+  getEventCardById(id: any): Observable<EventCardDto> {
     return this.http.get<EventCardDto>(`${this.apiUrl}/${id}`).pipe(
-      catchError(this.handleError)
-    )
-  }
-  addEventCard(EventCardDto:EventCardDto):Observable<EventCardDto>{
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post<EventCardDto>(this.apiUrl,EventCardDto,{headers}).pipe(
-      catchError(this.handleError)
-    )
+      catchError(this.handleError)  // Error handling
+    );
   }
 
-  private handleError(error: HttpErrorResponse) {
+  // POST (add) a new EventCard
+  addEventCard(eventCardDto: EventCardDto): Observable<EventCardDto> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post<EventCardDto>(this.apiUrl, eventCardDto, { headers }).pipe(
+      catchError(this.handleError)  // Error handling
+    );
+  }
+
+  // Centralized error handling
+  private handleError(error: HttpErrorResponse): Observable<never> {
+    let errorMessage = 'Unknown error!';
     if (error.error instanceof ErrorEvent) {
-      // A client-side or network error occurred.
-      console.error('An error occurred:', error.error.message);
+      // A client-side or network error occurred
+      errorMessage = `Error: ${error.error.message}`;
     } else {
-      // The backend returned an unsuccessful response code.
-      console.error(`Backend returned code ${error.status}, ` +
-                    `body was: ${error.error}`);
+      // The backend returned an unsuccessful response code
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
-    return throwError('Something bad happened; please try again later.');
+    return throwError(() => new Error(errorMessage));
   }
 }

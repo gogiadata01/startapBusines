@@ -18,6 +18,7 @@
   import { takeUntil } from 'rxjs/operators';
   import { gsap } from 'gsap';
   import {  AfterViewInit,  ViewChildren, QueryList } from '@angular/core';
+  import {AuthenticationService} from '../../authentication.service'
 
 
 
@@ -35,7 +36,7 @@
     activeCircleIndex: number = 0;
     EventCard:EventCardDto[] = []
     selectedField: string | null = null; // Track the selected field
-    constructor(private router: Router,private cdr: ChangeDetectorRef, private ngZone: NgZone , private EventCardService: EventCardService  ,  private programCardService: ProgramCardService
+    constructor(private router: Router,private cdr: ChangeDetectorRef, private authService:AuthenticationService,private ngZone: NgZone , private EventCardService: EventCardService  ,  private programCardService: ProgramCardService
       ) {
       }
     
@@ -265,7 +266,6 @@
           }
         });
     }
-    
   }
 
 

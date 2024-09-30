@@ -1,4 +1,4 @@
 export const environment = {
     production: false,
-    apiUrl: 'https://www.fspace.ge/' 
+    apiUrl: 'http://51.20.56.20/api'  
 };

@@ -5,44 +5,55 @@ import { catchError } from 'rxjs/operators';
 import { ProgramCardDto } from './core/models/common.model';
 import { CardBodyComponent } from '@coreui/angular';
 import { setThrowInvalidWriteToSignalError } from '@angular/core/primitives/signals';
+import { environment } from '../environments/environment.development';  // Import environment
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProgramCardService {
-  private apiUrl = "https://localhost:7144/api/ProgramCard"
+  private apiUrl = `${environment.apiUrl}/ProgramCard`;  // Use environment variable for API URL
+
   constructor(private http: HttpClient) { }
 
-  getProgramCard():Observable<ProgramCardDto[]>{
+  // GET all ProgramCards
+  getProgramCard(): Observable<ProgramCardDto[]> {
     return this.http.get<ProgramCardDto[]>(this.apiUrl).pipe(
-      catchError(this.handleError)
-    )
-  }
-
-  getProgramCardById(id:any):Observable<ProgramCardDto>{
-    return this.http.get<ProgramCardDto>(`${this.apiUrl}/${id}`).pipe(
-      catchError(this.handleError)
+      catchError(this.handleError)  // Error handling
     );
   }
 
-  addProgramCard(ProgramCardDto:ProgramCardDto):Observable<ProgramCardDto>{
+  // GET ProgramCard by ID
+  getProgramCardById(id: number): Observable<ProgramCardDto> {
+    return this.http.get<ProgramCardDto>(`${this.apiUrl}/${id}`).pipe(
+      catchError(this.handleError)  // Error handling
+    );
+  }
+
+  // POST (add) a new ProgramCard
+  addProgramCard(programCard: ProgramCardDto): Observable<ProgramCardDto> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post<ProgramCardDto>(this.apiUrl,ProgramCardDto,{headers}).pipe(
-      catchError(this.handleError)
-    )
+    return this.http.post<ProgramCardDto>(this.apiUrl, programCard, { headers }).pipe(
+      catchError(this.handleError)  // Error handling
+    );
   }
-  getProgramCardByProgramName(programname: any): Observable<ProgramCardDto> {
-    return this.http.get<ProgramCardDto>(`${this.apiUrl}/byProgramName/${programname}`);
+
+  // GET ProgramCard by Program Name
+  getProgramCardByProgramName(programName: string): Observable<ProgramCardDto> {
+    return this.http.get<ProgramCardDto>(`${this.apiUrl}/byProgramName/${programName}`).pipe(
+      catchError(this.handleError)  // Error handling
+    );
   }
-  private handleError(error: HttpErrorResponse) {
+
+  // Centralized error handling
+  private handleError(error: HttpErrorResponse): Observable<never> {
+    let errorMessage = 'Unknown error!';
     if (error.error instanceof ErrorEvent) {
-      // A client-side or network error occurred.
-      console.error('An error occurred:', error.error.message);
+      // A client-side or network error occurred
+      errorMessage = `Error: ${error.error.message}`;
     } else {
-      // The backend returned an unsuccessful response code.
-      console.error(`Backend returned code ${error.status}, ` +
-                    `body was: ${error.error}`);
+      // The backend returned an unsuccessful response code
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
-    return throwError('Something bad happened; please try again later.');
+    return throwError(() => new Error(errorMessage));
   }
 }

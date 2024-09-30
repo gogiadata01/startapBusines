@@ -4,7 +4,9 @@
 }
 #fluid{
   padding: 10px;
-
+}
+#color{
+  background-color: #342833;
 }
 .second-navbar {
   transition: top 0.3s ease-in-out;
@@ -228,6 +230,7 @@ text-align: center;
 #svg{
   width: 120px;
   height: 100%;
+  cursor: pointer;
 }
 #svg2{
   width: 35px;

@@ -93,6 +93,10 @@ export const routes: Routes = [
     component:AddWithApiProgramCardComponent
   },
   {
+    path:"Home/AddQuizWithApi",
+    component:AddQuizWithApiComponent
+  },
+  {
     path:"Home/AddEventCardWithApi",
     component:AddWithApiEventCardComponent
   },

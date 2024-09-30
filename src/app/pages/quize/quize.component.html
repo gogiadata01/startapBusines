@@ -5,6 +5,7 @@
       <!-- First Navbar -->
       <div class="container-fluid">
         <svg
+          routerLink="/"
           id="svg"
           xmlns="http://www.w3.org/2000/svg"
           width="639"
@@ -80,7 +81,7 @@
     </nav>
 
     <!-- second -->
-    <div #secondNavbar class="second-navbar">
+    <div id="color" #secondNavbar class="second-navbar">
       <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container-fluid" id="fluid">
           <svg
@@ -284,7 +285,7 @@
             <div class="BTN">
               <div class="btn">
                 <button class="btn01" (click)="startQuiz()">
-                  <h3>დაწყება</h3>
+                  <h3>დაწყება</h3> v 
                 </button>
               </div>
             </div>
@@ -367,9 +368,9 @@
       <p>Incorrect Answers: {{ incorrectAnswersCount }}</p>
     </div>
   </ng-template>
-  <div *ngIf="!showQuiz">
+  <!-- <div *ngIf="!showQuiz">
     <button (click)="quizCompleted()">Complete Quiz</button>
-  </div>
+  </div> -->
 </div>
 <div style="margin-top: 400px">
   <app-footer-for-pupil />

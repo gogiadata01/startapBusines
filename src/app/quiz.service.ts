@@ -3,44 +3,48 @@ import { HttpClient,HttpHeaders, HttpErrorResponse } from '@angular/common/http'
 import { Observable, catchError,throwError,of } from 'rxjs';
 import {QuizDto} from './core/models/common.model'
 import { map } from 'rxjs/operators';
+import { environment } from '../environments/environment.development';  // Import environment
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuizService {
 
-  private apiUrl = 'https://localhost:7144/api/Quiz'; 
+  private apiUrl = `${environment.apiUrl}/Quiz`;  // Use environment variable for API URL
   private quizCache: { [time: string]: { quizzes: QuizDto[], timestamp: number } } = {};
+
   constructor(private http: HttpClient) {}
 
   // GET all quizzes
   getQuizzes(): Observable<QuizDto[]> {
     return this.http.get<QuizDto[]>(this.apiUrl).pipe(
-      catchError(this.handleError)
+      catchError(this.handleError)  // Consistent error handling
     );
   }
 
- 
+  // GET quiz by ID
   getQuizById(id: number): Observable<QuizDto> {
     return this.http.get<QuizDto>(`${this.apiUrl}/${id}`).pipe(
       catchError(this.handleError)
     );
   }
 
-  
+  // POST (create) a new quiz
   createQuiz(quiz: QuizDto): Observable<QuizDto> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post<QuizDto>(this.apiUrl, quiz,{headers}).pipe(
+    return this.http.post<QuizDto>(this.apiUrl, quiz, { headers }).pipe(
       catchError(this.handleError)
     );
   }
 
-  
+  // DELETE quiz by ID
   deleteQuiz(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+    return this.http.delete<void>(`${this.apiUrl}/${id}`).pipe(
+      catchError(this.handleError)  // Added error handling for delete
+    );
   }
 
-  // Get quizzes by time and cache them for 1 hour
+  // GET quizzes by time and cache them for 1 hour
   getQuizByTime(time: any): Observable<QuizDto[]> {
     const cachedQuizData = this.quizCache[time];
     const currentTime = new Date().getTime();
@@ -59,22 +63,17 @@ export class QuizService {
       catchError(this.handleError)
     );
   }
-  // getQuizByTime(time: any): Observable<QuizDto[]> {
-  // return this.http.get<QuizDto[]>(`${this.apiUrl}/time/${time}`).pipe(
-  //   catchError(this.handleError)
-  // );
-  // }
 
-
-  private handleError(error: HttpErrorResponse) {
+  // Centralized error handling method
+  private handleError(error: HttpErrorResponse): Observable<never> {
+    let errorMessage = 'Unknown error!';
     if (error.error instanceof ErrorEvent) {
-      // A client-side or network error occurred.
-      console.error('An error occurred:', error.error.message);
+      // A client-side or network error occurred
+      errorMessage = `Error: ${error.error.message}`;
     } else {
-      // The backend returned an unsuccessful response code.
-      console.error(`Backend returned code ${error.status}, ` +
-                    `body was: ${error.error}`);
+      // The backend returned an unsuccessful response code
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
-    return throwError('Something bad happened; please try again later.');
+    return throwError(() => new Error(errorMessage));
   }
 }

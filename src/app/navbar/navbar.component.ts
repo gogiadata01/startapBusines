@@ -10,10 +10,11 @@ import { idToken } from '@angular/fire/auth';
 import {AddWithApiHomeUniCardComponent} from '../pages/add-with-api-uni-card/add-with-api-home-uni-card.component'
 import {AddWithApiProgramCardComponent} from '../pages/add-with-api-program-card/add-with-api-program-card.component'
 import {AddWithApiEventCardComponent} from '../pages/add-with-api-event-card/add-with-api-event-card.component'
+import { AddQuizWithApiComponent } from "../pages/add-quiz-with-api/add-quiz-with-api.component";
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink,AddWithApiHomeUniCardComponent,AddWithApiProgramCardComponent,AddWithApiEventCardComponent],
+  imports: [RouterLink, AddWithApiHomeUniCardComponent, AddWithApiProgramCardComponent, AddWithApiEventCardComponent, AddQuizWithApiComponent],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })

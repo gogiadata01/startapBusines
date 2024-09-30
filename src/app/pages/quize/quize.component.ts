@@ -273,7 +273,7 @@ export class QuizeComponent implements OnInit, OnDestroy {
   totalQuizTimeInSeconds = 15 * 60; // 15 minutes in seconds
   timeLeftForQuiz: number = this.totalQuizTimeInSeconds;
   quizIntervalSubscription: Subscription | undefined;
-  user: any;
+  user!: UserDto;
   constructor(
     private router: Router,
     private authService: AuthenticationService,
@@ -298,7 +298,7 @@ export class QuizeComponent implements OnInit, OnDestroy {
         });
     });
     this.authService.currentUser$.subscribe(user => {
-      this.user = user;
+      this.user = user as UserDto;
     });
   }
 
@@ -313,10 +313,11 @@ export class QuizeComponent implements OnInit, OnDestroy {
 
   startQuiz(): void {
     if (!this.currentUser) {
-      this.router.navigate(['/Register']);
+      this.router.navigate(['/Register']); // Redirect if the user is not logged in
     } else {
-      this.quizStarted = true;
-      this.showQuiz = true;
+      this.quizStarted = true;   // Start the quiz
+      this.showQuiz = true;      // Display the quiz
+      this.isLoading = false;    // Make sure loading state is off when showing the quiz
     }
   }
 
@@ -375,7 +376,7 @@ export class QuizeComponent implements OnInit, OnDestroy {
     // Check if the user is logged in
     if (this.user) {
       // Calculate the new coin value based on correct answers
-      const newCoinValue = this.user.coin + this.correctAnswersCount;
+      const newCoinValue = this.user.Coin + this.correctAnswersCount;
   
       // Call the userService to update the user's coin balance
       this.userService.updateUserCoin(this.user.id, newCoinValue).subscribe(
@@ -383,7 +384,7 @@ export class QuizeComponent implements OnInit, OnDestroy {
           console.log('Coin updated successfully:', response);
   
           // Update the user object with the new coin value
-          this.user.coin = newCoinValue;
+          this.user.Coin = newCoinValue;
   
           // Persist the updated user in the authentication service
           this.authService.setCurrentUser(this.user);
@@ -407,87 +408,56 @@ export class QuizeComponent implements OnInit, OnDestroy {
     }
   }
   
-
-  // getQuiz(): void {
-  //   const now = new Date(); // Current date and time
-  //   const formattedTime = formatDate(now, 'MM/dd HH:mm', 'en-US');    
-  //   // Check if a quiz was found within the last hour
-  //   if (this.quizFoundTime && now.getTime() - this.quizFoundTime.getTime() < 60 * 60 * 1000) {
-  //     console.log('Quiz found within the last hour, reusing it.');
-  //     return;
-  //   }
-    
-  //   // Format current date and time using DatePipe
-  //   console.log('Formatted Date:', formattedTime); // Log the formatted time to verify
-  
-  //   // Ensure the formatted date is URL-encoded to prevent 404 errors
-  //   const encodedToday = encodeURIComponent(formattedTime!); // This encodes spaces and slashes
-  
-  //   this.quizService.getQuizByTime(encodedToday).subscribe(
-  //     (quizzes: QuizDto[]) => {
-  //       if (quizzes && quizzes.length > 0) {
-  //         this.quiz = quizzes[0]; // Assuming you want the first matching quiz
-  //         this.isLoading = false;
-  //         this.loadAnswers();
-  //       } else {
-  //         console.error('No quiz found for today');
-  //         this.isLoading = false;
-  //       }
-  //     },
-  //     (error) => {
-  //       console.error('Error loading quiz by time:', error);
-  //       this.isLoading = false;
-  //     }
-  //   );
-  // }
   quizCompleted() {
-    this.showQuiz = false;  // Hides the quiz
-    this.endQuiz();  // Calls the endQuiz method to add coins to the user
+    this.showQuiz = false;  // Hide the quiz
+    this.endQuiz();  // End the quiz and handle coins
   }
-  getQuiz(): void {
-    const now = new Date(); // Get the current date and time
-  
-    // If a quiz was found within the last 15 minutes, reuse it
-    if (this.quizFoundTime && (now.getTime() - this.quizFoundTime.getTime()) < (15 * 60 * 1000)) {
-      console.log('Quiz found within the last 15 minutes, reusing it.');
-      return;
-    }
-  
-    // Update the time when the quiz was found
-    this.quizFoundTime = now;
-  
-    // Format the current time using DatePipe
-    const formattedTime = this.datePipe.transform(now, 'MM/dd HH:mm');
-  
-    if (!formattedTime) {
-      console.error('Failed to format the current time.');
-      this.isLoading = false;
-      return;
-    }
-  
-    // URL-encode the formatted time
-    const encodedTime = encodeURIComponent(formattedTime);
-  
-    // Set loading state
-    this.isLoading = true;
-  
-    // Fetch quiz by the encoded time
-    this.quizService.getQuizByTime(encodedTime).subscribe(
-      (quizzes: QuizDto[]) => {
-        if (quizzes && quizzes.length > 0) {
-          this.quiz = quizzes[0]; // Use the first quiz that matches the time
-          this.loadAnswers(); // Load the answers for the quiz
-        } else {
-          console.error('No quiz found for the specified time.');
-        }
-        this.isLoading = false;
-      },
-      (error) => {
-        console.error('Error fetching quiz:', error);
-        this.isLoading = false;
+
+getQuiz(): void {
+  const now = new Date();
+  this.currentTime = this.datePipe.transform(now, 'MM/dd HH:mm'); // Formatting current time
+
+  // Check if the quiz was already fetched within the past hour
+  if (this.quizFoundTime && (now.getTime() - this.quizFoundTime.getTime()) < 3600000) {
+    console.log('Quiz was already found within the last hour. Not fetching again.');
+    // this.showQuiz = true;
+    // this.isLoading = false;
+    return;
+  }
+
+  // Format the current time for the request
+  const formattedTime = this.datePipe.transform(now, 'MM/dd HH:mm');
+
+  if (!formattedTime) {
+    console.error('Failed to format the current time.');
+    // this.isLoading = false;
+    return;
+  }
+
+  // Encode the formatted time before sending it to the server
+  const encodedTime = encodeURIComponent(formattedTime);
+
+  console.log(formattedTime)
+  // Make the API call to get the quiz based on time
+  this.quizService.getQuizByTime(encodedTime).subscribe(
+    (quizzes: QuizDto[]) => {
+      if (quizzes && quizzes.length > 0) {
+        this.quiz = quizzes[0]; // Assuming the first matching quiz is selected
+        this.loadAnswers(); // Load the answers for the quiz
+        this.quizFoundTime = new Date(); // Record the time the quiz was fetched
+        this.showQuiz = true;
+      } else {
+        console.error('No quiz found for this time');
       }
-    );
-  }
+      this.isLoading = false; // Stop loading after the response
+    },
+    (error) => {
+      console.error('Error fetching quiz by time:', error);
+      this.isLoading = false; // Stop loading in case of error
+    }
+  );
+}
+
   
   loadAnswers(): void {
     if (this.quiz && this.quiz.questions && this.quiz.questions.length > 0) {
@@ -503,27 +473,24 @@ export class QuizeComponent implements OnInit, OnDestroy {
   selectAnswer(answer: string): void {
     this.selectedAnswers[this.currentQuestionIndex] = answer;
   }
-
   nextQuestion(): void {
-    if (!this.quiz || !this.quiz.questions) return;
-
-    const currentQuestion = this.quiz.questions[this.currentQuestionIndex];
-    const selectedAnswer = this.selectedAnswers[this.currentQuestionIndex];
-
-    if (selectedAnswer === currentQuestion.correctanswer) {
-      this.correctAnswersCount++;
-    } else {
-      this.incorrectAnswersCount++;
+    if (!this.quiz || !this.quiz.questions) {
+      console.error('Quiz or questions are not defined.');
+      return;
     }
-
-    this.currentQuestionIndex++;
-
-    if (this.currentQuestionIndex < this.quiz.questions.length) {
-      this.loadAnswers();
-    } else {
-      this.endQuiz();
+  
+    if (this.selectedAnswers[this.currentQuestionIndex]) {
+      this.currentQuestionIndex++;
+  
+      // Check if the quiz is completed
+      if (this.currentQuestionIndex >= this.quiz.questions.length) {
+        this.showQuiz = false;  // Hide quiz
+        this.quizCompleted();    // Show results and handle completion
+      }
     }
   }
+  
+  
 
 
 

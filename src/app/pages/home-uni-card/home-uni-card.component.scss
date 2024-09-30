@@ -63,9 +63,10 @@ box-shadow: none;
 }
 #fluid{
   padding: 10px;
-
 }
-
+#color{
+  background-color: #342833;
+}
 html {
   scroll-behavior: smooth;
   width: 100%;
@@ -532,6 +533,7 @@ img {
 #svg{
     width: 120px;
     height: 100%;
+    cursor: pointer;
 }
 #svg2{
     width: 35px;
