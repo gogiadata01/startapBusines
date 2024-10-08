@@ -3,6 +3,7 @@ body, html {
     padding: 0;
     width: 100%;
   }
+    //header and navbar
   .navbar-toggler-responsive{
     background-color: transparent;
   }
@@ -24,7 +25,6 @@ body, html {
     height: 2000px; 
   }
 
-  //header and navbar
   .site-header {
     width: 100%;
     height: 600px;;
@@ -327,7 +327,7 @@ footer {
     padding: 1rem 0;
     background-color: #ff6347;
     color: white;
-    margin-top: 2rem; /* Add this line for more space between main content and footer */
+    margin-top: 2rem;
 }
 
 @media screen and (max-width: 1024px) {

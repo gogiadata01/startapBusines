@@ -26,12 +26,17 @@ import { HomeComponent } from './pages/home/home.component';
 import { AddQuizWithApiComponent } from './pages/add-quiz-with-api/add-quiz-with-api.component';
 import { UniProgramComponent } from './core/UniProgram/uni-program.component';
 import { QuizeComponent } from './pages/quize/quize.component';
+import { PersonalPageComponent } from './pages/personal-page/personal-page.component';
 
 export const routes: Routes = [
   {
     path : "",
-    component:HomeComponent
+    component: PersonalPageComponent
   },
+  // {
+  //   path : "",
+  //   component: PersonalPageComponent
+  // },
   {
     path:"Pupil/Uni",
     component:PupilUniPageComponent

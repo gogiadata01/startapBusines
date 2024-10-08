@@ -127,9 +127,9 @@
     }
 
     contentStyle = {
-      display: 'flex', // აქ არის შეცვლილი
+      display: 'flex',
       justifyContent: 'space-between',
-      gap: '20px', // სივრცე შორის
+      gap: '20px', 
       flexWrap: 'wrap',
       width: '100%',
     }

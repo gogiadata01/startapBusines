@@ -4,7 +4,7 @@
   width: 100%;
   background: #342833;
   min-height: 100px;
-  padding: 20px;
+  padding: 10px;
   display: flex;
 }
 section{
@@ -25,11 +25,23 @@ h2{
 }
 
 .title{
-  // text-align: center;
   border: 2px dashed #F1F3BE;
-  border-radius: 14px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  padding: 3px;
+  width: 100%;
 }
 
+.title1{
+  border: 2px dashed #F1F3BE;
+  border-radius: 15px;
+  display: flex;
+  margin-bottom:10px ;
+  justify-content: center;
+  padding: 3px;
+  width: 80%;
+}
 
 section {
   width: 100%;
