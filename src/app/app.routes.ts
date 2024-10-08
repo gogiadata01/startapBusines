@@ -31,7 +31,7 @@ import { PersonalPageComponent } from './pages/personal-page/personal-page.compo
 export const routes: Routes = [
   {
     path : "",
-    component: PersonalPageComponent
+    component: HomeComponent
   },
   // {
   //   path : "",
