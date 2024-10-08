@@ -3,7 +3,8 @@
     <nav id="firstNavbar" class="navbar navbar-expand-lg navbar-light">
       <!-- First Navbar -->
       <div class="container-fluid">
-        <svg routerLink="/"
+        <svg
+          routerLink="/"
           id="svg"
           xmlns="http://www.w3.org/2000/svg"
           width="639"
@@ -82,7 +83,8 @@
     <div #secondNavbar class="second-navbar">
       <nav id="color" class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container-fluid" id="fluid">
-          <svg
+          <svg           routerLink="/"
+
             id="svg"
             xmlns="http://www.w3.org/2000/svg"
             width="639"
@@ -113,7 +115,7 @@
           <div class="collapse navbar-collapse" id="secondNavbar">
             <ul class="navbar-nav ms-auto text-dark">
               <li class="nav-item">
-                <a class="nav-link mx-2" routerLink="Pupil/Uni"
+                <a class="nav-link mx-2" routerLink="/Pupil/Uni"
                   >უნივერსიტეტები</a
                 >
               </li>
@@ -174,10 +176,13 @@
     </svg>
   </div>
 </header>
+<div class="Title">
+  <h3>უნივერსიტეტები</h3>
+</div>
 <section class="projects section" id="projects">
   <div class="projects__container container grid">
     @for (Uni of UniCard; track $index ){
-    <article class="projects__card">
+    <article (click)="onCardClicked(Uni.id)" class="projects__card">
       <div class="projects__image">
         <img
           src="{{ Uni.url }}"
@@ -192,14 +197,7 @@
         <h2 class="projects__title">{{ Uni.title }}</h2>
         <p class="projects__description">{{ Uni.mainText }}</p>
       </div>
-
-      <div class="projects__buttons">
-        <button class="Btn" (click)="onCardClicked(Uni.id)">გაიგე მეტი</button>
-      </div>
     </article>
     }
-  </div>
-  <div class="viewMore">
-    <button routerLink="/Pupil/Uni" class="btn btn--2">ნახე მეტი</button>
   </div>
 </section>

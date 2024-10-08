@@ -59,10 +59,8 @@ body, html {
   
  h1 {
   color: white;
-  text-align: center;
-  font-size: 1.9em; 
-  max-width: 1000px;
-  margin: 150px auto; 
+  font-weight: 500;
+  font-size: 32px;
 }
 
 
@@ -340,10 +338,16 @@ footer {
     .filter .Types{
         width: 65%;
     }
+    h1{
+      font-size: 23px;
+    }
 }
 @media screen and (max-width: 600px) {
     .filter .Types{
         width: 85%;
+    }
+    h1{
+      text-align: center;
     }
 }
 @media screen and (max-width: 426px) {
@@ -353,6 +357,9 @@ footer {
     h4{
         font-size: 13px;
     }
+    h1{
+      font-size: 20px;
+    }
 }
 @media screen and (max-width: 321px) {
     .filter .Types{
@@ -360,6 +367,9 @@ footer {
     }
     h4{
         font-size:11px;
+    }
+    h1{
+      font-size: 16px;
     }
 }
 
@@ -384,9 +394,9 @@ footer {
   cursor: pointer;
   transition: background-color 0.5s ease;
 
-  // &:hover {
-  //     background-color: #c1ccd5;
-  // }
+  &:hover {
+    background-color: #c1ccd5;
+  }
 
       transition: transform 0.3s ease;
 
@@ -473,6 +483,13 @@ svg {
 
 }
 }
+.title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  bottom: 150px;
+}
 .top{
   width: 100%;
   display: flex;
@@ -550,6 +567,8 @@ text-align: center;
   align-items: flex-start;
   position: relative;
   padding-left: 2rem; 
+  margin-bottom: 30px;
+
 }
 
 .georgian-button {

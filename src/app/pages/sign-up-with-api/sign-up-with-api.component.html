@@ -58,17 +58,17 @@
 <div class="authorization-container">
   <div class="form-section">
     <h1>ავტორიზაცია</h1>
-    <form [formGroup]="authForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="SignIn" (ngSubmit)="onSubmit()">
       <div class="form-group">
-        <input type="email"  formControlName="email" placeholder="ელ. ფოსტა">
-        <div *ngIf="authForm.get('email')?.invalid && authForm.get('email')?.touched" class="error-message">
+        <input type="email"  formControlName="Email" placeholder="ელ. ფოსტა">
+        <div *ngIf="SignIn.get('Email')?.hasError && SignIn.get('Email')?.touched" class="error-message">
           შეიყვანეთ მოქმედი ელ. ფოსტა
         </div>
       </div>
       <div class="form-group">
-        <input type="password" formControlName="password" placeholder="პაროლი">
-        <div *ngIf="authForm.get('password')?.invalid && authForm.get('password')?.touched" class="error-message">
-          პაროლი უნდა შეიცავდეს მინიმუმ 6 სიმბოლოს
+        <input type="password" formControlName="Password" placeholder="პაროლი">
+        <div *ngIf="SignIn.get('Password')?.hasError && SignIn.get('Password')?.touched" class="error-message">
+          ჩაწერეთ პაროლი
         </div>
         <div class="forgot-password">
           <a href="#">დაგავიწყდათ პაროლი?</a>

@@ -11,7 +11,7 @@ body, html {
   transition: top 0.3s ease-in-out;
   position: fixed;
   opacity: 1;
-  background-color: #ced4da;
+  background-color:#342833 ;
   top: 0;
   left:0;
   right:0;
@@ -91,6 +91,7 @@ nav ul li a {
     display: block;
     width: calc(100% + 1.3px);
     height: 150px;
+    cursor: pointer;
   }
   }
   .container {
@@ -138,10 +139,14 @@ nav ul li a {
   }
   }
   
-  @media (max-width: 767px) {
+  @media (max-width: 769px) {
   .btn {
   font-size: 14px;
   padding: 10px 16px;
+  }
+  .Title{
+    position: relative;
+    bottom: 300px !important;
   }
 }
 .wave-text {
@@ -154,15 +159,18 @@ nav ul li a {
     background-color: #85A98D;
     height: 193px;
   }
-  
+
 .Title{
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 100px;
+    position: relative;
+    bottom: 320px;
+    // margin-top: 100px;
     h2{
-        font-size: 34px;
+        font-size: 40px;
         color: white;
+        font-weight: 300;
  }
 }
 .ForPupil{
@@ -325,6 +333,7 @@ p{
 #svg{
   width: 120px;
   height: 100%;
+  cursor: pointer;
 }
 #svg2{
   width: 35px;
@@ -341,9 +350,9 @@ p{
   cursor: pointer;
   transition: background-color 0.5s ease;
 
-  // &:hover {
-  //     background-color: #c1ccd5;
-  // }
+  &:hover {
+      background-color: #c1ccd5;
+  }
 
       transition: transform 0.3s ease;
 

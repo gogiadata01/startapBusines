@@ -1,6 +1,5 @@
 import { Component,OnInit,  ViewChild ,ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {Icard} from "../../core/models/common.model";
 import { NgIf,NgFor } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { data } from 'jquery';

@@ -10,6 +10,8 @@
   
   main{
     width: 100%;
+    position: relative;
+    bottom: 370px;
   }
   
   span {
@@ -36,6 +38,8 @@
     font-weight: 400;
     line-height: 24px;
     margin: 0 0 15px 0;
+    max-height: 153px;
+    overflow: overlay;
   }
   
   
@@ -45,7 +49,6 @@
     align-items: center;
     justify-content: center;
     height: 491px;
-
   }
   
   
@@ -172,6 +175,11 @@
   .row1 {
     display: flex;
     flex-wrap: wrap;
+    cursor:pointer;
+   :hover{
+    transform: scale(1.05);
+
+   } 
   }
   
   #col-lg-4 {
@@ -204,7 +212,7 @@
   }
   .title{
 
-    width: 90%;
+    width: 100%;
     margin-top: 20px;
     display: flex;
     justify-content: center;
@@ -212,7 +220,84 @@
     color: white;
   }
   }
-  
+  .card-container1{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .card3{
+    background-color: transparent !important;
+    border-radius: 35px !important; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 280px;
+    height: 260px;
+    margin: 1rem;
+    transition: transform 0.2s;
+    border: 1px dashed;
+  }
+  .card3:hover {
+    transform: scale(1.05);
+}
+.card3 img {
+  width: 100%;
+  height: 115px;
+  object-fit: cover;
+}
+.card-content2 {
+  display: flex;
+  padding: 0px !important;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+.card-content2 h2 {
+  margin-top: 0;
+  font-size: 1.5rem;
+}
+.card-content2 p {
+  font-size: 14px;
+  color: black;
+  font-weight: 600;
+  text-align: center;
+}
+.Date{
+  display: flex;
+  width: 245px;
+  justify-content: center;
+  align-items: center;
+}
+.Buttons{
+  display: flex;
+  justify-content: center;
+  margin-top: 0px;
+}
+.Btn1{
+  margin-right: 4px;
+  button{
+    font-size: 14px;
+    display: flex;
+    color: white;
+    border-radius: 10px;
+    border: 1px dashed;
+    background-color: #5D737E;
+    }
+}
+.Btn2{
+    button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 26px;
+        color: white;
+        border-radius: 10px;
+        border: 1px dashed;
+        background-color: #5D737E;
+    }
+}
   
   @media screen and (max-width: 2631px) {
     #col-lg-4{
@@ -251,6 +336,9 @@
   @media screen and (max-width: 1025px) {
     .card1 {
       width: 300px;
+    }
+    main{
+      bottom: 380px;
     }
   }
   @media screen and (max-width: 990px) {
@@ -321,13 +409,13 @@
       line-height: 24px;
       font-size: 15px;
     }
-    span{
-      display: inline-block;
-      width: 50px;
-      height: 4px;
-      background-color: white;
-      margin-bottom: 10px;
-    }
+    // span{
+    //   display: inline-block;
+    //   width: 50px;
+    //   height: 4px;
+    //   background-color: white;
+    //   margin-bottom: 10px;
+    // }
   }
   @media screen and (max-width: 426px) {
     div.site{
@@ -351,7 +439,9 @@
       justify-content: center;
       align-items: center;
     }
-    
+    main{
+      bottom: 280px;
+    }
     div.img{
       height: 57%;
       width: 91%;
@@ -368,6 +458,13 @@
     div.text-container{
       margin: 0px 25px 40px;
     }
+    .card1 {
+      width: 350px !important;
+  }
+  .container{
+    width: 370px;
+
+  }
   }
   @media screen and (max-width: 640px) {
     .title h2 {
@@ -385,6 +482,14 @@
     .card1 {
       width: 400px;
     }
+  }
+  @media screen and (max-width: 325px) {
+    .container{
+      width: 280px;
+    }
+    .card1 {
+      width: 290px !important;
+  }
   }
   
   .card-container2 {
@@ -436,6 +541,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    margin-top: 50px;
     .accord{
       width: 65%;
     }
@@ -444,65 +550,19 @@
       background-color: #5D737E;
     }
   }
-  .accordion-item{
-    background-color: transparent;
-    margin-bottom: 5px;
+  svg:focus {
+    outline: none;
   }
-  .accordion-button.collapsed{
-    border-radius: 20px !important;
-  }
-  
-  .navbar{
+  #cotainerfluid{
     background-color: #85A98D;
-
-}
-#svg{
-    width: 120px;
-    height: 100%;
-}
-#svg2{
-    width: 35px;
-    height: 100%;
-    color: #F0F3BD;
-}
-
-
-.nav-link{
-    padding: 10px;
-    border-radius: 25px;
-    text-align: center;
-    
-}
-
-
-/* Remove focus outline */
-
-/* Remove any border properties */
-.no-border {
-    border: none;
-    border-width: 0;
-    box-shadow: none; /* Remove box-shadow if any */
-}:focus{
-    outline: none;
-
-}
-
-/* Ensure other focus states are also handled */
-.no-border:focus-visible {
-    outline: none;
-}
-
-/* Apply to all SVGs if needed */
-svg:focus {
-    outline: none;
-}
-
-svg {
+    padding: 20px;
+  }
+  svg {
     border: none;
     border-width: 0;
     box-shadow: none;
-}
-.header-content{
+  }
+  .header-content{
     height: 265px;
     background-color: #85A98D;
   }
@@ -510,14 +570,108 @@ svg {
     background-color: #85A98D;
   
   }
-  .projects__container{
-    position: relative;
-    bottom: 375px;
-  }
-  ul {
-    list-style: none;
+  .navbar, .navbar-nav {
+    border: none; /* Remove border */
   }
   
-  a {
-    text-decoration: none;
+  .nav-link {
+    border-bottom: none; /* Remove underline or bottom border from links */
+    text-decoration: none; /* Remove underline from links */
+  
   }
+    .active {
+    font-weight: bold;
+    color: blue; /* Example styling */
+  }
+  .nav-link{
+    padding: 10px;
+    border-radius: 25px;
+    text-align: center;
+    
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  
+    &:hover {
+      background-color: #c1ccd5;
+    }
+  
+        transition: transform 0.3s ease;
+  
+    &:hover {
+      transform: scale(1.07);
+    }
+  }
+    
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    
+    &:hover {
+      color: #3e8e41;
+     
+    }
+  }
+  #color{
+    background-color: #342833;
+  }
+  #svg{
+    width: 120px;
+    height: 100%;
+    cursor: pointer;
+  }
+  #svg2{
+    width: 35px;
+    height: 100%;
+    color: #F0F3BD;
+  }
+  .second-navbar {
+    transition: top 0.3s ease-in-out;
+    position: fixed;
+    opacity: 1;
+    background-color: #85A98D;
+    top: 0;
+    left:0;
+    right:0;
+    width: 100%;
+    transform: translateY(-100%);
+    z-index: 1030; 
+    }
+    .accordion-item{
+      background-color: transparent !important;
+      margin-bottom: 10px;
+      border: 0px;
+    }
+    .accordion-button{
+      border-radius: 25px !important;
+    }
+    .content {
+    margin-top: 100px;
+    height: 2000px; 
+    }
+    
+    //header and navbar
+    .site-header {
+    width: 100%;
+    height: 600px;
+    }
+    
+    .site-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    
+    }
+    
+    .header-content {
+    position: relative;
+    z-index: auto; 
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box; 
+    }

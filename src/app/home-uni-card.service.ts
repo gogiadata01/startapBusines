@@ -36,14 +36,28 @@ export class HomeUniCardService {
   }
 
   // GET UniCard by title and program name (with query params)
-  getUniCardByTitleAndProgramName(title: any, programName: any): Observable<UniCardDto[]> {
-    const params = new HttpParams().set('title', title).set('programName', programName);
+  getUniCardByTitleAndProgramName(title: any, programName: any): Observable<any> {
+    const params = new HttpParams()
+      .set('title', title)
+      .set('programName', programName);
 
-    return this.http.get<UniCardDto[]>(`${this.apiUrl}/search`, { params }).pipe(
-      catchError(this.handleError)  // Added error handling
+    return this.http.get<any>(`${this.apiUrl}/search`, { params });
+  }
+  getUniCardByProgramName(programName: string): Observable<UniCardDto[]> {
+    const params = new HttpParams().set('programName', programName);
+    return this.http.get<UniCardDto[]>(`${this.apiUrl}/by-program-name`, { params }).pipe(
+      catchError(this.handleError)  // Error handling
     );
   }
+  getUniCardByIdAndProgramName(id: any, programName: any): Observable<UniCardDto[]> {
+    const params = new HttpParams()
+      .set('id', id.toString())
+      .set('programName', programName);
 
+    return this.http.get<UniCardDto[]>(`${this.apiUrl}/searchById`, { params }).pipe(
+      catchError(this.handleError)  // Error handling
+    );
+  }
   // Centralized error handling
   private handleError(error: HttpErrorResponse): Observable<never> {
     let errorMessage = 'Unknown error!';

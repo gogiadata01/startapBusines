@@ -1,6 +1,5 @@
 import { Component, HostListener, Input, OnInit, OnDestroy, NgZone, ViewChild } from '@angular/core';
 import { NavbarForPupilComponent } from '../navbar-for-pupil/navbar-for-pupil.component';
-import {Icard} from "../../core/models/common.model";
 import {UniCardDto} from "../../core/models/common.model";
 import { gsap } from 'gsap';
 import { UniProgramComponent } from '../../core/UniProgram/uni-program.component';
@@ -20,7 +19,6 @@ import { takeUntil } from 'rxjs/operators';
   styleUrl: './home-uni-card.component.scss'
 })
 export class HomeUniCardComponent implements OnInit, OnDestroy {
-  cards:Icard[] = []
   UniCard:UniCardDto[]=[]
 
   constructor(private cdr: ChangeDetectorRef, private ngZone: NgZone , private router: Router,private HomeUniCardService:HomeUniCardService) {

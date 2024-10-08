@@ -379,7 +379,7 @@ export class QuizeComponent implements OnInit, OnDestroy {
       const newCoinValue = this.user.Coin + this.correctAnswersCount;
   
       // Call the userService to update the user's coin balance
-      this.userService.updateUserCoin(this.user.id, newCoinValue).subscribe(
+      this.userService.updateUserCoin(this.user.id , newCoinValue).subscribe(
         (response) => {
           console.log('Coin updated successfully:', response);
   

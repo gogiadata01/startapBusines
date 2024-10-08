@@ -2,7 +2,6 @@ import { Component, OnInit,inject } from '@angular/core';
 import { FormBuilder,FormArray, FormGroup, ReactiveFormsModule, FormsModule,Validators } from '@angular/forms';
 import { CommonModule,NgIf } from '@angular/common';
 // import { CreateFormService } from "../../core/services/create-form.service";
-import { IUniFacultyCard } from "../../core/models/common.model";
 import {Router, RouterLink, UrlHandlingStrategy} from "@angular/router";
 
 @Component({

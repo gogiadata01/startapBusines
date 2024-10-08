@@ -37,13 +37,17 @@
   position: relative;
   // z-index: 1; 
   width: 100%;
-  padding: 20px;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   box-sizing: border-box; 
   }
+  #containerfluid{
+    background-color: #85A98D;
+    padding: 20px;
+}
+
   
   h1 {
   color: white;
@@ -88,7 +92,7 @@
   transition: background-color 0.3s ease;
 
   &:hover {
-      background-color: #77b1e0;
+    background-color: #c1ccd5;
   }
 
       transition: transform 0.3s ease;

@@ -34,7 +34,11 @@ export class EventCardService {
       catchError(this.handleError)  // Error handling
     );
   }
-
+  getEventCardForHome(): Observable<any[]> {  // Adjust the return type based on your requirements
+    return this.http.get<any[]>(`${this.apiUrl}/home`).pipe(
+      catchError(this.handleError)  // Error handling
+    );
+  }
   // Centralized error handling
   private handleError(error: HttpErrorResponse): Observable<never> {
     let errorMessage = 'Unknown error!';

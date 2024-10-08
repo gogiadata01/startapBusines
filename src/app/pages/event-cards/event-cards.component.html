@@ -2,8 +2,9 @@
   <div class="header-content">
     <nav id="firstNavbar" class="navbar navbar-expand-lg navbar-light">
       <!-- First Navbar -->
-      <div class="container-fluid">
-        <svg routerLink="/"
+      <div class="container-fluid" id="cotainerfluid">
+        <svg
+          routerLink="/"
           id="svg"
           xmlns="http://www.w3.org/2000/svg"
           width="639"
@@ -83,6 +84,7 @@
       <nav id="color" class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container-fluid" id="fluid">
           <svg
+            routerLink="/"
             id="svg"
             xmlns="http://www.w3.org/2000/svg"
             width="639"
@@ -113,7 +115,7 @@
           <div class="collapse navbar-collapse" id="secondNavbar">
             <ul class="navbar-nav ms-auto text-dark">
               <li class="nav-item">
-                <a class="nav-link mx-2" routerLink="Pupil/Uni"
+                <a class="nav-link mx-2" routerLink="/Pupil/Uni"
                   >უნივერსიტეტები</a
                 >
               </li>
@@ -176,7 +178,7 @@
 </header>
 
 <div class="title">
-  <h2>ივენთები</h2>
+  <h3>ივენთები</h3>
 </div>
 <main>
   <div class="filter">
@@ -204,7 +206,7 @@
         <div class="Date">{{ card.time }}</div>
         <div class="Buttons">
           <div class="Btn1">
-            <button>
+            <!-- <button>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20px"
@@ -218,10 +220,11 @@
                 />
               </svg>
               დაინტერესებული
-            </button>
+            </button> -->
+            <p>ღია კარის დღე</p>
           </div>
           <div class="Btn2">
-            <button>
+            <!-- <button>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -234,7 +237,14 @@
                   d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"
                 />
               </svg>
-            </button>
+            </button> -->
+            <p>ბანაკი</p>
+          </div>
+          <div class="Btn3">
+            <p>ვორკშოპი</p>
+          </div>
+          <div class="Btn4">
+            <p>სიახლე</p>
           </div>
         </div>
       </div>

@@ -2,57 +2,7 @@
   --white-color: hsl(0, 0%, 95%);
 
 }
-#fluid{
-  padding: 10px;
-}
-#color{
-  background-color: #342833;
-}
-.second-navbar {
-  transition: top 0.3s ease-in-out;
-  position: fixed;
-  opacity: 1;
-  background-color: #ced4da;
-  top: 0;
-  left:0;
-  right:0;
-  width: 100%;
-  transform: translateY(-100%);
-  z-index: 1030; 
-  }
-  
-  .content {
-  margin-top: 100px;
-  height: 2000px; 
-  }
-  
-  //header and navbar
-  .site-header {
-  width: 100%;
-  height: 600px;
-  }
-  
-  .site-header::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  
-  }
-  
-  .header-content {
-  position: relative;
-  z-index: 1; 
-  width: 100%;
-  padding: 20px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-sizing: border-box; 
-  }
+
 .title{
     display: flex;
     justify-content: center;
@@ -92,18 +42,22 @@
       width: 100%;
       display: flex;
       justify-content: center;
+      position: relative;
+      bottom: 415px;
     h3{
       color: white;
       margin-bottom: 5px;
       border-bottom: 2px solid white;
       padding-bottom: 10px;
-
+      font-weight: 300 !important;
     }
     }
     .Bottom{
       width: 100%;
       height: 100%;
       display: flex;
+      position: relative;
+      bottom: 340px;
     }
     .timeline {
       width: 10%;
@@ -120,13 +74,13 @@
     
 
     .circle {
-      width: 25px; /* Increase the size of the circles */
-      height: 25px;
+      width: 20px; /* Increase the size of the circles */
+      height: 20px;
       border-radius: 50%;
       background-color:white; /* Default green color */
       cursor: pointer;
       transition: background-color 0.3s;
-      margin-bottom: 10px;
+      margin-bottom: 5px;
     }    
     
     .line {
@@ -136,7 +90,7 @@
     
     .dashed {
       width: 2px;
-      height: 80px; /* Increase the height to match the connectors in the image */
+      height: 35px; /* Increase the height to match the connectors in the image */
       border-right: 2px dashed #000; /* Keep the dashed connector between circles */
     }
     
@@ -145,7 +99,7 @@
       background-color: #6abf69;
     }
     .program{
-      width: 90%;
+      width: 100%;
       height: 100%;
     .FacultyTitle{
       width: 40%;
@@ -167,34 +121,11 @@
       display: flex;
       flex-direction: column;
     }
-    @media screen and (max-width: 1345px) {
-      div.FacultyTitle{
-        width: 50% !important;
-      }
-  }
-  @media screen and (max-width: 1025px) {
-    div.FacultyTitle{
-      width: 58% !important;
-    }
-}
-@media screen and (max-width: 990px) {
-  div.FacultyTitle{
-    width: 100% !important;
-  }
-}
-@media screen and (max-width: 400px) {
-  div.FacultyTitle h2{
-    font-size: 20px;
-  }
-}
-@media screen and (max-width: 325px) {
-  div.FacultyTitle h2{
-    font-size: 18px;
-  }
-  .Title{
-    width: 77% !important;
-  }
-}
+
+
+
+
+
 @media screen and (max-width: 768px) {
   h2{
     display: flex;
@@ -207,40 +138,71 @@
     align-items: center;
     justify-content: center;
   }
-  .Title{
-    width: 65%;
-    display: flex;
-    justify-content: right;
-  }
 }
 @media screen and (max-width: 430px) {
-  .Title{
-    width: 72%;
-  }
 h2{
   font-size: 18px;
 text-align: center;
 
 }
 }
-.navbar{
+.second-navbar {
+  transition: top 0.3s ease-in-out;
+  position: fixed;
+  opacity: 1;
   background-color: #85A98D;
-
-}
-#svg{
-  width: 120px;
+  top: 0;
+  left:0;
+  right:0;
+  width: 100%;
+  transform: translateY(-100%);
+  z-index: 1030; 
+  }
+  
+  .content {
+  margin-top: 100px;
+  height: 2000px; 
+  }
+  
+  //header and navbar
+  .site-header {
+  width: 100%;
+  height: 600px;
+  }
+  
+  .site-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  
+  }
+  
+  .header-content {
+  position: relative;
+  z-index: 1; 
+  width: 100%;
   height: 100%;
-  cursor: pointer;
-}
-#svg2{
-  width: 35px;
-  height: 100%;
-  color: #F0F3BD;
-}
-
-
-
-nav ul li a {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box; 
+  }
+  
+  h1 {
+  color: white;
+  text-align: center;
+  font-size: 1.9em; 
+  max-width: 1000px;
+  margin: 220px auto; 
+  }
+  
+  
+  
+  
+  nav ul li a {
   color: white;
   text-decoration: none;
   
@@ -249,13 +211,13 @@ nav ul li a {
    
   }
 }
-.navbar{
-  background-color: #85A98D;
-
+#color{
+  background-color: #342833;
 }
 #svg{
   width: 120px;
   height: 100%;
+  cursor: pointer;
 }
 #svg2{
   width: 35px;
@@ -273,7 +235,7 @@ nav ul li a {
   transition: background-color 0.3s ease;
 
   &:hover {
-      background-color: #77b1e0;
+    background-color: #c1ccd5;
   }
 
       transition: transform 0.3s ease;
@@ -305,7 +267,10 @@ nav ul li a {
 svg:focus {
   outline: none;
 }
-
+#cotainerfluid{
+  background-color: #85A98D;
+  padding: 20px;
+}
 svg {
   border: none;
   border-width: 0;
@@ -327,4 +292,39 @@ svg {
   border-bottom: none; /* Remove underline or bottom border from links */
   text-decoration: none; /* Remove underline from links */
 
+}
+  .active {
+  font-weight: bold;
+  color: blue; /* Example styling */
+}
+.guide{
+  display: flex;
+  justify-content: center;
+  position: relative;
+  bottom: 300px;
+}
+#accordionFlushExample{
+  width: 90%;
+}
+
+.accordion-item{
+  background-color: transparent !important;
+  margin-bottom: 30px;
+  border: 0px;
+}
+.accordion-button:not(.collapsed){
+  box-shadow: none !important;
+}
+.accordion-header{
+  background-color: #85A98D;
+  border-radius: 20px;
+}
+.accordion-button{
+  background-color: transparent !important;
+  font-size: 18px;
+  color: white;
+  font-weight: 300;
+}
+.accordion-button:focus{
+  box-shadow: none;
 }

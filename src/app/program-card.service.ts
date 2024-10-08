@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { ProgramCardDto } from './core/models/common.model';
+import { ProgramCardDto,FieldDto,ProgramNamesDto } from './core/models/common.model';
 import { CardBodyComponent } from '@coreui/angular';
 import { setThrowInvalidWriteToSignalError } from '@angular/core/primitives/signals';
 import { environment } from '../environments/environment.development';  // Import environment
@@ -21,6 +21,33 @@ export class ProgramCardService {
       catchError(this.handleError)  // Error handling
     );
   }
+  getFieldProgram(fieldName: string): Observable<ProgramNamesDto[]> {
+    return this.http.get<ProgramNamesDto[]>(`${this.apiUrl}/GetProgramsByField/${fieldName}`).pipe(
+      catchError(this.handleError)
+    );
+  }
+  
+  
+  
+  // Fetch fields only
+
+  getAllFieldNames(): Observable<FieldDto[]> {
+    return this.http.get<FieldDto[]>(`${this.apiUrl}/GetAllFieldNames`).pipe(
+      catchError(this.handleError)
+    );
+  }
+  
+getAllFields(): Observable<{ fieldName: string; programNames: { programName: string }[] }[]> {
+  return this.http.get<{ fieldName: string; programNames: { programName: string }[] }[]>(`${this.apiUrl}/GetFields`).pipe(
+    catchError(this.handleError)
+  );
+}
+// Fetch program names by field name
+getProgramsByField(fieldName: string): Observable<ProgramNamesDto[]> {
+  return this.http.get<ProgramNamesDto[]>(`${this.apiUrl}/GetProgramsByField/${fieldName}`).pipe(
+    catchError(this.handleError)
+  );
+}
 
   // GET ProgramCard by ID
   getProgramCardById(id: number): Observable<ProgramCardDto> {
@@ -28,6 +55,12 @@ export class ProgramCardService {
       catchError(this.handleError)  // Error handling
     );
   }
+// GET ProgramName by CheckBoxName
+getProgramNameByCheckBoxName(checkBoxName: string): Observable<ProgramCardDto> {
+  return this.http.get<ProgramCardDto>(`${this.apiUrl}/byCheckBoxName/${checkBoxName}`).pipe(
+    catchError(this.handleError)  // Error handling
+  );
+}
 
   // POST (add) a new ProgramCard
   addProgramCard(programCard: ProgramCardDto): Observable<ProgramCardDto> {

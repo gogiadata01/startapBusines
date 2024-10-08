@@ -38,7 +38,7 @@ export class UserService {
     );
   }
 
-  updateUserCoin(id: number, newCoinValue: number): Observable<any> {
+  updateUserCoin(id: any, newCoinValue: number): Observable<any> {
     const body = { newCoinValue }; // Wrap the value in an object
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.put(`${this.apiUrl}/${id}/coin`, body, { headers }).pipe(

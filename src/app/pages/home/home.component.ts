@@ -1,15 +1,13 @@
   import { Component, HostListener, Input, OnInit, OnDestroy, NgZone, ViewChild } from '@angular/core';
   import { CommonModule } from '@angular/common';
   import { ElementRef, } from '@angular/core';
-  import { IUniFacultyCard } from '../../core/models/common.model'
-  import { Icard } from '../../core/models/common.model'
   import { Router } from '@angular/router';
   import { UniProgramComponent } from '../../core/UniProgram/uni-program.component'
   import { FooterForPupilComponent } from "../../pages/footer-for-pupil/footer-for-pupil.component";
   import { QuizeComponent } from '../quize/quize.component';
   import { ChangeDetectorRef } from '@angular/core';
   import {ProgramCardService} from '../../program-card.service'
-  import {ProgramCardDto} from '../../core/models/common.model'
+  import {ProgramCardDto,FieldDto,ProgramNamesDto} from '../../core/models/common.model'
   import {EventCardService} from '../../event-card.service'
   import {EventCardDto, } from "../../core/models/common.model";
   import { RouterLink } from '@angular/router';
@@ -30,12 +28,16 @@
     styleUrls: ['./home.component.scss']
   })
   export class HomeComponent implements OnInit, OnDestroy   {
-    cards: IUniFacultyCard[] = [];
     programCards: ProgramCardDto[] = [];
-    circles = [0,1, 2, 3, 4, 5];
+    circles: number[] = Array.from({ length: 6 }, (_, i) => i);
     activeCircleIndex: number = 0;
-    EventCard:EventCardDto[] = []
+    fields: FieldDto[] = [];
+    currentFieldName: string | null = null;
+    currentProgramNames: ProgramNamesDto[] = [];
+    fieldProgramMapping: { [key: string]: ProgramNamesDto[] } = {};    EventCard:EventCardDto[] = []
     selectedField: string | null = null; // Track the selected field
+    fieldPrograms: ProgramNamesDto[] = []; // Use ProgramNamesDto instead of ProgramCardDto
+    fieldNames: string[] = [];
     constructor(private router: Router,private cdr: ChangeDetectorRef, private authService:AuthenticationService,private ngZone: NgZone , private EventCardService: EventCardService  ,  private programCardService: ProgramCardService
       ) {
       }
@@ -43,48 +45,73 @@
       
     @Input() text: string = 'არჩიეთ თქვენთვის შესაფერისი პროგრამა';
 
-    getProgram(): void {
-      this.programCardService.getProgramCard().subscribe({
-        next: (programs) => {
-          this.programCards = programs.map(program => {
-            program.fields?.forEach(field => {
-              field.programNames = field.programNames.map(program => {
-                program.width = this.getButtonWidth(program.programname);
-                return program;
-              });
-            });
-            return program;
-          });
-          console.log('Program Cards:', this.programCards); // Check if data is correctly coming
-        },
-        error: (err) => {
-          console.error('Error fetching program data:', err);
-        }
-      });
+      // Fetch field names
+// Fetch field names
+
+// ეს არის წრეების დაკლიკვების ლოგიკები
+loadFieldNames(): void {
+  this.programCardService.getAllFieldNames().pipe(takeUntil(this.destroy$)).subscribe({
+    next: (fields: FieldDto[]) => {
+      this.fields = fields;
+      this.createFieldProgramMapping(); // Preload all field programs
+    },
+    error: (err) => {
+      console.error('Error fetching field names:', err);
     }
+  });
+}
+
+  // Fetch field programs based on loaded fields
+// Fetch field programs based on loaded fields
+createFieldProgramMapping(): void {
+  this.fields.forEach((field) => {
+    this.programCardService.getFieldProgram(field.fieldName).pipe(takeUntil(this.destroy$)).subscribe({
+      next: (programs: ProgramNamesDto[]) => {
+        this.fieldProgramMapping[field.fieldName] = programs.map(program => ({
+          ...program,
+          width: this.getButtonWidth(program.programname)
+        }));
+      },
+      error: (err) => {
+        console.error(`Error fetching programs for field ${field.fieldName}:`, err);
+      }
+    });
+  });
+}
+
+
+onCircleClick(index: number): void {
+  this.activeCircleIndex = index;
+  this.updateCurrentFieldAndPrograms(index);
+}
+  updateCurrentFieldAndPrograms(index: number): void {
+    if (this.fields.length > index) {
+      const selectedField = this.fields[index];
+      this.currentFieldName = selectedField.fieldName || null;
+  
+      if (this.currentFieldName) {
+        this.currentProgramNames = this.fieldProgramMapping[this.currentFieldName] || [];
+     
+      } else {
+        this.currentProgramNames = [];
+      }
+      this.cdr.detectChanges();
+    }
+  }
 
     leaders1 = ['Person 1', 'Person 2', 'Person 3', 'Person 4'];
     leaders2 = ['Person 5', 'Person 6', 'Person 7', 'Person 8'];
     leaders3 = ['Person 9', 'Person 10', 'Person 11', 'Person 12'];
-    onCircleClick(index: number): void {
-      this.activeCircleIndex = index; // Update to show the field at this index
-    }
-    onCardClicked(cardkey: any, cardtitle: any): void {
-      this.router.navigate(['/Pupil/UniFaculty/', cardkey, cardtitle]);
+    
+    onCardClicked( cardtitle: any): void {
+      this.router.navigate(['/Pupil/UniFaculty/', cardtitle]);
     }
     // Function to toggle selected field name
-    togglePrograms(fieldName: string): void {
-      if (this.selectedField === fieldName) {
-        this.selectedField = null; // Deselect if already selected
-      } else {
-        this.selectedField = fieldName; // Select the new field
-      }
-    }
 
     // Function to check if the field should be shown
-    isFieldSelected(fieldName: string): boolean {
-      return this.selectedField === fieldName;
-    }
+
+    
+
 
     
     containerStyle = {
@@ -147,7 +174,7 @@
 
     ngOnInit() {
       this.GetAllEventCard()
-      this.getProgram();
+      this.loadFieldNames(); // Fetch all field names
       const photoElement = document.querySelector('.photo-class') as HTMLElement;
       if (photoElement) {
         this.photoHeight = photoElement.offsetHeight;
@@ -168,30 +195,27 @@
     @ViewChildren('circle') circlesRef!: QueryList<ElementRef>;
 
     // @HostListener('window:scroll', [])
-    onWindowScroll() {
-      const scrolled = window.scrollY > 200;
 
+    onWindowScroll(): void {
+      const scrolled = window.scrollY > 200;
+  
       if (scrolled && !this.isNavbarVisible) {
         this.isNavbarVisible = true;
         this.slideDownNavbar();
-        const button =  document.getElementById("firstNavbarl")
-        if (button){
-          const isExpanded = button.getAttribute("aria-expanded") === "true";
-          if(isExpanded){
-            button.click()}
-        }
+        this.toggleNavbar('firstNavbarl');
       } else if (!scrolled && this.isNavbarVisible) {
         this.isNavbarVisible = false;
         this.slideUpNavbar();
-        const button =  document.getElementById("secondNavbar2")
-      
-        if (button){
-          const isExpanded = button.getAttribute("aria-expanded") === "true";
-          if(isExpanded){button.click()}
-        }
+        this.toggleNavbar('secondNavbar2');
       }
     }
-
+    toggleNavbar(navbarId: string): void {
+      const button = document.getElementById(navbarId);
+      if (button) {
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+        if (isExpanded) button.click();
+      }
+    }
     slideDownNavbar() {
       gsap.to(this.secondNavbar.nativeElement, { y: 0, duration: 0.3, ease: 'power2.out' });
     }
@@ -220,40 +244,23 @@
       this.cdr.detectChanges(); // Ensure change detection runs after resize
     }
     // @HostListener('window:resize', ['$event'])
-    onResize(event: Event): void {
-      // Recalculate widths on window resize
-      this.updateButtonWidths();
+    @HostListener('window:resize', ['$event'])
+    onResize(): void {
+      this.updateButtonWidths(); // Recalculate widths on window resize
     }
     getButtonWidth(programName: string): string {
-      // Function to generate a random width between min and max values
-      function getRandomWidth(min: number, max: number): string {
-        const randomWidth = Math.floor(Math.random() * (max - min + 1)) + min;
-        return `${randomWidth}px`;
-      }
-
-      // Check if the window width is considered "mobile" (e.g., < 768px)
       const isMobile = window.innerWidth < 500;
-
-      if (isMobile) {
-        // For mobile, generate a random width between 180px and 240px
-
-        return '280px'; // Default width for shorter names on mobile
-      }
-      else {
-        // For non-mobile, use the original logic
-        if (programName.length > 20) {
-          return getRandomWidth(320, 450); // Random width between 320px and 450px for long names
-        }
-        return '240px'; // Default width for shorter names
-      }
-      
+      return isMobile ? '280px' : (programName.length > 20 ? this.getRandomWidth(320, 450) : '240px');
     }
-
+    getRandomWidth(min: number, max: number): string {
+      const randomWidth = Math.floor(Math.random() * (max - min + 1)) + min;
+      return `${randomWidth}px`;
+    }
     getPadding(Card: any): string {
       return Card.title.length < 20 ? '2px' : '10px';
     }
     GetAllEventCard() {
-      this.EventCardService.getAllEventCard()
+      this.EventCardService.getEventCardForHome()
         .subscribe({
           next: (Eventcard) => {
             // Filter the event cards to only include those where isFeatured is true

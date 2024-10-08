@@ -1,6 +1,5 @@
 import { Component, OnInit, } from '@angular/core';
 import { NavbarForPupilComponent } from '../navbar-for-pupil/navbar-for-pupil.component';
-import {Icard} from "../../core/models/common.model";
 import { HomeUniCardComponent } from '../home-uni-card/home-uni-card.component';
 import {FooterForPupilComponent} from '../footer-for-pupil/footer-for-pupil.component';
 import {CarouselComponent} from '../../carousel/carousel.component';

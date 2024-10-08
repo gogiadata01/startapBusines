@@ -24,12 +24,15 @@ import { of } from 'rxjs';
   styleUrl: './faculty-uni-details.component.scss'
 })
 export class FacultyUniDetailsComponent {
-  UniCard!: UniCardDto;  // Ensure UniCard is of type UniCardDto
+  UniCard!: UniCardDto;  
+  ProgramNames!:any  
   programname:any
-  categories:any=[      {title:"პროგრამის აღწერა"},
-  {title:"ეროვნული გამოცდებისთვის"},
-  {title:"მიზანი"},
-  {title:"დასაქმება"}]
+categories: any[] = [
+  { title: "პროგრამის აღწერა" },
+  { title: "მიზანი" },
+  { title: "დასაქმება" }
+];
+
   category = ""
   constructor(
     private uniCardService: HomeUniCardService,

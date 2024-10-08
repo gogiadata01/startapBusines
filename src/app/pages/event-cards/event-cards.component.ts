@@ -1,6 +1,6 @@
 import { Component, HostListener, Input, OnInit, OnDestroy, NgZone, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {EventCardDto, IEventCard} from "../../core/models/common.model";
+import {EventCardDto,} from "../../core/models/common.model";
 import { data } from 'jquery';
 import {EventCardService} from '../../event-card.service'
 import { Router } from '@angular/router';
@@ -124,6 +124,20 @@ export class EventCardsComponent implements OnInit, OnDestroy {
 
 onCardClicked(cardkey:any) :void{
   this.router.navigate(['/Pupil/Events/',cardkey])
+}
+getColor(type: string): string {
+  switch (type) {
+    case 'ღია კარის დღე':
+      return 'blue';
+    case 'ბანაკი':
+      return 'green';
+    case 'ვორკშოპი':
+      return 'red';
+    case 'სიახლე':
+      return 'gray';
+    default:
+      return 'black';
+  }
 }
 
 }
