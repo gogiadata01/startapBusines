@@ -94,6 +94,7 @@ export class EventCardsComponent implements OnInit, OnDestroy {
       next: (eventCards) => {
         this.EventCard = eventCards;
         this.filterEvents(); // Initial filtering
+        console.log(this.EventCard)
       },
       error: (err) => {
         console.error('Error fetching event data:', err);
@@ -105,28 +106,25 @@ export class EventCardsComponent implements OnInit, OnDestroy {
     if (this.category === "ყველა" || this.category === "") {
       this.filteredEventCards = this.EventCard;
     } else {
-      // Log events and types to check data
-      console.log('Filtering for category:', this.category);
-      this.filteredEventCards = this.EventCard.filter(event => {
-        return event.types.some(type => type.type === this.category); // Change 'Type' to 'type' to match your structure
-      });
-      console.log('Filtered events:', this.filteredEventCards);
+      this.filteredEventCards = this.EventCard.filter(event => 
+        event.types.some(type => type.type === this.category)
+      );
     }
   }
   
   
   onCategoryClick(category: string) {
-    console.log('Selected Category:', category);  // Check if this logs the correct category
     this.category = category;
     this.filterEvents(); // Apply filter after setting category
   }
-  
+
 
 onCardClicked(cardkey:any) :void{
   this.router.navigate(['/Pupil/Events/',cardkey])
 }
-getColor(type: string): string {
-  switch (type) {
+getColor(type: string | { type: string }): string {
+  const typeStr = typeof type === 'string' ? type : type.type;
+  switch (typeStr) {
     case 'ღია კარის დღე':
       return 'blue';
     case 'ბანაკი':
@@ -140,8 +138,5 @@ getColor(type: string): string {
   }
 }
 
+
 }
-
-
-// secodnavabr
-

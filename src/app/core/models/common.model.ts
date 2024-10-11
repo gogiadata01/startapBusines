@@ -100,6 +100,7 @@ export interface EventCardDto{
   text:string;
   time:string;
   isFeatured:boolean
+  saregistracioForma:string
   types:EventTypeDto[];
 }
 

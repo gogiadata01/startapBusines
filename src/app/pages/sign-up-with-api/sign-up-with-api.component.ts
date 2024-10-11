@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component ,OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray, NgForm, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from '../../user.service';
 import { UserSignInDto } from '../../core/models/common.model';
@@ -21,7 +21,7 @@ import Swal from 'sweetalert2';
   templateUrl: './sign-up-with-api.component.html',
   styleUrl: './sign-up-with-api.component.scss'
 })
-export class SignUpWithApiComponent {
+export class SignUpWithApiComponent  {
   SignIn: FormGroup;
   constructor(
     private fb: FormBuilder,
@@ -40,7 +40,6 @@ export class SignUpWithApiComponent {
       const UserSignInDto:UserSignInDto  = this.SignIn.value;
       this.UserService.signInUser(UserSignInDto).subscribe({
         next: (response) => {
-          console.log('User added successfully', response); 
           const user: UserDto = {
             Name: response.userName,
             Email: response.email,
@@ -63,7 +62,7 @@ export class SignUpWithApiComponent {
           });
           // Use navigate with parameters after successful sign-in
           setTimeout(()=>{
-            this.router.navigate(['Home', userId]); // Navigate to 'Home/:id' route
+            this.router.navigate(['Home',]); // Navigate to 'Home/:id' route
           },1500)
         },
         error: (err) => {
@@ -72,10 +71,8 @@ export class SignUpWithApiComponent {
             text: "მეილი და პაროლი არასწორია",
             icon: "info"
           }); 
-          console.error('Error adding UniCard', err);
         }
       })
-      console.log(this.SignIn.value);
     }
   }
 

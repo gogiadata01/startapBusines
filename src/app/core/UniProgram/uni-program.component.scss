@@ -26,9 +26,9 @@
   .col-lg-4 {
     margin-bottom: 30px;
   }
-  .accordion-button::after {
-    margin-left: 2px !important;
-  }
+  // .accordion-button::after {
+  //   margin-left: 2px !important;
+  // }
   .card {
     background-color: #5D737E;
     padding: 30px; /* Increase padding */
@@ -126,9 +126,15 @@
 
 
 
-
-
+    @media screen and (max-width: 1030px) {
+      .accordion-header {
+        width: 52% !important;
+      }
+    }
 @media screen and (max-width: 768px) {
+  .accordion-header {
+    width: 60% !important;
+}
   h2{
     display: flex;
     justify-content: center;
@@ -142,6 +148,9 @@
   }
 }
 @media screen and (max-width: 430px) {
+  .accordion-header {
+    width: 100% !important;
+}
 h2{
   font-size: 18px;
 text-align: center;

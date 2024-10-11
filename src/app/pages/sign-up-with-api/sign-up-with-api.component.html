@@ -50,32 +50,50 @@
 
 <!-- // authorization -->
 <div class="data1">
-<div class="containerimg">
-  <div class="image-section">
-    <img src="../../../assets/img03.png" alt="Description of Image" />
+  <div class="containerimg">
+    <div class="image-section">
+      <img src="../../../assets/img03.png" alt="Description of Image" />
+    </div>
   </div>
+  <div class="authorization-container">
+    <div class="form-section">
+      <h1>ავტორიზაცია</h1>
+      <form [formGroup]="SignIn" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <input type="email" formControlName="Email" placeholder="ელ. ფოსტა" />
+          <div
+            *ngIf="
+              SignIn.get('Email')?.hasError && SignIn.get('Email')?.touched
+            "
+            class="error-message"
+          >
+            შეიყვანეთ მოქმედი ელ. ფოსტა
+          </div>
+        </div>
+        <div class="form-group">
+          <input
+            type="password"
+            formControlName="Password"
+            placeholder="პაროლი"
+          />
+          <div
+            *ngIf="
+              SignIn.get('Password')?.hasError &&
+              SignIn.get('Password')?.touched
+            "
+            class="error-message"
+          >
+            ჩაწერეთ პაროლი
+          </div>
+          <div class="forgot-password">
+            <a href="#">დაგავიწყდათ პაროლი?</a>
+          </div>
+          <div class="register-link">
+            არ გაქვს ანგარიში? <a routerLink="/Register">რეგისტრაცია</a>
+          </div>
+        </div>
+        <button type="submit">ავტორიზაცია</button>
+      </form>
+    </div>
   </div>
-<div class="authorization-container">
-  <div class="form-section">
-    <h1>ავტორიზაცია</h1>
-    <form [formGroup]="SignIn" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <input type="email"  formControlName="Email" placeholder="ელ. ფოსტა">
-        <div *ngIf="SignIn.get('Email')?.hasError && SignIn.get('Email')?.touched" class="error-message">
-          შეიყვანეთ მოქმედი ელ. ფოსტა
-        </div>
-      </div>
-      <div class="form-group">
-        <input type="password" formControlName="Password" placeholder="პაროლი">
-        <div *ngIf="SignIn.get('Password')?.hasError && SignIn.get('Password')?.touched" class="error-message">
-          ჩაწერეთ პაროლი
-        </div>
-        <div class="forgot-password">
-          <a href="#">დაგავიწყდათ პაროლი?</a>
-        </div>
-      </div>
-      <button type="submit" >ავტორიზაცია</button>
-    </form>
-  </div>
-</div>
 </div>

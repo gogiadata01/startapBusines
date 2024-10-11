@@ -53,8 +53,8 @@
           <ul class="navbar-nav ms-auto">
             <li class="nav-item mx-2">
               <a
+              routerLink="/Pupil/PersonalPage"
                 class="nav-link text-dark h5"
-                href="https://www.tiktok.com/@_fspace_"
                 target="_blank"
               >
                 <svg
@@ -136,8 +136,8 @@
             <ul class="navbar-nav ms-auto">
               <li class="nav-item mx-2">
                 <a
+                routerLink="/Pupil/PersonalPage"
                   class="nav-link text-dark h5"
-                  href="https://www.tiktok.com/@_fspace_"
                   target="blank"
                 >
                   <svg
@@ -192,21 +192,40 @@
       </div>
     </div>
   </div>
-  <main>
-    <div class="card-container">
-      <div
-        class="card"
-        *ngFor="let card of filteredEventCards"
-        (click)="onCardClicked(card.id)"
-      >
-        <img src="{{ card.url }}" />
-        <div class="card-content">
-          <p>{{ card.title }}</p>
-        </div>
-        <div class="Date">{{ card.time }}</div>
-        <div class="Buttons">
+  <div class="card-container">
+    <div
+      class="card"
+      *ngFor="let card of filteredEventCards"
+      (click)="onCardClicked(card.id)"
+    >
+      <img src="{{ card.url }}" />
+      <div class="card-content">
+        <p>{{ card.title }}</p>
+      </div>
+      <div class="Date">{{ card.time }}</div>
+      <div class="Buttons">
+        <ng-container *ngFor="let type of card.types">
+          <div
+            [ngStyle]="{
+              'background-color': getColor(type),
+              'font-size': '10px',
+              color: 'white',
+              padding: '5px',
+              'border-radius': '5px'
+            }"
+            class="Btn"
+          >
+            {{ type.type || type }}
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- <div class="Buttons">
           <div class="Btn1">
-            <!-- <button>
+            <button>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20px"
@@ -220,11 +239,10 @@
                 />
               </svg>
               დაინტერესებული
-            </button> -->
-            <p>ღია კარის დღე</p>
+            </button>
           </div>
           <div class="Btn2">
-            <!-- <button>
+            <button>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -237,17 +255,6 @@
                   d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"
                 />
               </svg>
-            </button> -->
-            <p>ბანაკი</p>
+            </button>
           </div>
-          <div class="Btn3">
-            <p>ვორკშოპი</p>
-          </div>
-          <div class="Btn4">
-            <p>სიახლე</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
-</main>
+        </div> -->

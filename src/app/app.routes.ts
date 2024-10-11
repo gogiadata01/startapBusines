@@ -81,6 +81,10 @@ export const routes: Routes = [
     component:QuizeComponent
   },
   {
+    path:"Pupil/PersonalPage",
+    component:PersonalPageComponent
+  },
+  {
     path:"Register",
     component:RegisterWithApiComponent
   },

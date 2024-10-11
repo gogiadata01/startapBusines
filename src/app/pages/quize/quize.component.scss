@@ -11,7 +11,6 @@
   transform: translateY(-100%);
   z-index: 1030; 
   }
-  
   .content {
   margin-top: 100px;
   height: 2000px; 
@@ -163,246 +162,325 @@ line{
 
 
 // აქ იწყება ქვიზი
-.div {
-  width: 80%;
-  border-radius: 50px;
-  overflow: hidden; 
+// .div {
+//   width: 80%;
+//   border-radius: 50px;
+//   overflow: hidden; 
 
-  .background {
-    width: 100%;
-    height: 100%;
-    background-image: url('../../../assets/im01.jpg');
-    background-position: center;
-    background-size: cover;
-    border-radius: 50px; 
+//   .background {
+//     width: 100%;
+//     height: 100%;
+//     background-image: url('../../../assets/im01.jpg');
+//     background-position: center;
+//     background-size: cover;
+//     border-radius: 50px; 
 
-    .overlay {
-      width: 100%;
-      height: 100%;
-      background-color: #0005;
-      border-radius: 50px; 
-      background-clip: padding-box; 
-      overflow: hidden;
+//     .overlay {
+//       width: 100%;
+//       height: 100%;
+//       background-color: #0005;
+//       border-radius: 50px; 
+//       background-clip: padding-box; 
+//       overflow: hidden;
   
-    }
+//     }
 
-    .carddiv {
-      width: 100%;
-    }
+//     .carddiv {
+//       width: 100%;
+//     }
 
-    .card-container {
-      width: 100%;
+//     .card-container {
+//       width: 100%;
 
-      .card {
-        width: 100%;
-        background-color: transparent;
-        border-radius: 50px; // Ensure consistent rounding in nested divs
+//       .card {
+//         width: 100%;
+//         background-color: transparent;
+//         border-radius: 50px; // Ensure consistent rounding in nested divs
 
-        div {
-          display: flex;
-          justify-content: end;
-        }
-      }
-    }
+//         div {
+//           display: flex;
+//           justify-content: end;
+//         }
+//       }
+//     }
 
-    #div {
-      width: 100%;
-      height: 20%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+//     #div {
+//       width: 100%;
+//       height: 20%;
+//       display: flex;
+//       justify-content: center;
+//       align-items: center;
 
-      .timediv {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-wrap: wrap; /* Enables wrapping for smaller screens */
+//       .timediv {
+//         width: 100%;
+//         height: 100%;
+//         display: flex;
+//         flex-wrap: wrap; /* Enables wrapping for smaller screens */
 
-        .time-block {
-          width: 20%;
-          display: flex;
-          justify-content: center;
-          flex-direction: column;
+//         .time-block {
+//           width: 20%;
+//           display: flex;
+//           justify-content: center;
+//           flex-direction: column;
 
-          .text,
-          .time {
-            display: flex;
-            justify-content: center;
-          }
-        }
+//           .text,
+//           .time {
+//             display: flex;
+//             justify-content: center;
+//           }
+//         }
 
-        .BTN {
-          width: 60%;
-          .btn {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+//         .BTN {
+//           width: 60%;
+//           .btn {
+//             width: 100%;
+//             display: flex;
+//             justify-content: center;
+//             align-items: center;
 
-            .btn01 {
-              border: 0px;
-              border-radius: 20px;
-              background-color: #5e727e;
-              width: 250px;
-              height: 50px;
-            }
-          }
-        }
+//             .btn01 {
+//               border: 0px;
+//               border-radius: 20px;
+//               background-color: #5e727e;
+//               width: 250px;
+//               height: 50px;
+//             }
+//           }
+//         }
 
-        .time-block {
-          width: 20%;
-          display: flex;
-          justify-content: center;
-          flex-direction: column;
-        }
-      }
-    }
-  }
-}
+//         .time-block {
+//           width: 20%;
+//           display: flex;
+//           justify-content: center;
+//           flex-direction: column;
+//         }
+//       }
+//     }
+//   }
+// }
 
-@media (max-width: 1125px) {
-  h5{
-    font-size: 17px;
-  }
-}
-@media (max-width: 770px) {
-  .bottom {
-    height: 100vh; /* Makes full height for tablets */
-  }
-  .div .background #div {
-    margin-top: 15px;
-}
-.div .background #div .timediv .BTN {
-  width: 40%;
-}
-.div .background #div .timediv .time-block {
-  width: 30%;
-}
-  .div {
-    width: 90%; /* Adjusts container width */
+// @media (max-width: 1125px) {
+//   h5{
+//     font-size: 17px;
+//   }
+// }
+// @media (max-width: 770px) {
+//   .bottom {
+//     height: 100vh; /* Makes full height for tablets */
+//   }
+//   .div .background #div {
+//     margin-top: 15px;
+// }
+// .div .background #div .timediv .BTN {
+//   width: 40%;
+// }
+// .div .background #div .timediv .time-block {
+//   width: 30%;
+// }
+//   .div {
+//     width: 90%; /* Adjusts container width */
 
-    .timediv {
-      flex-direction: column; /* Stacks time blocks vertically */
-      align-items: center; /* Center the content */
-    }
+//     .timediv {
+//       flex-direction: column; /* Stacks time blocks vertically */
+//       align-items: center; /* Center the content */
+//     }
 
-    .time-block,
-    .BTN {
-      width: 100%; /* Full width for each section */
-      margin-bottom: 10px; /* Adds spacing between items */
-    }
+//     .time-block,
+//     .BTN {
+//       width: 100%; /* Full width for each section */
+//       margin-bottom: 10px; /* Adds spacing between items */
+//     }
 
-    .btn01 {
-      width: 200px;
-      height: 45px; /* Adjust button size */
-    }
-  }
-  .calendarSvg{
-    height: 245px;
-  }
-}
+//     .btn01 {
+//       width: 200px;
+//       height: 45px; /* Adjust button size */
+//     }
+//   }
+//   .calendarSvg{
+//     height: 245px;
+//   }
+// }
 
-@media (max-width: 480px) {
-  .bottom {
-    height: 100vh;
-  }
-  .div .background #div {
-    width: 100%;
-    height: 20%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-}
-#div .timediv .BTN .btn .btn01 {
-  width: 204px;
-  height: 45px;
-}
-  .div {
-    width: 100%; /* Full width for smaller screens */
-    display: flex;
-    justify-content: center;
-    .background {
-      width: 90%;
-    }
-    .timediv {
-      flex-direction: column; /* Stack everything */
-      align-items: center;
+// @media (max-width: 480px) {
+//   .bottom {
+//     height: 100vh;
+//   }
+//   .div .background #div {
+//     width: 100%;
+//     height: 20%;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     margin-top: 20px;
+// }
+// #div .timediv .BTN .btn .btn01 {
+//   width: 204px;
+//   height: 45px;
+// }
+//   .div {
+//     width: 100%; /* Full width for smaller screens */
+//     display: flex;
+//     justify-content: center;
+//     .background {
+//       width: 90%;
+//     }
+//     .timediv {
+//       flex-direction: column; /* Stack everything */
+//       align-items: center;
 
-      .time-block,
-      .BTN {
-        width: 100%; /* Full width for mobile */
-      }
+//       .time-block,
+//       .BTN {
+//         width: 100%; /* Full width for mobile */
+//       }
 
-      .btn01 {
-        width: 150px; /* Smaller button size */
-        height: 40px;
-      }
-    }
-  }
-  h3{
-    font-size: 17px; 
-  }
-  h5{
-    font-size: 10px;
-  }
-  .div .background #div .timediv .BTN .btn {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-}
-@media (max-width: 320px) {
-  .div .background #div .timediv .BTN .btn .btn01 {
-    border: 0px;
-    border-radius: 20px;
-    background-color: #5e727e;
-    width: 90px;
-    height: 40px;
-}
-h3{
-  font-size: 10px;
-}
-h5 {
-  font-size: 9px;
-}
-}
-.bcontainer{
+//       .btn01 {
+//         width: 150px; /* Smaller button size */
+//         height: 40px;
+//       }
+//     }
+//   }
+//   h3{
+//     font-size: 17px; 
+//   }
+//   h5{
+//     font-size: 10px;
+//   }
+//   .div .background #div .timediv .BTN .btn {
+//     width: 100%;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//   }
+// }
+// @media (max-width: 320px) {
+//   .div .background #div .timediv .BTN .btn .btn01 {
+//     border: 0px;
+//     border-radius: 20px;
+//     background-color: #5e727e;
+//     width: 90px;
+//     height: 40px;
+// }
+// h3{
+//   font-size: 10px;
+// }
+// h5 {
+//   font-size: 9px;
+// }
+// }
+
+// .bcontainer{
+//   width: 100%;
+//   display: flex;
+//   justify-content: center;
+//   margin-top: 40px;
+//   .expired-text{
+//     width: 60%;
+//     height: 50px;
+//     display: flex;
+//     justify-content: center;
+//     .img{
+//       width: 100%;
+//       height: 100%;
+//       background-image: url('../../../assets/im02.jpg');
+//       background-size: cover;  
+//       background-position: center;
+//       border-radius: 25px;
+
+//       .overlay01{
+//         width: 100%;
+//         height: 100%;
+//         display: flex;
+//         justify-content: right;
+//         align-items: center;
+//         background-color: #0005;
+//         border-radius: 25px;
+
+//         .tx01{
+//           padding: 15px 50px 0px 0px;     
+        
+//         }
+//       } 
+//     }
+//   }
+// }
+
+
+
+.bottom{
   width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 40px;
-  .expired-text{
-    width: 60%;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    .img{
+  position: absolute;
+  top: 130px;
+}
+.background{
+  border-radius: 30px;
+  width: 80%;
+  height: 420px;
+  background-image: url('../../../assets/im01.jpg');
+  background-position: center;
+  background-size: cover;
+  .overlay{
+     width: 100%;
+     height: 100%;
+     background-color: #0005;
+     border-radius: 50px; 
+     background-clip: padding-box; 
+     overflow: hidden;
+     display: flex;
+     flex-direction: column;
+     border-radius: 30px;
+     .top{
       width: 100%;
-      height: 100%;
-      background-image: url('../../../assets/im02.jpg');
-      background-size: cover;  
-      background-position: center;
-      border-radius: 25px;
-
-      .overlay01{
+      height: 65%;
+      .calendar{
         width: 100%;
-        height: 100%;
         display: flex;
         justify-content: right;
-        align-items: center;
-        background-color: #0005;
-        border-radius: 25px;
-
-        .tx01{
-          padding: 15px 50px 0px 0px;     
-        
+        #calendarsvg{
+          width: 13% !important;
         }
-      } 
+      }
+     }
+     .Footer{
+      width: 100%;
+      height: 35%;
+      display: flex;
+      justify-content: space-around;
+      align-items: end;
+      p{
+        color: white;
+        font-size: 17px;
+        font-weight: 300
+            }
+      .time{
+        display: flex;
+    align-items: center;
+    flex-direction: column;
+      }
+      .start{
+        display: flex;
+    align-items: center;
+    button{
+      width: 145px;
+      height: 45px;
+      margin-bottom: 35px;
+      background-color: #CED4DA;
+      border-radius: 10px;
+      border: 0px;
+      font-size: 20px;
     }
+      }
+      .endtime{
+        display: flex;
+    align-items: center;
+    flex-direction: column;
+      }
+     }
   }
 }
+
 h5{
   color: white;
 }
@@ -487,6 +565,56 @@ h3{
       }
     }
   }
+}
+.mainfooter{
+  margin-top: 50px !important;
+}
+@media (max-width: 450px) {
+  .mainfooter{
+    margin-top: 0px !important;
+  }
+  .background .overlay .top .calendar #calendarsvg{
+    width: 30% !important;
+}
+.background{
+  width: 95%;
+  height: 300px;
+  justify-content: space-around;
+
+}
+.background .overlay .Footer .start button {
+  width: 100px;
+  height: 35px;
+  font-size: 15px;
+
+}
+.background .overlay .Footer p {
+  color: white;
+  font-size: 14px;
+  font-weight: 300;
+}
+}
+@media (max-width: 325px) {
+  .background .overlay .top .calendar #calendarsvg{
+    width: 30% !important;
+}
+.background{
+  width: 95%;
+  height: 300px;
+  justify-content: space-around;
+
+}
+.background .overlay .Footer .start button {
+  width: 100px;
+  height: 35px;
+  font-size: 15px;
+
+}
+.background .overlay .Footer p {
+  color: white;
+  font-size: 14px;
+  font-weight: 300;
+}
 }
 
 @media (max-width: 394px) {

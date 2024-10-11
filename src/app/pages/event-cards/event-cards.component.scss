@@ -104,11 +104,13 @@ main {
 }
 .Buttons{
     display: flex;
-    justify-content: space-evenly;
-    .Btn1{
+    justify-content:  center;
+    margin-top: 10px;
+    .Btn{
         display: flex;
         align-items: center;
         background-color: red;
+        margin-right: 5px;
     }
     p{
         font-size: 10px

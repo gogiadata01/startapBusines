@@ -305,6 +305,11 @@ img {
   padding: 20px;
   position: relative;
 }
+.projects__description{
+  text-align: center;
+  margin-top: 20px;
+
+}
 .Title{
   margin-top: 100px;
   width: 100%;
@@ -323,7 +328,7 @@ img {
   position: relative;
   bottom: 330px;
   width: 91%;
-  height: 102%;
+  height: 97%;
   padding: 1rem 1rem 2rem;
   border-radius: 40px;
   transition: background-color 0.4s;
@@ -380,6 +385,8 @@ img {
   font-size: var(--h3-font-size);
   margin-bottom: 0.75rem;
   color: black;
+  text-align: center;
+  font-weight: bold;
 }
 
 .projects__buttons {
