@@ -1,3 +1,364 @@
-<app-navbar-for-pupil/>
+<app-navbar-for-pupil />
+<main>
+  <div class="top">
+    <div class="left">
+      <div class="img">
+        <img
+          src="https://i0.wp.com/pireport.org/wp-content/uploads/2024/06/joshua-hoehne-iggWDxHTAUQ-unsplash.png?resize=1200%2C600&ssl=1"
+          alt=""
+        />
+      </div>
+    </div>
+    <div class="right">
+      <div class="title">
+        <h3>{{ UniCard.title }}</h3>
+      </div>
+      <div class="price">
+        <div>
+          <h4>2500₾</h4>
+        </div>
+      </div>
+      <div class="code">
+        <div>
+          <p>123456789</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bottom">
+    <div class="container">
+      <div class="row">
+        @for (card of categories; track $index){
+        <div class="col-lg-4">
+          <div (click)="category = card.title" class="card">
+            <h1 [ngClass]="{ 'selected-card': category === card.title }">
+              {{ card.title }}
+            </h1>
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+  <div [ngSwitch]="category">
+    <!-- Default case when no category is selected -->
+    <div *ngSwitchDefault>
+      <ng-container *ngFor="let section of UniCard.sections">
+        <ng-container *ngFor="let programname of section.programNames"
+          >\
+          <div class="static">
+            <div class="title">
+              <h3>{{ programname.programName }}</h3>
+            </div>
+            <div class="Bottom">
+              <div>
+                <div class="stadinglanguage">
+                  <div>
+                    <h2>სწავლების ენა</h2>
+                  </div>
+                  <div class="divbottom">
+                    <h4>{{programname.swavlebisEna}}</h4>
+                  </div>
+                </div>
+                <div class="kvalifikacia">
+                  <div>
+                    <h2>კვალიფიკაცია</h2>
+                  </div>
+                  <div class="divbottom">
+                    <h4>{{programname.kvalifikacia}}</h4>
+                  </div>
+                </div>
+                <div class="dafinanseba">
+                  <div>
+                    <h2>დაფინანსება</h2>
+                  </div>
+                  <div class="divbottom">
+                    <h4>{{programname.dafinanseba}}</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="lowerPart">
+            <div class="box">
+              <div class="kreditebi">
+                <div>
+                  <h4>კრედიტების რაოდენობა</h4>
+                </div>
+                <div class="kreditebitext">
+                  <p>{{programname.kreditebisRaodenoba}}</p>
+                </div>
+              </div>
+              <div class="adgilebisraodenoba">
+                <div>
+                  <h4>ადგილების რაოდენობა</h4>
+                </div>
+                <div class="adgilebisraodenobatext">
+                  <p>{{programname.adgilebisRaodenoba}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="title">
+            <h3>პროგრამის აღწერა</h3>
+          </div>
+          <div class="programisAgwera">
+            <div>
+              <p>
+                {{programname.programisAgwera}}
+              </p>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
 
-  <app-footer-for-pupil/>
+    <!-- Case for the first category -->
+    <div *ngSwitchCase="'ეროვნული გამოცდებისთვის'">
+      <!-- <div class="static">
+        <div class="title">
+          <h3>კომპიუტერული მეცნიერება</h3>
+        </div>
+        <div class="Bottom">
+          <div>
+            <div class="stadinglanguage">
+              <div>
+                <h2>სწავლების ენა</h2>
+              </div>
+              <div class="divbottom">
+                <h4>ქართული ენა</h4>
+              </div>
+            </div>
+            <div class="kvalifikacia">
+              <div>
+                <h2>კვალიფიკაცია</h2>
+              </div>
+              <div class="divbottom">
+                <h4>კომპიუტერული მეცნიერების ბაკალავრი</h4>
+              </div>
+            </div>
+            <div class="dafinanseba">
+              <div>
+                <h2>დაფინანსება</h2>
+              </div>
+              <div class="divbottom">
+                <h4>ფინანსდება</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="lowerPart">
+        <div class="box">
+          <div class="kreditebi">
+            <div>
+              <h4>კრედიტების რაოდენობა</h4>
+            </div>
+            <div class="kreditebitext">
+              <p>240</p>
+            </div>
+          </div>
+          <div class="adgilebisraodenoba">
+            <div>
+              <h4>ადგილების რაოდენობა</h4>
+            </div>
+            <div class="adgilebisraodenobatext">
+              <p>15</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="savaldebuloSagnebi">
+        <div class="text">
+          <h4>სავალდებულო საგნები</h4>
+        </div>
+      </div>
+      <div class="maxasiateblevbi">
+        <div>
+          <div class="koeficienti">
+            <h3>კოეფიციენტი</h3>
+          </div>
+          <div class="minimanulizgvari">
+            <h3>მინ.ზღვარი</h3>
+          </div>
+          <div class="prioriteti">
+            <h3>პრიორიტეტი</h3>
+          </div>
+          <div class="adgilebisraodeonab">
+            <h3>ადგ. რაოდენობა</h3>
+          </div>
+        </div>
+      </div>
+      <div class="language">
+        <div class="left">
+          <div class="studlanguage">
+            <div>
+              <h4>ქართული ენა</h4>
+            </div>
+          </div>
+        </div>
+        <div class="right">
+          <div>
+            <div class="koeficientitext">
+              <p>2</p>
+            </div>
+            <div class="minimanulizgvaritext">
+              <p>25%</p>
+            </div>
+            <div class="prioritetitext">
+              <p>3</p>
+            </div>
+            <div class="adgilebisraodeonabtext">
+              <p>-</p>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <!-- Add any content specific to Category 1 here -->
+    </div>
+
+    <!-- Case for the second category -->
+    <div *ngSwitchCase="'მიზანი'">
+      <ng-container *ngFor="let section of UniCard.sections" >
+        <ng-container  *ngFor="let programname of section.programNames">
+          <div class="static">
+            <div class="title">
+              <h3>{{programname.programName}}</h3>
+            </div>
+            <div class="Bottom">
+              <div>
+                <div class="stadinglanguage">
+                  <div>
+                    <h2>სწავლების ენა</h2>
+                  </div>
+                  <div class="divbottom">
+                    <h4>{{programname.swavlebisEna}}</h4>
+                  </div>
+                </div>
+                <div class="kvalifikacia">
+                  <div>
+                    <h2>კვალიფიკაცია</h2>
+                  </div>
+                  <div class="divbottom">
+                    <h4>{{programname.kvalifikacia}}</h4>
+                  </div>
+                </div>
+                <div class="dafinanseba">
+                  <div>
+                    <h2>დაფინანსება</h2>
+                  </div>
+                  <div class="divbottom">
+                    <h4>{{programname.dafinanseba}}</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="lowerPart">
+            <div class="box">
+              <div class="kreditebi">
+                <div>
+                  <h4>კრედიტების რაოდენობა</h4>
+                </div>
+                <div class="kreditebitext">
+                  <p>{{programname.kreditebisRaodenoba}}</p>
+                </div>
+              </div>
+              <div class="adgilebisraodenoba">
+                <div>
+                  <h4>ადგილების რაოდენობა</h4>
+                </div>
+                <div class="adgilebisraodenobatext">
+                  <p>{{programname.adgilebisRaodenoba}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="title">
+            <h3>მიზანი</h3>
+          </div>
+          <div class="programisAgwera">
+            <div>
+              <p>
+                {{programname.mizani}}
+              </p>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
+
+    <!-- Add more cases for other categories as needed -->
+    <div *ngSwitchCase="'დასაქმება'">
+      <ng-container *ngFor="let section of UniCard.sections" >
+        <ng-container  *ngFor="let programname of section.programNames">
+          <div class="static">
+            <div class="title">
+              <h3>{{programname.programName}}</h3>
+            </div>
+            <div class="Bottom">
+              <div>
+                <div class="stadinglanguage">
+                  <div>
+                    <h2>სწავლების ენა</h2>
+                  </div>
+                  <div class="divbottom">
+                    <h4>{{programname.swavlebisEna}}</h4>
+                  </div>
+                </div>
+                <div class="kvalifikacia">
+                  <div>
+                    <h2>კვალიფიკაცია</h2>
+                  </div>
+                  <div class="divbottom">
+                    <h4>{{programname.kvalifikacia}}</h4>
+                  </div>
+                </div>
+                <div class="dafinanseba">
+                  <div>
+                    <h2>დაფინანსება</h2>
+                  </div>
+                  <div class="divbottom">
+                    <h4>{{programname.dafinanseba}}</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="lowerPart">
+            <div class="box">
+              <div class="kreditebi">
+                <div>
+                  <h4>კრედიტების რაოდენობა</h4>
+                </div>
+                <div class="kreditebitext">
+                  <p>{{programname.kreditebisRaodenoba}}</p>
+                </div>
+              </div>
+              <div class="adgilebisraodenoba">
+                <div>
+                  <h4>ადგილების რაოდენობა</h4>
+                </div>
+                <div class="adgilebisraodenobatext">
+                  <p>{{programname.adgilebisRaodenoba}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="title">
+            <h3>დასაქმება</h3>
+          </div>
+          <div class="programisAgwera">
+            <div>
+              <p>
+                {{programname.jobs}}
+              </p>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+      <!-- Add any content specific to Category 3 here -->
+    </div>
+  </div>
+</main>
+<app-footer-for-pupil />

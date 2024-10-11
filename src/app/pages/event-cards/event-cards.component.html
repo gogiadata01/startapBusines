@@ -2,8 +2,9 @@
   <div class="header-content">
     <nav id="firstNavbar" class="navbar navbar-expand-lg navbar-light">
       <!-- First Navbar -->
-      <div class="container-fluid">
-        <svg routerLink="/"
+      <div class="container-fluid" id="cotainerfluid">
+        <svg
+          routerLink="/"
           id="svg"
           xmlns="http://www.w3.org/2000/svg"
           width="639"
@@ -52,8 +53,8 @@
           <ul class="navbar-nav ms-auto">
             <li class="nav-item mx-2">
               <a
+              routerLink="/Pupil/PersonalPage"
                 class="nav-link text-dark h5"
-                href="https://www.tiktok.com/@_fspace_"
                 target="_blank"
               >
                 <svg
@@ -83,6 +84,7 @@
       <nav id="color" class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container-fluid" id="fluid">
           <svg
+            routerLink="/"
             id="svg"
             xmlns="http://www.w3.org/2000/svg"
             width="639"
@@ -113,7 +115,7 @@
           <div class="collapse navbar-collapse" id="secondNavbar">
             <ul class="navbar-nav ms-auto text-dark">
               <li class="nav-item">
-                <a class="nav-link mx-2" routerLink="Pupil/Uni"
+                <a class="nav-link mx-2" routerLink="/Pupil/Uni"
                   >უნივერსიტეტები</a
                 >
               </li>
@@ -134,8 +136,8 @@
             <ul class="navbar-nav ms-auto">
               <li class="nav-item mx-2">
                 <a
+                routerLink="/Pupil/PersonalPage"
                   class="nav-link text-dark h5"
-                  href="https://www.tiktok.com/@_fspace_"
                   target="blank"
                 >
                   <svg
@@ -176,7 +178,7 @@
 </header>
 
 <div class="title">
-  <h2>ივენთები</h2>
+  <h3>ივენთები</h3>
 </div>
 <main>
   <div class="filter">
@@ -190,19 +192,38 @@
       </div>
     </div>
   </div>
-  <main>
-    <div class="card-container">
-      <div
-        class="card"
-        *ngFor="let card of filteredEventCards"
-        (click)="onCardClicked(card.id)"
-      >
-        <img src="{{ card.url }}" />
-        <div class="card-content">
-          <p>{{ card.title }}</p>
-        </div>
-        <div class="Date">{{ card.time }}</div>
-        <div class="Buttons">
+  <div class="card-container">
+    <div
+      class="card"
+      *ngFor="let card of filteredEventCards"
+      (click)="onCardClicked(card.id)"
+    >
+      <img src="{{ card.url }}" />
+      <div class="card-content">
+        <p>{{ card.title }}</p>
+      </div>
+      <div class="Date">{{ card.time }}</div>
+      <div class="Buttons">
+        <ng-container *ngFor="let type of card.types">
+          <div
+            [ngStyle]="{
+              'background-color': getColor(type),
+              'font-size': '10px',
+              color: 'white',
+              padding: '5px',
+              'border-radius': '5px'
+            }"
+            class="Btn"
+          >
+            {{ type.type || type }}
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- <div class="Buttons">
           <div class="Btn1">
             <button>
               <svg
@@ -236,8 +257,4 @@
               </svg>
             </button>
           </div>
-        </div>
-      </div>
-    </div>
-  </main>
-</main>
+        </div> -->

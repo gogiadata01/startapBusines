@@ -143,7 +143,6 @@ bottom: 0;
 position: relative;
 z-index: 1; 
 width: 100%;
-padding: 20px;
 height: 100%;
 display: flex;
 flex-direction: column;
@@ -193,7 +192,9 @@ img {
   cursor: pointer;
   transition: color .3s;
 }
-
+.container-fluid{
+  padding: 20px !important;
+}
 /*=============== REUSABLE CSS CLASSES ===============*/
 .container {
   max-width: 1120px;
@@ -304,17 +305,37 @@ img {
   padding: 20px;
   position: relative;
 }
+.projects__description{
+  text-align: center;
+  margin-top: 20px;
 
+}
+.Title{
+  margin-top: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  bottom: 415px;
+  h3{
+    color: white;
+    margin-bottom: 5px;
+    border-bottom: 2px solid white;
+    padding-bottom: 10px;
+    font-weight: 300 !important;
+  }}
 .projects__card {
   position: relative;
-  bottom: 350px;
-  width: 90%;
-  height: 102%;
+  bottom: 330px;
+  width: 91%;
+  height: 97%;
   padding: 1rem 1rem 2rem;
   border-radius: 40px;
   transition: background-color 0.4s;
   background-color: #F1F3BE;
   // margin-left: 25px;
+  cursor: pointer;
+
 }
 
 .projects__image {
@@ -364,6 +385,8 @@ img {
   font-size: var(--h3-font-size);
   margin-bottom: 0.75rem;
   color: black;
+  text-align: center;
+  font-weight: bold;
 }
 
 .projects__buttons {
@@ -551,7 +574,7 @@ img {
     transition: background-color 0.3s ease;
   
     &:hover {
-        background-color: #77b1e0;
+      background-color: #c1ccd5;
     }
 
         transition: transform 0.3s ease;

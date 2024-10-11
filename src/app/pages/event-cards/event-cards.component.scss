@@ -1,31 +1,47 @@
 .title{
     display: flex;
     justify-content: center;
-    h2{
+    position: relative;
+    bottom: 325px;
+    h3{
         color: white;
-        font-size: 20px;
-        font-weight: 600;  
         border-bottom: 2px solid white;
         padding-bottom: 5px;
+        font-weight: 300 !important;
+
     }
 }
 .filter{
     width: 100%;
     display: flex;
     justify-content: center;
+    position: relative;
+    bottom: 280px;
     .Types{
         width: 35%;
         display: flex;
         justify-content: space-around;
+        div{
+            :hover{
+                transform: scale(1.05);
+
+            }
+        }
     }
 }
 h4{
     color: white;
     font-size: 16px;
+    cursor: pointer;
+
 }
 
 main {
     flex: 1;
+}
+#cotainerfluid{
+    background-color: #85A98D;
+    padding: 20px;
 }
 
 .card-container {
@@ -33,6 +49,8 @@ main {
     flex-wrap: wrap;
     justify-content: center;
     gap: 1rem;
+    position: relative;
+    bottom: 220px;
 }
 
 .card {
@@ -80,38 +98,52 @@ main {
 
 .Date{
     display: flex;
-    width: 245px;
+    // width: 245px;
     justify-content: center;
     align-items: center;
 }
 .Buttons{
     display: flex;
-    justify-content: center;
+    justify-content:  center;
     margin-top: 10px;
-}
-.Btn1{
-    margin-right: 17px;
-    button{
+    .Btn{
         display: flex;
-        color: white;
-        border-radius: 10px;
-        border: 1px dashed;
-        background-color: #5D737E
-    }
-}
-.Btn2{
-    button{
-        display: flex;
-        justify-content: center;
         align-items: center;
-        width: 40px;
-        height: 26px;
-        color: white;
-        border-radius: 10px;
-        border: 1px dashed;
-        background-color: #5D737E;
+        background-color: red;
+        margin-right: 5px;
     }
+    p{
+        font-size: 10px
+    };
 }
+// .Buttons{
+//     display: flex;
+//     justify-content: center;
+//     margin-top: 10px;
+// }
+// .Btn1{
+//     margin-right: 17px;
+//     button{
+//         display: flex;
+//         color: white;
+//         border-radius: 10px;
+//         border: 1px dashed;
+//         background-color: #5D737E
+//     }
+// }
+// .Btn2{
+//     button{
+//         display: flex;
+//         justify-content: center;
+//         align-items: center;
+//         width: 40px;
+//         height: 26px;
+//         color: white;
+//         border-radius: 10px;
+//         border: 1px dashed;
+//         background-color: #5D737E;
+//     }
+// }
 footer {
     text-align: center;
     padding: 1rem 0;
@@ -150,6 +182,9 @@ footer {
     }
     h4{
         font-size:11px;
+        cursor: pointer !important;
+    }:hover{
+        background-color: green !important;
     }
 }
 .second-navbar {
@@ -190,7 +225,6 @@ footer {
     position: relative;
     z-index: 1; 
     width: 100%;
-    padding: 20px;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -242,7 +276,7 @@ footer {
     transition: background-color 0.3s ease;
   
     &:hover {
-        background-color: #77b1e0;
+        background-color: #c1ccd5;
     }
 
         transition: transform 0.3s ease;

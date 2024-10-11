@@ -1,7 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {NgIf} from "@angular/common";
-import {Icard} from "../../core/models/common.model";
 import {Router, RouterLink, UrlHandlingStrategy} from "@angular/router";
 import { NavbarComponent } from '../../navbar/navbar.component';
 import { reduce } from 'rxjs';

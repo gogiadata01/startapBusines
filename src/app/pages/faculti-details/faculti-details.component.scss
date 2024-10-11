@@ -2,10 +2,14 @@
     display: flex;
     justify-content: center;
     margin-top: 75px;
+    position: relative;
+    bottom: 390px;
     h2{
-        color: black;
-        font-size: 25px !important;
-        font-weight: 600 !important;
+      color: white;
+      margin-bottom: 5px;
+      border-bottom: 2px solid white;
+      padding-bottom: 10px;
+      font-weight: 300 !important;
     }
 }
 * {
@@ -31,21 +35,7 @@ body {
   transition: background-color .4s; /* Pour le Dark theme */
 }
 
-h1,
-h2,
-h3,
-h4 {
-  color: var(--title-color);
-  font-weight: var(--font-bold);
-}
 
-ul {
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-}
 
 img {
   display: block;
@@ -237,6 +227,10 @@ img {
   font-size: var(--h3-font-size);
   margin-bottom: 0.75rem;
   color: black;
+  font-weight: 400;
+}
+.projects__description{
+  font-weight: 300;
 }
 
 .projects__buttons {
@@ -278,6 +272,11 @@ img {
   .projects__container{
     width: 90%;
   }
+  #projects{
+    position: relative;
+    bottom: 350px;
+  }
+
 }
 /*=============== MEDIA QUERIES ===============*/
 /* For small devices */
@@ -295,6 +294,9 @@ img {
   }
   .projects__card {
     margin-left: 15px;
+  }
+  .title{
+    bottom: 415px;
   }
 }
 
@@ -331,6 +333,10 @@ img {
   }
   .projects__buttons {
     right: 1.25rem;
+  }
+  #projects{
+    position: relative;
+    bottom: 300px;
   }
 }
 .Btn {
@@ -399,9 +405,73 @@ img {
       transform: scaleX(1);
     }
   }}
-  .navbar{
+  .second-navbar {
+    transition: top 0.3s ease-in-out;
+    position: fixed;
+    opacity: 1;
     background-color: #85A98D;
-
+    top: 0;
+    left:0;
+    right:0;
+    width: 100%;
+    transform: translateY(-100%);
+    z-index: 1030; 
+    }
+    
+    .content {
+    margin-top: 100px;
+    height: 2000px; 
+    }
+    
+    //header and navbar
+    .site-header {
+    width: 100%;
+    height: 600px;
+    }
+    
+    .site-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    
+    }
+    
+    .header-content {
+    position: relative;
+    z-index: 1; 
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box; 
+    }
+    
+    h1 {
+    color: white;
+    text-align: center;
+    font-size: 1.9em; 
+    max-width: 1000px;
+    margin: 220px auto; 
+    }
+    
+    
+    
+    
+    nav ul li a {
+    color: white;
+    text-decoration: none;
+    
+    &:hover {
+      color: #3e8e41;
+     
+    }
+}
+#color{
+    background-color: #342833;
 }
 #svg{
     width: 120px;
@@ -424,7 +494,7 @@ img {
     transition: background-color 0.3s ease;
   
     &:hover {
-        background-color: #77b1e0;
+      background-color: #c1ccd5;
     }
 
         transition: transform 0.3s ease;
@@ -478,4 +548,15 @@ svg {
     border-bottom: none; /* Remove underline or bottom border from links */
     text-decoration: none; /* Remove underline from links */
 
+  }
+    .active {
+    font-weight: bold;
+    color: blue; /* Example styling */
+  }
+#cotainerfluid {
+    background-color: #85A98D !important;
+    padding: 20px !important;
+  }
+  #fluid{
+    padding: 20px;
   }

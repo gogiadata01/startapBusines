@@ -31,7 +31,7 @@ import { PersonalPageComponent } from './pages/personal-page/personal-page.compo
 export const routes: Routes = [
   {
     path : "",
-    component: PersonalPageComponent
+    component: HomeComponent
   },
   // {
   //   path : "",
@@ -54,11 +54,11 @@ export const routes: Routes = [
     component:UniProgramPageComponent
   },
   {
-    path:"Pupil/UniFaculty/:id/:n",
+    path:"Pupil/UniFaculty/:n",
     component:FacultiDetailsComponent
   },
   {
-    path:"Pupil/UniFaculty/:id/:n/:id2/:n2",
+    path:"Pupil/UniFaculty/:n/:id2/:n2",
     component:FacultyUniDetailsComponent
   },
   {
@@ -73,9 +73,16 @@ export const routes: Routes = [
    path:"Pupil/HomeUni/:id",
     component:HomeUniDetailsComponent
   },
+  {path:"Pupil/HomeUni/:id/:n",
+  component:UniFacultyDetailsComponent
+  },
   {
     path:"Pupil/Quize",
     component:QuizeComponent
+  },
+  {
+    path:"Pupil/PersonalPage",
+    component:PersonalPageComponent
   },
   {
     path:"Register",

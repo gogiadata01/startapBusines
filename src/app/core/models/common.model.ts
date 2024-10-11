@@ -1,25 +1,3 @@
-
-export interface Icard{
-  key?:string,
-  url: string;
-  title: string;
-  mainText: string;
-  history: string;
-  forpupil: string;
-  ScholarshipAndFunding: string;
-  ExchangePrograms: string;
-  Labs: string;
-  Jobs: string;
-  StudentsLife: string;
-  PaymentMethods: string;
-  Events: { url: string, Title: string, text: string }[];
-  sections: { title: string, programNames: { programName: string }[] }[];
-  sections2: { title:any, SavaldebuloSagnebi: {  SagnisSaxeli: any, Koeficienti: any, MinimaluriZgvari: any, Prioriteti: any }[] }[];
-  archevitisavaldebulosagani: { title: string, ArchevitiSavaldebuloSagnebi: {SagnisSaxeli: string, Koeficienti: string, MinimaluriZgvari: string, Prioriteti: string }[] }[];
-};
-
-// home-uni-card-dto.model.ts
-
 export interface UniCardDto {
   id?:number;
   url: string;
@@ -43,11 +21,12 @@ export interface EventDto {
   url: string;
   title: string;
   text: string;
+  time:string
 }
 
 export interface SectionDto {
   title: string;
-  programNames?: ProgramnameDto[];
+  programNames: ProgramnameDto[];
 }
 
 export interface Section2Dto {
@@ -61,16 +40,17 @@ export interface ArchevitiSavaldebuloSaganiDto {
 }
 
 export interface ProgramnameDto {
-  programName: string;
-  jobs: string;
-  swavlebisEna: string;
-  kvalifikacia: string;
-  dafinanseba: string;
-  kreditebisRaodenoba: string;
-  adgilebisRaodenoba: string;
-  fasi: string;
-  kodi: string;
-  programisAgwera: string;
+  programName?: string;
+  jobs?: string;
+  swavlebisEna?: string;
+  kvalifikacia?: string;
+  dafinanseba?: string;
+  kreditebisRaodenoba?: string;
+  adgilebisRaodenoba?: string;
+  fasi?: string;
+  kodi?: string;
+  programisAgwera? : string;
+  mizani:string
 
 }
 
@@ -96,13 +76,14 @@ export interface ProgramCardDto {
 }
 
 export interface FieldDto{
+  id:number
   fieldName:string;
   programNames:ProgramNamesDto[]
 }
 
 export interface ProgramNamesDto{
-  id?:number
-  programname:string;
+  id?:number;
+  programname:any;
   checkBoxes:CheckBoxesDto[]
   width:string
 
@@ -119,6 +100,7 @@ export interface EventCardDto{
   text:string;
   time:string;
   isFeatured:boolean
+  saregistracioForma:string
   types:EventTypeDto[];
 }
 
@@ -127,7 +109,7 @@ export interface EventTypeDto{
 }
 
 export interface UserDto{
-  id:number
+  id?:number
   Name:string;
   Email:string;
   Password:string;
@@ -141,16 +123,15 @@ export interface UserSignInDto{
   Password:string
 }
 
-export interface IUser{
-  email:string,
-  Username:string
-  role:string
-}
-export interface IUniFacultyCard{
-  key?: string | null;
+export interface UniCardForFacultyDetails{
+  id?:number;
+  url: string;
   title: string;
-  text: string;
-  sections: { checkBoxNames: { checkBoxName: string }[] }[];
+  mainText?: string;
+  programNames?: Programname[];
+}
+export interface Programname {
+  programName: string;
 }
 export interface QuizDto {
   time:string
@@ -168,9 +149,3 @@ export interface IncorrectAnswerDto {
   inccorectAnswer: string;
 }
 
-export interface IEventCard{
-  key?:string,
-  url:string,
-  title:string
-  text:string
-}

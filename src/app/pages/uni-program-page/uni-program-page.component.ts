@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavbarForPupilComponent } from '../navbar-for-pupil/navbar-for-pupil.component';
 import { RouterLink } from '@angular/router';
-import {IUniFacultyCard} from "../../core/models/common.model";
 import { UniProgramComponent } from '../../core/UniProgram/uni-program.component';
 import {FooterForPupilComponent} from '../footer-for-pupil/footer-for-pupil.component'
 
