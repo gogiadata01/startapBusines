@@ -3,7 +3,8 @@
     <nav id="firstNavbar" class="navbar navbar-expand-lg navbar-light">
       <!-- First Navbar -->
       <div class="container-fluid">
-        <svg routerLink="/"
+        <svg
+          routerLink="/"
           id="svg"
           xmlns="http://www.w3.org/2000/svg"
           width="639"
@@ -33,7 +34,9 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link mx-2" routerLink="Pupil/Uni">უნივერსიტეტები</a>
+              <a class="nav-link mx-2" routerLink="/Pupil/Uni"
+                >უნივერსიტეტები</a
+              >
             </li>
             <li class="nav-item">
               <a class="nav-link mx-2" routerLink="/Pupil/UniFaculty"
@@ -50,8 +53,8 @@
           <ul class="navbar-nav ms-auto">
             <li class="nav-item mx-2">
               <a
-              routerLink="/Pupil/PersonalPage"
-              class="nav-link text-dark h5"
+                routerLink="/Pupil/PersonalPage"
+                class="nav-link text-dark h5"
                 target="_blank"
               >
                 <svg
@@ -80,7 +83,8 @@
     <div #secondNavbar class="second-navbar">
       <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container-fluid">
-          <svg           routerLink="/"
+          <svg
+            routerLink="/"
             id="svg"
             xmlns="http://www.w3.org/2000/svg"
             width="639"
@@ -132,8 +136,8 @@
             <ul class="navbar-nav ms-auto">
               <li class="nav-item mx-2">
                 <a
-                routerLink="/Pupil/PersonalPage"
-                class="nav-link text-dark h5"
+                  routerLink="/Pupil/PersonalPage"
+                  class="nav-link text-dark h5"
                   target="blank"
                 >
                   <svg
@@ -193,63 +197,6 @@
 </div>
 
 <!-- ერი და ნავბარი მთავრდება აქ -->
-<!-- <div class="Bottom">
-  <div class="timeline">
-    <div *ngFor="let circle of circles; let i = index" class="circle-container">
-      <div
-        [ngClass]="{
-          circle: true,
-          green: activeCircleIndex === i
-        }"
-        (click)="onCircleClick(i)"
-      ></div>
-      <div *ngIf="i < circles.length - 1" class="line dashed"></div>
-    </div>
-  </div>
-  <div class="program">
-    <div class="FacultyTitle"></div>
-    <div class="ProgramNames col">
-      <div class="container">
-        <div *ngIf="programCards && programCards.length > 0">
-          <div *ngFor="let item of programCards; let i = index">
-            <div *ngIf="i === activeCircleIndex">
-              <div *ngFor="let field of item.fields">
-                <h2 (click)="togglePrograms(field.fieldName)">
-                  {{ field.fieldName }}
-                </h2>
-                <div style="gap: 34px; align-items: center" class="top1 flex-wrap">
-                  <div *ngFor="let program of field.programNames" (click)="onCardClicked(program.programname)">
-                    <div
-                      [ngStyle]="{
-                        'background-color': '#A0C4A0',
-                        'flex-wrap': 'wrap',
-                        color: '#fff',
-                        'border-radius': '50px',
-                        padding: '10px',
-                        'max-width': '350px',
-                        'box-sizing': 'border-box',
-                        display: 'flex',
-                        'align-items': 'center',
-                        'justify-content': 'center',
-                        width: getButtonWidth(program.programname)
-                      }"
-                      class="btn rounded-pill"
-                    >
-                      <div>{{ program.programname }}</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div *ngIf="programCards.length === 0">
-          <p>დაელოდეთ პროგრამების ჩატვირთვას...</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
 <div class="Bottom">
   <div class="timeline">
     <div *ngFor="let circle of circles; let i = index" class="circle-container">
