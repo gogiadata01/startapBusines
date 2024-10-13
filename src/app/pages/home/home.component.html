@@ -93,8 +93,6 @@
       </nav>
     </div>
 
-
-
     <div class="title">
       <h1 class="text-white text-3xl">აქ შეხვდებით თქვენთვის ყველა სასურველ ინფორმაციას</h1>
     </div>
@@ -254,6 +252,74 @@
     </div>
   </div>
 </div> -->
+<div class="subject-selection">
+  <div class="button-container">
+    <button class="georgian-button">
+      აირჩიე საგანი და მიიღე შენთვის შესაფერისი პროგრამა
+    </button>
+    <svg class="dotted-arrow" width="50" height="50" viewBox="0 0 50 50">
+      <path
+        d="M0,0 L40,0 L40,40"
+        fill="none"
+        stroke="black"
+        stroke-width="2"
+        stroke-dasharray="4 2"
+      />
+      <polygon points="40,40 35,35 45,35" fill="black" />
+    </svg>
+  </div>
+  <!-- <label>
+    <input type="checkbox" (change)="markAllSubjects($event)" />
+    Select All
+  </label> -->
+  <div *ngFor="let subject of subjects">
+    <label>
+      <input
+        type="checkbox"
+        [value]="subject"
+        (change)="onSubjectChange(subject)"
+      />
+      {{ subject }}
+    </label>
+  </div>
+  <button (click)="filterMatchingPrograms()">Filter Programs</button>
+</div>
+
+<div *ngIf="errorMessage" class="error-message">
+  {{ errorMessage }}
+</div>
+
+<div *ngIf="matchingPrograms.length > 0">
+  <h3>შენთვის შერჩეული პროგრამებია</h3>
+  <div class="top1 flex-wrap" style="gap: 34px; align-items: center">
+    @for (item of matchingPrograms; track $index) { @for (program of
+    item.programNames; track $index) {
+    <div
+      (click)="onCardClicked(program.programName)"
+      class="btn rounded-pill"
+      [ngStyle]="{
+        'background-color': '#A0C4A0',
+        color: '#fff',
+        'border-radius': '50px',
+        padding: '10px',
+        'max-width': '350px',
+        'box-sizing': 'border-box',
+        display: 'flex',
+        'align-items': 'center',
+        'justify-content': 'center',
+        width: program.width
+      }"
+    >
+      <div>{{ program.programName }}</div>
+    </div>
+    } }
+  </div>
+</div>
+
+<div *ngIf="matchingPrograms.length === 0 && !errorMessage">
+  <p>No programs match the selected subjects.</p>
+</div>
+
 <div class="eventTitle">
   <h2>მთავარი ივენთები</h2>
 </div>

@@ -24,7 +24,7 @@ import { FormsModule } from '@angular/forms';
   @Component({
     selector: 'app-home',
     standalone: true,
-    imports: [CommonModule,NgFor, FooterForPupilComponent, QuizeComponent, UniProgramComponent, RouterLink, NavbarComponent],
+    imports: [CommonModule, FooterForPupilComponent, QuizeComponent, UniProgramComponent, RouterLink, NavbarComponent],
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss']
   })
@@ -40,7 +40,7 @@ import { FormsModule } from '@angular/forms';
     fieldPrograms: ProgramNamesDto[] = []; // Use ProgramNamesDto instead of ProgramCardDto
     fieldNames: string[] = [];
     selectedSubjects: string[] = []; // Array to hold selected subjects
-    matchingPrograms!: ProgramCardDto[] // Array to hold programs that match the selected subjects
+    matchingPrograms: any[] = []; // Ensures it's initialized to an empty array
     errorMessage: string | null = null; // Variable for error messages
   
     // Sample list of subjects; this should be populated based on your requirements
@@ -85,7 +85,6 @@ createFieldProgramMapping(): void {
         }));
       },
       error: (err) => {
-        console.error(`Error fetching programs for field ${field.fieldName}:`, err);
       }
     });
   });
