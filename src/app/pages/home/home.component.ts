@@ -1,5 +1,5 @@
   import { Component, HostListener, Input, OnInit, OnDestroy, NgZone, ViewChild } from '@angular/core';
-  import { CommonModule } from '@angular/common';
+  import { CommonModule ,NgFor } from '@angular/common';
   import { ElementRef, } from '@angular/core';
   import { Router } from '@angular/router';
   import { UniProgramComponent } from '../../core/UniProgram/uni-program.component'
@@ -17,13 +17,14 @@
   import { gsap } from 'gsap';
   import {  AfterViewInit,  ViewChildren, QueryList } from '@angular/core';
   import {AuthenticationService} from '../../authentication.service'
+import { FormsModule } from '@angular/forms';
 
 
 
   @Component({
     selector: 'app-home',
     standalone: true,
-    imports: [CommonModule, FooterForPupilComponent, QuizeComponent, UniProgramComponent, RouterLink, NavbarComponent],
+    imports: [CommonModule,NgFor, FooterForPupilComponent, QuizeComponent, UniProgramComponent, RouterLink, NavbarComponent],
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss']
   })
@@ -38,6 +39,17 @@
     selectedField: string | null = null; // Track the selected field
     fieldPrograms: ProgramNamesDto[] = []; // Use ProgramNamesDto instead of ProgramCardDto
     fieldNames: string[] = [];
+    selectedSubjects: string[] = []; // Array to hold selected subjects
+    matchingPrograms!: ProgramCardDto[] // Array to hold programs that match the selected subjects
+    errorMessage: string | null = null; // Variable for error messages
+  
+    // Sample list of subjects; this should be populated based on your requirements
+    subjects: string[] = [
+      'ქართული', 'უცხო ენები', 'ქიმია', 'ფიზიკა', 
+      'ბიოლოგია', 'მათემატიკა', 'სამოქალაქო განათლება', 
+      'გეოგრაფია', 'მუსიკა', 'ხელოვნება', 'ისტორია', 'სპორტი'
+    ];
+
     constructor(private router: Router,private cdr: ChangeDetectorRef, private authService:AuthenticationService,private ngZone: NgZone , private EventCardService: EventCardService  ,  private programCardService: ProgramCardService
       ) {
       }
@@ -187,8 +199,130 @@ onCircleClick(index: number): void {
             this.onWindowScroll();
           });
       });
-    }
+      this.filterMatchingPrograms();  // Automatically filter programs on initialization
 
+    }
+    onSubjectChange(subject: string): void {
+      const index = this.selectedSubjects.indexOf(subject);
+      if (index > -1) {
+        this.selectedSubjects.splice(index, 1); // Remove subject if it's already selected
+      } else {
+        this.selectedSubjects.push(subject); // Add subject if it's not selected
+      }
+    }
+    
+    markAllSubjects(event: any): void {
+      if (event.target.checked) {
+        this.selectedSubjects = [...this.subjects]; // Select all subjects
+      } else {
+        this.selectedSubjects = []; // Deselect all subjects
+      }
+    }
+    
+    filterMatchingPrograms() {
+      if (this.selectedSubjects.length === 0) {
+        this.errorMessage = "Please select at least one subject.";
+        return;
+      }
+    
+      console.log('Selected Subjects:', this.selectedSubjects);
+    
+      // Call the updated service method
+      this.programCardService.getProgramCardDetailsBySubjects(this.selectedSubjects).subscribe({
+        next: (programCards: ProgramCardDto[]) => {
+          console.log('Returned Program Cards:', programCards);
+    
+          this.matchingPrograms = programCards; // Reset the array before adding new data
+          console.log(this.matchingPrograms)
+          // Processing returned program cards to find matching program names
+          // programCards.forEach(card => {
+          //   card.fields?.forEach(field => {
+          //     field.programNames.forEach(program => {
+          //       const matchingCheckBoxes = program.checkBoxes.filter(box => 
+          //         this.selectedSubjects.includes(box.chackBoxName) // Check if the checkbox name matches
+          //       );
+    
+          //       if (matchingCheckBoxes.length > 0) {
+          //         // Only push the program if there's a matching checkbox
+          //         this.matchingPrograms.push(program);
+          //       }
+          //     });
+          //   });
+          // });
+    
+          // console.log('Final Matching Programs:', this.matchingPrograms); // Log the final array of matching programs
+          // this.errorMessage = null; // Reset error message
+        },
+        error: (err) => {
+          console.error('Error fetching programs:', err);
+          this.errorMessage = err.message;
+        }
+      });
+    }
+    
+    
+    
+
+
+    
+  //    onSubjectChange(subject: string): void {
+  //     const index = this.selectedSubjects.indexOf(subject);
+  //     if (index > -1) {
+  //       this.selectedSubjects.splice(index, 1); // Remove subject if it's already selected
+  //     } else {
+  //       this.selectedSubjects.push(subject); // Add subject if it's not selected
+  //     }
+  //   }
+  
+  //   markAllSubjects(event: any): void {
+  //     if (event.target.checked) {
+  //       this.selectedSubjects = [...this.subjects]; // Select all subjects
+  //     } else {
+  //       this.selectedSubjects = []; // Deselect all subjects
+  //     }
+  //   }
+  
+  //   filterMatchingPrograms() {
+  //     if (this.selectedSubjects.length === 0) {
+  //         this.errorMessage = "Please select at least one subject.";
+  //         return;
+  //     }
+  
+  //     console.log('Selected Subjects:', this.selectedSubjects); // Log selected subjects
+  
+  //     this.programCardService.getProgramCardDetailsBySubjects(this.selectedSubjects).subscribe({
+  //         next: (programCards: ProgramCardDto[]) => {
+  //             console.log('Returned Program Cards:', programCards); // Log the response
+  
+  //             this.matchingPrograms = []; // Reset the array before adding new data
+  
+  //             // Flattening program names that match the selected subjects
+  //             programCards.forEach(card => {
+  //                 card.fields?.forEach(field => {
+  //                     field.programNames.forEach(program => {
+  //                         const matchingCheckBoxes = program.checkBoxes.filter(box => 
+  //                             this.selectedSubjects.includes(box.chackBoxName) // Check if the checkbox name matches
+  //                         );
+  
+  //                         if (matchingCheckBoxes.length > 0) {
+  //                             this.matchingPrograms.push(program);
+  //                         }
+  //                     });
+  //                 });
+  //             });
+
+  //             console.log(this.matchingPrograms)
+  //             this.errorMessage = null; // Reset error message
+  //         },
+  //         error: (err) => {
+  //             console.error('Error fetching programs:', err); // Log error details
+  //             this.errorMessage = err.message;
+  //         }
+  //     });
+  // }
+  
+  
+    
     onCardClicked1(cardkey:any) :void{
       this.router.navigate(['/Pupil/Events/',cardkey])
     }

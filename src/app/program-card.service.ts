@@ -6,6 +6,7 @@ import { ProgramCardDto,FieldDto,ProgramNamesDto } from './core/models/common.mo
 import { CardBodyComponent } from '@coreui/angular';
 import { setThrowInvalidWriteToSignalError } from '@angular/core/primitives/signals';
 import { environment } from '../environments/environment.development';  // Import environment
+import { HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,23 @@ export class ProgramCardService {
     );
   }
   
+  getProgramCardDetailsBySubjects(subjects: string[]): Observable<ProgramCardDto[]> {
+    // Initialize HttpParams
+    let params = new HttpParams();
+  
+    // Append each subject to the params
+    subjects.forEach(subject => {
+      params = params.append('subjects', subject); // Add each subject individually
+    });
+  
+    // Make the HTTP GET request with the constructed parameters
+    return this.http.get<ProgramCardDto[]>(`${this.apiUrl}/GetProgramCardDetailsBySubjects`, { params });
+  }
+  
+
+
+
+
   
   
   // Fetch fields only
