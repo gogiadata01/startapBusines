@@ -83,3 +83,4 @@ export class PersonalPageComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 }
+// ნავბარი მთავრდება აქ
