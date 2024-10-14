@@ -1,5 +1,5 @@
 import { FormBuilder, FormGroup, Validators, FormArray, NgForm, NgModel, ReactiveFormsModule } from '@angular/forms';
-import { Component, HostListener, OnInit, OnDestroy, NgZone,ViewChild,ElementRef,ViewChildren,QueryList,} from '@angular/core';
+import { Component, HostListener, OnInit, OnDestroy, NgZone, ViewChild, ElementRef, ViewChildren, QueryList, } from '@angular/core';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { Router } from '@angular/router';
 import { FooterForPupilComponent } from '../../pages/footer-for-pupil/footer-for-pupil.component';
@@ -13,7 +13,7 @@ import { takeUntil } from 'rxjs/operators';
 @Component({
   selector: 'app-personal-page',
   standalone: true,
-  imports: [ ReactiveFormsModule],
+  imports: [ReactiveFormsModule],
   templateUrl: './personal-page.component.html',
   styleUrl: './personal-page.component.scss'
 })
@@ -27,7 +27,7 @@ export class PersonalPageComponent implements OnInit, OnDestroy {
     private programCardService: ProgramCardService,
     private cdr: ChangeDetectorRef,
     private ngZone: NgZone
-  ) {}
+  ) { }
   ngOnInit(): void {
     this.setPhotoHeight();
     this.setupScrollListener();
