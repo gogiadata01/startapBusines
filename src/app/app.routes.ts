@@ -27,6 +27,7 @@ import { AddQuizWithApiComponent } from './pages/add-quiz-with-api/add-quiz-with
 import { UniProgramComponent } from './core/UniProgram/uni-program.component';
 import { QuizeComponent } from './pages/quize/quize.component';
 import { PersonalPageComponent } from './pages/personal-page/personal-page.component';
+import { RecoveryPassowrdComponent } from './pages/recovery-passowrd/recovery-passowrd.component';
 
 export const routes: Routes = [
   {
@@ -91,6 +92,10 @@ export const routes: Routes = [
   {
     path:"SignUp",
     component:SignUpWithApiComponent
+  },
+  {
+    path:"RecoveryPassword",
+    component:RecoveryPassowrdComponent
   },
   {
     path:"Home/:id",

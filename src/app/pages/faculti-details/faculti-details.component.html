@@ -53,8 +53,8 @@
           <ul class="navbar-nav ms-auto">
             <li class="nav-item mx-2">
               <a
-              routerLink="/Pupil/PersonalPage"
-              class="nav-link text-dark h5"
+                routerLink="/Pupil/PersonalPage"
+                class="nav-link text-dark h5"
                 target="_blank"
               >
                 <svg
@@ -83,8 +83,9 @@
     <div #secondNavbar class="second-navbar">
       <nav id="color" class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container-fluid" id="fluid">
-          <svg           routerLink="/"
-            id="svg" 
+          <svg
+            routerLink="/"
+            id="svg"
             xmlns="http://www.w3.org/2000/svg"
             width="639"
             height="247"
@@ -135,8 +136,8 @@
             <ul class="navbar-nav ms-auto">
               <li class="nav-item mx-2">
                 <a
-                routerLink="/Pupil/PersonalPage"                
-                class="nav-link text-dark h5"
+                  routerLink="/Pupil/PersonalPage"
+                  class="nav-link text-dark h5"
                   target="blank"
                 >
                   <svg
@@ -209,6 +210,9 @@
         </ng-container>
       </ng-container>
     </ng-container>
+  </div>
+  <div *ngIf="UniCard.length === 0" class="UniCardNull">
+    <h2>ამ პროგრამაზე ჯერ ჯერობით არ არის უნივერსიტეტები</h2>
   </div>
 </section>
 

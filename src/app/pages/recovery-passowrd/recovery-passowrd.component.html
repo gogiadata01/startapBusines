@@ -1,0 +1,46 @@
+<div class="data1">
+  <div class="containerimg">
+    <div class="image-section">
+      <img src="../../../assets/img03.png" alt="Description of Image" />
+    </div>
+  </div>
+  <div class="authorization-container">
+    <div class="form-section">
+      <h1>ავტორიზაცია</h1>
+      <form [formGroup]="RecoveryPassword" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <input type="email" formControlName="email" placeholder="ელ. ფოსტა" />
+          <div
+            *ngIf="
+              RecoveryPassword.get('email')?.hasError &&
+              RecoveryPassword.get('email')?.touched
+            "
+            class="error-message"
+          >
+            შეიყვანეთ მოქმედი ელ. ფოსტა
+          </div>
+        </div>
+        <div class="form-group">
+          <input
+            type="password"
+            formControlName="newPassword"
+            placeholder="ჩაწერე ახალი პაროლი"
+          />
+          <div
+            *ngIf="
+              RecoveryPassword.get('newPassword')?.hasError &&
+              RecoveryPassword.get('newPassword')?.touched
+            "
+            class="error-message"
+          >
+            ჩაწერეთ ახალი პაროლი
+          </div>
+          <div class="register-link">
+            არ გაქვს ანგარიში? <a routerLink="/Register">რეგისტრაცია</a>
+          </div>
+        </div>
+        <button type="submit">პაროლის განახლება</button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -233,24 +233,6 @@ onCircleClick(index: number): void {
     
           this.matchingPrograms = programCards; // Reset the array before adding new data
           console.log(this.matchingPrograms)
-          // Processing returned program cards to find matching program names
-          // programCards.forEach(card => {
-          //   card.fields?.forEach(field => {
-          //     field.programNames.forEach(program => {
-          //       const matchingCheckBoxes = program.checkBoxes.filter(box => 
-          //         this.selectedSubjects.includes(box.chackBoxName) // Check if the checkbox name matches
-          //       );
-    
-          //       if (matchingCheckBoxes.length > 0) {
-          //         // Only push the program if there's a matching checkbox
-          //         this.matchingPrograms.push(program);
-          //       }
-          //     });
-          //   });
-          // });
-    
-          // console.log('Final Matching Programs:', this.matchingPrograms); // Log the final array of matching programs
-          // this.errorMessage = null; // Reset error message
         },
         error: (err) => {
           console.error('Error fetching programs:', err);
@@ -258,67 +240,6 @@ onCircleClick(index: number): void {
         }
       });
     }
-    
-    
-    
-
-
-    
-  //    onSubjectChange(subject: string): void {
-  //     const index = this.selectedSubjects.indexOf(subject);
-  //     if (index > -1) {
-  //       this.selectedSubjects.splice(index, 1); // Remove subject if it's already selected
-  //     } else {
-  //       this.selectedSubjects.push(subject); // Add subject if it's not selected
-  //     }
-  //   }
-  
-  //   markAllSubjects(event: any): void {
-  //     if (event.target.checked) {
-  //       this.selectedSubjects = [...this.subjects]; // Select all subjects
-  //     } else {
-  //       this.selectedSubjects = []; // Deselect all subjects
-  //     }
-  //   }
-  
-  //   filterMatchingPrograms() {
-  //     if (this.selectedSubjects.length === 0) {
-  //         this.errorMessage = "Please select at least one subject.";
-  //         return;
-  //     }
-  
-  //     console.log('Selected Subjects:', this.selectedSubjects); // Log selected subjects
-  
-  //     this.programCardService.getProgramCardDetailsBySubjects(this.selectedSubjects).subscribe({
-  //         next: (programCards: ProgramCardDto[]) => {
-  //             console.log('Returned Program Cards:', programCards); // Log the response
-  
-  //             this.matchingPrograms = []; // Reset the array before adding new data
-  
-  //             // Flattening program names that match the selected subjects
-  //             programCards.forEach(card => {
-  //                 card.fields?.forEach(field => {
-  //                     field.programNames.forEach(program => {
-  //                         const matchingCheckBoxes = program.checkBoxes.filter(box => 
-  //                             this.selectedSubjects.includes(box.chackBoxName) // Check if the checkbox name matches
-  //                         );
-  
-  //                         if (matchingCheckBoxes.length > 0) {
-  //                             this.matchingPrograms.push(program);
-  //                         }
-  //                     });
-  //                 });
-  //             });
-
-  //             console.log(this.matchingPrograms)
-  //             this.errorMessage = null; // Reset error message
-  //         },
-  //         error: (err) => {
-  //             console.error('Error fetching programs:', err); // Log error details
-  //             this.errorMessage = err.message;
-  //         }
-  //     });
-  // }
   
   
     

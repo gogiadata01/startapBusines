@@ -96,7 +96,7 @@ GetAllUniCard(){
       console.log('Uni Cards:', this.UniCard); // Check if data is correctly coming
     },
     error: (err) => {
-      console.error('Error fetching program data:', err);
+      console.error('ამ პროგრამაზე ჯერ არ არსებობს უნივერსიტეტი',);
     }
   })
 }

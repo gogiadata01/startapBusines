@@ -37,24 +37,19 @@ export class UserService {
       catchError(this.handleError)  // Added error handling
     );
   }
-
+  recoverPassword(email: string, newPassword: string): Observable<any> {
+    const body = { email, newPassword };  // Ensure that the object has the correct keys
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post(`${this.apiUrl}/recover-password`, body, { headers }).pipe(
+      catchError(this.handleError)
+    );
+  }
+  
+  
   updateUserCoin(id: any, newCoinValue: number): Observable<any> {
     const body = { newCoinValue }; // Wrap the value in an object
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.put(`${this.apiUrl}/${id}/coin`, body, { headers }).pipe(
-      catchError(this.handleError)  // Added error handling
-    );
-  }
-
-  sendRecoveryLink(email: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/send-recovery-link`, { email }).pipe(
-      catchError(this.handleError)  // Added error handling
-    );
-  }
-
-  resetPassword(token: string, newPassword: string): Observable<any> {
-    const body = { token, newPassword };
-    return this.http.post(`${this.apiUrl}/reset-password`, body).pipe(
       catchError(this.handleError)  // Added error handling
     );
   }

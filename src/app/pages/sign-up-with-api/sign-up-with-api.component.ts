@@ -62,7 +62,7 @@ export class SignUpWithApiComponent  {
           });
           // Use navigate with parameters after successful sign-in
           setTimeout(()=>{
-            this.router.navigate(['Home',]); // Navigate to 'Home/:id' route
+            this.router.navigate(['',]); // Navigate to 'Home/:id' route
           },1500)
         },
         error: (err) => {
