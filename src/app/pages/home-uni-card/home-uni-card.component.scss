@@ -428,6 +428,17 @@ img {
   .projects__container{
     width: 90%;
   }
+//   .projects__container {
+//     grid-template-columns: repeat(3, 300px) !important;
+// }
+// img {
+//   display: block;
+//   max-width: 215px;
+//   max-height: 132px;
+//   min-width: 62px;
+//   min-height: 190px;
+//   height: 100px;
+// }
 }
 /*=============== MEDIA QUERIES ===============*/
 /* For small devices */
@@ -435,14 +446,37 @@ img {
   .container {
     margin-inline: 1rem;
   }
+  .header-content {
+    z-index: auto;
+  }
+  .Title{
+    bottom: 490px;
+  }
+  .projects__card{
+    bottom: 400px;
+  }
+  .projects__container{
+    grid-template-columns: 301px !important;
+  }
+}
+#firstNavbar{
+  z-index: 2;
 }
 
 /* For medium devices */
 @media screen and (max-width: 768px) {
   .projects__container {
-    grid-template-columns: 350px;
+    grid-template-columns: 353px;
     justify-content: center;
   }
+  img {
+    display: block;
+    max-width: 220px;
+    max-height: 190px;
+    min-width: 199px;
+    min-height: 185px;
+    height: 100px;
+}
   .projects__card {
     margin-left: 15px;
   }
