@@ -144,11 +144,10 @@ body, html {
     
     //ლიდერთა სია
     .leaderboard {
-
       width: 900px;
       max-width: 100%;
       margin: 0 auto;
-      background-color:#5d737e;
+      background-color:#685745;
       border-radius: 20px;
       padding: 15px;
       display: flex;
@@ -193,7 +192,20 @@ body, html {
           color:floralwhite;
           width: calc(25% - 10px); 
         }
+
+        
       }
+
+      @media (max-width: 700px){
+
+        .entry{
+          display: flex;
+          padding-bottom: 10px;
+          text-align: center;
+        }
+      }
+
+    
     
       .footer {
         margin-top: 20px;
@@ -453,7 +465,7 @@ footer {
   }
 }
 
-// }
+
 #svg{
   width: 120px;
   height: 100%;
@@ -639,7 +651,7 @@ text-align: center;
 
 }
 }
-
+//ლიდერთა სია მთავრდება აქ }
    
 .button-container {
   display: inline-flex;
@@ -709,5 +721,237 @@ text-align: center;
   h2{
     color: white;
     font-size: 20px;
+  }
+}
+
+.leaderboard-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+  background-color: #e6e6e6;
+  padding-left: 170px;
+}
+
+/* podium.component.scss */
+.podium-container {
+  background-color: #e6e6e6;
+  padding: 20px;
+  border-radius: 10px;
+  font-family: Arial, sans-serif;
+  position: relative;
+}
+
+.podium {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 300px;
+}
+
+.podium-entry {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 10px;
+  
+  .avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid white;
+  }
+  
+  .name {
+    margin-top: 10px;
+    text-align: center;
+    color: #41343C;
+  }
+  
+  .position {
+    width: 50px;
+    height: 35px;
+    background-color:#41343C;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 10px;
+    border-radius: 10px;
+  }
+}
+
+.position-1 {
+  order: 2;
+  .position { height: 200px; }
+}
+
+.position-2 {
+  order: 1;
+  .position { height: 150px; }
+}
+
+.position-3 {
+  order: 3;
+  .position { height: 100px; }
+}
+
+
+
+/* leaderboard-list.component.scss */
+.leaderboard-list {
+  background-color: #41343C;
+  border: 2px dashed #708090;
+  border-radius: 19px;
+  padding: 15px;
+  // max-width: 300px;
+  margin: 5px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 400px;
+  max-width: 100%;
+}
+
+.entry {
+  display: flex;
+  align-items: center;
+  margin-bottom: 19px;
+  padding-top: 16px;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+ 
+}
+
+.position {
+  font-weight: bold;
+  margin-right: 20px;
+  min-width: 50px;
+  color: whitesmoke;
+}
+
+.name {
+  flex-grow:1;
+  color: whitesmoke;
+}
+
+.more-indicator {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  background-color:white;
+  border-radius: 50%;
+  margin: 0 2px;
+}
+
+
+/* რესპონსიული სტილები */
+@media (max-width: 1200px) {
+  .leaderboard-section {
+    padding-left: 50px;
+  }
+  
+  .leaderboard-list {
+    width: 350px;
+  }
+}
+
+@media (max-width: 992px) {
+  .leaderboard-section {
+    flex-direction: column;
+    align-items: center;
+    padding-left: 20px;
+  }
+  
+  .podium-container,
+  .leaderboard-list {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .podium-entry {
+    .avatar {
+      width: 60px;
+      height: 60px;
+    }
+    
+    .position {
+      width: 40px;
+      height: 30px;
+      font-size: 20px;
+    }
+  }
+  
+  .leaderboard-list {
+    .avatar {
+      width: 50px;
+      height: 50px;
+    }
+    
+    .position {
+      min-width: 40px;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .podium {
+    height: 250px;
+  }
+  
+  .podium-entry {
+    .avatar {
+      width: 50px;
+      height: 50px;
+    }
+    
+    .name {
+      font-size: 14px;
+    }
+    
+    .position {
+      width: 35px;
+      height: 25px;
+      font-size: 18px;
+    }
+  }
+  
+  .leaderboard-list {
+    .entry {
+      margin-bottom: 15px;
+      padding-top: 12px;
+    }
+    
+    .avatar {
+      width: 40px;
+      height: 40px;
+    }
+    
+    .position {
+      min-width: 30px;
+      margin-right: 10px;
+    }
+    
+    .name {
+      font-size: 14px;
+    }
   }
 }

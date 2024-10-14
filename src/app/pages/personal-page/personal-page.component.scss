@@ -1,4 +1,3 @@
-
 // ნავბარი  იწყება აქ
 .second-navbar {
 	transition: top 0.3s ease-in-out;
@@ -146,9 +145,6 @@
   }
 //   ნავბარის კოდი მთავრდება აქ
 
-
-
-
   .container {
 	display: flex;
 	justify-content: center;
@@ -170,8 +166,6 @@
 	align-items: center;
 	position: relative;
 	width: 70%;
-	// width: 800px;
-	// max-width: 100%;
 	margin: 40px auto;
 	background-color: #342833;
 	border-radius: 20px;
@@ -193,7 +187,7 @@
 	.info,
 	.btn {
 	  margin: 16px auto;
-	  color: #000;
+	  color:whitesmoke;
 	  text-align: center;
 	}
   
@@ -202,21 +196,23 @@
 		bottom: 30px;
 	}
 	.btn {
-	  display: block;
-	  padding: 8px;
-	  background: #2e221a;
-	  color: #ffffff;
-	  width: 200px;
-	  max-width: 100%;
-	  border-radius: 10px;
-	//   cursor: pointer;
-	//   text-decoration: none;
-
-	  &:hover {
-		background: darken(#2e221a, 10%);
-	}
-  }
-  
+		width: 20%;
+		margin: 2 auto; 
+		padding: 10px;
+		background-color: #707b73;
+		color: white;
+		border: none;
+		border-radius: 10px;
+		font-size: 16px;
+		cursor: pointer;
+		transition: background-color 0.3s, box-shadow 0.3s;
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+	  
+		&:hover {
+		  background-color: #5a6b63; // ღილაკის ფერის შეცვლა
+		  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+		}
+	  }
   // Responsive styles
   @media (max-width: 768px) {
 	.block {
@@ -226,6 +222,9 @@
 	.avatar {
 	  width: 100px;
 	  height: 100px;
+	  position: absolute;
+	  bottom: 340px;
+	  z-index: 2;
 	}
   
 	h1 {
@@ -250,7 +249,7 @@
 	}
   
 	.btn {
-	  width: 100%;
+	  width: 80%;
 	//   padding: 5px;
 	//   max-width: 100%;
 	}
