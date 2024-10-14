@@ -253,6 +253,7 @@
     </div>
   </div>
 </div> -->
+<!-- ლიდერთა სია მთავრდება აქ -->
 <div class="subject-selection">
   <div class="button-container">
     <button class="georgian-button">
@@ -344,4 +345,36 @@
   </div>
   }
 </div>
+
+
+
+
+
+<section class="leaderboard-section">
+<!-- ლიდერთა სია -->
+<div class="podium-container">
+  <div class="title-container">
+  </div>
+  <div class="podium">
+    <div *ngFor="let entry of podiumEntries" class="podium-entry position-{{ entry.position }}">
+      <img [src]="entry.imageUrl" [alt]="entry.name" class="avatar">
+      <div class="name">{{ entry.name }}</div>
+      <div class="position">{{ entry.position }}</div>
+    </div>
+  </div>
+</div>
+<!-- leaderboard-list -->
+<div class="leaderboard-list">
+  <div class="entry" *ngFor="let entry of entries">
+    <img [src]="entry.imageUrl" [alt]="entry.name" class="avatar">
+    <span class="position">{{ entry.position.toString().padStart(2, '0') }}</span>
+    <span class="name">{{ entry.name }}</span>
+  </div>
+  <div class="more-indicator">
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+</div>
+</section>
 <app-footer-for-pupil />

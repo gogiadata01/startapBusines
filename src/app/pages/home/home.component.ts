@@ -18,6 +18,18 @@
   import {  AfterViewInit,  ViewChildren, QueryList } from '@angular/core';
   import {AuthenticationService} from '../../authentication.service'
 import { FormsModule } from '@angular/forms';
+interface PodiumEntry {
+  name: string;
+  position: number;
+  imageUrl: string;
+}
+
+interface LeaderboardEntry {
+  position: number;
+  name: string;
+  imageUrl: string;
+}
+
 
 
 
@@ -29,6 +41,21 @@ import { FormsModule } from '@angular/forms';
     styleUrls: ['./home.component.scss']
   })
   export class HomeComponent implements OnInit, OnDestroy   {
+
+
+    entries: LeaderboardEntry[] = [
+      { position: 4, name: 'სახელი გვარი', imageUrl: 'https://res.klook.com/image/upload/c_fill,w_750,h_563/q_80/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/tsah7c9evnal289z5fig.jpg' }, 
+      { position: 5, name: 'სახელი გვარი', imageUrl: 'https://res.klook.com/image/upload/c_fill,w_750,h_563/q_80/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/tsah7c9evnal289z5fig.jpg' }, 
+      { position: 6, name: 'სახელი გვარი', imageUrl: 'https://res.klook.com/image/upload/c_fill,w_750,h_563/q_80/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/tsah7c9evnal289z5fig.jpg' }, 
+    ];
+
+    // title = 'ლიდერთა სია';
+  podiumEntries: PodiumEntry[] = [
+    { name: 'ბუტმუტი ბერი', position: 1, imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgPbd2MBbw3o5_yzYC_pPjoVNKUx7WCrMN3g&s' },
+    { name: 'ელენე მიქაბერიძე ', position: 2, imageUrl: 'https://res.klook.com/image/upload/c_fill,w_750,h_563/q_80/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/tsah7c9evnal289z5fig.jpg' },
+    { name: 'მიცუბიშ ჩერიოტი', position: 3, imageUrl: 'https://res.klook.com/image/upload/c_fill,w_750,h_563/q_80/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/tsah7c9evnal289z5fig.jpg' },
+  ];
+
     programCards: ProgramCardDto[] = [];
     circles: number[] = Array.from({ length: 6 }, (_, i) => i);
     activeCircleIndex: number = 0;
@@ -43,6 +70,8 @@ import { FormsModule } from '@angular/forms';
     matchingPrograms: any[] = []; // Ensures it's initialized to an empty array
     errorMessage: string | null = null; // Variable for error messages
   
+
+    
     // Sample list of subjects; this should be populated based on your requirements
     subjects: string[] = [
       'ქართული', 'უცხო ენები', 'ქიმია', 'ფიზიკა', 
@@ -53,6 +82,8 @@ import { FormsModule } from '@angular/forms';
     constructor(private router: Router,private cdr: ChangeDetectorRef, private authService:AuthenticationService,private ngZone: NgZone , private EventCardService: EventCardService  ,  private programCardService: ProgramCardService
       ) {
       }
+
+      
     
       
     @Input() text: string = 'არჩიეთ თქვენთვის შესაფერისი პროგრამა';
