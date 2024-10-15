@@ -706,6 +706,7 @@ text-align: center;
     padding: 0.5rem 0.75rem; 
     
     width: 100%; 
+    height: 55px;
   }
 
   .dotted-arrow {
@@ -729,7 +730,7 @@ text-align: center;
   justify-content: space-between;
   align-items: flex-start;
   padding: 20px;
-  background-color: #e6e6e6;
+  // background-color: #e6e6e6;
   padding-left: 170px;
 }
 
@@ -899,6 +900,20 @@ text-align: center;
       font-size: 20px;
     }
   }
+  .position-1 {
+    order: 2;
+    .position { height: 150px; }
+  }
+  
+  .position-2 {
+    order: 1;
+    .position { height: 100px; }
+  }
+  
+  .position-3 {
+    order: 3;
+    .position { height: 50px; }
+  }
   
   .leaderboard-list {
     .avatar {
@@ -933,6 +948,21 @@ text-align: center;
       font-size: 18px;
     }
   }
+  .position-1 {
+    order: 2;
+    .position { height: 150px; }
+  }
+  
+  .position-2 {
+    order: 1;
+    .position { height: 100px; }
+  }
+  
+  .position-3 {
+    order: 3;
+    .position { height: 50px; }
+  }
+  
   
   .leaderboard-list {
     .entry {

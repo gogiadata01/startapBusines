@@ -69,7 +69,8 @@ interface LeaderboardEntry {
     selectedSubjects: string[] = []; // Array to hold selected subjects
     matchingPrograms: any[] = []; // Ensures it's initialized to an empty array
     errorMessage: string | null = null; // Variable for error messages
-  
+    activeFieldIndex: number = 0;    // Track the index of the currently selected field
+
 
     
     // Sample list of subjects; this should be populated based on your requirements
@@ -88,21 +89,26 @@ interface LeaderboardEntry {
       
     @Input() text: string = 'არჩიეთ თქვენთვის შესაფერისი პროგრამა';
 
-      // Fetch field names
-// Fetch field names
 
-// ეს არის წრეების დაკლიკვების ლოგიკები
 loadFieldNames(): void {
   this.programCardService.getAllFieldNames().pipe(takeUntil(this.destroy$)).subscribe({
     next: (fields: FieldDto[]) => {
       this.fields = fields;
-      this.createFieldProgramMapping(); // Preload all field programs
+
+      // Automatically select and load the first field if available
+      if (this.fields.length > 0) {
+        this.activeFieldIndex = 0; // Automatically set the first field as active
+        this.updateCurrentFieldAndPrograms(0); // Load programs for the first field
+      }
     },
     error: (err) => {
       console.error('Error fetching field names:', err);
     }
   });
 }
+
+
+
 
   // Fetch field programs based on loaded fields
 // Fetch field programs based on loaded fields
@@ -132,14 +138,26 @@ onCircleClick(index: number): void {
       this.currentFieldName = selectedField.fieldName || null;
   
       if (this.currentFieldName) {
-        this.currentProgramNames = this.fieldProgramMapping[this.currentFieldName] || [];
-     
-      } else {
-        this.currentProgramNames = [];
+        // Fetch program names based on the selected field
+        this.loadProgramNamesByField(this.currentFieldName);
       }
-      this.cdr.detectChanges();
     }
   }
+  loadProgramNamesByField(fieldName: string): void {
+    this.programCardService.getProgramsByField(fieldName).pipe(takeUntil(this.destroy$)).subscribe({
+      next: (programNames: ProgramNamesDto[]) => {  // programNames is of type ProgramNamesDto[]
+        this.currentProgramNames = programNames;    // Assign to your currentProgramNames
+        this.cdr.detectChanges();  // If you're using ChangeDetectorRef to manually trigger change detection
+      },
+      error: (err) => {
+        console.error(`Error fetching program names for field: ${fieldName}`, err);
+        this.currentProgramNames = [];  // Handle the error by clearing the data
+      }
+    });
+  }
+  
+  
+  
 
     leaders1 = ['Person 1', 'Person 2', 'Person 3', 'Person 4'];
     leaders2 = ['Person 5', 'Person 6', 'Person 7', 'Person 8'];
