@@ -83,7 +83,8 @@
     <div #secondNavbar class="second-navbar">
       <nav id="color" class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container-fluid" id="fluid">
-          <svg           routerLink="/"
+          <svg
+            routerLink="/"
             id="svg"
             xmlns="http://www.w3.org/2000/svg"
             width="639"
@@ -183,11 +184,11 @@
     <div *ngFor="let field of fields; let i = index" class="accordion-item">
       <h2 class="accordion-header">
         <button
-          class="accordion-button collapsed"
+          class="accordion-button"
           type="button"
           data-bs-toggle="collapse"
           [attr.data-bs-target]="'#flush-collapse' + i"
-          aria-expanded="false"
+          aria-expanded="i === 0"
           [attr.aria-controls]="'flush-collapse' + i"
           (click)="onAccordionClick(field.fieldName)"
         >
@@ -197,6 +198,7 @@
       <div
         [id]="'flush-collapse' + i"
         class="accordion-collapse collapse"
+        [ngClass]="{ show: i === 0 }"
         data-bs-parent="#accordionFlushExample"
       >
         <div class="accordion-body">

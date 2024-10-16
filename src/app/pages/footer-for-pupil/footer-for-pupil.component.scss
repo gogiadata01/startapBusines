@@ -122,7 +122,7 @@
 
 footer {
   background: #342833;
-  height: 200px;
+  // height: 200px;
 }
 
 footer h1 {
@@ -134,7 +134,10 @@ a{
   text-decoration: none;
   
 }
-
+.text-uppercase{
+  display: flex;
+  margin-left: 13px;
+}
 .footericon{
   display: flex;
   justify-content: start;
@@ -146,5 +149,16 @@ a{
     display: flex;
     justify-content: center !important;
     margin-left: 0px !important;
+  }
+}
+@media screen and (max-width: 760px) {
+  .footericon{
+    display: flex;
+    justify-content: center !important;
+    margin-left: 0px !important;
+  }
+  .text-uppercase{
+    display: flex;
+    justify-content: center !important;
   }
 }

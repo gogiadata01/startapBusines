@@ -55,21 +55,20 @@ export class UniProgramComponent implements OnInit, OnDestroy {
     this.setPhotoHeight();
     this.setupScrollListener();
     this.loadFieldNames(); // Fetch all field names
+    this.onAccordionClick(this.fields[0]?.fieldName);
+
   }
 
 
-loadFieldNames(): void {
-  this.programCardService.getAllFieldNames().pipe(takeUntil(this.destroy$)).subscribe({
-    next: (fields: FieldDto[]) => {
+  loadFieldNames(): void {
+    this.programCardService.getAllFieldNames().subscribe(fields => {
       this.fields = fields;
-      this.createFieldProgramMapping(); // Preload all field programs
-    },
-    error: (err) => {
-      console.error('Error fetching field names:', err);
-    }
-  });
-}
-
+      // Automatically load programs for the first field if available
+      if (this.fields.length > 0) {
+        this.onAccordionClick(this.fields[0].fieldName);
+      }
+    });
+  }
 createFieldProgramMapping(): void {
   this.fields.forEach((field) => {
     this.programCardService.getFieldProgram(field.fieldName).pipe(takeUntil(this.destroy$)).subscribe({
@@ -92,9 +91,11 @@ createFieldProgramMapping(): void {
 
 
 
-  onAccordionClick(fieldName: string): void {
-    this.currentProgramNames = this.fieldProgramMapping[fieldName] || [];
-  }
+onAccordionClick(fieldName: string): void {
+  this.programCardService.getProgramsByField(fieldName).subscribe(programs => {
+    this.currentProgramNames = programs;
+  });
+}
 
   updateCurrentFieldAndPrograms(index: number): void {
     if (this.fields.length > index) {

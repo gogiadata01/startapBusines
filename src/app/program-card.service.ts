@@ -61,9 +61,14 @@ getAllFields(): Observable<{ fieldName: string; programNames: { programName: str
   );
 }
 // Fetch program names by field name
+// getProgramsByField(fieldName: string): Observable<ProgramNamesDto[]> {
+//   return this.http.get<ProgramNamesDto[]>(`${this.apiUrl}/GetProgramsByField/${fieldName}`).pipe(
+//     catchError(this.handleError)
+//   );
+// }
 getProgramsByField(fieldName: string): Observable<ProgramNamesDto[]> {
   return this.http.get<ProgramNamesDto[]>(`${this.apiUrl}/GetProgramsByField/${fieldName}`).pipe(
-    catchError(this.handleError)
+    catchError(this.handleError)  // Ensure handleError is defined properly
   );
 }
 
