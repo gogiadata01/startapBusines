@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700,800,900');
+
+body {
+    margin: 0;
+    height: 100vh;
+    background: #ddeaff;
+}
+
+.container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.search-wrapper {
+    width: 350px;
+    height: 100px;
+    position: relative;
+    top: 30%;
+    filter: url("#goo");
+}
+
+.bubble {
+    position: absolute;
+    display: inline-block;
+    margin: 0 -3px;
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    background: #333;
+    border-radius: 100%;
+    transition: left 1s, width 1s, border-radius 1.5s, height 1s;
+    z-index: -1;
+}
+
+.animate {
+    animation-name: bubbling;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+@keyframes bubbling {
+    0%, 100% { transform: translateY(0px); }
+    25% { transform: translateY(-10px); }
+    50% { transform: translateY(10px); }
+}
