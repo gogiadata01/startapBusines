@@ -29,19 +29,14 @@ interface LeaderboardEntry {
   name: string;
   imageUrl: string;
 }
-
-
-
-
   @Component({
     selector: 'app-home',
     standalone: true,
-    imports: [CommonModule, FooterForPupilComponent, QuizeComponent, UniProgramComponent, RouterLink, NavbarComponent],
+    imports: [CommonModule, FooterForPupilComponent, QuizeComponent, UniProgramComponent, RouterLink, NavbarComponent, ],
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss']
   })
   export class HomeComponent implements OnInit, OnDestroy   {
-
 
     entries: LeaderboardEntry[] = [
       { position: 4, name: 'სახელი გვარი', imageUrl: 'https://res.klook.com/image/upload/c_fill,w_750,h_563/q_80/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/tsah7c9evnal289z5fig.jpg' }, 
@@ -81,6 +76,10 @@ interface LeaderboardEntry {
 
     constructor(private router: Router,private cdr: ChangeDetectorRef, private authService:AuthenticationService,private ngZone: NgZone , private EventCardService: EventCardService  ,  private programCardService: ProgramCardService
       ) {
+
+
+
+        
       }
 
       
@@ -88,8 +87,6 @@ interface LeaderboardEntry {
       
     @Input() text: string = 'არჩიეთ თქვენთვის შესაფერისი პროგრამა';
 
-      // Fetch field names
-// Fetch field names
 
 // ეს არის წრეების დაკლიკვების ლოგიკები
 loadFieldNames(): void {
@@ -148,13 +145,6 @@ onCircleClick(index: number): void {
     onCardClicked( cardtitle: any): void {
       this.router.navigate(['/Pupil/UniFaculty/', cardtitle]);
     }
-    // Function to toggle selected field name
-
-    // Function to check if the field should be shown
-
-    
-
-
     
     containerStyle = {
       backgroundColor: 'rgba(93,115,126,0.9)',
@@ -351,7 +341,7 @@ onCircleClick(index: number): void {
             // Filter the event cards to only include those where isFeatured is true
             this.EventCard = Eventcard.filter(event => event.isFeatured === true);
             
-            console.log('Featured Event Cards:', this.EventCard); // Check if data is correctly coming
+            console.log('Featured Event Cards:', this.EventCard); 
           },
           error: (err) => {
             console.error('Error fetching event data:', err);
