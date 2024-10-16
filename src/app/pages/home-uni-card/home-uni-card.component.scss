@@ -109,7 +109,7 @@ width: 100%;
 transition: top 0.3s ease-in-out;
 position: fixed;
 opacity: 1;
-background-color: #85A98D;
+background-color: #342833;
 top: 0;
 left:0;
 right:0;
@@ -148,6 +148,7 @@ display: flex;
 flex-direction: column;
 justify-content: space-between;
 box-sizing: border-box; 
+background-color:#342833 !important ;
 }
 
 h1 {
@@ -584,7 +585,7 @@ img {
     }
   }}
   .navbar{
-    background-color: #85A98D;
+    background-color: #342833;
 
 }
 #svg{
@@ -651,7 +652,7 @@ svg {
     background-color: #85A98D;
   }
   .wave-container{
-    background-color: #85A98D;
+    background-color:#342833 ;
   
   }
   .navbar, .navbar-nav {
