@@ -8,20 +8,29 @@ import { Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
 import {HomeUniCardService} from '../../home-uni-card.service'
 import { ElementRef, } from '@angular/core';
-import { Subject, fromEvent } from 'rxjs';
+import { Observable, Subject, fromEvent } from 'rxjs';
 import { ChangeDetectorRef } from '@angular/core';
 import { takeUntil } from 'rxjs/operators';
+import { HttpParams } from '@angular/common/http';  // Add this import
+import { catchError } from 'rxjs/operators';   
+import { FormBuilder, FormGroup, Validators, FormArray, NgForm, NgModel, ReactiveFormsModule } from '@angular/forms';
+import { NgFor } from '@angular/common';
 @Component({
   selector: 'app-home-uni-card',
   standalone: true,
-  imports: [RouterLink, FooterForPupilComponent],
+  imports: [RouterLink,NgFor,ReactiveFormsModule, FooterForPupilComponent],
   templateUrl: './home-uni-card.component.html',
   styleUrl: './home-uni-card.component.scss'
 })
 export class HomeUniCardComponent implements OnInit, OnDestroy {
   UniCard:UniCardDto[]=[]
+  Search: FormGroup;
+  filteredUniCards: UniCardDto[] = []; // Holds filtered UniCards based on search
 
-  constructor(private cdr: ChangeDetectorRef, private ngZone: NgZone , private router: Router,private HomeUniCardService:HomeUniCardService) {
+  constructor(private fb: FormBuilder,private cdr: ChangeDetectorRef, private ngZone: NgZone , private router: Router,private HomeUniCardService:HomeUniCardService) {
+    this.Search = this.fb.group({
+      title: ['', Validators.required],
+    })
   }
   ngOnInit() {
     this.GetAllUniCard()
@@ -80,6 +89,7 @@ GetAllUniCard(){
   this.HomeUniCardService.getData().subscribe({
     next:(Unicard) => {
       this.UniCard = Unicard;
+      this.filteredUniCards = []; // Clear any filtered data
       console.log('Program Cards:', this.UniCard); // Check if data is correctly coming
     },
     error: (err) => {
@@ -87,7 +97,37 @@ GetAllUniCard(){
     }
   })
 }
+
+// Function to trigger on search
+onSearch() {
+  const searchTitle = this.Search.get('title')?.value;
+  
+  if (searchTitle) {
+    // Fetch the filtered UniCards by title
+    this.HomeUniCardService.getUniCardByTitleMainTextUrl(searchTitle).subscribe({
+      next: (filteredData) => {
+        this.filteredUniCards = filteredData; // Update the filtered list
+      },
+      error: (err) => {
+        console.error('Error in search:', err);
+      }
+    });
+  } else {
+    // If the search is cleared, reset to show all UniCards
+    this.filteredUniCards = [];
+  }
+}
 onCardClicked(cardkey:any) :void{
   this.router.navigate(['/Pupil/HomeUni/',cardkey])
 }
 }
+// getUniCardByTitleMainTextUrl(title: string): Observable<UniCardDto[]> {
+//   const params = new HttpParams().set('title', title); // Create HttpParams object
+
+//   return this.HomeUniCardService.getUniCardByTitleMainTextUrl(params).pipe(
+//     catchError((error) => {  // Handle errors
+//       console.error('Error in search:', error);
+//       return [];  // Return an empty array if an error occurs
+//     })
+//   );
+// }

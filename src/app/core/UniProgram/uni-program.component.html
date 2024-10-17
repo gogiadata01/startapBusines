@@ -179,8 +179,41 @@
 <div class="Title">
   <h3>პროგრამები</h3>
 </div>
+<div class="Searchbox">
+  <form [formGroup]="Search" (ngSubmit)="onSearch()">
+    <div class="searchbox">
+      <input
+        formControlName="title"
+        class="searchtext"
+        type="text"
+        placeholder="ჩაწერე პროგრამის სახელი"
+        text-align="center"
+      />
+      <button type="submit" class="searchbtn">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="19"
+          height="19"
+          fill="currentColor"
+          class="bi bi-search"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"
+          />
+        </svg>
+      </button>
+    </div>
+  </form>
+</div>
+
 <div class="guide">
-  <div class="accordion accordion-flush" id="accordionFlushExample">
+  <!-- Show this block if search is NOT clicked -->
+  <div
+    *ngIf="!isSearchClicked"
+    class="accordion accordion-flush"
+    id="accordionFlushExample"
+  >
     <div *ngFor="let field of fields; let i = index" class="accordion-item">
       <h2 class="accordion-header">
         <button
@@ -208,14 +241,17 @@
                 <div *ngIf="!currentProgramNames.length" class="no-programs">
                   <p>დაელოდეთ პროგრამების ჩატვირთვას</p>
                 </div>
-
                 <div
                   *ngIf="currentProgramNames.length; else noPrograms"
                   class="top1 flex-wrap"
                   style="gap: 34px; align-items: center"
                 >
                   <div
-                    *ngFor="let program of currentProgramNames"
+                    *ngFor="
+                      let program of filteredUniCards.length > 0
+                        ? filteredUniCards
+                        : currentProgramNames
+                    "
                     (click)="onCardClicked(program.programname)"
                     class="btn rounded-pill"
                     [ngStyle]="{
@@ -236,12 +272,91 @@
                     {{ program.programname }}
                   </div>
                 </div>
-
                 <ng-template #noPrograms>
                   <div class="no-programs">
                     <p>პროგრამები არ არის ხელმისაწვდომი</p>
                   </div>
                 </ng-template>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Show this block if search is clicked -->
+  <div
+    *ngIf="isSearchClicked"
+    class="accordion accordion-flush"
+    id="accordionFlushExample"
+  >
+    <!-- Show message if filteredUniCards is empty -->
+    <div *ngIf="filteredUniCards.length === 0" class="no-programs">
+      <p>არ მოიძებნა ცადე თავიდან</p>
+    </div>
+
+    <!-- Show the accordion if filteredUniCards is not empty -->
+    <div *ngIf="filteredUniCards.length > 0">
+      <div
+        *ngFor="let field of filteredUniCards; let i = index"
+        class="accordion-item"
+      >
+        <h2 class="accordion-header">
+          <button
+            class="accordion-button"
+            type="button"
+            data-bs-toggle="collapse"
+            [attr.data-bs-target]="'#flush-collapse' + i"
+            aria-expanded="i === 0"
+            [attr.aria-controls]="'flush-collapse' + i"
+            (click)="onAccordionClick(field.fieldName)"
+          >
+            {{ field.fieldName }}
+          </button>
+        </h2>
+        <div
+          [id]="'flush-collapse' + i"
+          class="accordion-collapse collapse"
+          [ngClass]="{ show: i === 0 }"
+          data-bs-parent="#accordionFlushExample"
+        >
+          <div class="accordion-body">
+            <div class="program">
+              <div class="ProgramNames col">
+                <div class="container">
+                  <div
+                    class="top1 flex-wrap"
+                    style="gap: 34px; align-items: center"
+                  >
+                    <div
+                      *ngFor="let program of filteredUniCards"
+                      (click)="onCardClicked(program.programName)"
+                      class="btn rounded-pill"
+                      [ngStyle]="{
+                        'background-color': '#342833',
+                        color: '#fff',
+                        'border-radius': '50px',
+                        padding: '10px',
+                        'max-width': '350px',
+                        'box-sizing': 'border-box',
+                        display: 'flex',
+                        'align-items': 'center',
+                        'justify-content': 'center',
+                        'font-size': '15px',
+                        'font-weight': '200',
+                        width: program.width
+                      }"
+                    >
+                      {{ program.programName }}
+                    </div>
+                  </div>
+                  <ng-template #noPrograms>
+                    <div class="no-programs">
+                      <p>პროგრამები არ არის ხელმისაწვდომი</p>
+                    </div>
+                  </ng-template>
+                </div>
               </div>
             </div>
           </div>

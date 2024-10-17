@@ -133,8 +133,12 @@
       .Title{
         bottom: 465px;
       }
+      .wrap {
+        margin-right: 100px !important;
+        width: 93% !important;
+      }
     }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 770px) {
   .accordion-header {
     width: 60% !important;
 }
@@ -154,12 +158,17 @@
   .accordion-header {
     width: 100% !important;
 }
+.searchbox{
+  margin-right: 0px !important;
+}
 h2{
   font-size: 18px;
 text-align: center;
 
 }
+
 }
+
 .second-navbar {
   transition: top 0.3s ease-in-out;
   position: fixed;
@@ -343,4 +352,57 @@ svg {
 }
 .accordion-button:focus{
   box-shadow: none;
+}
+
+
+
+// სერჩი 
+
+.Searchbox{
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  position: relative;
+  bottom: 341px;
+}
+
+.searchbox{
+    transition: (-50%,-50%);
+    height: 40px;
+    border-radius: 40px;
+    padding: 10px;
+    margin-right: 40px;
+    
+}
+.searchbox:hover > .searchtext{
+    width: 240px;
+    padding: 0px;
+  
+}
+.searchbox:hover > .searchbtn{
+    background:white
+} 
+.searchbtn{
+ color:#d34e56;
+  float: right;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: #342833;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
+  }
+.searchtext{
+  border:none;
+    background:none;
+    outline:none;
+    float:left;
+    padding: 0;
+    color: white;
+    font-size: 16px;
+    transition: 0.4s;
+    line-height: 40px;
+    width: 0px;
 }

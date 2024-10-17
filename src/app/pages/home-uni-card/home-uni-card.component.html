@@ -2,7 +2,7 @@
   <div class="header-content">
     <nav id="firstNavbar" class="navbar navbar-expand-lg navbar-light">
       <!-- First Navbar -->
-      <div class="container-fluid">
+      <div class="container-fluid" id="cotainerfluid">
         <svg
           routerLink="/"
           id="svg"
@@ -53,8 +53,8 @@
           <ul class="navbar-nav ms-auto">
             <li class="nav-item mx-2">
               <a
-              routerLink="/Pupil/PersonalPage"
-              class="nav-link text-dark h5"
+                class="nav-link text-dark h5"
+                href="https://www.tiktok.com/@_fspace_"
                 target="_blank"
               >
                 <svg
@@ -83,8 +83,8 @@
     <div #secondNavbar class="second-navbar">
       <nav id="color" class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container-fluid" id="fluid">
-          <svg           routerLink="/"
-
+          <svg
+            routerLink="/"
             id="svg"
             xmlns="http://www.w3.org/2000/svg"
             width="639"
@@ -137,7 +137,7 @@
               <li class="nav-item mx-2">
                 <a
                   class="nav-link text-dark h5"
-                  routerLink="/Pupil/PersonalPage"
+                  href="https://www.tiktok.com/@_fspace_"
                   target="blank"
                 >
                   <svg
@@ -179,25 +179,57 @@
 <div class="Title">
   <h3>უნივერსიტეტები</h3>
 </div>
+<div class="Searchbox">
+  <form [formGroup]="Search" (ngSubmit)="onSearch()">
+    <div class="searchbox">
+      <input
+        formControlName="title"
+        class="searchtext"
+        type="text"
+        placeholder="ჩაწერე უნივერსიტეტის სახელი"
+        text-align="center"
+      />
+      <button type="submit" class="searchbtn">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="19"
+          height="19"
+          fill="currentColor"
+          class="bi bi-search"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"
+          />
+        </svg>
+      </button>
+    </div>
+  </form>
+</div>
+
 <section class="projects section" id="projects">
   <div class="projects__container container grid">
-    @for (Uni of UniCard; track $index ){
-    <article (click)="onCardClicked(Uni.id)" class="projects__card">
+    <article
+      *ngFor="
+        let uni of filteredUniCards.length > 0 ? filteredUniCards : UniCard;
+        let i = index
+      "
+      (click)="onCardClicked(uni.id)"
+      class="projects__card"
+    >
       <div class="projects__image">
         <img
-          src="{{ Uni.url }}"
+          [src]="uni.url"
           alt="image"
           class="projects__img"
           width="312px"
           height="193px"
         />
       </div>
-
       <div class="projects__content">
-        <h2 class="projects__title">{{ Uni.title }}</h2>
-        <p class="projects__description">{{ Uni.mainText }}</p>
+        <h2 class="projects__title">{{ uni.title }}</h2>
+        <p class="projects__description">{{ uni.mainText }}</p>
       </div>
     </article>
-    }
   </div>
 </section>
