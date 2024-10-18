@@ -687,11 +687,10 @@ text-align: center;
   position: relative;
   padding-left: 2rem; 
   margin-bottom: 30px;
-
 }
 
 .georgian-button {
-  background-color: #5b6773 ;
+  background-color: #5b6773;
   color: white;
   padding: 0.625rem 1.25rem; 
   border: none;
@@ -700,15 +699,13 @@ text-align: center;
   cursor: pointer;
   font-family: 'Noto Sans Georgian', sans-serif;
   transition: background-color 0.3s, transform 0.3s;
-  margin: 40px;
+  margin: 10px 0; /* შეცვლილი margin */
 }
 
 .georgian-button:hover {
   background-color: #463639; 
   transform: scale(1.05);
-  
 }
-
 
 .scale-button {
   transition: transform 0.5s; 
@@ -718,12 +715,10 @@ text-align: center;
   transform: scale(1.10); 
 }
 
-
-
 .dotted-arrow {
   position: absolute;
-  top: 6.9rem; 
-  right: 0rem; 
+  top: 5.2rem; 
+  right: -22px; 
   transform: translateY(-100%);
   border-radius: 0.9375rem;
   max-width: 100%;
@@ -732,25 +727,23 @@ text-align: center;
 @media (max-width: 500px) {
   .button-container {
     display: flex;
+    flex-direction: row; /* შეცვლილი */
     justify-content: center;
-    max-width: calc(100% - 1rem); 
+    max-width: 100%; 
     overflow: hidden; 
   }
 
   .georgian-button {
-    padding: 0.5rem 0.75rem; 
-    
-  }
-  .georgian-button {
-    padding: 0.5rem 0.75rem; 
-    
-    width: 100%; 
+    padding: 0.2rem 0.1rem; 
+    width: auto; /* ავტომატური სიგანე */
     height: 55px;
+    display: flex;
+    margin-right: 40px;
   }
 
   .dotted-arrow {
-    top: 4rem; 
-    right: -0.3rem; 
+    top: 5rem; 
+    right: 12px; 
   }
 }
 .eventTitle{
