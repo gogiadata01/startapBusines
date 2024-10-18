@@ -1,10 +1,11 @@
 .navbar{
-    background-color: #85A98D;
+    background-color: #342833;
 
 }
 #svg{
     width: 120px;
     height: 100%;
+    cursor: pointer;
 }
 #svg2{
     width: 35px;
@@ -22,7 +23,7 @@
     transition: background-color 0.3s ease;
   
     &:hover {
-        background-color: #77b1e0;
+      background-color: #c1ccd5 ;
     }
 
         transition: transform 0.3s ease;
@@ -61,9 +62,18 @@ svg {
     box-shadow: none;
 }
 .header-content{
-    background-color: #85A98D;
+    background-color: #342833;
   }
   .wave-container{
-    background-color: #85A98D;
+    background-color: #342833;
   
   }
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    
+    &:hover {
+      color: #3e8e41;
+     
+    }
+    }

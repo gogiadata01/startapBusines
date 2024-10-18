@@ -9,11 +9,10 @@ import { RouterLink } from '@angular/router';
 import { gsap } from 'gsap';
 import { Subject, fromEvent } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-
 @Component({
   selector: 'app-personal-page',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,RouterLink],
   templateUrl: './personal-page.component.html',
   styleUrl: './personal-page.component.scss'
 })

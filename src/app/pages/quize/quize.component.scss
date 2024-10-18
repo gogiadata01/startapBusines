@@ -3,7 +3,7 @@
   transition: top 0.3s ease-in-out;
   position: fixed;
   opacity: 1;
-  background-color: #85A98D;
+  background-color: #342833;
   top: 0;
   left:0;
   right:0;
@@ -43,7 +43,7 @@
   box-sizing: border-box; 
   }
   #containerfluid{
-    background-color: #85A98D;
+    background-color:#342833;
     padding: 20px;
 }
 
@@ -126,10 +126,10 @@ svg {
 }
 .header-content{
   height: 265px;
-  background-color: #85A98D;
+  background-color: #342833;
 }
 .wave-container{
-  background-color: #85A98D;
+  background-color: #342833;
 
 }
 .navbar, .navbar-nav {
@@ -323,7 +323,7 @@ h3{
   }
 }
 .mainfooter{
-  margin-top: 50px !important;
+  margin-top: 100px !important;
 }
 @media (max-width: 450px) {
   .mainfooter{

@@ -19,7 +19,17 @@ export class HomeUniCardService {
       catchError(this.handleError)  // Error handling
     );
   }
+  // New function to get UniCard by title, maintext, and URL
+  getUniCardByTitleMainTextUrl(title: any): Observable<UniCardDto[]> {
+    const params = new HttpParams().set('title', title);
 
+    return this.http.get<UniCardDto[]>(`${this.apiUrl}/searchByTitleMainTextUrl`, { params }).pipe(
+      catchError((error) => {
+        console.error('Error in search:', error);
+        return throwError(() => new Error('Search failed, please try again.'));
+      })
+    );
+  }
   // GET UniCard by ID
   getUniCard(id: any): Observable<UniCardDto> {
     return this.http.get<UniCardDto>(`${this.apiUrl}/${id}`).pipe(

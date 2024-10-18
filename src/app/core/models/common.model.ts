@@ -72,7 +72,7 @@ export interface ArchevitiSavaldebuloSagnebiDto {
 }
 
 export interface ProgramCardDto {
-  fields?:FieldDto[];
+  fields:FieldDto[];
 }
 
 export interface FieldDto{
@@ -85,7 +85,7 @@ export interface ProgramNamesDto{
   id?:number;
   programname:any;
   checkBoxes:CheckBoxesDto[]
-  width:string
+  width?:string
 
 }
 

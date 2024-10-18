@@ -1,14 +1,4 @@
-import {
-  Component,
-  HostListener,
-  OnInit,
-  OnDestroy,
-  NgZone,
-  ViewChild,
-  ElementRef,
-  ViewChildren,
-  QueryList,
-} from '@angular/core';
+import {Component,HostListener,OnInit,OnDestroy,NgZone,ViewChild,ElementRef,ViewChildren, QueryList,} from '@angular/core';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { Router } from '@angular/router';
 import { FooterForPupilComponent } from '../../pages/footer-for-pupil/footer-for-pupil.component';
@@ -19,11 +9,14 @@ import { RouterLink } from '@angular/router';
 import { gsap } from 'gsap';
 import { Subject, fromEvent } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { FormBuilder, FormGroup, Validators, FormArray, NgForm, NgModel, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { and } from 'firebase/firestore';
 
 @Component({
   selector: 'app-uni-program',
   standalone: true,
-  imports: [CommonModule, NgIf, NgFor, FooterForPupilComponent, RouterLink],
+  imports: [FormsModule,ReactiveFormsModule,CommonModule, NgIf, NgFor, FooterForPupilComponent, RouterLink],
   templateUrl: './uni-program.component.html',
   styleUrls: ['./uni-program.component.scss'],
 })
@@ -41,15 +34,21 @@ export class UniProgramComponent implements OnInit, OnDestroy {
   fieldNames: string[] = [];
   @ViewChild('secondNavbar') secondNavbar!: ElementRef;
   @ViewChildren('circle') circlesRef!: QueryList<ElementRef>;
-
+  Search: FormGroup;
+  filteredUniCards: any[] = []; // This will hold filtered results
   private isNavbarVisible = false;
+  isSearchClicked = false; // Initially false
 
-  constructor(
+  constructor(private fb: FormBuilder,
     private router: Router,
     private programCardService: ProgramCardService,
     private cdr: ChangeDetectorRef,
     private ngZone: NgZone
-  ) {}
+  ) {
+    this.Search = this.fb.group({
+      title: ['', Validators.required],
+    })
+  }
 
   ngOnInit(): void {
     this.setPhotoHeight();
@@ -69,6 +68,36 @@ export class UniProgramComponent implements OnInit, OnDestroy {
       }
     });
   }
+  onSearch() {
+    const searchTitle = this.Search.get('title')?.value?.trim(); // Get search input
+  
+    if (searchTitle) {
+      this.programCardService.getProgramCardWithProgramName(searchTitle).subscribe({
+        next: (filteredData: ProgramCardDto[]) => {
+          // Assuming filteredData is an array of ProgramCardDto
+          this.filteredUniCards =  filteredData
+          console.log(this.filteredUniCards)
+          this.isSearchClicked = true
+        },
+        error: (err) => {
+          this.filteredUniCards  = []
+        }
+      });
+    } else {
+      // Reset to show all UniCards if search is cleared
+      this.filteredUniCards = this.currentProgramNames; // Reset to default programs
+    }
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
 createFieldProgramMapping(): void {
   this.fields.forEach((field) => {
     this.programCardService.getFieldProgram(field.fieldName).pipe(takeUntil(this.destroy$)).subscribe({

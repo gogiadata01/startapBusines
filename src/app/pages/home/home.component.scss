@@ -370,11 +370,11 @@ footer {
 
   &:hover {
     transform: scale(1.1); /* Scale up by 20% */
-    color: wheat;
+    // color: wheat;
   }
 
   &.active {
-    background-color: #342833 !important;
+    background-color: #A0C4A0 !important;
     color: #fff;
   }
 }
@@ -696,7 +696,6 @@ text-align: center;
   border: none;
   border-radius: 1.25rem; 
   font-size: 1rem; 
-  cursor: pointer;
   font-family: 'Noto Sans Georgian', sans-serif;
   transition: background-color 0.3s, transform 0.3s;
   margin: 10px 0; /* შეცვლილი margin */
@@ -705,6 +704,8 @@ text-align: center;
 .georgian-button:hover {
   background-color: #463639; 
   transform: scale(1.05);
+  margin: 40px;
+  cursor: unset;
 }
 
 .scale-button {

@@ -27,7 +27,11 @@ export class ProgramCardService {
       catchError(this.handleError)
     );
   }
-  
+  getProgramCardWithProgramName(programname: string): Observable<ProgramCardDto[]> {
+    return this.http.get<ProgramCardDto[]>(`${this.apiUrl}/getProgramCardWithProgramName/${programname}`).pipe(
+      catchError(this.handleError)
+    );
+  }
   getProgramCardDetailsBySubjects(subjects: string[]): Observable<ProgramCardDto[]> {
     // Initialize HttpParams
     let params = new HttpParams();
