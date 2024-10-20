@@ -184,13 +184,12 @@ body, html {
         flex-wrap: wrap;
         justify-content: center;
     
-        .entry {        
+        .entry {    
           padding: 50px;
           margin: 5px;
           text-align: center;
           font-family: Arial, sans-serif;
           color:floralwhite;
-          width: calc(25% - 10px); 
         }
 
         
@@ -214,7 +213,11 @@ body, html {
       }
     }
 
-
+.Logo{
+  display: flex;
+  width: 30%;
+  justify-content: end;
+}
 .title{
     display: flex;
     justify-content: center;
@@ -762,6 +765,14 @@ text-align: center;
   // background-color: #e6e6e6;
   padding-left: 170px;
 }
+.title-container{
+  color: white;
+}
+.coins1{
+  color: white;
+  margin-right: 40px;
+
+}
 
 /* podium.component.scss */
 .podium-container {
@@ -816,7 +827,7 @@ text-align: center;
 
 .position-1 {
   order: 2;
-  .position { height: 200px; }
+  .position { height: 190px; }
 }
 
 .position-2 {
@@ -847,6 +858,7 @@ text-align: center;
 }
 
 .entry {
+  width: 100%;
   display: flex;
   align-items: center;
   margin-bottom: 19px;
