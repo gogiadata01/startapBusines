@@ -26,7 +26,7 @@ export class UserService {
     );
   }
 
-  registerUser(user: UserDto): Observable<any> {
+  registerUser(user: FormData): Observable<any> {
     return this.http.post(`${this.apiUrl}/register`, user).pipe(
       catchError(this.handleError)  // Added error handling
     );

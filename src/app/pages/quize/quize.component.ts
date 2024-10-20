@@ -144,7 +144,7 @@ export class QuizeComponent implements OnInit, OnDestroy {
     // Check if the user is logged in
     if (this.user) {
       // Calculate the new coin value based on correct answers
-      const newCoinValue = this.user.Coin + this.correctAnswersCount;
+      const newCoinValue = this.user.coin + this.correctAnswersCount;
   
       // Call the userService to update the user's coin balance
       this.userService.updateUserCoin(this.user.id , newCoinValue).subscribe(
@@ -152,7 +152,7 @@ export class QuizeComponent implements OnInit, OnDestroy {
           console.log('Coin updated successfully:', response);
   
           // Update the user object with the new coin value
-          this.user.Coin = newCoinValue;
+          this.user.coin = newCoinValue;
   
           // Persist the updated user in the authentication service
           this.authService.setCurrentUser(this.user);

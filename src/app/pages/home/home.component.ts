@@ -15,21 +15,13 @@
   import { Subject, fromEvent } from 'rxjs';
   import { takeUntil } from 'rxjs/operators';
   import { gsap } from 'gsap';
+  import {UserDto} from '../../core/models/common.model';
+  import {UserService} from '../../user.service'
   import {  AfterViewInit,  ViewChildren, QueryList } from '@angular/core';
   import {AuthenticationService} from '../../authentication.service'
-import { FormsModule } from '@angular/forms';
-interface PodiumEntry {
-  name: string;
-  position: number;
-  imageUrl: string;
-}
-
-interface LeaderboardEntry {
-  position: number;
-  name: string;
-  imageUrl: string;
-}
-  @Component({
+  import { FormsModule } from '@angular/forms';
+  const BASE_URL = 'https://api.myuni.ge/';
+  @Component({    
     selector: 'app-home',
     standalone: true,
     imports: [CommonModule, FooterForPupilComponent, QuizeComponent, UniProgramComponent, RouterLink, NavbarComponent, ],
@@ -37,20 +29,8 @@ interface LeaderboardEntry {
     styleUrls: ['./home.component.scss']
   })
   export class HomeComponent implements OnInit, OnDestroy   {
-
-    entries: LeaderboardEntry[] = [
-      { position: 4, name: 'სახელი გვარი', imageUrl: 'https://res.klook.com/image/upload/c_fill,w_750,h_563/q_80/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/tsah7c9evnal289z5fig.jpg' }, 
-      { position: 5, name: 'სახელი გვარი', imageUrl: 'https://res.klook.com/image/upload/c_fill,w_750,h_563/q_80/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/tsah7c9evnal289z5fig.jpg' }, 
-      { position: 6, name: 'სახელი გვარი', imageUrl: 'https://res.klook.com/image/upload/c_fill,w_750,h_563/q_80/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/tsah7c9evnal289z5fig.jpg' }, 
-    ];
-
-    // title = 'ლიდერთა სია';
-  podiumEntries: PodiumEntry[] = [
-    { name: 'ბუტმუტი ბერი', position: 1, imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgPbd2MBbw3o5_yzYC_pPjoVNKUx7WCrMN3g&s' },
-    { name: 'ელენე მიქაბერიძე ', position: 2, imageUrl: 'https://res.klook.com/image/upload/c_fill,w_750,h_563/q_80/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/tsah7c9evnal289z5fig.jpg' },
-    { name: 'მიცუბიშ ჩერიოტი', position: 3, imageUrl: 'https://res.klook.com/image/upload/c_fill,w_750,h_563/q_80/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/tsah7c9evnal289z5fig.jpg' },
-  ];
-
+    podiumEntries: UserDto[] = []; // For top 3 podium users
+    entries: UserDto[] = []; // For users ranked 4-6
     programCards: ProgramCardDto[] = [];
     circles: number[] = Array.from({ length: 6 }, (_, i) => i);
     activeCircleIndex: number = 0;
@@ -75,17 +55,9 @@ interface LeaderboardEntry {
       'გეოგრაფია', 'მუსიკა', 'ხელოვნება', 'ისტორია', 'სპორტი'
     ];
 
-    constructor(private router: Router,private cdr: ChangeDetectorRef, private authService:AuthenticationService,private ngZone: NgZone , private EventCardService: EventCardService  ,  private programCardService: ProgramCardService
-      ) {
-
-
-
-        
+    constructor(private router: Router,private cdr: ChangeDetectorRef, private authService:AuthenticationService,private ngZone: NgZone  ,private userService :UserService, private EventCardService: EventCardService  ,  private programCardService: ProgramCardService
+      ) {        
       }
-
-      
-    
-      
     @Input() text: string = 'არჩიეთ თქვენთვის შესაფერისი პროგრამა';
 
 
@@ -105,7 +77,26 @@ loadFieldNames(): void {
     }
   });
 }
+getTopUsers(): void {
+  this.userService.getAllUsers().subscribe((users: UserDto[]) => {
+    // Sort users by coins in descending order
+    const sortedUsers = users.sort((a, b) => b.coin - a.coin);
 
+    // Get the top 6 users
+    const topSixUsers = sortedUsers.slice(0, 6);
+
+    // Separate the top 3 for podium and next 3 for the list
+    this.podiumEntries = topSixUsers.slice(0, 3);
+    this.entries = topSixUsers.slice(3, 6);
+
+    console.log(this.podiumEntries, this.entries); // Debugging purposes
+  });
+}
+
+// Helper to get full image URL
+getImageUrl(relativePath: string): string {
+  return `${BASE_URL}${relativePath}`;
+}
 
 
 
@@ -225,6 +216,7 @@ onCircleClick(index: number): void {
     private photoHeight = 0;
 
     ngOnInit() {
+      this.getTopUsers();
       this.GetAllEventCard()
       this.loadFieldNames(); // Fetch all field names
       const photoElement = document.querySelector('.photo-class') as HTMLElement;

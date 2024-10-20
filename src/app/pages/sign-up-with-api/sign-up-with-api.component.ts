@@ -41,12 +41,12 @@ export class SignUpWithApiComponent  {
       this.UserService.signInUser(UserSignInDto).subscribe({
         next: (response) => {
           const user: UserDto = {
-            Name: response.userName,
-            Email: response.email,
+            name: response.userName,
+            email: response.email,
             Password: response.password,
             type: response.type, // Adjust according to your API response
-            Img: response.img,
-            Coin:response.coin,
+            img: response.img,
+            coin:response.coin,
             ResetToken:response.resettoken
           };
       
@@ -62,7 +62,7 @@ export class SignUpWithApiComponent  {
           });
           // Use navigate with parameters after successful sign-in
           setTimeout(()=>{
-            this.router.navigate(['',]); // Navigate to 'Home/:id' route
+            this.router.navigate(['Home',]); 
           },1500)
         },
         error: (err) => {

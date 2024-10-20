@@ -101,36 +101,8 @@ export const routes: Routes = [
     component: RecoveryPassowrdComponent
   },
   {
-    path: "Home/:id",
+    path: "Home",
     component: NavbarComponent,
-  },
-  {
-    path: "Home/:id/AddHomeUniCardWithApi",
-    component: AddWithApiHomeUniCardComponent
-  },
-  {
-    path: "Home/AddProgramCardWithApi",
-    component: AddWithApiProgramCardComponent
-  },
-  {
-    path: "Home/AddQuizWithApi",
-    component: AddQuizWithApiComponent
-  },
-  {
-    path: "Home/AddEventCardWithApi",
-    component: AddWithApiEventCardComponent
-  },
-  {
-    path: "Home/AddEventCard",
-    component: PupilEventsAddPageComponent
-  },
-  {
-    path: "Admin",
-    component: AdminComponent
-  },
-  {
-    path: "Students",
-    component: StudentsComponent
-  },
+  }
 
 ];

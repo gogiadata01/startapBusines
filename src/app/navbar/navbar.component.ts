@@ -29,16 +29,14 @@ export class NavbarComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id') ?? ''; // Provide an empty string as a default
     this.authService.currentUser$.subscribe((user) => {
       this.currentUser = user;
-      console.log(this.currentUser)
     })
 
     if(this.currentUser?.type === "admin") {
-
-    }else if(this.currentUser?.type === "მოსწავლე IX კლასელი"|| "მოსწავლე X კლასელი"){
-     this.router.navigateByUrl('/Pupil');
+      this.router.navigateByUrl('Home')
+    }else if(this.currentUser?.type === "მოსწავლე IX კლასელი"|| "მოსწავლე X კლასელი" ||"მოსწავლე XI კლასელი" ||"მოსწავლე XII კლასელი"){
+     this.router.navigateByUrl('');
     }
   }
 }

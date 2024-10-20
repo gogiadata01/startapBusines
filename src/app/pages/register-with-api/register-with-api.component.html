@@ -1,4 +1,4 @@
-<div class="registration-container">
+<!-- <div class="registration-container">
   <h2>რეგისტრაცია</h2>
   <form [formGroup]="RegisterForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
@@ -17,6 +17,75 @@
         id="email"
         formControlName="Email"
         placeholder="შეიყვანეთ ელ. ფოსტა"
+      />
+    </div>
+    <div class="form-group">
+      <label for="email">ელ. ფოსტა</label>
+      <input
+        type="file"
+        id="email"
+        formControlName="Img"
+        placeholder="შეიყვანეთ ელ. ფოსტა"
+      />
+    </div>
+    <label for="classSelect">კლასი</label>
+    <select id="classSelect" formControlName="Type">
+      <option value="" disabled selected>შეარჩით კლასი</option>
+      <option value="მოსწავლე IX კლასელი">მოსწავლე IX კლასელი</option>
+      <option value="მოსწავლე X კლასელი">მოსწავლე X კლასელი</option>
+      <option value="მოსწავლე XI კლასელი">მოსწავლე XI კლასელი</option>
+      <option value="მოსწავლე XII კლასელი">მოსწავლე XII კლასელი</option>
+    </select>
+    <div class="form-group">
+      <label for="password">პაროლი</label>
+      <input
+        type="password"
+        id="password"
+        formControlName="Password"
+        placeholder="შეიყვანეთ პაროლი"
+      />
+    </div>
+    <div class="dvba">
+      <button [disabled]="!RegisterForm.valid" type="submit">
+        რეგისტრაცია
+      </button>
+    </div>
+
+    <div class="register-link">
+      გაქვს უკვე ანგარიში? <a routerLink="/SignUp">ავტორიზაცია</a>
+    </div>
+  </form>
+</div> -->
+
+
+<div class="registration-container">
+  <h2>რეგისტრაცია</h2>
+  <form [formGroup]="RegisterForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="username">სახელი</label>
+      <input
+        type="text"
+        id="username"
+        formControlName="UserName"
+        placeholder="შეიყვანეთ სახელი"
+      />
+    </div>
+    <div class="form-group">
+      <label for="email">ელ. ფოსტა</label>
+      <input
+        type="email"
+        id="email"
+        formControlName="Email"
+        placeholder="შეიყვანეთ ელ. ფოსტა"
+      />
+    </div>
+    <div class="form-group">
+      <label for="img">ფოტო</label>
+      <input
+        type="file"
+        id="img"
+        (change)="onFileSelected($event)"
+        accept="image/*"
       />
     </div>
     <label for="classSelect">კლასი</label>

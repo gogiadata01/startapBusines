@@ -110,12 +110,12 @@ export interface EventTypeDto{
 
 export interface UserDto{
   id?:number
-  Name:string;
-  Email:string;
+  name:string;
+  email:string;
   Password:string;
   type:string;
-  Img:string;
-  Coin:number;
+  img:string;
+  coin:number;
   ResetToken:string;
 }
 export interface UserSignInDto{

@@ -8,7 +8,9 @@ import { ChangeDetectorRef } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { gsap } from 'gsap';
 import { Subject, fromEvent } from 'rxjs';
+import {UserDto} from '../../core/models/common.model'
 import { takeUntil } from 'rxjs/operators';
+import {AuthenticationService} from '../../authentication.service'
 @Component({
   selector: 'app-personal-page',
   standalone: true,
@@ -21,15 +23,21 @@ export class PersonalPageComponent implements OnInit, OnDestroy {
   private isNavbarVisible = false;
   private destroy$ = new Subject<void>();
   private photoHeight: number = 0; // Ensure it's declared properly
+  currentUser: UserDto | null = null;
   constructor(
     private router: Router,
     private programCardService: ProgramCardService,
     private cdr: ChangeDetectorRef,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    private User: AuthenticationService,
   ) { }
   ngOnInit(): void {
     this.setPhotoHeight();
     this.setupScrollListener();
+    this.User.currentUser$.subscribe((user) =>{
+      this.currentUser = user;
+      
+    } )
   }
   onWindowScroll(): void {
     const scrolled = window.scrollY > 200;
@@ -80,6 +88,10 @@ export class PersonalPageComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
+  }
+  LogOut(){
+    this.User.clearCurrentUser()
+    this.router.navigateByUrl('SignUp')
   }
 }
 // ნავბარი მთავრდება აქ
