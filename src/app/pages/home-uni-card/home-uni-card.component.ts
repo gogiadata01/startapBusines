@@ -121,13 +121,3 @@ onCardClicked(cardkey:any) :void{
   this.router.navigate(['/Pupil/HomeUni/',cardkey])
 }
 }
-// getUniCardByTitleMainTextUrl(title: string): Observable<UniCardDto[]> {
-//   const params = new HttpParams().set('title', title); // Create HttpParams object
-
-//   return this.HomeUniCardService.getUniCardByTitleMainTextUrl(params).pipe(
-//     catchError((error) => {  // Handle errors
-//       console.error('Error in search:', error);
-//       return [];  // Return an empty array if an error occurs
-//     })
-//   );
-// }

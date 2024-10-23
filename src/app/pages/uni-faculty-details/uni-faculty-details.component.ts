@@ -27,7 +27,6 @@ export class UniFacultyDetailsComponent {
   programname:any
 categories: any[] = [
   { title: "პროგრამის აღწერა" },
-  { title: "მიზანი" },
   { title: "დასაქმება" }
 ];
 

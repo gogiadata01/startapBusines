@@ -214,12 +214,13 @@ body{
   }
   .container {
     padding: 20px;
-    width: 80%;
+    width: 60%;
   }
   
   .row {
+    width: 100%;
     display: flex;
-    flex-wrap: wrap;
+    justify-content: space-around;
     background-color: #5D737E;
     border-radius: 25px;
   

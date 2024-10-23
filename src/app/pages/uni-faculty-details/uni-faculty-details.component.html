@@ -15,12 +15,10 @@
       </div>
       <div class="price">
         <div>
-          <h4>2500₾</h4>
-        </div>
-      </div>
-      <div class="code">
-        <div>
-          <p>123456789</p>
+          @for (section of UniCard.sections; track $index) { @for (item of
+          section.programNames; track $index) {
+          <h4>{{ item.fasi }}</h4>
+          } }
         </div>
       </div>
     </div>
@@ -44,8 +42,7 @@
     <!-- Default case when no category is selected -->
     <div *ngSwitchDefault>
       <ng-container *ngFor="let section of UniCard.sections">
-        <ng-container *ngFor="let programname of section.programNames"
-          >\
+        <ng-container *ngFor="let programname of section.programNames">
           <div class="static">
             <div class="title">
               <h3>{{ programname.programName }}</h3>
@@ -57,7 +54,7 @@
                     <h2>სწავლების ენა</h2>
                   </div>
                   <div class="divbottom">
-                    <h4>{{programname.swavlebisEna}}</h4>
+                    <h4>{{ programname.swavlebisEna }}</h4>
                   </div>
                 </div>
                 <div class="kvalifikacia">
@@ -65,7 +62,7 @@
                     <h2>კვალიფიკაცია</h2>
                   </div>
                   <div class="divbottom">
-                    <h4>{{programname.kvalifikacia}}</h4>
+                    <h4>{{ programname.kvalifikacia }}</h4>
                   </div>
                 </div>
                 <div class="dafinanseba">
@@ -73,7 +70,7 @@
                     <h2>დაფინანსება</h2>
                   </div>
                   <div class="divbottom">
-                    <h4>{{programname.dafinanseba}}</h4>
+                    <h4>{{ programname.dafinanseba }}</h4>
                   </div>
                 </div>
               </div>
@@ -86,7 +83,7 @@
                   <h4>კრედიტების რაოდენობა</h4>
                 </div>
                 <div class="kreditebitext">
-                  <p>{{programname.kreditebisRaodenoba}}</p>
+                  <p>{{ programname.kreditebisRaodenoba }}</p>
                 </div>
               </div>
               <div class="adgilebisraodenoba">
@@ -94,7 +91,7 @@
                   <h4>ადგილების რაოდენობა</h4>
                 </div>
                 <div class="adgilebisraodenobatext">
-                  <p>{{programname.adgilebisRaodenoba}}</p>
+                  <p>{{ programname.adgilebisRaodenoba }}</p>
                 </div>
               </div>
             </div>
@@ -105,7 +102,7 @@
           <div class="programisAgwera">
             <div>
               <p>
-                {{programname.programisAgwera}}
+                {{ programname.programisAgwera }}
               </p>
             </div>
           </div>
@@ -218,12 +215,12 @@
     </div>
 
     <!-- Case for the second category -->
-    <div *ngSwitchCase="'მიზანი'">
-      <ng-container *ngFor="let section of UniCard.sections" >
-        <ng-container  *ngFor="let programname of section.programNames">
+    <!-- <div *ngSwitchCase="'მიზანი'">
+      <ng-container *ngFor="let section of UniCard.sections">
+        <ng-container *ngFor="let programname of section.programNames">
           <div class="static">
             <div class="title">
-              <h3>{{programname.programName}}</h3>
+              <h3>{{ programname.programName }}</h3>
             </div>
             <div class="Bottom">
               <div>
@@ -232,7 +229,7 @@
                     <h2>სწავლების ენა</h2>
                   </div>
                   <div class="divbottom">
-                    <h4>{{programname.swavlebisEna}}</h4>
+                    <h4>{{ programname.swavlebisEna }}</h4>
                   </div>
                 </div>
                 <div class="kvalifikacia">
@@ -240,7 +237,7 @@
                     <h2>კვალიფიკაცია</h2>
                   </div>
                   <div class="divbottom">
-                    <h4>{{programname.kvalifikacia}}</h4>
+                    <h4>{{ programname.kvalifikacia }}</h4>
                   </div>
                 </div>
                 <div class="dafinanseba">
@@ -248,7 +245,7 @@
                     <h2>დაფინანსება</h2>
                   </div>
                   <div class="divbottom">
-                    <h4>{{programname.dafinanseba}}</h4>
+                    <h4>{{ programname.dafinanseba }}</h4>
                   </div>
                 </div>
               </div>
@@ -261,7 +258,7 @@
                   <h4>კრედიტების რაოდენობა</h4>
                 </div>
                 <div class="kreditebitext">
-                  <p>{{programname.kreditebisRaodenoba}}</p>
+                  <p>{{ programname.kreditebisRaodenoba }}</p>
                 </div>
               </div>
               <div class="adgilebisraodenoba">
@@ -269,7 +266,7 @@
                   <h4>ადგილების რაოდენობა</h4>
                 </div>
                 <div class="adgilebisraodenobatext">
-                  <p>{{programname.adgilebisRaodenoba}}</p>
+                  <p>{{ programname.adgilebisRaodenoba }}</p>
                 </div>
               </div>
             </div>
@@ -280,21 +277,21 @@
           <div class="programisAgwera">
             <div>
               <p>
-                {{programname.mizani}}
+                {{ programname.mizani }}
               </p>
             </div>
           </div>
         </ng-container>
       </ng-container>
-    </div>
+    </div> -->
 
     <!-- Add more cases for other categories as needed -->
     <div *ngSwitchCase="'დასაქმება'">
-      <ng-container *ngFor="let section of UniCard.sections" >
-        <ng-container  *ngFor="let programname of section.programNames">
+      <ng-container *ngFor="let section of UniCard.sections">
+        <ng-container *ngFor="let programname of section.programNames">
           <div class="static">
             <div class="title">
-              <h3>{{programname.programName}}</h3>
+              <h3>{{ programname.programName }}</h3>
             </div>
             <div class="Bottom">
               <div>
@@ -303,7 +300,7 @@
                     <h2>სწავლების ენა</h2>
                   </div>
                   <div class="divbottom">
-                    <h4>{{programname.swavlebisEna}}</h4>
+                    <h4>{{ programname.swavlebisEna }}</h4>
                   </div>
                 </div>
                 <div class="kvalifikacia">
@@ -311,7 +308,7 @@
                     <h2>კვალიფიკაცია</h2>
                   </div>
                   <div class="divbottom">
-                    <h4>{{programname.kvalifikacia}}</h4>
+                    <h4>{{ programname.kvalifikacia }}</h4>
                   </div>
                 </div>
                 <div class="dafinanseba">
@@ -319,7 +316,7 @@
                     <h2>დაფინანსება</h2>
                   </div>
                   <div class="divbottom">
-                    <h4>{{programname.dafinanseba}}</h4>
+                    <h4>{{ programname.dafinanseba }}</h4>
                   </div>
                 </div>
               </div>
@@ -332,7 +329,7 @@
                   <h4>კრედიტების რაოდენობა</h4>
                 </div>
                 <div class="kreditebitext">
-                  <p>{{programname.kreditebisRaodenoba}}</p>
+                  <p>{{ programname.kreditebisRaodenoba }}</p>
                 </div>
               </div>
               <div class="adgilebisraodenoba">
@@ -340,7 +337,7 @@
                   <h4>ადგილების რაოდენობა</h4>
                 </div>
                 <div class="adgilebisraodenobatext">
-                  <p>{{programname.adgilebisRaodenoba}}</p>
+                  <p>{{ programname.adgilebisRaodenoba }}</p>
                 </div>
               </div>
             </div>
@@ -351,7 +348,7 @@
           <div class="programisAgwera">
             <div>
               <p>
-                {{programname.jobs}}
+                {{ programname.jobs }}
               </p>
             </div>
           </div>
