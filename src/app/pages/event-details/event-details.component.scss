@@ -189,8 +189,9 @@ nav ul li a {
     display: flex;
     margin-top: 55px;
     .Text{
-        width: 80%;
-        display: flex;
+      width: 100%;
+      display: flex;
+      justify-content: center;
     div{
         width: 80%;
         margin-left: 40px;    }
@@ -243,6 +244,8 @@ nav ul li a {
 }
 p{
     color: white;
+    font-size: 18px;
+    font-weight: 300;
 }
 .SameEvents{
     width: 100%;

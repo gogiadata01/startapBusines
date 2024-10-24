@@ -360,6 +360,21 @@ onCircleClick(index: number): void {
           }
         });
     }
+    getColor(type: string | { type: string }): string {
+      const typeStr = typeof type === 'string' ? type : type.type;
+      switch (typeStr) {
+        case 'ღია კარის დღე':
+          return 'blue';
+        case 'ბანაკი':
+          return 'green';
+        case 'ვორკშოპი':
+          return 'red';
+        case 'სიახლე':
+          return 'gray';
+        default:
+          return 'black';
+      }
+    }
   }
 
 
