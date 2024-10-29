@@ -41,6 +41,7 @@ export class SignUpWithApiComponent  {
       this.UserService.signInUser(UserSignInDto).subscribe({
         next: (response) => {
           const user: UserDto = {
+            id:response.userId,
             name: response.userName,
             email: response.email,
             Password: response.password,

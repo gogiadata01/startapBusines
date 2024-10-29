@@ -15,10 +15,11 @@ import { HttpParams } from '@angular/common/http';  // Add this import
 import { catchError } from 'rxjs/operators';   
 import { FormBuilder, FormGroup, Validators, FormArray, NgForm, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { NgFor } from '@angular/common';
+import { NavbarWithWaveComponent } from "../navbar-with-wave/navbar-with-wave.component";
 @Component({
   selector: 'app-home-uni-card',
   standalone: true,
-  imports: [RouterLink,NgFor,ReactiveFormsModule, FooterForPupilComponent],
+  imports: [RouterLink, NgFor, ReactiveFormsModule, FooterForPupilComponent, NavbarWithWaveComponent],
   templateUrl: './home-uni-card.component.html',
   styleUrl: './home-uni-card.component.scss'
 })

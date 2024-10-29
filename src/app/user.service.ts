@@ -20,7 +20,7 @@ export class UserService {
     );
   }
 
-  getUserById(id: number): Observable<any> {
+  getUserById(id: any): Observable<any> {
     return this.http.get(`${this.apiUrl}/${id}`).pipe(
       catchError(this.handleError)  // Added error handling
     );

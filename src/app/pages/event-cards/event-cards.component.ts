@@ -12,15 +12,16 @@ import { ElementRef, } from '@angular/core';
 import { Subject, fromEvent } from 'rxjs';
 import { ChangeDetectorRef } from '@angular/core';
 import { takeUntil } from 'rxjs/operators';
+import { NavbarWithWaveComponent } from "../navbar-with-wave/navbar-with-wave.component";
 
 @Component({
   selector: 'app-event-cards',
   standalone: true,
-  imports: [RouterLink,NgIf,NgFor,CommonModule],
+  imports: [RouterLink, NgIf, NgFor, CommonModule, NavbarWithWaveComponent],
   templateUrl: './event-cards.component.html',
   styleUrl: './event-cards.component.scss'
 })
-export class EventCardsComponent implements OnInit, OnDestroy {
+export class EventCardsComponent implements OnInit {
   EventCard: EventCardDto[] = [];
   filteredEventCards: EventCardDto[] = [];
   categories: any = [
@@ -36,58 +37,9 @@ export class EventCardsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getAllEventCards();
-    const photoElement = document.querySelector('.photo-class') as HTMLElement;
-    if (photoElement) {
-      this.photoHeight = photoElement.offsetHeight;
-    }
 
-    this.ngZone.runOutsideAngular(() => {
-      fromEvent(window, 'scroll')
-        .pipe(takeUntil(this.destroy$))
-        .subscribe(() => {
-          this.onWindowScroll();
-        });
-    });
   }
-  onWindowScroll() {
-    const scrolled = window.scrollY > 200;
-  
-    if (scrolled && !this.isNavbarVisible) {
-      this.isNavbarVisible = true;
-      this.slideDownNavbar();
-      const button =  document.getElementById("firstNavbarl")
-      if (button){
-        const isExpanded = button.getAttribute("aria-expanded") === "true";
-        if(isExpanded){
-          button.click()}
-      }
-    } else if (!scrolled && this.isNavbarVisible) {
-      this.isNavbarVisible = false;
-      this.slideUpNavbar();
-      const button =  document.getElementById("secondNavbar2")
-    
-      if (button){
-        const isExpanded = button.getAttribute("aria-expanded") === "true";
-        if(isExpanded){button.click()}
-      }
-    }
-  }
-  slideDownNavbar() {
-    gsap.to(this.secondNavbar.nativeElement, { y: 0, duration: 0.3, ease: 'power2.out' });
-  }
-  
-  slideUpNavbar() {
-    gsap.to(this.secondNavbar.nativeElement, { y: -100, duration: 0.3, ease: 'power2.in' }); // Adjust -60 based on your navbar height
-  }
-  
-  ngOnDestroy() {
-    this.destroy$.next();
-    this.destroy$.complete();
-  }
-  @ViewChild('secondNavbar') secondNavbar!: ElementRef;
-  private isNavbarVisible = false;
-  private destroy$ = new Subject<void>();
-  private photoHeight = 0;
+
 
   getAllEventCards() {
     this.eventCardService.getAllEventCard().subscribe({

@@ -14,11 +14,12 @@ import { Subject, fromEvent } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { gsap } from 'gsap';
 import { ChangeDetectorRef } from '@angular/core';
+import { NavbarWithWaveComponent } from "../navbar-with-wave/navbar-with-wave.component";
 
 @Component({
   selector: 'app-home-uni-details',
   standalone: true,
-  imports: [NgIf,NavbarForPupilComponent,FooterForPupilComponent,NgFor,RouterLink,CommonModule],
+  imports: [NgIf, NavbarForPupilComponent, FooterForPupilComponent, NgFor, RouterLink, CommonModule, NavbarWithWaveComponent],
   templateUrl: './home-uni-details.component.html',
   styleUrl: './home-uni-details.component.scss'
 })
@@ -42,34 +43,6 @@ private isNavbarVisible = false;
 private destroy$ = new Subject<void>();
 private photoHeight = 0;
 ngOnInit(): void {
-
-
-  // this.cardService.getHomeUniCardById(this.getid())
-  // .subscribe( card =>{
-  //   this.card = card
-  //   console.log(this.cardService.getHomeUniCardById)
-  // })
-  // this.cardService.getHomeUniCardById(this.getid()).subscribe(sections =>{
-  //     this.sections = sections;
-  // })
-  // this.route.queryParams.subscribe(params => {
-  //   const data = params['data'];
-  //   if (data) {
-  //     this.sections = JSON.parse(data);
-  //   }
-  // });
-  const photoElement = document.querySelector('.photo-class') as HTMLElement;
-  if (photoElement) {
-    this.photoHeight = photoElement.offsetHeight;
-  }
-
-  this.ngZone.runOutsideAngular(() => {
-    fromEvent(window, 'scroll')
-      .pipe(takeUntil(this.destroy$))
-      .subscribe(() => {
-        this.onWindowScroll();
-      });
-  });
   this.HomeUniCardService.getUniCard(this.getid())
   .subscribe({
     next:(Unicard)=> {
@@ -83,40 +56,6 @@ ngOnInit(): void {
   //   this.HomeUniCardService.getUniCard(this.getid()).subscribe(sections =>{
   //     this.sections = sections;
   // })
-}
-onWindowScroll() {
-  const scrolled = window.scrollY > 200;
-
-  if (scrolled && !this.isNavbarVisible) {
-    this.isNavbarVisible = true;
-    this.slideDownNavbar();
-    const button = document.getElementById("firstNavbarl");
-    if (button) {
-      const isExpanded = button.getAttribute("aria-expanded") === "true";
-      if (isExpanded) button.click();
-    }
-  } else if (!scrolled && this.isNavbarVisible) {
-    this.isNavbarVisible = false;
-    this.slideUpNavbar();
-    const button = document.getElementById("secondNavbar2");
-    if (button) {
-      const isExpanded = button.getAttribute("aria-expanded") === "true";
-      if (isExpanded) button.click();
-    }
-  }
-}
-
-slideDownNavbar() {
-  gsap.to(this.secondNavbar.nativeElement, { y: 0, duration: 0.3, ease: 'power2.out' });
-}
-
-slideUpNavbar() {
-  gsap.to(this.secondNavbar.nativeElement, { y: -100, duration: 0.3, ease: 'power2.in' });
-}
-
-ngOnDestroy() {
-  this.destroy$.next();
-  this.destroy$.complete();
 }
 onCardClicked1(cardkey:any) :void{
   this.router.navigate(['/Pupil/Events/',cardkey])

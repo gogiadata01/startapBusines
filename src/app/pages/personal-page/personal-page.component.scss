@@ -1,149 +1,3 @@
-// ნავბარი  იწყება აქ
-.second-navbar {
-	transition: top 0.3s ease-in-out;
-	position: fixed;
-	opacity: 1;
-	background-color: #85A98D;
-	top: 0;
-	left:0;
-	right:0;
-	width: 100%;
-	transform: translateY(-100%);
-	z-index: 1030; 
-	}
-	
-	.content {
-	margin-top: 100px;
-	height: 2000px; 
-	}
-	
-	//header and navbar
-	.site-header {
-	width: 100%;
-	height: 600px;
-	}
-	
-	.site-header::before {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	
-	}
-	
-	.header-content {
-	position: relative;
-	z-index: 1; 
-	width: 100%;
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	box-sizing: border-box; 
-	}
-	
-	h1 {
-	color: white;
-	text-align: center;
-	font-size: 1.9em; 
-	max-width: 1000px;
-	margin: 220px auto; 
-	}
-	
-	
-	
-	
-	nav ul li a {
-	color: white;
-	text-decoration: none;
-	
-	&:hover {
-	  color: #3e8e41;
-	 
-	}
-  }
-  #color{
-	background-color: #342833;
-  }
-  #svg{
-	width: 120px;
-	height: 100%;
-	cursor: pointer;
-  }
-  #svg2{
-	width: 35px;
-	height: 100%;
-	color: #F0F3BD;
-  }
-  
-  
-  .nav-link{
-	padding: 10px;
-	border-radius: 25px;
-	text-align: center;
-	
-	cursor: pointer;
-	transition: background-color 0.3s ease;
-  
-	&:hover {
-	  background-color: #c1ccd5;
-	}
-  
-		transition: transform 0.3s ease;
-  
-	&:hover {
-	  transform: scale(1.07);
-	}
-  }
-  
-  .no-border {
-	border: none;
-	border-width: 0;
-	box-shadow: none; 
-  }:focus{
-	outline: none;
-  
-  }
-  
-  .no-border:focus-visible {
-	outline: none;
-  }
-  
-
-  svg:focus {
-	outline: none;
-  }
-  #cotainerfluid{
-	background-color: #342833;
-	padding: 20px;
-	z-index: 20;
-  }
-  svg {
-	border: none;
-	border-width: 0;
-	box-shadow: none;
-	
-  }
-  .header-content{
-	height: 265px;
-	background-color: #342833;
-  }
-  .wave-container{
-	background-color:#342833;
-  
-  }
-  .navbar, .navbar-nav {
-	border: none; 
-  }
-  
-  .nav-link {
-	border-bottom: none; 
-	text-decoration: none; 
-  
-  }
-//   ნავბარის კოდი მთავრდება აქ
 
   .container {
 	display: flex;
@@ -151,6 +5,7 @@
 	align-items: center;
 	width: 100%;
 	height: 100vh;
+	margin-top: 240px;
   }
   
   .inner {
@@ -178,7 +33,7 @@
 	  background-position: 50% 50%;
 	  background-size: cover;
 	  background-repeat: no-repeat;
-	  background-image: url(../../../assets/im01.jpg);
+	  background-image: url(../../../assets/img/Logo-1.png);
 	  position: relative;
 	  bottom: 70px;
 	}
@@ -214,11 +69,10 @@
 		}
 	  }
   // Responsive styles
-  @media (max-width: 768px) {
+  @media (max-width: 780px) {
 	.block {
 	  padding: 20px;
-	}
-  
+	} 
 	.avatar {
 	  width: 100px;
 	  height: 100px;
@@ -236,9 +90,15 @@
 	  padding: 6px;
 	  max-width: 100%;	
 	}
+
   }
+  @media (max-width: 1030px) {
+	.block{
+		margin-top: 250px !important;
+	}
+}
   
-  @media (max-width: 480px) {
+  @media  (max-width: 480px) {
 	.block {
 	  padding: 15px;
 	  margin: 20px;

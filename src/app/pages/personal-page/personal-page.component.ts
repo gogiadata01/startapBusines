@@ -11,14 +11,15 @@ import { Subject, fromEvent } from 'rxjs';
 import {UserDto} from '../../core/models/common.model'
 import { takeUntil } from 'rxjs/operators';
 import {AuthenticationService} from '../../authentication.service'
+import { NavbarForPupilComponent } from "../navbar-for-pupil/navbar-for-pupil.component";
 @Component({
   selector: 'app-personal-page',
   standalone: true,
-  imports: [ReactiveFormsModule,RouterLink],
+  imports: [ReactiveFormsModule, RouterLink, NavbarForPupilComponent],
   templateUrl: './personal-page.component.html',
   styleUrl: './personal-page.component.scss'
 })
-export class PersonalPageComponent implements OnInit, OnDestroy {
+export class PersonalPageComponent implements OnInit {
   @ViewChild('secondNavbar') secondNavbar!: ElementRef;
   private isNavbarVisible = false;
   private destroy$ = new Subject<void>();
@@ -32,63 +33,12 @@ export class PersonalPageComponent implements OnInit, OnDestroy {
     private User: AuthenticationService,
   ) { }
   ngOnInit(): void {
-    this.setPhotoHeight();
-    this.setupScrollListener();
     this.User.currentUser$.subscribe((user) =>{
       this.currentUser = user;
       
     } )
   }
-  onWindowScroll(): void {
-    const scrolled = window.scrollY > 200;
 
-    if (scrolled && !this.isNavbarVisible) {
-      this.isNavbarVisible = true;
-      this.slideDownNavbar();
-      this.toggleNavbar('firstNavbarl');
-    } else if (!scrolled && this.isNavbarVisible) {
-      this.isNavbarVisible = false;
-      this.slideUpNavbar();
-      this.toggleNavbar('secondNavbar2');
-    }
-  }
-
-  toggleNavbar(navbarId: string): void {
-    const button = document.getElementById(navbarId);
-    if (button) {
-      const isExpanded = button.getAttribute('aria-expanded') === 'true';
-      if (isExpanded) button.click();
-    }
-  }
-
-  setPhotoHeight(): void {
-    const photoElement = document.querySelector('.photo-class') as HTMLElement;
-    if (photoElement) {
-      this.photoHeight = photoElement.offsetHeight;
-    }
-  }
-  setupScrollListener(): void {
-    this.ngZone.runOutsideAngular(() => {
-      fromEvent(window, 'scroll')
-        .pipe(takeUntil(this.destroy$))
-        .subscribe(() => {
-          this.onWindowScroll();
-        });
-    });
-  }
-
-  slideDownNavbar(): void {
-    gsap.to(this.secondNavbar.nativeElement, { y: 0, duration: 0.3, ease: 'power2.out' });
-  }
-
-  slideUpNavbar(): void {
-    gsap.to(this.secondNavbar.nativeElement, { y: -100, duration: 0.3, ease: 'power2.in' });
-  }
-
-  ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
-  }
   LogOut(){
     this.User.clearCurrentUser()
     this.router.navigateByUrl('SignUp')
