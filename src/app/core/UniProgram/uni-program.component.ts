@@ -12,11 +12,12 @@ import { takeUntil } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators, FormArray, NgForm, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { and } from 'firebase/firestore';
+import { NavbarWithWaveComponent } from "../../pages/navbar-with-wave/navbar-with-wave.component";
 
 @Component({
   selector: 'app-uni-program',
   standalone: true,
-  imports: [FormsModule,ReactiveFormsModule,CommonModule, NgIf, NgFor, FooterForPupilComponent, RouterLink],
+  imports: [FormsModule, ReactiveFormsModule, CommonModule, NgIf, NgFor, FooterForPupilComponent, RouterLink, NavbarWithWaveComponent],
   templateUrl: './uni-program.component.html',
   styleUrls: ['./uni-program.component.scss'],
 })

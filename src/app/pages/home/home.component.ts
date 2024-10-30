@@ -45,6 +45,7 @@
     matchingPrograms: any[] = []; // Ensures it's initialized to an empty array
     errorMessage: string | null = null; // Variable for error messages
     activeFieldIndex: number = 0;    // Track the index of the currently selected field
+    isLoggedIn = false;
 
 
     
@@ -55,7 +56,7 @@
       'გეოგრაფია', 'მუსიკა', 'ხელოვნება', 'ისტორია', 'სპორტი'
     ];
 
-    constructor(private router: Router,private cdr: ChangeDetectorRef, private authService:AuthenticationService,private ngZone: NgZone  ,private userService :UserService, private EventCardService: EventCardService  ,  private programCardService: ProgramCardService
+    constructor(private router: Router,private cdr: ChangeDetectorRef, private User:AuthenticationService,private ngZone: NgZone  ,private userService :UserService, private EventCardService: EventCardService  ,  private programCardService: ProgramCardService
       ) {        
       }
     @Input() text: string = 'არჩიეთ თქვენთვის შესაფერისი პროგრამა';
@@ -232,6 +233,7 @@ onCircleClick(index: number): void {
           });
       });
       this.filterMatchingPrograms();  // Automatically filter programs on initialization
+      this.isLoggedIn = this.User.isUserLoggedIn(); // Check login status
 
     }
     onSubjectChange(subject: string): void {

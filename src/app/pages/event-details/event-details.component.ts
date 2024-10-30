@@ -12,17 +12,21 @@ import { ElementRef, } from '@angular/core';
 import { Subject, fromEvent } from 'rxjs';
 import { ChangeDetectorRef } from '@angular/core';
 import { takeUntil } from 'rxjs/operators';
-
+import {AuthenticationService} from '../../authentication.service'
+import { CommonModule, NgFor, NgIf } from '@angular/common';
 @Component({
   selector: 'app-event-details',
   standalone: true,
-  imports: [FooterForPupilComponent,NavbarForPupilComponent,RouterLink],
+  imports: [FooterForPupilComponent,NgIf,NavbarForPupilComponent,RouterLink],
   templateUrl: './event-details.component.html',
   styleUrl: './event-details.component.scss'
 })
 export class EventDetailsComponent implements OnInit, OnDestroy {
   EventCard!:EventCardDto
-  constructor(private cdr: ChangeDetectorRef, private ngZone: NgZone ,private route: ActivatedRoute,private EventCardService: EventCardService, private router: Router) {
+  isLoggedIn = false;
+
+  constructor(private cdr: ChangeDetectorRef, private ngZone: NgZone ,private route: ActivatedRoute,private EventCardService: EventCardService, private router: Router,    private User: AuthenticationService,
+    ) {
   }
   ngOnInit() {
     this.EventCardService.getEventCardById(this.getid())
@@ -48,6 +52,8 @@ export class EventDetailsComponent implements OnInit, OnDestroy {
           this.onWindowScroll();
         });
     });
+    this.isLoggedIn = this.User.isUserLoggedIn(); // Check login status
+
 }
 onWindowScroll() {
   const scrolled = window.scrollY > 200;

@@ -34,4 +34,8 @@ export class AuthenticationService {
   getCurrentUserValue(): UserDto | null {
     return this.currentUserSubject.value;
   }
+  isUserLoggedIn(): boolean {
+    return !!localStorage.getItem('currentUser'); // Adjust based on your logic
+  }
+  
 }

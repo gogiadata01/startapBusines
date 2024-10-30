@@ -35,7 +35,10 @@ export class PersonalPageComponent implements OnInit {
   ngOnInit(): void {
     this.User.currentUser$.subscribe((user) =>{
       this.currentUser = user;
-      
+      if (!this.currentUser) {
+        this.router.navigateByUrl('/SignUp'); // Redirect if user is not logged in
+      }
+  
     } )
   }
 

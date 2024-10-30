@@ -14,7 +14,7 @@ import {AuthenticationService} from '../../authentication.service'
 @Component({
   selector: 'app-navbar-with-wave',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink,NgIf],
   templateUrl: './navbar-with-wave.component.html',
   styleUrl: './navbar-with-wave.component.scss'
 })
@@ -22,6 +22,7 @@ export class NavbarWithWaveComponent implements OnInit, OnDestroy {
   @ViewChild('secondNavbar') secondNavbar!: ElementRef;
   private isNavbarVisible = false;
   private destroy$ = new Subject<void>();
+  isLoggedIn = false;
   private photoHeight: number = 0; // Ensure it's declared properly
   currentUser: UserDto | null = null;
   constructor(
@@ -38,6 +39,8 @@ export class NavbarWithWaveComponent implements OnInit, OnDestroy {
       this.currentUser = user;
       
     } )
+    this.isLoggedIn = this.User.isUserLoggedIn(); // Check login status
+
   }
   onWindowScroll(): void {
     const scrolled = window.scrollY > 200;
