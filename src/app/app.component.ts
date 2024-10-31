@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component ,OnInit} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { inject } from '@vercel/analytics';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,8 @@ import { RouterOutlet } from '@angular/router';
   template: '<router-outlet/>'
 
 })
-export class AppComponent {
-  title = 'testFirebase';
+export class AppComponent implements OnInit {
+  ngOnInit(): void {
+    inject(); // Initialize Vercel Analytics
+  }
 }
