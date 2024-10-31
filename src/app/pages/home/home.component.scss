@@ -444,7 +444,7 @@ footer {
       text-align: center;
     }
 }
-@media screen and (max-width: 426px) {
+@media screen and (max-width: 450px) {
     .filter .Types{
         width: 95%;
     }
@@ -461,6 +461,17 @@ footer {
       font-size: 24px;
       text-align: center;
     }  
+    .georgian-button {
+      padding: 0.2rem 1.1rem !important;
+      width: auto;
+      height: 55px;
+      display: flex;
+      margin-right: 40px;
+  }
+  h2 {
+    font-size: 20px;
+    text-align: center;
+}
 }
 @media screen and (max-width: 321px) {
     .filter .Types{
