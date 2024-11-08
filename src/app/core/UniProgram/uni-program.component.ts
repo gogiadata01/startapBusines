@@ -86,7 +86,8 @@ export class UniProgramComponent implements OnInit, OnDestroy {
       });
     } else {
       // Reset to show all UniCards if search is cleared
-      this.filteredUniCards = this.currentProgramNames; // Reset to default programs
+      this.filteredUniCards = this.currentProgramNames;
+      this.isSearchClicked = false; // Reset the search state
     }
   }
   

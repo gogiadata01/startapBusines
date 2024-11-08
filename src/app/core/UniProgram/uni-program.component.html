@@ -1,7 +1,11 @@
-<app-navbar-with-wave/>
+<app-navbar-with-wave></app-navbar-with-wave>
+
+<!-- Title Section -->
 <div class="Title">
   <h3>პროგრამები</h3>
 </div>
+
+<!-- Search Box Section -->
 <div class="Searchbox">
   <form [formGroup]="Search" (ngSubmit)="onSearch()">
     <div class="searchbox">
@@ -10,7 +14,6 @@
         class="searchtext"
         type="text"
         placeholder="ჩაწერე პროგრამის სახელი"
-        text-align="center"
       />
       <button type="submit" class="searchbtn">
         <svg
@@ -30,6 +33,7 @@
   </form>
 </div>
 
+<!-- Guide Section -->
 <div class="guide">
   <!-- Show this block if search is NOT clicked -->
   <div
@@ -44,9 +48,9 @@
           type="button"
           data-bs-toggle="collapse"
           [attr.data-bs-target]="'#flush-collapse' + i"
-          aria-expanded="i === 0"
           [attr.aria-controls]="'flush-collapse' + i"
           (click)="onAccordionClick(field.fieldName)"
+          [attr.aria-expanded]="i === 0"
         >
           {{ field.fieldName }}
         </button>
@@ -65,16 +69,12 @@
                   <p>დაელოდეთ პროგრამების ჩატვირთვას</p>
                 </div>
                 <div
-                  *ngIf="currentProgramNames.length; else noPrograms"
+                  *ngIf="currentProgramNames.length"
                   class="top1 flex-wrap"
                   style="gap: 34px; align-items: center"
                 >
                   <div
-                    *ngFor="
-                      let program of filteredUniCards.length > 0
-                        ? filteredUniCards
-                        : currentProgramNames
-                    "
+                    *ngFor="let program of filteredUniCards.length > 0 ? filteredUniCards : currentProgramNames"
                     (click)="onCardClicked(program.programname)"
                     class="btn rounded-pill"
                     [ngStyle]="{
@@ -95,11 +95,6 @@
                     {{ program.programname }}
                   </div>
                 </div>
-                <ng-template #noPrograms>
-                  <div class="no-programs">
-                    <p>პროგრამები არ არის ხელმისაწვდომი</p>
-                  </div>
-                </ng-template>
               </div>
             </div>
           </div>
@@ -114,12 +109,10 @@
     class="accordion accordion-flush"
     id="accordionFlushExample"
   >
-    <!-- Show message if filteredUniCards is empty -->
     <div *ngIf="filteredUniCards.length === 0" class="no-programs">
       <p>არ მოიძებნა ცადე თავიდან</p>
     </div>
 
-    <!-- Show the accordion if filteredUniCards is not empty -->
     <div *ngIf="filteredUniCards.length > 0">
       <div
         *ngFor="let field of filteredUniCards; let i = index"
@@ -131,9 +124,9 @@
             type="button"
             data-bs-toggle="collapse"
             [attr.data-bs-target]="'#flush-collapse' + i"
-            aria-expanded="i === 0"
             [attr.aria-controls]="'flush-collapse' + i"
             (click)="onAccordionClick(field.fieldName)"
+            [attr.aria-expanded]="i === 0"
           >
             {{ field.fieldName }}
           </button>
@@ -148,10 +141,7 @@
             <div class="program">
               <div class="ProgramNames col">
                 <div class="container">
-                  <div
-                    class="top1 flex-wrap"
-                    style="gap: 34px; align-items: center"
-                  >
+                  <div class="top1 flex-wrap" style="gap: 34px; align-items: center">
                     <div
                       *ngFor="let program of filteredUniCards"
                       (click)="onCardClicked(program.programName)"
