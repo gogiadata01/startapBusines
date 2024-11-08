@@ -55,10 +55,7 @@
           </ul>
           <ul class="navbar-nav ms-auto">
             <li class="nav-item mx-2">
-              <a
-                routerLink="/Pupil/PersonalPage"
-                class="nav-link text-dark h5"
-              >
+              <a routerLink="/Pupil/PersonalPage" class="nav-link text-dark h5">
                 <svg
                   id="svg2"
                   xmlns="http://www.w3.org/2000/svg"
@@ -134,10 +131,10 @@
               <li class="nav-item">
                 <a class="nav-link mx-2" routerLink="/Pupil/Quize">ქვიზები</a>
               </li>
+              <li class="nav-item" *ngIf="!isLoggedIn">
+                <a class="nav-link mx-2" routerLink="/SignUp">ავტორიზაცია</a>
+              </li>
             </ul>
-            <li class="nav-item" *ngIf="!isLoggedIn">
-              <a class="nav-link mx-2" routerLink="/SignUp">ავტორიზაცია</a>
-            </li>
             <ul class="navbar-nav ms-auto">
               <li class="nav-item mx-2">
                 <a

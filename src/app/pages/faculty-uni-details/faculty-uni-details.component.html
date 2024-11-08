@@ -10,19 +10,18 @@
       </div>
     </div>
     <div class="right">
-      <div class="title">
-        <h3>{{ UniCard.title }}</h3>
-      </div>
-      <div class="price">
-        <div>
-          <h4>2500₾</h4>
-        </div>
-      </div>
-      <div class="code">
-        <div>
-          <p>123456789</p>
-        </div>
-      </div>
+      @for (item of UniCard.sections; track $index) {
+        @for (program of item.programNames; track $index) {
+          <div class="title">
+            <h3>{{ UniCard.title }}</h3>
+          </div>
+          <div class="price">
+            <div>
+              <h4> {{program.fasi}} </h4>
+            </div>
+          </div>
+        }
+      }
     </div>
   </div>
   <div class="bottom">
@@ -218,7 +217,7 @@
     </div>
 
     <!-- Case for the second category -->
-    <div *ngSwitchCase="'მიზანი'">
+    <!-- <div *ngSwitchCase="'მიზანი'">
       <ng-container *ngFor="let section of UniCard.sections" >
         <ng-container  *ngFor="let programname of section.programNames">
           <div class="static">
@@ -286,7 +285,7 @@
           </div>
         </ng-container>
       </ng-container>
-    </div>
+    </div> -->
 
     <!-- Add more cases for other categories as needed -->
     <div *ngSwitchCase="'დასაქმება'">

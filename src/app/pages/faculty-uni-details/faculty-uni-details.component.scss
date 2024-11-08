@@ -230,6 +230,7 @@ div{
 .col-lg-4 {
   margin-bottom: 10px;
   height: 50px;
+  width: 50%;
 }
 
 .card {
@@ -453,7 +454,7 @@ h1{
         font-size: 15px;
         }
 }
-@media screen and (max-width: 430px) {
+@media screen and (max-width: 450px) {
   .top{
       flex-direction: column;
 
@@ -601,7 +602,7 @@ h1{
   
     }
 }
-@media screen and (max-width: 325px) {
+@media screen and (max-width: 340px) {
   .top .left .img{
     padding-left: 25px;
 
