@@ -90,16 +90,6 @@ export class UniProgramComponent implements OnInit, OnDestroy {
       this.isSearchClicked = false; // Reset the search state
     }
   }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-
 createFieldProgramMapping(): void {
   this.fields.forEach((field) => {
     this.programCardService.getFieldProgram(field.fieldName).pipe(takeUntil(this.destroy$)).subscribe({
@@ -115,13 +105,6 @@ createFieldProgramMapping(): void {
     });
   });
 }
-
-
-
-
-
-
-
 onAccordionClick(fieldName: string): void {
   this.programCardService.getProgramsByField(fieldName).subscribe(programs => {
     this.currentProgramNames = programs;
