@@ -1,17 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, Validators,ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, Validators, ReactiveFormsModule } from '@angular/forms';
 import { QuizService } from '../../quiz.service';
-import {QuizDto} from '../../core/models/common.model'
+import { QuizDto } from '../../core/models/common.model'; // Corrected import
 import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-add-quiz-with-api',
   standalone: true,
-  imports: [ NgFor,
-    NgIf,
-    ReactiveFormsModule],
+  imports: [NgFor, ReactiveFormsModule],
   templateUrl: './add-quiz-with-api.component.html',
-  styleUrl: './add-quiz-with-api.component.scss'
+  styleUrls: ['./add-quiz-with-api.component.scss']
 })
 export class AddQuizWithApiComponent implements OnInit {
   quizForm: FormGroup;
@@ -22,7 +20,14 @@ export class AddQuizWithApiComponent implements OnInit {
   ) {
     this.quizForm = this.fb.group({
       time: ['', Validators.required],
-      questions: this.fb.array([])
+      questions: this.fb.array([]),
+      bonusQuestion: this.fb.group({
+        question: ['', Validators.required],
+        correctAnswer: ['', Validators.required],
+        img: [''],
+        incorrectAnswers: this.fb.array([this.createIncorrectAnswer()]),
+        coins: [3],  // Default to 3 coins
+      })
     });
   }
 
@@ -30,22 +35,26 @@ export class AddQuizWithApiComponent implements OnInit {
     this.addQuestion(); // Add at least one question initially
   }
 
-  get questions(): FormArray {
-    return this.quizForm.get('questions') as FormArray;
+  get questions() {
+    return (this.quizForm.get('questions') as FormArray);
+  }
+
+  get bonusQuestion() {
+    return this.quizForm.get('bonusQuestion') as FormGroup;
   }
 
   createQuestion(): FormGroup {
     return this.fb.group({
       question: ['', Validators.required],
-      correctanswer: ['', Validators.required],
-      img:['',],
+      correctAnswer: ['', Validators.required],
+      img: [''],
       incorrectAnswers: this.fb.array([this.createIncorrectAnswer()])
     });
   }
 
   createIncorrectAnswer(): FormGroup {
     return this.fb.group({
-      inccorectAnswer: ['', Validators.required]
+      answer: ['', Validators.required]
     });
   }
 
@@ -71,10 +80,19 @@ export class AddQuizWithApiComponent implements OnInit {
     return this.questions.at(questionIndex).get('incorrectAnswers') as FormArray;
   }
 
+  addBonusIncorrectAnswer(): void {
+    const incorrectAnswers = this.bonusQuestion.get('incorrectAnswers') as FormArray;
+    incorrectAnswers.push(this.createIncorrectAnswer());
+  }
+
+  removeBonusIncorrectAnswer(answerIndex: number): void {
+    const incorrectAnswers = this.bonusQuestion.get('incorrectAnswers') as FormArray;
+    incorrectAnswers.removeAt(answerIndex);
+  }
+
   onSubmit(): void {
     if (this.quizForm.valid) {
-      const quiz: QuizDto = this.quizForm.value;
-      this.quizService.createQuiz(quiz).subscribe(
+      this.quizService.createQuiz(this.quizForm.value).subscribe(
         response => {
           console.log('Quiz added successfully', response);
           // Handle successful response
@@ -85,5 +103,5 @@ export class AddQuizWithApiComponent implements OnInit {
         }
       );
     }
-}
+  }
 }
