@@ -1,59 +1,57 @@
-
-  .container {
+.container {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	width: 100%;
 	height: 100vh;
 	margin-top: 240px;
-  }
   
-  .inner {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	width: 100%;
-  }
+	.inner {
+	  display: flex;
+	  flex-direction: column;
+	  align-items: center;
+	  width: 100%;
+	}
   
-  .block {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	position: relative;
-	width: 70%;
-	margin: 40px auto;
-	background-color: #342833;
-	border-radius: 20px;
-  
-	.avatar {
-	  display: block;
-	  width: 150px;
-	  height: 150px;
-	  border-radius: 50%;
-	  background-position: 50% 50%;
-	  background-size: cover;
-	  background-repeat: no-repeat;
-	  background-image: url(../../../assets/img/Logo-1.png);
+	.block {
+	  display: flex;
+	  flex-direction: column;
+	  align-items: center;
 	  position: relative;
-	  bottom: 70px;
-	}
+	  width: 70%;
+	  margin: 40px auto;
+	  background-color: #342833;
+	  border-radius: 20px;
   
-	h1,
-	.info,
-	.btn {
-	  margin: 16px auto;
-	  color:whitesmoke;
-	  text-align: center;
-	}
+	  .avatar {
+		display: block;
+		width: 150px;
+		height: 150px;
+		border-radius: 50%;
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-image: url(../../../assets/img/Logo-1.png);
+		position: relative;
+		bottom: 70px;
+	  }
   
-	h1 {
+	  h1,
+	  .info,
+	  .btn {
+		margin: 16px auto;
+		color: whitesmoke;
+		text-align: center;
+	  }
+  
+	  h1 {
 		position: relative;
 		bottom: 30px;
-	}
-	.btn {
-		width: 20%;
-		margin: 2 auto; 
-		padding: 10px;
+	  }
+  
+	  .btn {
+		width: 150px; 
+		padding: 10px; 
 		background-color: #707b73;
 		color: white;
 		border: none;
@@ -62,57 +60,64 @@
 		cursor: pointer;
 		transition: background-color 0.3s, box-shadow 0.3s;
 		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-	  
+  
 		&:hover {
-		  background-color: #5a6b63; // ღილაკის ფერის შეცვლა
+		  background-color: #5a6b63; 
 		  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 		}
 	  }
-  // Responsive styles
-  @media (max-width: 780px) {
-	.block {
-	  padding: 20px;
-	} 
-	.avatar {
-	  width: 100px;
-	  height: 100px;
-	  position: absolute;
-	  bottom: 340px;
-	  z-index: 2;
 	}
   
-	h1 {
-	  font-size: 1.5rem;
-	}
-  
-	.btn {
-	  width: 150px;
-	  padding: 6px;
-	  max-width: 100%;	
-	}
-
-  }
-  @media (max-width: 1030px) {
-	.block{
+	// Responsive styles
+	@media (max-width: 1030px) {
+	  .block {
 		margin-top: 250px !important;
-	}
-}
+		width: 90%; 
+	  }
   
-  @media  (max-width: 480px) {
-	.block {
-	  padding: 15px;
-	  margin: 20px;
-	}
-  
-	h1 {
-	  font-size: 1.2rem;
+	  .btn {
+		width: 80%; 
+	  }
 	}
   
-	.btn {
-	  width: 80%;
-	//   padding: 5px;
-	//   max-width: 100%;
+	@media (max-width: 780px) {
+	  .block {
+		padding: 20px;
+		margin: 20px; 
+	  }
+  
+	  .avatar {
+		width: 100px;
+		height: 100px;
+		position: absolute;
+		bottom: 340px;
+		z-index: 2;
+	  }
+  
+	  h1 {
+		font-size: 1.5rem;
+		bottom: 20px; 
+	  }
+  
+	  .btn {
+		width: 80%; 
+		padding: 8px;
+	  }
+	}
+  
+	@media (max-width: 320px) {
+	  .block {
+		padding: 15px;
+		margin: 10px; 
+	  }
+  
+	  h1 {
+		font-size: 1rem;
+	  }
+  
+	  .btn {
+		width: 90%; 
+		padding: 5px;
+	  }
 	}
   }
-
-}

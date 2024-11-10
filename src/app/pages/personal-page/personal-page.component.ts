@@ -36,7 +36,7 @@ export class PersonalPageComponent implements OnInit {
     this.User.currentUser$.subscribe((user) =>{
       this.currentUser = user;
       if (!this.currentUser) {
-        this.router.navigateByUrl('/SignUp'); // Redirect if user is not logged in
+        this.router.navigateByUrl('/SignUp'); 
       }
   
     } )
@@ -47,4 +47,3 @@ export class PersonalPageComponent implements OnInit {
     this.router.navigateByUrl('SignUp')
   }
 }
-// ნავბარი მთავრდება აქ
