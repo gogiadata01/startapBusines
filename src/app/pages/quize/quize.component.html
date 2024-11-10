@@ -90,18 +90,8 @@
         </div>
       </div>
       <div class="Footer">
-        <div class="time">
-          <p>დაწყების დრო</p>
-          <p>{{ quiz?.time }}</p>
-        </div>
         <div class="start">
           <Button (click)="startQuiz()" [disabled]="!quiz">დაწყება</Button>
-        </div>
-        <div class="endtime">
-          <p>დარჩენილი დრო</p>
-          <div *ngIf="quiz">
-            <p>9 წუთი</p>
-          </div>
         </div>
       </div>
     </div>
@@ -155,7 +145,7 @@
     </div>
 
     <!-- Button to move to the next question -->
-    <div class="nextBtn">
+    <!-- <div class="nextBtn">
       <button
         (click)="nextQuestion()"
         [disabled]="
@@ -165,7 +155,7 @@
       >
         {{ isBonusQuestion ? "Finish Quiz" : "Next" }}
       </button>
-    </div>
+    </div> -->
 
     <!-- Displaying selected answer -->
     <p>

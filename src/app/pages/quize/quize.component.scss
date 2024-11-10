@@ -143,8 +143,6 @@ h3{
       }
     }
   }
-
-
   .answers {
     .row {
       display: flex;
@@ -182,6 +180,11 @@ h3{
   margin-top: 100px !important;
 }
 @media (max-width: 450px) {
+  .question{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
   .mainfooter{
     margin-top: 0px !important;
   }
