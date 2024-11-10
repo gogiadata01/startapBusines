@@ -41,8 +41,8 @@ export class RecoveryPassowrdComponent {
       this.UserService.recoverPassword(formValues.email, formValues.newPassword).subscribe({
         next: (response) => {
           Swal.fire({
-            title: 'Success',
-            text: 'Password updated successfully',
+            title: 'პაროლი განახლდა',
+            text: 'პაროლი განახლებულია',
             icon: 'success',
             showConfirmButton: false,
             timer: 1800

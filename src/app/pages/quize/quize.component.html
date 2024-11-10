@@ -100,7 +100,6 @@
         <div class="endtime">
           <p>დარჩენილი დრო</p>
           <div *ngIf="quiz">
-            <!-- Display time only when quiz is not null -->
             <p>9 წუთი</p>
           </div>
         </div>
@@ -108,24 +107,32 @@
     </div>
   </div>
 </section>
-
 <div *ngIf="quizStarted" class="quizcontainer">
-  <div class="quiz-container" *ngIf="!isLoading && quiz?.questions?.length">
+  <!-- Quiz container -->
+  <div *ngIf="!isLoading && quiz?.questions?.length" class="quiz-container">
+    <!-- Header section displaying scores and remaining time -->
     <div class="header row">
-      <div class="col-lg-3 score">სწორი {{ correctAnswersCount }}</div>
+      <div class="col-lg-3 score">სწორი: {{ correctAnswersCount }}</div>
       <div class="col-lg-3 progress">
         კითხვა {{ currentQuestionIndex + 1 }} / {{ quiz?.questions?.length }}
       </div>
-      <div class="col-lg-3 status">არასწორი {{ incorrectAnswersCount }}</div>
+      <div class="col-lg-3 status">არასწორი: {{ incorrectAnswersCount }}</div>
       <div class="col-lg-3 timer">
         დარჩენილი დრო: {{ formatTime(timeLeftForQuiz) }}
       </div>
     </div>
 
+    <!-- Question display (main or bonus question) -->
     <div class="question">
-      {{ quiz?.questions?.[currentQuestionIndex]?.question }}?
+      <h5 *ngIf="!isBonusQuestion">
+        {{ quiz?.questions?.[currentQuestionIndex]?.question }}?
+      </h5>
+      <h3 *ngIf="isBonusQuestion">
+        ბონუს კითხვა {{ bonusQuestion?.question }}?
+      </h3>
     </div>
 
+    <!-- Answers section -->
     <div class="answers">
       <div class="row">
         <div
@@ -134,7 +141,10 @@
         >
           <button
             class="answer"
-            [class.selected]="selectedAnswers[currentQuestionIndex] === answer"
+            [class.selected]="
+              selectedAnswers[currentQuestionIndex] === answer ||
+              bonusAnswerSelected === answer
+            "
             (click)="selectAnswer(answer)"
             style="margin: 10px 0; padding: 10px; width: 100%"
           >
@@ -144,26 +154,40 @@
       </div>
     </div>
 
+    <!-- Button to move to the next question -->
     <div class="nextBtn">
       <button
         (click)="nextQuestion()"
-        [disabled]="!selectedAnswers[currentQuestionIndex]"
+        [disabled]="
+          !selectedAnswers[currentQuestionIndex] && !bonusAnswerSelected
+        "
         style="margin-top: 20px"
       >
-        Next
+        {{ isBonusQuestion ? "Finish Quiz" : "Next" }}
       </button>
     </div>
 
-    <p>შენი არჩეული პასუხია: {{ selectedAnswers[currentQuestionIndex] }}</p>
+    <!-- Displaying selected answer -->
+    <p>
+      შენი არჩეული პასუხია:
+      {{
+        isBonusQuestion
+          ? bonusAnswerSelected
+          : selectedAnswers[currentQuestionIndex]
+      }}
+    </p>
   </div>
 
-  <div *ngIf="!showQuiz && quizStarted && !isLoading" class="results-container">
+  <!-- Displaying the quiz completion message -->
+  <div *ngIf="quizCompleted" class="results-container">
     <h3>Quiz Completed!</h3>
     <p>Correct Answers: {{ correctAnswersCount }}</p>
     <p>Incorrect Answers: {{ incorrectAnswersCount }}</p>
     <button (click)="showCompletionAlert()">View Results</button>
   </div>
 </div>
+
+<!-- Footer Section -->
 <div class="mainfooter">
   <app-footer-for-pupil />
 </div>

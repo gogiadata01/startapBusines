@@ -134,14 +134,15 @@ export interface Programname {
   programName: string;
 }
 export interface QuizDto {
-  time:string
+  time: string;
   questions: QuestionDto[];
+  bonusQuestion: BonusQuestionDto; // Add a bonus question
 }
 
 export interface QuestionDto {
   question: string;
   correctanswer: string;
-  img:string | null
+  img: string | null;
   incorrectAnswers: IncorrectAnswerDto[];
 }
 
@@ -149,3 +150,37 @@ export interface IncorrectAnswerDto {
   inccorectAnswer: string;
 }
 
+export interface BonusQuestionDto {
+  question: string;
+  correctanswer: string;
+  img: string | null;
+  incorrectAnswers: IncorrectAnswerDto[];
+}
+
+
+
+
+export interface QuizDto1 {
+  time: string;
+  questions: QuestionDto1[];
+  bonusQuestion: BonusQuestionDto1; // Add a bonus question
+}
+
+export interface QuestionDto1 {
+  question: string;
+  correctAnswer: string; // Corrected to match C# convention
+  img: string | null;
+  incorrectAnswers: IncorrectAnswerDto1[];
+}
+
+export interface IncorrectAnswerDto1 {
+  answer: string; // Fixed typo and matched C# property name
+}
+
+export interface BonusQuestionDto1 {
+  question: string;
+  correctAnswer: string; // Corrected to match C# convention
+  img: string | null;
+  incorrectAnswers: IncorrectAnswerDto[];
+  coins: number; // Bonus question worth 3 coins in the C# model
+}

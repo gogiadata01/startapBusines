@@ -13,7 +13,7 @@
       <input id="question-{{ i }}" formControlName="question" />
 
       <label for="correctanswer-{{ i }}">Correct Answer:</label>
-      <input id="correctanswer-{{ i }}" formControlName="correctanswer" />
+      <input id="correctanswer-{{ i }}" formControlName="correctAnswer" />
 
       <label for="img-{{ i }}">Img:</label>
       <input id="img-{{ i }}" formControlName="img" />
@@ -29,7 +29,7 @@
           <label for="incorrectAnswer-{{ i }}-{{ j }}">Incorrect Answer:</label>
           <input
             id="incorrectAnswer-{{ i }}-{{ j }}"
-            formControlName="inccorectAnswer"
+            formControlName="answer"
           />
           <button type="button" (click)="removeIncorrectAnswer(i, j)">
             Remove Incorrect Answer
@@ -43,6 +43,39 @@
       <button type="button" (click)="removeQuestion(i)">Remove Question</button>
     </div>
     <button type="button" (click)="addQuestion()">Add Question</button>
+  </div>
+
+  <div formGroupName="bonusQuestion">
+    <label for="bonusQuestion-question">Bonus Question:</label>
+    <input id="bonusQuestion-question" formControlName="question" />
+
+    <label for="bonusQuestion-correctanswer">Bonus Correct Answer:</label>
+    <input id="bonusQuestion-correctanswer" formControlName="correctAnswer" />
+
+    <label for="bonusQuestion-img">Bonus Img:</label>
+    <input id="bonusQuestion-img" formControlName="img" />
+
+    <div formArrayName="incorrectAnswers">
+      <div
+        *ngFor="
+          let incorrectAnswer of bonusQuestion.get('incorrectAnswers')?.value;
+          let j = index
+        "
+        [formGroupName]="j"
+      >
+        <label for="bonusIncorrectAnswer-{{ j }}">Incorrect Answer:</label>
+        <input id="bonusIncorrectAnswer-{{ j }}" formControlName="answer" />
+        <button type="button" (click)="removeBonusIncorrectAnswer(j)">
+          Remove Incorrect Answer
+        </button>
+      </div>
+      <button type="button" (click)="addBonusIncorrectAnswer()">
+        Add Incorrect Answer
+      </button>
+    </div>
+
+    <label for="bonusQuestion-coins">Coins:</label>
+    <input id="bonusQuestion-coins" formControlName="coins" />
   </div>
 
   <button type="submit">Submit</button>
