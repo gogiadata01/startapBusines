@@ -30,10 +30,15 @@ import { NavbarWithWaveComponent } from "../navbar-with-wave/navbar-with-wave.co
   styleUrl: './faculti-details.component.scss'
 })
 export class FacultiDetailsComponent implements OnInit{
-  ProgramCard!:ProgramCardDto
-  UniCard:UniCardForFacultyDetails[]=[]
-  ProgramName:any
+  ProgramCard!: ProgramCardDto;
+  UniCard: UniCardForFacultyDetails[] = [];
+  ProgramName:any;
 
+  private prioritizedUniversities: string[] = [
+    'საქართველოს უნივერსიტეტი',
+    // 'თბილისის ივანე ჯავახიშვილის სახელობის სახელმწიფო უნივერსიტეტი',
+    // 'ნიუ ვიჟენ უნივერსიტეტი'
+  ];
   constructor(private ngZone: NgZone,private cdr: ChangeDetectorRef,private programCardService:ProgramCardService,private UniCardService: HomeUniCardService,private route: ActivatedRoute,private router: Router) {
   }
 
@@ -41,17 +46,39 @@ ngOnInit(): void {
    this.ProgramName = this.route.snapshot.paramMap.get('n')
   this.GetAllUniCard()
 }
-GetAllUniCard(){
+GetAllUniCard() {
   this.UniCardService.getUniCardByProgramName(this.ProgramName).subscribe({
-    next:(Unicard) => {
+    next: (Unicard) => {
       this.UniCard = Unicard;
-      console.log('Uni Cards:', this.UniCard); // Check if data is correctly coming
+      console.log('Original Uni Cards:', this.UniCard);
+
+      // Sort the university cards
+      this.sortUniCards();
+
+      // Detect changes after sorting
+      this.cdr.detectChanges();
+
+      console.log('Sorted Uni Cards:', this.UniCard);
     },
     error: (err) => {
-      console.error('ამ პროგრამაზე ჯერ არ არსებობს უნივერსიტეტი',);
+      console.error('ამ პროგრამაზე ჯერ არ არსებობს უნივერსიტეტი');
     }
-  })
+  });
 }
+
+
+private sortUniCards(): void {
+  this.UniCard.sort((a, b) => {
+    const aPriority = this.prioritizedUniversities.indexOf(a.title);
+    const bPriority = this.prioritizedUniversities.indexOf(b.title);
+
+    const aIndex = aPriority !== -1 ? aPriority : Infinity;
+    const bIndex = bPriority !== -1 ? bPriority : Infinity;
+
+    return aIndex - bIndex;
+  });
+}
+
 getId(): string | null {
   return this.route.snapshot.paramMap.get('id');
 }
