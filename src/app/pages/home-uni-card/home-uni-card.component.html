@@ -33,10 +33,7 @@
 <section class="projects section" id="projects">
   <div class="projects__container container grid">
     <article
-      *ngFor="
-        let uni of filteredUniCards.length > 0 ? filteredUniCards : UniCard;
-        let i = index
-      "
+      *ngFor="let uni of (filteredUniCards.length > 0 ? filteredUniCards : UniCardBytitle); let i = index"
       (click)="onCardClicked(uni.id)"
       class="projects__card"
     >
@@ -55,3 +52,4 @@
     </article>
   </div>
 </section>
+

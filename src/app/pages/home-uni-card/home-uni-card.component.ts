@@ -24,9 +24,11 @@ import { NavbarWithWaveComponent } from "../navbar-with-wave/navbar-with-wave.co
   styleUrl: './home-uni-card.component.scss'
 })
 export class HomeUniCardComponent implements OnInit, OnDestroy {
-  UniCard:UniCardDto[]=[]
+  UniCard: UniCardDto[] = [];
+  UniCardBytitle: UniCardDto[] = [];
   Search: FormGroup;
-  filteredUniCards: UniCardDto[] = []; // Holds filtered UniCards based on search
+  filteredUniCards: UniCardDto[] = [];
+  private priorityUniversity = 'ნიუ ვიჟენ უნივერსიტეტი'; // Single prioritized university
 
   constructor(private fb: FormBuilder,private cdr: ChangeDetectorRef, private ngZone: NgZone , private router: Router,private HomeUniCardService:HomeUniCardService) {
     this.Search = this.fb.group({
@@ -86,35 +88,55 @@ ngOnDestroy() {
 private isNavbarVisible = false;
 private destroy$ = new Subject<void>();
 private photoHeight = 0;
-GetAllUniCard(){
+GetAllUniCard() {
   this.HomeUniCardService.getData().subscribe({
-    next:(Unicard) => {
+    next: (Unicard) => {
       this.UniCard = Unicard;
+      this.sortUniCards();
       this.filteredUniCards = []; // Clear any filtered data
-      console.log('Program Cards:', this.UniCard); // Check if data is correctly coming
+      console.log('Program Cards:', this.UniCard);
     },
     error: (err) => {
       console.error('Error fetching program data:', err);
     }
-  })
+  });
+}
+sortUniCards() {
+  this.UniCardBytitle = this.UniCard.sort((a, b) => {
+    // Check if either matches the priority university
+    if (a.title === this.priorityUniversity && b.title !== this.priorityUniversity) {
+      return -1;
+    } else if (a.title !== this.priorityUniversity && b.title === this.priorityUniversity) {
+      return 1;
+    }
+    // Use localeCompare with Georgian locale ('ka') for sorting
+    return a.title.localeCompare(b.title, 'ka');
+  });
 }
 
 // Function to trigger on search
+
 onSearch() {
   const searchTitle = this.Search.get('title')?.value;
-  
   if (searchTitle) {
-    // Fetch the filtered UniCards by title
     this.HomeUniCardService.getUniCardByTitleMainTextUrl(searchTitle).subscribe({
       next: (filteredData) => {
-        this.filteredUniCards = filteredData; // Update the filtered list
+        this.filteredUniCards = filteredData;
+        // Sort filtered results with the priority university at the top
+        this.filteredUniCards.sort((a, b) => {
+          if (a.title === this.priorityUniversity && b.title !== this.priorityUniversity) {
+            return -1;
+          } else if (a.title !== this.priorityUniversity && b.title === this.priorityUniversity) {
+            return 1;
+          }
+          return a.title.localeCompare(b.title, 'ka');
+        });
       },
       error: (err) => {
         console.error('Error in search:', err);
       }
     });
   } else {
-    // If the search is cleared, reset to show all UniCards
     this.filteredUniCards = [];
   }
 }
@@ -122,3 +144,4 @@ onCardClicked(cardkey:any) :void{
   this.router.navigate(['/Pupil/HomeUni/',cardkey])
 }
 }
+
