@@ -136,7 +136,7 @@ export interface Programname {
 export interface QuizDto {
   time: string;
   questions: QuestionDto[];
-  bonusQuestion: BonusQuestionDto; // Add a bonus question
+  bonusQuestion: BonusQuestionDto; 
 }
 
 export interface QuestionDto {
@@ -163,24 +163,30 @@ export interface BonusQuestionDto {
 export interface QuizDto1 {
   time: string;
   questions: QuestionDto1[];
-  bonusQuestion: BonusQuestionDto1; // Add a bonus question
+  bonusQuestion: BonusQuestionDto1;
 }
 
 export interface QuestionDto1 {
   question: string;
-  correctAnswer: string; // Corrected to match C# convention
+  correctAnswer: string; 
   img: string | null;
   incorrectAnswers: IncorrectAnswerDto1[];
 }
 
 export interface IncorrectAnswerDto1 {
-  answer: string; // Fixed typo and matched C# property name
+  answer: string; 
 }
 
 export interface BonusQuestionDto1 {
   question: string;
-  correctAnswer: string; // Corrected to match C# convention
+  correctAnswer: string;
   img: string | null;
   incorrectAnswers: IncorrectAnswerDto[];
-  coins: number; // Bonus question worth 3 coins in the C# model
+  coins: number; 
+}
+export interface UniversityVisit {
+  id: number;
+  universityName: string;
+  userId: string;
+  visitDate: string; 
 }

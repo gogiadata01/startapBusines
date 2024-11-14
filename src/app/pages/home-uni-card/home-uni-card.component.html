@@ -34,7 +34,7 @@
   <div class="projects__container container grid">
     <article
       *ngFor="let uni of (filteredUniCards.length > 0 ? filteredUniCards : UniCardBytitle); let i = index"
-      (click)="onCardClicked(uni.id)"
+      (click)="onCardClicked(uni.id,uni.title)"
       class="projects__card"
     >
       <div class="projects__image">

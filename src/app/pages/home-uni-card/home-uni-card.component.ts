@@ -16,6 +16,7 @@ import { catchError } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators, FormArray, NgForm, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { NgFor } from '@angular/common';
 import { NavbarWithWaveComponent } from "../navbar-with-wave/navbar-with-wave.component";
+import {UniversityVisitService} from '../../university-visit-service.service'
 @Component({
   selector: 'app-home-uni-card',
   standalone: true,
@@ -30,7 +31,7 @@ export class HomeUniCardComponent implements OnInit, OnDestroy {
   filteredUniCards: UniCardDto[] = [];
   private priorityUniversity = 'ნიუ ვიჟენ უნივერსიტეტი'; // Single prioritized university
 
-  constructor(private fb: FormBuilder,private cdr: ChangeDetectorRef, private ngZone: NgZone , private router: Router,private HomeUniCardService:HomeUniCardService) {
+  constructor(private universityVisitService:UniversityVisitService,private fb: FormBuilder,private cdr: ChangeDetectorRef, private ngZone: NgZone , private router: Router,private HomeUniCardService:HomeUniCardService) {
     this.Search = this.fb.group({
       title: ['', Validators.required],
     })
@@ -140,7 +141,16 @@ onSearch() {
     this.filteredUniCards = [];
   }
 }
-onCardClicked(cardkey:any) :void{
+onCardClicked(cardkey:any,name:any) :void{
+  this.universityVisitService.logVisit(name).subscribe({
+    next: () => {
+      console.log(`Visit logged for ${name}`);
+    },
+    error: (err) => {
+      console.error('Error logging visit:', err);
+    }
+  });
+
   this.router.navigate(['/Pupil/HomeUni/',cardkey])
 }
 }
