@@ -31,7 +31,7 @@ export class QuizeComponent implements OnInit {
   quizStarted = false;
   quizCompleted = false;
   bonusQuestionAnswered = false;
-  totalQuizTimeInSeconds = 5 * 60; 
+  totalQuizTimeInSeconds = 6 * 60; 
   timeLeftForQuiz = this.totalQuizTimeInSeconds;
   quizIntervalSubscription: Subscription | undefined;
   currentUser: UserDto | null = null;
