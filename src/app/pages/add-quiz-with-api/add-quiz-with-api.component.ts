@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators, ReactiveFormsModule } from '@angular/forms';
 import { QuizService } from '../../quiz.service';
-import { QuizDto } from '../../core/models/common.model'; // Corrected import
+import { QuizDto } from '../../core/models/common.model';
 import { NgFor, NgIf } from '@angular/common';
 
 @Component({
@@ -21,13 +21,13 @@ export class AddQuizWithApiComponent implements OnInit {
     this.quizForm = this.fb.group({
       time: ['', Validators.required],
       questions: this.fb.array([]),
-      bonusQuestion: this.fb.group({
-        question: ['', Validators.required],
-        correctAnswer: ['', Validators.required],
-        img: [''],
-        incorrectAnswers: this.fb.array([this.createIncorrectAnswer()]),
-        coins: [3],  // Default to 3 coins
-      })
+      // bonusQuestion: this.fb.group({
+      //   question: [''],
+      //   correctAnswer: [''],
+      //   img: [''],
+      //   incorrectAnswers: this.fb.array([this.createIncorrectAnswer()]),
+      //   coins: [3], // Default value
+      // }, { validators: this.optionalBonusQuestionValidator })
     });
   }
 
@@ -90,18 +90,58 @@ export class AddQuizWithApiComponent implements OnInit {
     incorrectAnswers.removeAt(answerIndex);
   }
 
+  // Custom validator for bonus question
+// Custom validator for bonus question
+// optionalBonusQuestionValidator(control: FormGroup): { [key: string]: boolean } | null {
+//   const question = control.get('question');
+//   const correctAnswer = control.get('correctAnswer');
+//   const incorrectAnswers = control.get('incorrectAnswers') as FormArray;
+
+//   // If all fields inside the bonus question are empty, treat it as valid
+//   if (!question?.value && !correctAnswer?.value && incorrectAnswers?.length === 0) {
+//     return null; // No validation error if it's empty
+//   }
+
+//   // If any field is filled, validate it
+//   // Check if required fields are valid
+//   const questionValid = question?.valid || question?.value === '';
+//   const correctAnswerValid = correctAnswer?.valid || correctAnswer?.value === '';
+//   const incorrectAnswersValid = incorrectAnswers?.valid || incorrectAnswers?.length === 0;
+
+//   if (questionValid && correctAnswerValid && incorrectAnswersValid) {
+//     return null; // Return null if everything is valid
+//   }
+
+//   return { 'bonusQuestionInvalid': true }; // Return validation error if invalid
+// }
+
+
   onSubmit(): void {
+    // Log the form values to check if they are populated correctly
+    // console.log('Form Submitted:', this.quizForm.value);
+    
+    // Check if the quiz form is valid
     if (this.quizForm.valid) {
       this.quizService.createQuiz(this.quizForm.value).subscribe(
         response => {
           console.log('Quiz added successfully', response);
-          // Handle successful response
         },
         error => {
           console.error('Error adding quiz', error);
-          // Handle error response
         }
       );
+    } else {
+      // Check which fields are invalid and log the errors
+      // this.logFormErrors();
     }
   }
+
+  // logFormErrors(): void {
+  //   Object.keys(this.quizForm.controls).forEach(controlName => {
+  //     const control = this.quizForm.get(controlName);
+  //     if (control?.invalid) {
+  //       console.log(`${controlName} is invalid:`, control.errors);
+  //     }
+  //   });
+  // }
 }

@@ -1,6 +1,6 @@
 import { Component,OnInit,OnDestroy, NgZone, ViewChild ,ElementRef, } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import {UniversityProgramVisitService} from '../../university-program-visit.service'
 import { ActivatedRoute } from '@angular/router';
 import {ProgramCardDto, UniCardDto, UniCardForFacultyDetails} from "../../core/models/common.model";
 import { NgIf,NgFor } from '@angular/common';
@@ -39,7 +39,7 @@ export class FacultiDetailsComponent implements OnInit{
     // 'თბილისის ივანე ჯავახიშვილის სახელობის სახელმწიფო უნივერსიტეტი',
     // 'ნიუ ვიჟენ უნივერსიტეტი'
   ];
-  constructor(private ngZone: NgZone,private cdr: ChangeDetectorRef,private programCardService:ProgramCardService,private UniCardService: HomeUniCardService,private route: ActivatedRoute,private router: Router) {
+  constructor(private UniversityProgramVisit:UniversityProgramVisitService,private ngZone: NgZone,private cdr: ChangeDetectorRef,private programCardService:ProgramCardService,private UniCardService: HomeUniCardService,private route: ActivatedRoute,private router: Router) {
   }
 
 ngOnInit(): void {
@@ -88,6 +88,15 @@ getProgramName(): string | null {
 }
 
 OnCardClicked(id: any, title: any) {
+  this.UniversityProgramVisit.logVisit(title,id).subscribe({
+    next: () => {
+      console.log('Visit logged successfully');
+    },
+    error: (err) => {
+      console.error('Failed to log visit:', err);
+    }
+  });
+
   const FacultyId = this.getId();
   const ProgramName = this.getProgramName();
 

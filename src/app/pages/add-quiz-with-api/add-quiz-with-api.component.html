@@ -5,10 +5,7 @@
   </div>
 
   <div formArrayName="questions">
-    <div
-      *ngFor="let question of questions.controls; let i = index"
-      [formGroupName]="i"
-    >
+    <div *ngFor="let question of questions.controls; let i = index" [formGroupName]="i">
       <label for="question-{{ i }}">Question:</label>
       <input id="question-{{ i }}" formControlName="question" />
 
@@ -19,25 +16,12 @@
       <input id="img-{{ i }}" formControlName="img" />
 
       <div formArrayName="incorrectAnswers">
-        <div
-          *ngFor="
-            let incorrectAnswer of getIncorrectAnswers(i).controls;
-            let j = index
-          "
-          [formGroupName]="j"
-        >
+        <div *ngFor="let incorrectAnswer of getIncorrectAnswers(i).controls; let j = index" [formGroupName]="j">
           <label for="incorrectAnswer-{{ i }}-{{ j }}">Incorrect Answer:</label>
-          <input
-            id="incorrectAnswer-{{ i }}-{{ j }}"
-            formControlName="answer"
-          />
-          <button type="button" (click)="removeIncorrectAnswer(i, j)">
-            Remove Incorrect Answer
-          </button>
+          <input id="incorrectAnswer-{{ i }}-{{ j }}" formControlName="answer" />
+          <button type="button" (click)="removeIncorrectAnswer(i, j)">Remove Incorrect Answer</button>
         </div>
-        <button type="button" (click)="addIncorrectAnswer(i)">
-          Add Incorrect Answer
-        </button>
+        <button type="button" (click)="addIncorrectAnswer(i)">Add Incorrect Answer</button>
       </div>
 
       <button type="button" (click)="removeQuestion(i)">Remove Question</button>
@@ -45,7 +29,8 @@
     <button type="button" (click)="addQuestion()">Add Question</button>
   </div>
 
-  <div formGroupName="bonusQuestion">
+  <!-- Bonus Question Section -->
+  <!-- <div formGroupName="bonusQuestion">
     <label for="bonusQuestion-question">Bonus Question:</label>
     <input id="bonusQuestion-question" formControlName="question" />
 
@@ -56,27 +41,17 @@
     <input id="bonusQuestion-img" formControlName="img" />
 
     <div formArrayName="incorrectAnswers">
-      <div
-        *ngFor="
-          let incorrectAnswer of bonusQuestion.get('incorrectAnswers')?.value;
-          let j = index
-        "
-        [formGroupName]="j"
-      >
+      <div *ngFor="let incorrectAnswer of bonusQuestion.get('incorrectAnswers')?.value; let j = index" [formGroupName]="j">
         <label for="bonusIncorrectAnswer-{{ j }}">Incorrect Answer:</label>
         <input id="bonusIncorrectAnswer-{{ j }}" formControlName="answer" />
-        <button type="button" (click)="removeBonusIncorrectAnswer(j)">
-          Remove Incorrect Answer
-        </button>
+        <button type="button" (click)="removeBonusIncorrectAnswer(j)">Remove Incorrect Answer</button>
       </div>
-      <button type="button" (click)="addBonusIncorrectAnswer()">
-        Add Incorrect Answer
-      </button>
+      <button type="button" (click)="addBonusIncorrectAnswer()">Add Incorrect Answer</button>
     </div>
 
     <label for="bonusQuestion-coins">Coins:</label>
     <input id="bonusQuestion-coins" formControlName="coins" />
-  </div>
+  </div> -->
 
   <button type="submit">Submit</button>
 </form>

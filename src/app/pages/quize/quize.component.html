@@ -144,28 +144,6 @@
       </div>
     </div>
 
-    <!-- Button to move to the next question -->
-    <!-- <div class="nextBtn">
-      <button
-        (click)="nextQuestion()"
-        [disabled]="
-          !selectedAnswers[currentQuestionIndex] && !bonusAnswerSelected
-        "
-        style="margin-top: 20px"
-      >
-        {{ isBonusQuestion ? "Finish Quiz" : "Next" }}
-      </button>
-    </div> -->
-
-    <!-- Displaying selected answer -->
-    <p>
-      შენი არჩეული პასუხია:
-      {{
-        isBonusQuestion
-          ? bonusAnswerSelected
-          : selectedAnswers[currentQuestionIndex]
-      }}
-    </p>
   </div>
 
   <!-- Displaying the quiz completion message -->

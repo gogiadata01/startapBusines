@@ -133,29 +133,59 @@ export interface UniCardForFacultyDetails{
 export interface Programname {
   programName: string;
 }
+// export interface QuizDto {
+//   time: string;
+//   questions: QuestionDto[];
+//   bonusQuestion: BonusQuestionDto; 
+// }
+
+// export interface QuestionDto {
+//   question: string;
+//   correctanswer: string;
+//   img: string | null;
+//   incorrectAnswers: IncorrectAnswerDto[];
+// }
+
+// export interface IncorrectAnswerDto {
+//   inccorectAnswer: string;
+// }
+
+// export interface BonusQuestionDto {
+//   question: string;
+//   correctanswer: string;
+//   img: string | null;
+//   incorrectAnswers: IncorrectAnswerDto[];
+// }
 export interface QuizDto {
   time: string;
   questions: QuestionDto[];
-  bonusQuestion: BonusQuestionDto; 
+  bonusQuestion?: BonusQuestionDto;
 }
 
 export interface QuestionDto {
   question: string;
-  correctanswer: string;
+  correctanswer: any; 
   img: string | null;
   incorrectAnswers: IncorrectAnswerDto[];
 }
 
 export interface IncorrectAnswerDto {
-  inccorectAnswer: string;
+  answer: string;
 }
 
 export interface BonusQuestionDto {
-  question: string;
-  correctanswer: string;
-  img: string | null;
-  incorrectAnswers: IncorrectAnswerDto[];
+  question?: string;
+  correctAnswers?: CorrectAnswerDto[]; // Array of correct answers for the bonus question
+  img?: string | null;
+  incorrectAnswers?: IncorrectAnswerDto[];
+  coins: number;
 }
+
+export interface CorrectAnswerDto {
+  answer: string;
+}
+
+
 
 
 
@@ -189,4 +219,10 @@ export interface UniversityVisit {
   universityName: string;
   userId: string;
   visitDate: string; 
+}
+export interface UniversityProgramVisit {
+  id?: number;
+  universityName: string;
+  programName: string;
+  visitDate?: Date;
 }

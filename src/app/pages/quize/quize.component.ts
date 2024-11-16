@@ -195,6 +195,7 @@ export class QuizeComponent implements OnInit {
       this.endQuiz();
     }
   }
+  
   selectAnswer(answer: string): void {
     if (this.isBonusQuestion) {
       // Set the bonus answer
@@ -208,9 +209,13 @@ export class QuizeComponent implements OnInit {
     // Update the correct/incorrect answers counts
     this.updateAnswerCounts();
   
-    // Check if the quiz is complete
+    // Automatically move to the next question after selecting an answer
+    this.nextQuestion();  // Proceed to the next question
+  
+    // Optionally check if the quiz is complete
     this.checkQuizCompletion();
   }
+  
   updateAnswerCounts(): void {
     this.correctAnswersCount = 0;
     this.incorrectAnswersCount = 0;
