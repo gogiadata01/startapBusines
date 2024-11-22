@@ -109,7 +109,7 @@ h3{
   width: 100%;
   display: flex;
   justify-content: center;
-  position: relative;
+  position: relative !important;
 }
 .quiz-container {
   padding: 20px;
