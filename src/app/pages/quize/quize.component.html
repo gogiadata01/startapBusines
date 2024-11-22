@@ -91,11 +91,26 @@
       </div>
       <div class="Footer">
         <div class="start">
-          <Button (click)="startQuiz()" [disabled]="!quiz">დაწყება</Button>
+          <div class="start">
+            <button
+              [disabled]="!canStartQuiz || isCooldownActive"
+              (click)="startQuiz()"
+              class="btn btn-primary"
+            >
+              {{
+                isCooldownActive
+                  ? "დაწყება ხელმისაწვდომია " + formatTime(timeUntilNextAttempt)
+                  : "დაწყება"
+              }}
+            </button>
+          </div>
         </div>
       </div>
     </div>
   </div>
+  <!-- <button (click)="clearLocalStorage()" class="btn btn-danger">
+    წაშალე LocalStorage
+  </button> -->
 </section>
 <div *ngIf="quizStarted" class="quizcontainer">
   <!-- Quiz container -->
@@ -143,16 +158,15 @@
         </div>
       </div>
     </div>
-
   </div>
 
   <!-- Displaying the quiz completion message -->
-  <div *ngIf="quizCompleted" class="results-container">
+  <!-- <div *ngIf="quizCompleted" class="results-container">
     <h3>Quiz Completed!</h3>
     <p>Correct Answers: {{ correctAnswersCount }}</p>
     <p>Incorrect Answers: {{ incorrectAnswersCount }}</p>
     <button (click)="showCompletionAlert()">View Results</button>
-  </div>
+  </div> -->
 </div>
 
 <!-- Footer Section -->
