@@ -753,13 +753,14 @@ export class QuizeComponent implements OnInit {
     const lastQuizTime = localStorage.getItem('lastQuizTime');
     
     if (lastQuizTime) {
-        const lastQuizTimestamp = parseInt(lastQuizTime, 10);  
-        const currentTimestamp = new Date().getTime();  
-        const timeDifference = currentTimestamp - lastQuizTimestamp;  
+        const lastQuizTimestamp = parseInt(lastQuizTime, 10);  // Convert stored string to number
+        const currentTimestamp = new Date().getTime();  // Get current timestamp
+        const timeDifference = currentTimestamp - lastQuizTimestamp;  // Time difference in milliseconds
 
-        this.canStartQuiz = timeDifference >= 600000; 
+        // If the time difference is less than 1 minute (60000 milliseconds), set canStartQuiz to false
+        this.canStartQuiz = timeDifference >= 60000; // 60000 ms = 1 minute
     } else {
-        this.canStartQuiz = true; 
+        this.canStartQuiz = true; // Allow the quiz to start if no last quiz time is stored
     }
 }
 
@@ -775,12 +776,12 @@ export class QuizeComponent implements OnInit {
           icon: 'error',
           confirmButtonText: 'OK'
       });
-      return; 
+      return; // Prevent starting the quiz
   }
 
   
 
-    this.checkQuizRestriction(); 
+    this.checkQuizRestriction(); // Ensure this method is called here
 
     if (this.canStartQuiz) {
         this.quizStarted = true;
@@ -822,8 +823,10 @@ export class QuizeComponent implements OnInit {
   checkQuizAvailability() {
     const lastAttempt = localStorage.getItem('lastQuizAttempt');
 
+    // If no quiz exists
 
 
+    // If the user has attempted the quiz before, check the time difference
     if (lastAttempt) {
       const lastAttemptTime = new Date(lastAttempt).getTime();
       const currentTime = Date.now();
@@ -874,7 +877,9 @@ export class QuizeComponent implements OnInit {
   }
 
   clearLocalStorage(): void {
-    localStorage.removeItem('lastQuizTime'); 
+    localStorage.removeItem('lastQuizTime'); // მხოლოდ კონკრეტულის წაშლა
+    // ან
+    // localStorage.clear(); // მთლიანად გასუფთავება
     console.log('LocalStorage გასუფთავებულია!');
   }
   
@@ -902,8 +907,9 @@ export class QuizeComponent implements OnInit {
     this.quizStarted = false;
     this.quizFinished = true;
   
-    const now = new Date().getTime(); 
-    localStorage.setItem('lastQuizTime', now.toString()); 
+    // Store the completion timestamp in localStorage
+    const now = new Date().getTime(); // Current timestamp in milliseconds
+    localStorage.setItem('lastQuizTime', now.toString()); // Store last quiz time
     if (this.user) {
       const newCoinValue = this.user.coin + this.correctAnswersCount;
       this.userService.updateUserCoin(this.user.id, newCoinValue).subscribe(
