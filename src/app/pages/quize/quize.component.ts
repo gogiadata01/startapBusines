@@ -76,7 +76,7 @@ export class QuizeComponent implements OnInit , CanActivate {
   
   canActivate(): boolean {
     if (this.user) {
-      this.router.navigate(['/Register']); // Redirect if user is not logged in
+      this.router.navigate(['Pupil/Quize']); // Redirect if user is not logged in
       return false;
     }
     return true; // Allow access if the user exists
