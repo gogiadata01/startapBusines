@@ -75,13 +75,13 @@ export class QuizeComponent implements OnInit , CanActivate {
   }
   
   canActivate(): boolean {
-    if (this.quiz) {
-      // If quiz data is missing, navigate to a fallback page
-      this.router.navigate(['Pupil/Quize']);
+    if (this.user) {
+      this.router.navigate(['/Register']); // Redirect if user is not logged in
       return false;
     }
-    return true;
+    return true; // Allow access if the user exists
   }
+  
   checkCurrentUser(): void {
     this.currentUser = this.authService.getCurrentUserValue();
     if (!this.currentUser) {
