@@ -149,11 +149,12 @@ export class QuizeComponent implements OnInit , CanActivate {
         const currentTimestamp = new Date().getTime();  
         const timeDifference = currentTimestamp - lastQuizTimestamp;
 
-        this.canStartQuiz = timeDifference >= 60000; // 60000 ms = 1 minute
+        this.canStartQuiz = timeDifference >= 900000; // 900000 ms = 15 minutes
     } else {
         this.canStartQuiz = true; 
     }
 }
+
 
   startQuiz(): void {
     if (!this.currentUser) {
