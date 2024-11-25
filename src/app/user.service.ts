@@ -53,7 +53,24 @@ export class UserService {
       catchError(this.handleError)  // Added error handling
     );
   }
+  checkQuizRestriction(userId: any): Observable<{ CanStartQuiz: boolean; TimeUntilNextAttempt: number }> {
+    return this.http.get<{ CanStartQuiz: boolean; TimeUntilNextAttempt: number }>(
+      `${environment.apiUrl}/User/check-quiz-restriction/${userId}`
+    ).pipe(
+      catchError(this.handleError)
+    );
+  }
 
+  endQuiz(userId: number, correctAnswers: number): Observable<{ Message: string; CoinsEarned: number; TotalCoins: number }> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post<{ Message: string; CoinsEarned: number; TotalCoins: number }>(
+      `${environment.apiUrl}/User/end-quiz/${userId}`,
+      correctAnswers, // Send the number of correct answers as the request body
+      { headers }
+    ).pipe(
+      catchError(this.handleError)
+    );
+  }
   private handleError(error: HttpErrorResponse): Observable<never> {
     let errorMessage = 'Unknown error!';
     if (error.error instanceof ErrorEvent) {

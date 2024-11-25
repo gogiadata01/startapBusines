@@ -12,6 +12,8 @@ import {UserDto} from '../../core/models/common.model'
 import { takeUntil } from 'rxjs/operators';
 import {AuthenticationService} from '../../authentication.service'
 import { NavbarForPupilComponent } from "../navbar-for-pupil/navbar-for-pupil.component";
+import { UserService } from '../../user.service';
+
 @Component({
   selector: 'app-personal-page',
   standalone: true,
@@ -32,6 +34,7 @@ export class PersonalPageComponent implements OnInit {
     private cdr: ChangeDetectorRef,
     private ngZone: NgZone,
     private User: AuthenticationService,
+    private UserService:UserService
   ) { }
   ngOnInit(): void {
     // this.User.currentUser$.subscribe((user) =>{
@@ -46,13 +49,16 @@ export class PersonalPageComponent implements OnInit {
 
     }
     this.getuserid()
+    this.getUser()
   }
   getuserid(){
     this.userid =  this.User.getNameIdentifier()
-    console.log(this.userid)
   }
-
-
+  getUser(){
+    this.UserService.getUserById(this.userid).subscribe((user) =>{
+      this.currentUser = user
+    })
+  }
   LogOut(){
     this.User.removeToken()
     this.router.navigateByUrl('SignUp')

@@ -35,19 +35,18 @@ export class QuizeComponent implements OnInit , CanActivate {
   totalQuizTimeInSeconds = 6 * 60; 
   timeLeftForQuiz = this.totalQuizTimeInSeconds;
   quizIntervalSubscription: Subscription | undefined;
-  currentUser:any
-  user!: UserDto;
+  currentUser!:UserDto
+  user: any;
   quizFinished = false;
   canStartQuiz = true; 
   timeUntilNextAttempt = 0; 
   timeleft: number = 300;
   userToken!: string;
-
   bonusQuestion: any;
   isBonusQuestion = false;
   bonusAnswerSelected: string | null = null;
   isCooldownActive: boolean = false;
-
+  userid:any
   constructor(
     private router: Router,
     private authService: AuthenticationService,
@@ -77,9 +76,11 @@ export class QuizeComponent implements OnInit , CanActivate {
       icon: 'info',
       confirmButtonText: 'OK',
     });
+    this.userid = this.autentication.getNameIdentifier()
   }
 
   canActivate(): boolean {
+    this.user = this.autentication.getCurrentUser()
     if (!this.user) {
       this.router.navigate(['Pupil/Quize']); // Redirect if user is not logged in
       return false;
@@ -88,9 +89,9 @@ export class QuizeComponent implements OnInit , CanActivate {
   }
   
   checkCurrentUser(): void {
-    this.currentUser = this.authService.isUserLoggedIn();
-    if (!this.currentUser) {
-      this.router.navigate(['/Register']);
+    this.user = this.autentication.getCurrentUser()
+    if (!this.user) {
+      this.router.navigate(['Pupil/Quize']); // Redirect if user is not logged in
     }
   }
 
@@ -109,7 +110,7 @@ export class QuizeComponent implements OnInit , CanActivate {
   }
 
   getQuiz(): void {
-    if (!this.currentUser) {
+    if (!this.user) {
       console.error('No current user found.');
       return;
     }
@@ -162,7 +163,7 @@ export class QuizeComponent implements OnInit , CanActivate {
 
 
   startQuiz(): void {
-    if (!this.currentUser) {
+    if (!this.user) {
       this.router.navigate(['/Register']);
       return;
     }
@@ -301,19 +302,20 @@ export class QuizeComponent implements OnInit , CanActivate {
   
     const now = new Date().getTime(); 
     localStorage.setItem('lastQuizTime', now.toString());
-    if (this.user) {
-      const newCoinValue = this.user.coin + this.correctAnswersCount;
-      this.userService.updateUserCoin(this.user.id, newCoinValue).subscribe(
-        () => {
-          this.user.coin = newCoinValue;
-          // this.authService.setCurrentUser(this.user);
-          this.showCompletionAlert();
-        },
-        (error) => {
-          console.error('Error updating coin:', error);
-        }
-      );
-    }
+    this.userService.getUserById(this.userid).subscribe((user ) =>{
+      this.currentUser = user
+      if (this.currentUser) {
+        const newCoinValue = this.currentUser.coin + this.correctAnswersCount;
+        this.userService.updateUserCoin(this.currentUser.id, newCoinValue).subscribe(
+          () => {
+            this.showCompletionAlert();
+          },
+          (error) => {
+            console.error('Error updating coin:', error);
+          }
+        );
+      }
+    })
   }
   
   formatTime(seconds: number): string {
@@ -325,9 +327,13 @@ export class QuizeComponent implements OnInit , CanActivate {
   showCompletionAlert(): void {
     Swal.fire({
       title: 'გილოცავ!',
-      text: `სწორი პასუხები: ${this.correctAnswersCount}, ქულები: ${this.correctAnswersCount}`,
+      text: `შენ 15 კითხვიდან დააგრობე  ${this.correctAnswersCount} სწორი პასუხი, ამიტომ დაგერიცა : ${this.correctAnswersCount} ქულა`,
       icon: 'success',
       confirmButtonText: 'OK',
     });
   }
 }
+
+
+
+
