@@ -33,7 +33,7 @@ export class RegisterWithApiComponent implements OnInit {
       Type: ['',Validators.required],
       Img: ['',],
       Coin:[0],
-      ResetToken:['ResetToken']
+      Token:['']
     })
 
   }

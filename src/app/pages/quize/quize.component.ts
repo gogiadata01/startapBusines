@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
 import { FooterForPupilComponent } from '../footer-for-pupil/footer-for-pupil.component';
 import { NavbarWithWaveComponent } from '../navbar-with-wave/navbar-with-wave.component';
 import { CanActivate, Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service'; // If using cookies
 
 @Component({
   selector: 'app-quize',
@@ -34,12 +35,13 @@ export class QuizeComponent implements OnInit , CanActivate {
   totalQuizTimeInSeconds = 6 * 60; 
   timeLeftForQuiz = this.totalQuizTimeInSeconds;
   quizIntervalSubscription: Subscription | undefined;
-  currentUser: UserDto | null = null;
+  currentUser:any
   user!: UserDto;
   quizFinished = false;
   canStartQuiz = true; 
   timeUntilNextAttempt = 0; 
   timeleft: number = 300;
+  userToken!: string;
 
   bonusQuestion: any;
   isBonusQuestion = false;
@@ -51,17 +53,20 @@ export class QuizeComponent implements OnInit , CanActivate {
     private authService: AuthenticationService,
     private quizService: QuizService,
     private userService: UserService,
-    private datePipe: DatePipe
+    private autentication:AuthenticationService,
+    private datePipe: DatePipe,
+    private cookieService: CookieService
+
   ) {}
 
   ngOnInit(): void {
     this.checkCurrentUser();
     this.getQuiz();
-    this.authService.currentUser$.subscribe(user => {
-      if (user) {
-        this.user = { ...user }; 
-      }
-    });
+    // this.authService.currentUser$.subscribe(user => {
+    //   if (user) {
+    //     this.user = { ...user }; 
+    //   }
+    // });
     this.startQuizTimer();
   
     this.checkQuizAvailability();
@@ -73,7 +78,7 @@ export class QuizeComponent implements OnInit , CanActivate {
       confirmButtonText: 'OK',
     });
   }
-  
+
   canActivate(): boolean {
     if (!this.user) {
       this.router.navigate(['Pupil/Quize']); // Redirect if user is not logged in
@@ -83,7 +88,7 @@ export class QuizeComponent implements OnInit , CanActivate {
   }
   
   checkCurrentUser(): void {
-    this.currentUser = this.authService.getCurrentUser();
+    this.currentUser = this.authService.isUserLoggedIn();
     if (!this.currentUser) {
       this.router.navigate(['/Register']);
     }
@@ -301,7 +306,7 @@ export class QuizeComponent implements OnInit , CanActivate {
       this.userService.updateUserCoin(this.user.id, newCoinValue).subscribe(
         () => {
           this.user.coin = newCoinValue;
-          this.authService.setCurrentUser(this.user);
+          // this.authService.setCurrentUser(this.user);
           this.showCompletionAlert();
         },
         (error) => {

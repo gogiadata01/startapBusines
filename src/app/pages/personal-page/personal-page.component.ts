@@ -25,6 +25,7 @@ export class PersonalPageComponent implements OnInit {
   private destroy$ = new Subject<void>();
   private photoHeight: number = 0; // Ensure it's declared properly
   currentUser: UserDto | null = null;
+  userid:any
   constructor(
     private router: Router,
     private programCardService: ProgramCardService,
@@ -33,17 +34,27 @@ export class PersonalPageComponent implements OnInit {
     private User: AuthenticationService,
   ) { }
   ngOnInit(): void {
-    this.User.currentUser$.subscribe((user) =>{
-      this.currentUser = user;
-      if (!this.currentUser) {
-        this.router.navigateByUrl('/SignUp'); 
-      }
-  
-    } )
+    // this.User.currentUser$.subscribe((user) =>{
+    //   this.currentUser = user;
+    //   if (!this.currentUser) {
+    //     this.router.navigateByUrl('/SignUp'); 
+    //   }
+    // } )
+    const user = this.User.getCurrentUser()
+    if(!user){
+              this.router.navigateByUrl('/SignUp'); 
+
+    }
+    this.getuserid()
+  }
+  getuserid(){
+    this.userid =  this.User.getNameIdentifier()
+    console.log(this.userid)
   }
 
+
   LogOut(){
-    this.User.clearCurrentUser()
+    this.User.removeToken()
     this.router.navigateByUrl('SignUp')
   }
 }

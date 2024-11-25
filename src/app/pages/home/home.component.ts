@@ -24,7 +24,7 @@
   @Component({    
     selector: 'app-home',
     standalone: true,
-    imports: [CommonModule, FooterForPupilComponent, QuizeComponent, UniProgramComponent, RouterLink, NavbarComponent, ],
+    imports: [CommonModule, FooterForPupilComponent,RouterLink,  ],
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss']
   })
@@ -46,6 +46,7 @@
     errorMessage: string | null = null; // Variable for error messages
     activeFieldIndex: number = 0;    // Track the index of the currently selected field
     isLoggedIn = false;
+    userToken: any;
 
 
     
@@ -56,7 +57,7 @@
       'გეოგრაფია', 'მუსიკა', 'ხელოვნება', 'ისტორია', 'სპორტი'
     ];
 
-    constructor(private router: Router,private cdr: ChangeDetectorRef, private User:AuthenticationService,private ngZone: NgZone  ,private userService :UserService, private EventCardService: EventCardService  ,  private programCardService: ProgramCardService
+    constructor(private authService: AuthenticationService,private router: Router,private cdr: ChangeDetectorRef, private User:AuthenticationService,private ngZone: NgZone  ,private userService :UserService, private EventCardService: EventCardService  ,  private programCardService: ProgramCardService
       ) {        
       }
     @Input() text: string = 'არჩიეთ თქვენთვის შესაფერისი პროგრამა';
@@ -78,6 +79,9 @@ loadFieldNames(): void {
     }
   });
 }
+getCurrentUser(): void {
+  this.userToken = this.authService.getCurrentUser()
+}
 getTopUsers(): void {
   this.userService.getAllUsers().subscribe((users: UserDto[]) => {
     // Sort users by coins in descending order
@@ -98,9 +102,6 @@ getTopUsers(): void {
 getImageUrl(relativePath: string): string {
   return `${BASE_URL}${relativePath}`;
 }
-
-
-
   // Fetch field programs based on loaded fields
 // Fetch field programs based on loaded fields
 createFieldProgramMapping(): void {
@@ -218,6 +219,7 @@ onCircleClick(index: number): void {
 
     ngOnInit() {
       this.getTopUsers();
+      this.getCurrentUser();
       this.GetAllEventCard()
       this.loadFieldNames(); // Fetch all field names
       const photoElement = document.querySelector('.photo-class') as HTMLElement;
