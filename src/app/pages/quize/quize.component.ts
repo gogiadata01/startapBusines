@@ -83,7 +83,7 @@ export class QuizeComponent implements OnInit , CanActivate {
   }
   
   checkCurrentUser(): void {
-    this.currentUser = this.authService.getCurrentUserValue();
+    this.currentUser = this.authService.getCurrentUser();
     if (!this.currentUser) {
       this.router.navigate(['/Register']);
     }
