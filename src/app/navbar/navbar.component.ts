@@ -6,7 +6,6 @@ import { User, getAuth } from "firebase/auth";
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../user.service';
 import {UserDto} from '../core/models/common.model'
-import { idToken } from '@angular/fire/auth';
 import {AddWithApiHomeUniCardComponent} from '../pages/add-with-api-uni-card/add-with-api-home-uni-card.component'
 import {AddWithApiProgramCardComponent} from '../pages/add-with-api-program-card/add-with-api-program-card.component'
 import {AddWithApiEventCardComponent} from '../pages/add-with-api-event-card/add-with-api-event-card.component'

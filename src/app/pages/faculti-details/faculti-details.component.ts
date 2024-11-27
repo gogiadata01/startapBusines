@@ -11,7 +11,6 @@ import {FooterForPupilComponent} from '../footer-for-pupil/footer-for-pupil.comp
 import {CarouselComponent} from '../../carousel/carousel.component';
 import { NavbarForPupilComponent } from '../navbar-for-pupil/navbar-for-pupil.component';
 import { toJSDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-calendar';
-import { snapshotChanges } from '@angular/fire/compat/database';
 import { Observable, } from 'rxjs';
 import { Router } from '@angular/router';
 import {HomeUniCardService} from '../../home-uni-card.service'

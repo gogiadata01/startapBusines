@@ -10,7 +10,6 @@ import {FooterForPupilComponent} from '../footer-for-pupil/footer-for-pupil.comp
 import {CarouselComponent} from '../../carousel/carousel.component';
 import { NavbarForPupilComponent } from '../navbar-for-pupil/navbar-for-pupil.component';
 import { toJSDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-calendar';
-import { snapshotChanges } from '@angular/fire/compat/database';
 import {HomeUniCardService} from '../../home-uni-card.service'
 import {ProgramCardDto,ProgramnameDto,SavaldebuloSagnebiDto,ArchevitiSavaldebuloSagnebiDto, UniCardDto} from "../../core/models/common.model";
 
