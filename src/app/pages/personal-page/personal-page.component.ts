@@ -49,14 +49,12 @@ export class PersonalPageComponent implements OnInit {
 
     }
     this.getuserid()
-    this.getUser()
   }
   getuserid(){
     this.userid =  this.User.getNameIdentifier()
-  }
-  getUser(){
     this.UserService.getUserById(this.userid).subscribe((user) =>{
       this.currentUser = user
+      console.log(this.currentUser)
     })
   }
   LogOut(){
