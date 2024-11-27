@@ -72,7 +72,7 @@
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { BehaviorSubject } from 'rxjs';
-import * as CryptoJS from 'crypto-js';  // Ensure CryptoJS is imported
+import CryptoJS from "crypto-js";  // Avoid this as it might not work properly
 import { jwtDecode } from 'jwt-decode';  // JWT decoding library
 
 @Injectable({

@@ -14,6 +14,7 @@ import { reduce } from 'rxjs';
 import { query } from 'firebase/firestore';
 import { HttpClient } from '@angular/common/http';
 import {TestComponentsComponent} from '../test-components/test-components.component'
+import {HttpClientModule} from '@angular/common/http';
 
 
 @Component({
@@ -25,10 +26,6 @@ import {TestComponentsComponent} from '../test-components/test-components.compon
     NavbarComponent,
     FormsModule,
     CommonModule,
-    
-// TODO: `HttpClientModule` should not be imported into a component directly.
-// Please refactor the code to add `provideHttpClient()` call to the provider list in the
-// application bootstrap logic and remove the `HttpClientModule` import from this component.
 HttpClientModule],
   templateUrl: './pupil.component.html',
   styleUrl: './pupil.component.scss'
