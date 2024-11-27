@@ -1,5 +1,5 @@
 import { Component ,inject ,ViewChild,ElementRef} from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import {} from '@angular/common/http';
 import {HomeUniCardService} from '../../home-uni-card.service';
 import { CommonModule } from '@angular/common';
 import {UniCardDto} from '../../core/models/common.model'
@@ -9,7 +9,11 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-test-components',
   standalone: true,
-  imports: [HttpClientModule, CommonModule],
+  imports: [
+// TODO: `HttpClientModule` should not be imported into a component directly.
+// Please refactor the code to add `provideHttpClient()` call to the provider list in the
+// application bootstrap logic and remove the `HttpClientModule` import from this component.
+HttpClientModule, CommonModule],
   templateUrl: './test-components.component.html',
   styleUrl: './test-components.component.scss'
 })

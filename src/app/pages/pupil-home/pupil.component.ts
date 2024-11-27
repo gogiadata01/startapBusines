@@ -12,7 +12,7 @@ import { UrlHandlingStrategy} from "@angular/router";
 import { NavbarComponent } from '../../navbar/navbar.component';
 import { reduce } from 'rxjs';
 import { query } from 'firebase/firestore';
-import { HttpClient,HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import {TestComponentsComponent} from '../test-components/test-components.component'
 
 
@@ -25,7 +25,11 @@ import {TestComponentsComponent} from '../test-components/test-components.compon
     NavbarComponent,
     FormsModule,
     CommonModule,
-    HttpClientModule],
+    
+// TODO: `HttpClientModule` should not be imported into a component directly.
+// Please refactor the code to add `provideHttpClient()` call to the provider list in the
+// application bootstrap logic and remove the `HttpClientModule` import from this component.
+HttpClientModule],
   templateUrl: './pupil.component.html',
   styleUrl: './pupil.component.scss'
 })
