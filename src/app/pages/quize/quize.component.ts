@@ -327,7 +327,7 @@ export class QuizeComponent implements OnInit , CanActivate {
   showCompletionAlert(): void {
     Swal.fire({
       title: 'გილოცავ!',
-      text: `შენ 15 კითხვიდან დააგრობე  ${this.correctAnswersCount} სწორი პასუხი, ამიტომ დაგერიცა : ${this.correctAnswersCount} ქულა`,
+      text: `შენ 15 კითხვიდან დააგროვე  ${this.correctAnswersCount} სწორი პასუხი, ამიტომ დაგერიცხა : ${this.correctAnswersCount} ქულა`,
       icon: 'success',
       confirmButtonText: 'OK',
     });
