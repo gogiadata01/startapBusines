@@ -9,10 +9,7 @@ import {StupidUserComponent} from "../stupid-user/stupid-user.component"
 import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, FormsModule, Validators} from "@angular/forms";
 import {NgIf,CommonModule} from "@angular/common";
 import { UrlHandlingStrategy} from "@angular/router";
-import { NavbarComponent } from '../../navbar/navbar.component';
-import { reduce } from 'rxjs';
-import { query } from 'firebase/firestore';
-import { HttpClient } from '@angular/common/http';
+import { NavbarComponent } from '../../navbar/navbar.component'
 import {TestComponentsComponent} from '../test-components/test-components.component'
 import {HttpClientModule} from '@angular/common/http';
 

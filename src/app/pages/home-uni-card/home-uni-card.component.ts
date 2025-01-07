@@ -29,8 +29,10 @@ export class HomeUniCardComponent implements OnInit, OnDestroy {
   UniCardBytitle: UniCardDto[] = [];
   Search: FormGroup;
   filteredUniCards: UniCardDto[] = [];
-  private priorityUniversity = 'ნიუ ვიჟენ უნივერსიტეტი'; // Single prioritized university
-
+  private priorityUniversity = ''; // Single prioritized university
+// აქ priorityUniversity რაც ჩაიწერება ის იქნება პრიორიტეტი და 
+// შეგვეძლება ზევით აწევა უნიში როგორც სიაში ასევე მაგის პროგრამაზე
+// თუ დააჭერს პირველი ამოვარდება
   constructor(private universityVisitService:UniversityVisitService,private fb: FormBuilder,private cdr: ChangeDetectorRef, private ngZone: NgZone , private router: Router,private HomeUniCardService:HomeUniCardService) {
     this.Search = this.fb.group({
       title: ['', Validators.required],
