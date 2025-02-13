@@ -39,6 +39,9 @@ export class EventCardService {
       catchError(this.handleError)  // Error handling
     );
   }
+
+  
+
   // Centralized error handling
   private handleError(error: HttpErrorResponse): Observable<never> {
     let errorMessage = 'Unknown error!';

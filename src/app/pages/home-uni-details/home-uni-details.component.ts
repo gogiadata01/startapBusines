@@ -57,8 +57,8 @@ ngOnInit(): void {
   //     this.sections = sections;
   // })
 }
-onCardClicked1(cardkey:any) :void{
-  this.router.navigate(['/Pupil/Events/',cardkey])
+onCardClicked1(cardkey:any,EventId:any) :void{
+  this.router.navigate(['/Pupil/UniEvent/',cardkey,EventId])
 }
 getid(){
   const cardId = this.route.snapshot.paramMap.get('id');

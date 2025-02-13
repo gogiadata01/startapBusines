@@ -28,6 +28,7 @@ import { UniProgramComponent } from './core/UniProgram/uni-program.component';
 import { QuizeComponent } from './pages/quize/quize.component';
 import { PersonalPageComponent } from './pages/personal-page/personal-page.component';
 import { RecoveryPassowrdComponent } from './pages/recovery-passowrd/recovery-passowrd.component';
+import { UniEventPageComponent } from './pages/uni-event-page/uni-event-page.component';
 
 
 
@@ -79,6 +80,10 @@ export const routes: Routes = [
   {
     path: "Pupil/HomeUni/:id/:n",
     component: UniFacultyDetailsComponent
+  },
+  {
+    path:"Pupil/UniEvent/:id/:n",
+    component:UniEventPageComponent
   },
   {
     path: "Pupil/Quize",

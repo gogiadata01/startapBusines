@@ -68,6 +68,12 @@ export class HomeUniCardService {
       catchError(this.handleError)  // Error handling
     );
   }
+  getEventCardById(uniCardId: any, eventId: any): Observable<any> {
+    const url = `${this.apiUrl}/${uniCardId}/event/${eventId}`;  // Construct the API URL
+    return this.http.get<any>(url).pipe(
+      catchError(this.handleError)  // Error handling
+    );
+  }
   // Centralized error handling
   private handleError(error: HttpErrorResponse): Observable<never> {
     let errorMessage = 'Unknown error!';
