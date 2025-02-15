@@ -21,7 +21,9 @@ export interface EventDto {
   url: string;
   title: string;
   text: string;
-  time:string
+  time:string;
+  link:string
+
 }
 
 export interface SectionDto {
@@ -99,6 +101,7 @@ export interface EventCardDto{
   title:string;
   text:string;
   time:string;
+  link:string;
   isFeatured:boolean
   saregistracioForma:string
   types:EventTypeDto[];

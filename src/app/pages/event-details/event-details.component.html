@@ -187,9 +187,7 @@
 <div class="Bottom">
   <div class="Text">
     <div>
-      <p>
-        {{ EventCard.text }}
-      </p>
+      <p [innerHTML]="formatEventText()"></p>
     </div>
   </div>
   <!-- <div class="RightSide">

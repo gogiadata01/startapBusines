@@ -55,6 +55,19 @@ export class EventDetailsComponent implements OnInit, OnDestroy {
     this.isLoggedIn = this.User.isUserLoggedIn(); // Check login status
 
 }
+formatEventText() {
+  if (this.EventCard && this.EventCard.text) {
+    let formattedText = this.EventCard.text;
+    if (this.EventCard.link && formattedText.includes("დარეგისტრირდი")) {
+      formattedText = formattedText.replace(
+        "დარეგისტრირდი", 
+        `დარეგისტრირდი <a href="${this.EventCard.link}" target="_blank" rel="noopener noreferrer">${this.EventCard.link}</a>`
+      );
+    }
+    return formattedText;
+  }
+  return '';
+}
 onWindowScroll() {
   const scrolled = window.scrollY > 200;
 

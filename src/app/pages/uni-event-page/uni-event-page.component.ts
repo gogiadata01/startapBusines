@@ -15,6 +15,7 @@ import { takeUntil } from 'rxjs/operators';
 import {AuthenticationService} from '../../authentication.service'
 import { CommonModule, NgFor, NgIf } from '@angular/common';
 import {HomeUniCardService} from '../../home-uni-card.service'
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 @Component({
   selector: 'app-uni-event-page',
   standalone: true,
@@ -26,10 +27,12 @@ export class UniEventPageComponent implements OnInit, OnDestroy {
   EventCard!:EventDto
   isLoggedIn = false;
 
-  constructor(private cdr: ChangeDetectorRef, private ngZone: NgZone ,private route: ActivatedRoute,private HomeUniCardService:HomeUniCardService , private router: Router,    private User: AuthenticationService,
+  constructor(private cdr: ChangeDetectorRef, private ngZone: NgZone ,private route: ActivatedRoute,private HomeUniCardService:HomeUniCardService , private router: Router,    private User: AuthenticationService,   private sanitizer: DomSanitizer 
     ) {
   }
+
   ngOnInit() {
+    
     this.HomeUniCardService.getEventCardById(this.getid(),this.getEventId())
     .subscribe({
       next:(Eventcard) =>{
@@ -55,6 +58,7 @@ export class UniEventPageComponent implements OnInit, OnDestroy {
     });
     this.isLoggedIn = this.User.isUserLoggedIn(); // Check login status
     console.log(this.getEventId(), this.getid())
+
 }
 onWindowScroll() {
   const scrolled = window.scrollY > 200;
@@ -79,6 +83,21 @@ onWindowScroll() {
     }
   }
 }
+
+formatEventText() {
+  if (this.EventCard && this.EventCard.text) {
+    let formattedText = this.EventCard.text;
+    if (this.EventCard.link && formattedText.includes("დარეგისტრირდი")) {
+      formattedText = formattedText.replace(
+        "დარეგისტრირდი", 
+        `დარეგისტრირდი <a href="${this.EventCard.link}" target="_blank" rel="noopener noreferrer">${this.EventCard.link}</a>`
+      );
+    }
+    return formattedText;
+  }
+  return '';
+}
+
 slideDownNavbar() {
   gsap.to(this.secondNavbar.nativeElement, { y: 0, duration: 0.3, ease: 'power2.out' });
 }
