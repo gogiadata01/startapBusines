@@ -45,7 +45,8 @@ export class EventCardsComponent implements OnInit {
     this.eventCardService.getAllEventCard().subscribe({
       next: (eventCards) => {
         this.EventCard = eventCards;
-        this.filterEvents(); // Initial filtering
+        this.sortEventCards(); 
+        this.filterEvents(); 
         console.log(this.EventCard)
       },
       error: (err) => {
@@ -54,6 +55,9 @@ export class EventCardsComponent implements OnInit {
     });
   }
 
+  sortEventCards() {
+    this.EventCard.sort((a, b) => (a.numbering || 0) - (b.numbering || 0));
+  }
   filterEvents() {
     if (this.category === "ყველა" || this.category === "") {
       this.filteredEventCards = this.EventCard;

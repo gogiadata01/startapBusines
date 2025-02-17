@@ -40,6 +40,7 @@ export class EventDetailsComponent implements OnInit, OnDestroy {
         console.error('Error fetching program data:', err);
       }
     })
+    
     const photoElement = document.querySelector('.photo-class') as HTMLElement;
     if (photoElement) {
       this.photoHeight = photoElement.offsetHeight;
