@@ -389,7 +389,7 @@ footer {
   button{
     width: 150px;
     height: 50px;
-    background-color: #3b2e3a ;
+    background-color: #5B6773 ;
     border: 0px;
     border-radius: 15px;
     font-size: 20px;
@@ -404,7 +404,7 @@ footer {
   justify-content: center;
   margin-bottom: 40px;
   h3{
-    color: white;
+    color: black;
     font-size: 25px;
     font-weight: 300;
   }
@@ -473,6 +473,12 @@ footer {
     font-size: 20px;
     text-align: center;
 }
+  .afterPrograms{
+    margin-bottom: 55px;
+  }
+  h2{
+    font-size: 22px !important;
+    }
 }
 @media screen and (max-width: 321px) {
     .filter .Types{

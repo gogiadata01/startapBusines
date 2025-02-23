@@ -75,7 +75,7 @@ loadFieldNames(): void {
       }
     },
     error: (err) => {
-      console.error('Error fetching field names:', err);
+      // console.error('Error fetching field names:', err);
     }
   });
 }
@@ -94,7 +94,7 @@ getTopUsers(): void {
     this.podiumEntries = topSixUsers.slice(0, 3);
     this.entries = topSixUsers.slice(3, 6);
 
-    console.log(this.podiumEntries, this.entries); // Debugging purposes
+    // console.log(this.podiumEntries, this.entries); // Debugging purposes
   });
 }
 
@@ -261,18 +261,18 @@ onCircleClick(index: number): void {
         return;
       }
     
-      console.log('Selected Subjects:', this.selectedSubjects);
+      // console.log('Selected Subjects:', this.selectedSubjects);
     
       // Call the updated service method
       this.programCardService.getProgramCardDetailsBySubjects(this.selectedSubjects).subscribe({
         next: (programCards: ProgramCardDto[]) => {
-          console.log('Returned Program Cards:', programCards);
+          // console.log('Returned Program Cards:', programCards);
     
           this.matchingPrograms = programCards; // Reset the array before adding new data
-          console.log(this.matchingPrograms)
+          // console.log(this.matchingPrograms)
         },
         error: (err) => {
-          console.error('Error fetching programs:', err);
+          // console.error('Error fetching programs:', err);
           this.errorMessage = err.message;
         }
       });
@@ -357,10 +357,10 @@ onCircleClick(index: number): void {
             // Filter the event cards to only include those where isFeatured is true
             this.EventCard = Eventcard.filter(event => event.isFeatured === true);
             
-            console.log('Featured Event Cards:', this.EventCard); 
+            // console.log('Featured Event Cards:', this.EventCard); 
           },
           error: (err) => {
-            console.error('Error fetching event data:', err);
+            // console.error('Error fetching event data:', err);
           }
         });
     }
