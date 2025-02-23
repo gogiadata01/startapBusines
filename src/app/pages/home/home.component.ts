@@ -255,28 +255,6 @@ onCircleClick(index: number): void {
       }
     }
     
-    // filterMatchingPrograms() {
-    //   if (this.selectedSubjects.length === 0) {
-    //     this.errorMessage = "Please select at least one subject.";
-    //     return;
-    //   }
-    
-    //   // console.log('Selected Subjects:', this.selectedSubjects);
-    
-    //   // Call the updated service method
-    //   this.programCardService.getProgramCardDetailsBySubjects(this.selectedSubjects).subscribe({
-    //     next: (programCards: ProgramCardDto[]) => {
-    //       // console.log('Returned Program Cards:', programCards);
-    
-    //       this.matchingPrograms = programCards; // Reset the array before adding new data
-    //       // console.log(this.matchingPrograms)
-    //     },
-    //     error: (err) => {
-    //       // console.error('Error fetching programs:', err);
-    //       this.errorMessage = err.message;
-    //     }
-    //   });
-    // }
     @ViewChild('resultTitle') resultTitleElement!: ElementRef;
     filterMatchingPrograms() {
       if (this.selectedSubjects.length === 0) {
@@ -382,17 +360,21 @@ onCircleClick(index: number): void {
     GetAllEventCard() {
       this.EventCardService.getEventCardForHome()
         .subscribe({
-          next: (Eventcard) => {
+          next: (eventCards) => {
             // Filter the event cards to only include those where isFeatured is true
-            this.EventCard = Eventcard.filter(event => event.isFeatured === true);
+            this.EventCard = eventCards.filter(event => event.isFeatured === true);
             
-            console.log('Featured Event Cards:', this.EventCard); 
+            // Sort the featured event cards by the "numbering" property
+            this.EventCard.sort((a, b) => (a.numbering || 0) - (b.numbering || 0));
+            
+            console.log('Featured Event Cards:', this.EventCard);
           },
           error: (err) => {
-            // console.error('Error fetching event data:', err);
+            console.error('Error fetching event data:', err);
           }
         });
     }
+    
     getColor(type: string | { type: string }): string {
       const typeStr = typeof type === 'string' ? type : type.type;
       switch (typeStr) {
