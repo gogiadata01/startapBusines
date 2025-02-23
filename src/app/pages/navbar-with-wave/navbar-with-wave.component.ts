@@ -80,6 +80,7 @@ export class NavbarWithWaveComponent implements OnInit, OnDestroy {
     });
   }
 
+
   slideDownNavbar(): void {
     gsap.to(this.secondNavbar.nativeElement, { y: 0, duration: 0.3, ease: 'power2.out' });
   }

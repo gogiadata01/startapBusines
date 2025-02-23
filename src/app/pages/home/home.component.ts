@@ -303,7 +303,7 @@ onCircleClick(index: number): void {
           }
         });
     }
-    
+
     
     
   
