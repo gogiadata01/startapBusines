@@ -386,7 +386,7 @@ onCircleClick(index: number): void {
             // Filter the event cards to only include those where isFeatured is true
             this.EventCard = Eventcard.filter(event => event.isFeatured === true);
             
-            // console.log('Featured Event Cards:', this.EventCard); 
+            console.log('Featured Event Cards:', this.EventCard); 
           },
           error: (err) => {
             // console.error('Error fetching event data:', err);
