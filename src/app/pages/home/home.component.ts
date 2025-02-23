@@ -255,28 +255,57 @@ onCircleClick(index: number): void {
       }
     }
     
+    // filterMatchingPrograms() {
+    //   if (this.selectedSubjects.length === 0) {
+    //     this.errorMessage = "Please select at least one subject.";
+    //     return;
+    //   }
+    
+    //   // console.log('Selected Subjects:', this.selectedSubjects);
+    
+    //   // Call the updated service method
+    //   this.programCardService.getProgramCardDetailsBySubjects(this.selectedSubjects).subscribe({
+    //     next: (programCards: ProgramCardDto[]) => {
+    //       // console.log('Returned Program Cards:', programCards);
+    
+    //       this.matchingPrograms = programCards; // Reset the array before adding new data
+    //       // console.log(this.matchingPrograms)
+    //     },
+    //     error: (err) => {
+    //       // console.error('Error fetching programs:', err);
+    //       this.errorMessage = err.message;
+    //     }
+    //   });
+    // }
+    @ViewChild('resultTitle') resultTitleElement!: ElementRef;
     filterMatchingPrograms() {
       if (this.selectedSubjects.length === 0) {
         this.errorMessage = "Please select at least one subject.";
         return;
       }
     
-      // console.log('Selected Subjects:', this.selectedSubjects);
+      this.programCardService.getProgramCardDetailsBySubjects(this.selectedSubjects)
+        .subscribe({
+          next: (programCards: ProgramCardDto[]) => {
+            this.matchingPrograms = programCards; // Update matching programs
     
-      // Call the updated service method
-      this.programCardService.getProgramCardDetailsBySubjects(this.selectedSubjects).subscribe({
-        next: (programCards: ProgramCardDto[]) => {
-          // console.log('Returned Program Cards:', programCards);
-    
-          this.matchingPrograms = programCards; // Reset the array before adding new data
-          // console.log(this.matchingPrograms)
-        },
-        error: (err) => {
-          // console.error('Error fetching programs:', err);
-          this.errorMessage = err.message;
-        }
-      });
+            // Delay scrolling until the new content renders
+            setTimeout(() => {
+              if (this.resultTitleElement) {
+                const yOffset = -100; // adjust to ensure the title is fully visible
+                const y = this.resultTitleElement.nativeElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+              }
+            }, 0);
+          },
+          error: (err) => {
+            this.errorMessage = err.message;
+          }
+        });
     }
+    
+    
+    
   
   
     
