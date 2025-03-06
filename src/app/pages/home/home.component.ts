@@ -365,8 +365,12 @@ onCircleClick(index: number): void {
             this.EventCard = eventCards.filter(event => event.isFeatured === true);
             
             // Sort the featured event cards by the "numbering" property
-            this.EventCard.sort((a, b) => (a.numbering || 0) - (b.numbering || 0));
-            
+            this.EventCard.sort((a, b) => {
+              const numA = a.numbering !== undefined ? Number(a.numbering) : 0;
+              const numB = b.numbering !== undefined ? Number(b.numbering) : 0;
+              return numA - numB;
+            });
+                        
             console.log('Featured Event Cards:', this.EventCard);
           },
           error: (err) => {
