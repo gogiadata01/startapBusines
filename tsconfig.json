@@ -20,7 +20,12 @@
     "lib": [
       "ES2022",
       "dom"
-    ]
+    ],
+    "types": [
+      "zone.js",
+      "node"
+    ],
+    
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
