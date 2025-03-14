@@ -47,7 +47,7 @@ export class QuizeComponent implements OnInit , CanActivate {
   bonusAnswerSelected: string | null = null;
   isCooldownActive: boolean = false;
   userid:any
-  initialQuizeTime: number = this.totalQuizTimeInSeconds;
+  quizStartTime:any;
   constructor(
     private router: Router,
     private authService: AuthenticationService,
@@ -193,8 +193,8 @@ export class QuizeComponent implements OnInit , CanActivate {
         this.isBonusQuestion = false;
         this.bonusQuestionAnswered = false;
         this.bonusAnswerSelected = null;
-        this.timeLeftForQuiz = this.initialQuizeTime; 
         this.loadAnswers();
+        this.quizStartTime = new Date().getTime(); // Store quiz start time here
     } else {
         Swal.fire({
             title: 'შენ უკვე შეავსე ქვიზი',
@@ -304,27 +304,49 @@ export class QuizeComponent implements OnInit , CanActivate {
   
     this.quizStarted = false;
     this.quizFinished = true;
-    const remainingTime = this.timeLeftForQuiz;
-    const UsedTime  = remainingTime - this.totalQuizTimeInSeconds
-
-    if (UsedTime === 0) {
-      console.error('Remaining time cannot be zero.');
-      return; // Exit early if remaining time is zero
+    const quizEndTime = new Date().getTime();
+    const timeSpent = Math.floor((quizEndTime - this.quizStartTime) / 1000); // Convert milliseconds to seconds
+  
+    if (timeSpent <= 0) {
+      console.error('Elapsed time calculation error.');
+      return; 
     }
-    const now = new Date().getTime(); 
+    const now = new Date().getTime();
     localStorage.setItem('lastQuizTime', now.toString());
   
-    this.userService.updateRemainingTime(this.userid, UsedTime).subscribe(
+    // Send the elapsed time instead of remaining time
+    this.userService.updateRemainingTime(this.userid, timeSpent).subscribe(
       (response) => {
-        console.log('Remaining time updated:', response); // Check the response structure
+        console.log('Time spent updated:', response);
         if ('UpdatedRemainingTime' in response) {
-          console.log('Remaining time:', response.UpdatedRemainingTime);
+          console.log('Time spent:', response.UpdatedRemainingTime);
         }
       },
       (error) => {
-        console.error('Error updating remaining time:', error);
+        console.error('Error updating time spent:', error);
       }
     );
+    // const remainingTime = this.timeLeftForQuiz;
+    // const UsedTime  = remainingTime - this.totalQuizTimeInSeconds
+
+    // if (UsedTime === 0) {
+    //   console.error('Remaining time cannot be zero.');
+    //   return; // Exit early if remaining time is zero
+    // }
+    // const now = new Date().getTime(); 
+    // localStorage.setItem('lastQuizTime', now.toString());
+  
+    // this.userService.updateRemainingTime(this.userid, UsedTime).subscribe(
+    //   (response) => {
+    //     console.log('Remaining time updated:', response); // Check the response structure
+    //     if ('UpdatedRemainingTime' in response) {
+    //       console.log('Remaining time:', response.UpdatedRemainingTime);
+    //     }
+    //   },
+    //   (error) => {
+    //     console.error('Error updating remaining time:', error);
+    //   }
+    // );
     
 
     this.userService.getUserById(this.userid).subscribe((user ) =>{
