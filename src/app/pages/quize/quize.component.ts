@@ -68,7 +68,7 @@ export class QuizeComponent implements OnInit , CanActivate {
     // });
     this.startQuizTimer();
   
-    this.checkQuizAvailability();
+    // this.checkQuizAvailability();
   
     Swal.fire({
       title: 'გაფრთხილება',
@@ -218,27 +218,27 @@ export class QuizeComponent implements OnInit , CanActivate {
     }
   }
 
-  checkQuizAvailability() {
-    const lastAttempt = localStorage.getItem('lastQuizAttempt');
-    if (lastAttempt) {
-      const lastAttemptTime = new Date(lastAttempt).getTime();
-      const currentTime = Date.now();
-      const timeDifference = currentTime - lastAttemptTime;
+  // checkQuizAvailability() {
+  //   const lastAttempt = localStorage.getItem('lastQuizAttempt');
+  //   if (lastAttempt) {
+  //     const lastAttemptTime = new Date(lastAttempt).getTime();
+  //     const currentTime = Date.now();
+  //     const timeDifference = currentTime - lastAttemptTime;
 
-      if (timeDifference < 5 * 60 * 1000) { // 5 minutes cooldown
-        const timeLeft = 5 * 60 - Math.floor(timeDifference / 1000);
-        this.timeUntilNextAttempt = timeLeft;
-        this.isCooldownActive = true;
-        this.canStartQuiz = false;
-        this.startCooldownTimer();
-      } else {
-        this.canStartQuiz = true;
-        this.isCooldownActive = false;
-      }
-    } else {
-      this.canStartQuiz = true;
-    }
-  }
+  //     if (timeDifference < 5 * 60 * 1000) { // 5 minutes cooldown
+  //       const timeLeft = 5 * 60 - Math.floor(timeDifference / 1000);
+  //       this.timeUntilNextAttempt = timeLeft;
+  //       this.isCooldownActive = true;
+  //       this.canStartQuiz = false;
+  //       this.startCooldownTimer();
+  //     } else {
+  //       this.canStartQuiz = true;
+  //       this.isCooldownActive = false;
+  //     }
+  //   } else {
+  //     this.canStartQuiz = true;
+  //   }
+  // }
   
   shuffle(array: string[]): void {
     for (let i = array.length - 1; i > 0; i--) {
@@ -303,7 +303,7 @@ export class QuizeComponent implements OnInit , CanActivate {
 
     const now = new Date().getTime(); 
     localStorage.setItem('lastQuizTime', now.toString());
-    
+
     this.userService.updateRemainingTime(this.userid, remainingTime).subscribe(
       (response) => {
         console.log('Remaining time updated:', response.UpdatedRemainingTime);
