@@ -301,9 +301,13 @@ export class QuizeComponent implements OnInit , CanActivate {
     this.quizFinished = true;
     const remainingTime = this.timeLeftForQuiz;
 
+    if (remainingTime === 0) {
+      console.error('Remaining time cannot be zero.');
+      return; // Exit early if remaining time is zero
+    }
     const now = new Date().getTime(); 
     localStorage.setItem('lastQuizTime', now.toString());
-
+  
     this.userService.updateRemainingTime(this.userid, remainingTime).subscribe(
       (response) => {
         console.log('Remaining time updated:', response); // Check the response structure
