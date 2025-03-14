@@ -50,6 +50,7 @@ export class SignUpWithApiComponent  {
             type: response.type, // Adjust according to your API response
             img: response.img,
             coin: response.coin,
+            RemainingTime:response.RemainingTime,
             Token: response.token // Make sure this is a valid JWT token
           };
   

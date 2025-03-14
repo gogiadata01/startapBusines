@@ -299,9 +299,20 @@ export class QuizeComponent implements OnInit , CanActivate {
   
     this.quizStarted = false;
     this.quizFinished = true;
-  
+    const remainingTime = this.timeLeftForQuiz;
+
     const now = new Date().getTime(); 
     localStorage.setItem('lastQuizTime', now.toString());
+    
+    this.userService.updateRemainingTime(this.userid, remainingTime).subscribe(
+      (response) => {
+        console.log('Remaining time updated:', response.UpdatedRemainingTime);
+      },
+      (error) => {
+        console.error('Error updating remaining time:', error);
+      }
+    );
+
     this.userService.getUserById(this.userid).subscribe((user ) =>{
       this.currentUser = user
       if (this.currentUser) {

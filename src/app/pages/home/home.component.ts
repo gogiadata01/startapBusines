@@ -98,6 +98,43 @@ getTopUsers(): void {
   });
 }
 
+//  განახლებულო და გასატესტი მეთოდი რათა არამარტო ქულები 
+// შევადაროთ არამედ შევადაროთ თუ რა დროში დაწერა იუზერმა
+
+
+// getTopUsers(): void {
+//   this.userService.getAllUsers().subscribe((users: UserDto[]) => {
+//     // Sort users by coins in descending order, then by RemainingTime (lowest first)
+//     const sortedUsers = users.sort((a, b) => {
+//       // Sort by coins in descending order
+//       if (b.coin === a.coin) {
+//         // Convert RemainingTime to minutes for comparison (if it's in "hh:mm:ss" format)
+//         const aRemainingTimeInMinutes = this.convertRemainingTimeToMinutes(a.RemainingTime);
+//         const bRemainingTimeInMinutes = this.convertRemainingTimeToMinutes(b.RemainingTime);
+
+//         // Sort by RemainingTime (ascending order - lower time first)
+//         return aRemainingTimeInMinutes - bRemainingTimeInMinutes;
+//       }
+//       return b.coin - a.coin; // Sort by coins descending
+//     });
+
+//     // Get the top 6 users
+//     const topSixUsers = sortedUsers.slice(0, 6);
+
+//     // Separate the top 3 for the podium and next 3 for the list
+//     this.podiumEntries = topSixUsers.slice(0, 3);
+//     this.entries = topSixUsers.slice(3, 6);
+
+//     // console.log(this.podiumEntries, this.entries); // Debugging purposes
+//   });
+// }
+
+// // Function to convert RemainingTime (assuming it's in "hh:mm:ss" format) to minutes
+// convertRemainingTimeToMinutes(remainingTime: string): number {
+//   const [hours, minutes, seconds] = remainingTime.split(":").map(Number);
+//   return hours * 60 + minutes + seconds / 60; // Convert to total minutes
+// }
+
 // Helper to get full image URL
 getImageUrl(relativePath: string): string {
   return `${BASE_URL}${relativePath}`;
@@ -118,6 +155,7 @@ createFieldProgramMapping(): void {
     });
   });
 }
+
 
 
 onCircleClick(index: number): void {

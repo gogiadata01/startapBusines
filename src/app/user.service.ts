@@ -44,7 +44,16 @@ export class UserService {
       catchError(this.handleError)
     );
   }
-  
+  updateRemainingTime(userId: number, additionalTime: number): Observable<{ Message: string; UpdatedRemainingTime: number }> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.put<{ Message: string; UpdatedRemainingTime: number }>(
+      `${this.apiUrl}/update-remaining-time/${userId}`,
+      { remainingTime: additionalTime }, // Sending only the remaining time
+      { headers }
+    ).pipe(
+      catchError(this.handleError)
+    );
+  }
   
   updateUserCoin(id: any, newCoinValue: number): Observable<any> {
     const body = { newCoinValue }; // Wrap the value in an object

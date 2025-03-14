@@ -121,6 +121,7 @@ export interface UserDto{
   img:string;
   coin:number;
   Token:string;
+  RemainingTime:string
 }
 export interface UserSignInDto{
   Email:any;
