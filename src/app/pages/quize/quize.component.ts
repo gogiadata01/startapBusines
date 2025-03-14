@@ -306,12 +306,16 @@ export class QuizeComponent implements OnInit , CanActivate {
 
     this.userService.updateRemainingTime(this.userid, remainingTime).subscribe(
       (response) => {
-        console.log('Remaining time updated:', response.UpdatedRemainingTime);
+        console.log('Remaining time updated:', response); // Check the response structure
+        if ('UpdatedRemainingTime' in response) {
+          console.log('Remaining time:', response.UpdatedRemainingTime);
+        }
       },
       (error) => {
         console.error('Error updating remaining time:', error);
       }
     );
+    
 
     this.userService.getUserById(this.userid).subscribe((user ) =>{
       this.currentUser = user
