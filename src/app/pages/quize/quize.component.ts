@@ -68,7 +68,7 @@ export class QuizeComponent implements OnInit , CanActivate {
     // });
     this.startQuizTimer();
   
-    // this.checkQuizAvailability();
+    this.checkQuizAvailability();
   
     Swal.fire({
       title: 'გაფრთხილება',
