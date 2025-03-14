@@ -47,6 +47,7 @@ export class QuizeComponent implements OnInit , CanActivate {
   bonusAnswerSelected: string | null = null;
   isCooldownActive: boolean = false;
   userid:any
+  initialQuizeTime: number = this.totalQuizTimeInSeconds;
   constructor(
     private router: Router,
     private authService: AuthenticationService,
@@ -192,6 +193,7 @@ export class QuizeComponent implements OnInit , CanActivate {
         this.isBonusQuestion = false;
         this.bonusQuestionAnswered = false;
         this.bonusAnswerSelected = null;
+        this.timeLeftForQuiz = this.initialQuizeTime; 
         this.loadAnswers();
     } else {
         Swal.fire({
@@ -303,15 +305,16 @@ export class QuizeComponent implements OnInit , CanActivate {
     this.quizStarted = false;
     this.quizFinished = true;
     const remainingTime = this.timeLeftForQuiz;
+    const UsedTime  = remainingTime - this.totalQuizTimeInSeconds
 
-    if (remainingTime === 0) {
+    if (UsedTime === 0) {
       console.error('Remaining time cannot be zero.');
       return; // Exit early if remaining time is zero
     }
     const now = new Date().getTime(); 
     localStorage.setItem('lastQuizTime', now.toString());
   
-    this.userService.updateRemainingTime(this.userid, remainingTime).subscribe(
+    this.userService.updateRemainingTime(this.userid, UsedTime).subscribe(
       (response) => {
         console.log('Remaining time updated:', response); // Check the response structure
         if ('UpdatedRemainingTime' in response) {
