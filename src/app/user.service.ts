@@ -44,16 +44,12 @@ export class UserService {
       catchError(this.handleError)
     );
   }
-  updateRemainingTime(userId: number, additionalTime: number): Observable<{ Message: string; UpdatedRemainingTime: number }> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.put<{ Message: string; UpdatedRemainingTime: number }>(
-      `${this.apiUrl}/update-remaining-time/${userId}`,
-      { remainingTime: additionalTime }, // Sending only the remaining time
-      { headers }
-    ).pipe(
-      catchError(this.handleError)
-    );
+  updateRemainingTime(userId: number, additionalTime: number) {
+    return this.http.put(`https://api.myuni.ge/api/User/update-remaining-time/${userId}`, additionalTime, {
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
+  
   
   updateUserCoin(id: any, newCoinValue: number): Observable<any> {
     const body = { newCoinValue }; // Wrap the value in an object
