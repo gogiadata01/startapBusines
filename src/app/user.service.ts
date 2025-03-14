@@ -44,10 +44,8 @@ export class UserService {
       catchError(this.handleError)
     );
   }
-  updateRemainingTime(userId: number, additionalTime: number) {
-    return this.http.put(`https://api.myuni.ge/api/User/update-remaining-time/${userId}`, additionalTime, {
-      headers: { 'Content-Type': 'application/json' },
-    });
+  updateRemainingTime(userId: number, additionalTime: number): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/update-remaining-time/${userId}`, additionalTime);
   }
   
   
