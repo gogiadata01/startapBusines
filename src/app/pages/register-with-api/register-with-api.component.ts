@@ -5,6 +5,7 @@ import { UserDto } from '../../core/models/common.model';
 import { Router } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import Swal from 'sweetalert2';
 
@@ -15,6 +16,7 @@ import Swal from 'sweetalert2';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    RouterModule 
   ],
   templateUrl: './register-with-api.component.html',
   styleUrls: ['./register-with-api.component.scss']

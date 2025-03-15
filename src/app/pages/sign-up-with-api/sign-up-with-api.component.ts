@@ -57,7 +57,7 @@ export class SignUpWithApiComponent  {
     }
 
   onSubmit(): void {
-    if (this.SignIn.invalid) {
+    if (this.SignIn.valid) {
       const UserSignInDto: UserSignInDto = this.SignIn.value;
       this.UserService.signInUser(UserSignInDto).subscribe({
         next: (response) => {
@@ -99,9 +99,6 @@ export class SignUpWithApiComponent  {
       });
     }
   }
-  
-  
-
 }
 
 

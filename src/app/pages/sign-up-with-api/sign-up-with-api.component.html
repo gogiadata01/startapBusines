@@ -8,7 +8,7 @@
   <div class="authorization-container">
     <div class="form-section">
       <h1>ავტორიზაცია</h1>
-      <form [formGroup]="SignIn" (ngSubmit)="onSubmit()">
+      <form [formGroup]="SignIn" >
         <div class="form-group">
           <input type="email" formControlName="Email" placeholder="ელ. ფოსტა" />
           <div *ngIf="Email?.invalid && Email?.touched" class="error-message">
@@ -31,11 +31,11 @@
           არ გაქვს ანგარიში? <a routerLink="/Register">რეგისტრაცია</a>
         </div>
         <!-- <p>Form valid: {{ SignIn.valid }}</p>
-<p>Email valid: {{ Email?.valid }}</p>
-<p>Email errors: {{ Email?.errors | json }}</p>
-<p>Password valid: {{ Password?.valid }}</p>
-<p>Password errors: {{ Password?.errors | json }}</p> -->
-        <button type="submit" [disabled]="SignIn.invalid">ავტორიზაცია</button>
+        <p>Email valid: {{ Email?.valid }}</p>
+        <p>Email errors: {{ Email?.errors | json }}</p>
+        <p>Password valid: {{ Password?.valid }}</p>
+        <p>Password errors: {{ Password?.errors | json }}</p> -->
+        <button (click)="onSubmit()" type="submit" [disabled]="SignIn.invalid">ავტორიზაცია</button>
       </form>
     </div>
   </div>
