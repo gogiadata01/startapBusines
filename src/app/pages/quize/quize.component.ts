@@ -326,29 +326,6 @@ export class QuizeComponent implements OnInit , CanActivate {
         console.error('Error updating time spent:', error);
       }
     );
-    // const remainingTime = this.timeLeftForQuiz;
-    // const UsedTime  = remainingTime - this.totalQuizTimeInSeconds
-
-    // if (UsedTime === 0) {
-    //   console.error('Remaining time cannot be zero.');
-    //   return; // Exit early if remaining time is zero
-    // }
-    // const now = new Date().getTime(); 
-    // localStorage.setItem('lastQuizTime', now.toString());
-  
-    // this.userService.updateRemainingTime(this.userid, UsedTime).subscribe(
-    //   (response) => {
-    //     console.log('Remaining time updated:', response); // Check the response structure
-    //     if ('UpdatedRemainingTime' in response) {
-    //       console.log('Remaining time:', response.UpdatedRemainingTime);
-    //     }
-    //   },
-    //   (error) => {
-    //     console.error('Error updating remaining time:', error);
-    //   }
-    // );
-    
-
     this.userService.getUserById(this.userid).subscribe((user ) =>{
       this.currentUser = user
       if (this.currentUser) {
