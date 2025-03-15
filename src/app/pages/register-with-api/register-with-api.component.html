@@ -3,22 +3,21 @@
   <form [formGroup]="RegisterForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="username">სახელი</label>
-      <input
-        type="text"
-        id="username"
-        formControlName="Name"
-        placeholder="შეიყვანეთ სახელი"
-      />
+      <input type="text" id="username" formControlName="Name" placeholder="შეიყვანეთ სახელი" />
+      <div *ngIf="Name?.invalid && Name?.touched" class="error-message">
+        <span *ngIf="Name?.errors?.['required']">გთხოვთ შეიყვანოთ სახელი</span>
+      </div>
     </div>
+
     <div class="form-group">
       <label for="email">ელ. ფოსტა</label>
-      <input
-        type="email"
-        id="email"
-        formControlName="Email"
-        placeholder="შეიყვანეთ ელ. ფოსტა"
-      />
+      <input type="email" id="email" formControlName="Email" placeholder="შეიყვანეთ ელ. ფოსტა" />
+      <div *ngIf="Email?.invalid && Email?.touched" class="error-message">
+        <span *ngIf="Email?.errors?.['required']">გთხოვთ შეიყვანოთ ელ.ფოსტა</span>
+        <span *ngIf="Email?.errors?.['email']">არასწორი ელ. ფოსტის ფორმატი</span>
+      </div>
     </div>
+
     <label for="classSelect">კლასი</label>
     <select id="classSelect" formControlName="Type">
       <option value="" disabled selected>შეარჩით კლასი</option>
@@ -27,19 +26,25 @@
       <option value="მოსწავლე XI კლასელი">მოსწავლე XI კლასელი</option>
       <option value="მოსწავლე XII კლასელი">მოსწავლე XII კლასელი</option>
     </select>
+    <div *ngIf="Type?.invalid && Type?.touched" class="error-message">
+      <span *ngIf="Type?.errors?.['required']">გთხოვთ აირჩიოთ კლასი</span>
+    </div>
+
     <div class="form-group">
       <label for="password">პაროლი</label>
-      <input
-        type="password"
-        id="password"
-        formControlName="Password"
-        placeholder="შეიყვანეთ პაროლი"
-      />
+      <input type="password" id="password" formControlName="Password" placeholder="შეიყვანეთ პაროლი" />
+      <div *ngIf="Password?.invalid && Password?.touched" class="error-message">
+        <span *ngIf="Password?.errors?.['required']">გთხოვთ შეიყვანოთ პაროლი</span>
+        <span *ngIf="Password?.errors?.['minlength']">პაროლი უნდა იყოს მინიმუმ 6 სიმბოლო</span>
+        <span *ngIf="Password?.errors?.['pattern']">
+          პაროლი უნდა შეიცავდეს დიდ და პატარა ასოებს, ციფრს და სპეციალურ სიმბოლოს (&#64;$!%*?&)
+        </span>
+        
+      </div>
     </div>
+
     <div class="dvba">
-      <button [disabled]="!RegisterForm.valid" type="submit">
-        რეგისტრაცია
-      </button>
+      <button [disabled]="!RegisterForm.valid" type="submit">რეგისტრაცია</button>
     </div>
 
     <div class="register-link">
@@ -47,4 +52,3 @@
     </div>
   </form>
 </div>
-
