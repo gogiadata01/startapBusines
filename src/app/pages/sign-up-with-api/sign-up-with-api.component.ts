@@ -1,15 +1,18 @@
-import { Component ,OnInit} from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormArray, NgForm, NgModel, ReactiveFormsModule } from '@angular/forms';
+import { Component,} from '@angular/core';
+import { FormBuilder, FormGroup, Validators,  ReactiveFormsModule } from '@angular/forms';
 import { UserService } from '../../user.service';
 import { UserSignInDto } from '../../core/models/common.model';
 import { HttpClient } from '@angular/common/http';
 import { NgFor, NgIf } from '@angular/common';
-import { Router } from '@angular/router';
 import {AuthenticationService} from '../../authentication.service'
 import {UserDto} from '../../core/models/common.model'
 import { RouterLink } from '@angular/router';
 import Swal from 'sweetalert2';
-import { CookieService } from 'ngx-cookie-service'; // import the cookie service
+import { CookieService } from 'ngx-cookie-service';
+import { routes } from '../../app.routes';   
+import { Router } from '@angular/router'; 
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-sign-up-with-api',
@@ -17,8 +20,8 @@ import { CookieService } from 'ngx-cookie-service'; // import the cookie service
   imports: [
     NgFor,
     NgIf,
-    ReactiveFormsModule
-  ,RouterLink,],
+    ReactiveFormsModule, 
+    RouterLink,  CommonModule], 
   templateUrl: './sign-up-with-api.component.html',
   styleUrl: './sign-up-with-api.component.scss'
 })
@@ -32,13 +35,29 @@ export class SignUpWithApiComponent  {
     private cookieService: CookieService
   ){
     this.SignIn = this.fb.group({
-      Email: ['',],
-      Password: ['',]  
-    })
+      Email: ['',
+        [
+          Validators.required,
+          Validators.email,
+          Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$'),    
+        ]
+      ],
+      Password: ['', [Validators.required, Validators.minLength(6)]],  
+      
+    });
   }
 
+  get Email() {
+     return this.SignIn.get('Email');
+   }
+
+  get Password() {
+     return this.SignIn.get('Password');
+  
+    }
+
   onSubmit(): void {
-    if (this.SignIn.valid) {
+    if (this.SignIn.invalid) {
       const UserSignInDto: UserSignInDto = this.SignIn.value;
       this.UserService.signInUser(UserSignInDto).subscribe({
         next: (response) => {
@@ -80,6 +99,7 @@ export class SignUpWithApiComponent  {
       });
     }
   }
+  
   
 
 }
