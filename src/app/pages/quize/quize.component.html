@@ -169,6 +169,31 @@
   </div> -->
 </div>
 
+
+
+<!-- ქვიზის ქარდი -->
+<div class="container">
+  <div class="quiz-cards-row">
+    <div class="quiz-card" *ngFor="let quiz of quizzes.slice(0, 5)" [ngClass]="{'completed': quiz.completed}">
+      <div class="quiz-title">{{ quiz.number }} ქვიზი</div>
+      <div class="quiz-date">{{ quiz.date }}</div>
+      <div class="quiz-time">{{ quiz.time }}</div>
+      <div class="check-mark" *ngIf="quiz.completed">&#10003;</div>
+    </div>
+  </div>
+  
+  <div class="quiz-cards-row">
+    <div class="quiz-card" *ngFor="let quiz of quizzes.slice(5, 10)" [ngClass]="{'completed': quiz.completed}">
+      <div class="quiz-title">{{ quiz.number }} ქვიზი</div>
+      <div class="quiz-date">{{ quiz.date }}</div>
+      <div class="quiz-time">{{ quiz.time }}</div>
+      <div class="check-mark" *ngIf="quiz.completed">&#10003;</div>
+    </div>
+  </div>
+</div>
+<!-- ქვიზის ქარდი მთავრდება აქ -->
+
+
 <!-- Footer Section -->
 <div class="mainfooter">
   <app-footer-for-pupil />

@@ -21,6 +21,71 @@ import { CookieService } from 'ngx-cookie-service'; // If using cookies
   providers: [DatePipe],
 })
 export class QuizeComponent implements OnInit , CanActivate {
+// ქვიზის ქარდი
+  quizzes = [
+    {
+      number: 'I',
+      date: '24 მარტი',
+      time: '18:00',
+      completed: true
+    },
+    {
+      number: 'II',
+      date: '29 მარტი',
+      time: '17:00',
+      completed: true
+    },
+    {
+      number: 'III',
+      date: '2 აპრილი',
+      time: '18:00',
+      completed: false
+    },
+    {
+      number: 'IV',
+      date: '6 აპრილი',
+      time: '14:00',
+      completed: false
+    },
+    {
+      number: 'V',
+      date: '8 აპრილი',
+      time: '18:00',
+      completed: false
+    },
+    {
+      number: 'VI',
+      date: '12 აპრილი',
+      time: '14:00',
+      completed: false
+    },
+    {
+      number: 'VII',
+      date: '14 აპრილი',
+      time: '18:00',
+      completed: false
+    },
+    {
+      number: 'VIII',
+      date: '17 აპრილი',
+      time: '18:00',
+      completed: false
+    },
+    {
+      number: 'IX',
+      date: '20 აპრილი',
+      time: '14:00',
+      completed: false
+    },
+    {
+      number: 'X',
+      date: '24 აპრილი',
+      time: '18:00',
+      completed: false
+    }
+  ];
+  // ქვიზის ქარდი მთავრდება აქ.
+
   quiz: QuizDto | undefined;
   currentQuestionIndex = 0;
   selectedAnswers: string[] = [];
