@@ -97,7 +97,7 @@ export class QuizeComponent implements OnInit , CanActivate {
   quizStarted = false;
   quizCompleted = false;
   bonusQuestionAnswered = false;
-  totalQuizTimeInSeconds = 6 * 60; 
+  totalQuizTimeInSeconds = 5 * 60; 
   timeLeftForQuiz = this.totalQuizTimeInSeconds;
   quizIntervalSubscription: Subscription | undefined;
   currentUser!:UserDto
