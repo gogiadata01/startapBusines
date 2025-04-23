@@ -122,7 +122,13 @@ export interface UserDto{
   coin:number;
   Token:string;
   RemainingTime:string
+  
 }
+export interface LeaderboardEntry {
+  user: UserDto;
+  position: number;
+}
+
 export interface UserSignInDto{
   Email:any;
   Password:string

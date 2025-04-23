@@ -16,10 +16,13 @@
   import { takeUntil } from 'rxjs/operators';
   import { gsap } from 'gsap';
   import {UserDto} from '../../core/models/common.model';
+  import {LeaderboardEntry} from '../../core/models/common.model';
+
   import {UserService} from '../../user.service'
   import {  AfterViewInit,  ViewChildren, QueryList } from '@angular/core';
   import {AuthenticationService} from '../../authentication.service'
   import { FormsModule } from '@angular/forms';
+
   const BASE_URL = 'https://api.myuni.ge/';
   @Component({    
     selector: 'app-home',
@@ -28,9 +31,10 @@
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss']
   })
+  
   export class HomeComponent implements OnInit, OnDestroy   {
-    podiumEntries: UserDto[] = []; // For top 3 podium users
-    entries: UserDto[] = []; // For users ranked 4-6
+    // podiumEntries: UserDto[] = []; // For top 3 podium users
+    // entries: UserDto[] = []; // For users ranked 4-6
     programCards: ProgramCardDto[] = [];
     circles: number[] = Array.from({ length: 6 }, (_, i) => i);
     activeCircleIndex: number = 0;
@@ -47,8 +51,10 @@
     activeFieldIndex: number = 0;    // Track the index of the currently selected field
     isLoggedIn = false;
     userToken: any;
-
-
+    userid:any
+    podiumEntries: LeaderboardEntry[] = [];
+    entries: LeaderboardEntry[] = [];
+    
     
     // Sample list of subjects; this should be populated based on your requirements
     subjects: string[] = [
@@ -57,7 +63,7 @@
       'გეოგრაფია', 'მუსიკა', 'ხელოვნება', 'ისტორია', 'სპორტი'
     ];
 
-    constructor(private authService: AuthenticationService,private router: Router,private cdr: ChangeDetectorRef, private User:AuthenticationService,private ngZone: NgZone  ,private userService :UserService, private EventCardService: EventCardService  ,  private programCardService: ProgramCardService
+    constructor(private authService: AuthenticationService,private router: Router,private cdr: ChangeDetectorRef, private User:AuthenticationService,private ngZone: NgZone  ,private userService :UserService, private EventCardService: EventCardService  ,  private programCardService: ProgramCardService, private autentication:AuthenticationService,
       ) {        
       }
     @Input() text: string = 'არჩიეთ თქვენთვის შესაფერისი პროგრამა';
@@ -82,21 +88,137 @@ loadFieldNames(): void {
 getCurrentUser(): void {
   this.userToken = this.authService.getCurrentUser()
 }
+// getTopUsers(): void {
+//   this.userService.getAllUsers().subscribe((users: UserDto[]) => {
+//     // Sort users by coins in descending order
+//     const sortedUsers = users.sort((a, b) => b.coin - a.coin);
+
+//     // Get the top 6 users
+//     const topSixUsers = sortedUsers.slice(0, 6);
+
+//     // Separate the top 3 for podium and next 3 for the list
+//     this.podiumEntries = topSixUsers.slice(0, 3);
+//     this.entries = topSixUsers.slice(3, 6);
+
+//     // console.log(this.podiumEntries, this.entries); // Debugging purposes
+//   });
+// }
+
+
+// პრასტოი ვერსია რომელიც აჩვენებს ტოპ 6 მონაწილეს
+// getTopUsers(): void {
+//   this.userid = this.autentication.getNameIdentifier(); // Logged-in user's ID
+
+//   this.userService.getAllUsers().subscribe((users: UserDto[]) => {
+//     const sortedUsers = users.sort((a, b) => b.coin - a.coin);
+
+//     // Top 3 podium entries always stay the same
+//     this.podiumEntries = sortedUsers.slice(0, 3);
+
+//     const userIndex = sortedUsers.findIndex(user => user.id == this.userid);
+
+//     // If the logged-in user is not in the top 3
+//     if (userIndex > 2) {
+//       const start = Math.max(userIndex - 2, 3); // Avoid showing top 3 again
+//       const end = userIndex + 1;
+//       this.entries = sortedUsers.slice(start, end); // Show 2 ahead of user + the user
+//     } else {
+//       // If user is in top 3, just show next 3 after top 3
+//       this.entries = sortedUsers.slice(3, 6);
+//     }
+//   });
+// }
+
+// განახლებული ვერსია 
+// getTopUsers(): void {
+//   this.userid = this.autentication.getNameIdentifier();
+
+//   this.userService.getAllUsers().subscribe((users: UserDto[]) => {
+//     const sortedUsers = users.sort((a, b) => b.coin - a.coin);
+//     const userIndex = sortedUsers.findIndex(user => user.id == this.userid);
+
+//     this.podiumEntries = sortedUsers.slice(0, 3).map((user, index) => ({
+//       user,
+//       position: index + 1,
+//     }));
+
+//     if (userIndex > 2) {
+//       const start = Math.max(userIndex - 2, 3);
+//       const end = userIndex + 1;
+//       this.entries = sortedUsers
+//         .map((user, index) => ({
+//           user,
+//           position: index + 1,
+//         }))
+//         .filter((entry, index) => index >= start && index <= userIndex);
+//     } else {
+//       this.entries = sortedUsers.slice(3, 6).map((user, index) => ({
+//         user,
+//         position: index + 4,
+//       }));
+//     }
+//   });
+// }
+
 getTopUsers(): void {
+  this.userid = this.autentication.getNameIdentifier();
+
   this.userService.getAllUsers().subscribe((users: UserDto[]) => {
-    // Sort users by coins in descending order
     const sortedUsers = users.sort((a, b) => b.coin - a.coin);
+    const userIndex = sortedUsers.findIndex(user => user.id == this.userid);
 
-    // Get the top 6 users
-    const topSixUsers = sortedUsers.slice(0, 6);
+    // Set top 3 podium entries
+    this.podiumEntries = sortedUsers.slice(0, 3).map((user, index) => ({
+      user,
+      position: index + 1,
+    }));
 
-    // Separate the top 3 for podium and next 3 for the list
-    this.podiumEntries = topSixUsers.slice(0, 3);
-    this.entries = topSixUsers.slice(3, 6);
+    // Handle users outside the podium
+    if (userIndex === 3) {
+      // User is in 4th place - show 4th, 5th, 6th
+      this.entries = sortedUsers.slice(3, 6).map((user, index) => ({
+        user,
+        position: index + 4,
+      }));
+    } else if (userIndex === 4) {
+      // User is in 5th place - show 4th, 5th, 6th
+      this.entries = sortedUsers.slice(3, 6).map((user, index) => ({
+        user,
+        position: index + 4,
+      }));
+    } else if (userIndex === 5) {
+      // User is in 6th place - show 4th, 5th, 6th
+      this.entries = sortedUsers.slice(3, 6).map((user, index) => ({
+        user,
+        position: index + 4,
+      }));
+    } else if (userIndex > 5) {
+      // User is not in top 6 - show 3 users around them
+      const start = Math.max(userIndex - 2, 3);
+      const end = userIndex + 1;
 
-    // console.log(this.podiumEntries, this.entries); // Debugging purposes
+      this.entries = sortedUsers
+        .map((user, index) => ({
+          user,
+          position: index + 1,
+        }))
+        .filter(entry => entry.position >= start + 1 && entry.position <= end);
+    } else {
+      // User is in top 3 - show next 3 below podium
+      this.entries = sortedUsers.slice(3, 6).map((user, index) => ({
+        user,
+        position: index + 4,
+      }));
+    }
+
+    // Optionally log the number of users with more than 0 coins
+    const nonZeroUsers = users.filter(u => u.coin > 0).length;
+    console.log(`Users with more than 0 coins: ${nonZeroUsers}`);
   });
 }
+
+
+
 
 //  განახლებულო და გასატესტი მეთოდი რათა არამარტო ქულები 
 // შევადაროთ არამედ შევადაროთ თუ რა დროში დაწერა იუზერმა
