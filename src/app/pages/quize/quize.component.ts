@@ -81,7 +81,7 @@ export class QuizeComponent implements OnInit , CanActivate {
       number: 'X',
       date: '24 აპრილი',
       time: '18:00',
-      completed: false
+      completed: true
     }
   ];
   // ქვიზის ქარდი მთავრდება აქ.
