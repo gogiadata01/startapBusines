@@ -4,6 +4,8 @@ import { QuizDto } from '../../core/models/common.model';
 import { Subscription, interval } from 'rxjs';
 import { CommonModule, DatePipe } from '@angular/common';
 import { UserDto } from '../../core/models/common.model';
+import { QuizSubmissionDto } from '../../core/models/common.model';
+
 import { AuthenticationService } from '../../authentication.service';
 import { UserService } from '../../user.service';
 import Swal from 'sweetalert2';
@@ -361,7 +363,51 @@ export class QuizeComponent implements OnInit , CanActivate {
       (a, i) => a && this.quiz?.questions[i]?.correctanswer !== a
     ).length;
   }
-
+// სწორი ენდ ქვიზი
+  // endQuiz(): void {
+  //   if (this.quizIntervalSubscription) {
+  //     this.quizIntervalSubscription.unsubscribe();
+  //   }
+  
+  //   this.quizStarted = false;
+  //   this.quizFinished = true;
+  //   const quizEndTime = new Date().getTime();
+  //   const timeSpent = Math.floor((quizEndTime - this.quizStartTime) / 1000); // Convert milliseconds to seconds
+  
+  //   if (timeSpent <= 0) {
+  //     console.error('Elapsed time calculation error.');
+  //     return; 
+  //   }
+  //   const now = new Date().getTime();
+  //   localStorage.setItem('lastQuizTime', now.toString());
+  
+  //   // Send the elapsed time instead of remaining time
+  //   this.userService.updateRemainingTime(this.userid, timeSpent).subscribe(
+  //     (response) => {
+  //       console.log('Time spent updated:', response);
+  //       if ('UpdatedRemainingTime' in response) {
+  //         console.log('Time spent:', response.UpdatedRemainingTime);
+  //       }
+  //     },
+  //     (error) => {
+  //       console.error('Error updating time spent:', error);
+  //     }
+  //   );
+  //   this.userService.getUserById(this.userid).subscribe((user ) =>{
+  //     this.currentUser = user
+  //     if (this.currentUser) {
+  //       const newCoinValue = this.currentUser.coin + this.correctAnswersCount;
+  //       this.userService.updateUserCoin(this.currentUser.id, newCoinValue).subscribe(
+  //         () => {
+  //           this.showCompletionAlert();
+  //         },
+  //         (error) => {
+  //           console.error('Error updating coin:', error);
+  //         }
+  //       );
+  //     }
+  //   })
+  // }
   endQuiz(): void {
     if (this.quizIntervalSubscription) {
       this.quizIntervalSubscription.unsubscribe();
@@ -405,8 +451,28 @@ export class QuizeComponent implements OnInit , CanActivate {
         );
       }
     })
+    const submission: QuizSubmissionDto = {
+      time: `${Math.floor(timeSpent / 60)}:${timeSpent % 60}`, // e.g. "4:32"
+      quizQuestions: this.quiz?.questions.map((q, i) => ({
+        Question: q.question,
+        CorrectAnswer: q.correctanswer,
+        UserAnswer: this.selectedAnswers[i],
+        Img: q.img ?? undefined,
+        badAnswers: q.incorrectAnswers.map((bad: any) => ({
+          badanswer: bad.inccorectAnswer
+        }))
+      })) || []
+    };
+    this.quizService.submitQuiz(this.userid, submission).subscribe(
+      () => {
+        console.log('Quiz successfully submitted');
+      },
+      (error) => {
+        console.error('Error submitting quiz:', error);
+      }
+    );
+    
   }
-  
   formatTime(seconds: number): string {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;

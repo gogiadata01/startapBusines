@@ -196,7 +196,22 @@ export interface CorrectAnswerDto {
   answer: string;
 }
 
+export interface QuizSubmissionDto {
+  time: string;
+  quizQuestions: QuizQuestions[];
+}
 
+export interface QuizQuestions {
+  Question: string;
+  CorrectAnswer: string;
+  UserAnswer: string;
+  Img?: string | null;
+  badAnswers: BadAnswers[];
+}
+
+export interface BadAnswers {
+  badanswer:string
+}
 
 
 

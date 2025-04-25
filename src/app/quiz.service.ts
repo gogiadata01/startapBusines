@@ -62,7 +62,15 @@ export class QuizService {
       }),
       catchError(this.handleError)
     );
+    
   }
+  submitQuiz(userId: number, submission: any): Observable<any> {
+    const url = `${this.apiUrl}/submit-quiz/${userId}`;
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post(url, submission, { headers }).pipe(
+      catchError(this.handleError)
+    );
+    }
 
   // Centralized error handling method
   private handleError(error: HttpErrorResponse): Observable<never> {
