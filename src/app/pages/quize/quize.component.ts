@@ -23,6 +23,84 @@ import { CookieService } from 'ngx-cookie-service'; // If using cookies
   providers: [DatePipe],
 })
 export class QuizeComponent implements OnInit , CanActivate {
+  // ქვიზის ისტორია..
+  quizzesh = [
+    {
+      title: 'I ქვიზი',
+      date: '24/05 18:00',
+      open: false,
+      questions: [
+        {
+          text: '1: კითხვაქეუყიფდპიეწუფბპიწეუფბპწეიუფბპწეიუფბპწეიფუბწეპიფბ',
+          answers: [
+            { label: 'პასუხი', color: 'blue' },
+            { label: 'პასუხი', color: 'green' },
+            { label: 'პასუხი', color: 'blue' },
+            { label: 'პასუხი', color: 'blue' }
+          ]
+        },
+        {
+          text: '2: კითხვფლჯეწჰფბიწეჯბფ;ეწიფუბ;ეწიფუბეწ;იფუბეწ;იფბეა',
+          answers: [
+            { label: 'პასუხი', color: 'green' },
+            { label: 'პასუხი', color: 'blue' },
+            { label: 'პასუხი', color: 'red' },
+            { label: 'პასუხი', color: 'blue' }
+          ]
+        }
+      ]
+    },
+    {
+      title: 'II ქვიზი',
+      date: '30/05 14:00',
+      open: false,
+      questions: [
+        {
+          text: '1: კითხვაქეუყიფდპიეწუფბპიწეუფბპწეიუფბპწეიუფბპწეიფუბწეპიფბ',
+          answers: [
+            { label: 'პასუხი', color: 'blue' },
+            { label: 'პასუხი', color: 'green' },
+            { label: 'პასუხი', color: 'blue' },
+            { label: 'პასუხი', color: 'blue' }
+          ]
+        },
+        {
+          text: '2: კითხვფლჯეწჰფბიწეჯბფ;ეწიფუბ;ეწიფუბეწ;იფუბეწ;იფბეა',
+          answers: [
+            { label: 'პასუხი', color: 'green' },
+            { label: 'პასუხი', color: 'blue' },
+            { label: 'პასუხი', color: 'red' },
+            { label: 'პასუხი', color: 'blue' }
+          ]
+        },
+        {
+          text: '3: კითხვაქეუყიფდპიეწუფბპიწეუფბპწეიუფბპწეიუფბპწეიფუბწეპიფბ',
+          answers: [
+            { label: 'პასუხი', color: 'blue' },
+            { label: 'პასუხი', color: 'green' },
+            { label: 'პასუხი', color: 'blue' },
+            { label: 'პასუხი', color: 'blue' }
+          ]
+        },
+        
+      ]
+    },
+    {
+      title: 'III ქვიზი',
+      date: '02/06 18:00',
+      open: false,
+      questions: []
+    }
+  ];
+
+  toggleQuiz(index: number) {
+    this.quizzesh.forEach((quiz, i) => {
+      quiz.open = i === index ? !quiz.open : false;
+    });
+  }
+  // ქვიზების ისტორია მთავრდება აქ.
+
+
 // ქვიზის ქარდი
   quizzes = [
     {
@@ -87,6 +165,8 @@ export class QuizeComponent implements OnInit , CanActivate {
     }
   ];
   // ქვიზის ქარდი მთავრდება აქ.
+
+  
 
   quiz: QuizDto | undefined;
   currentQuestionIndex = 0;

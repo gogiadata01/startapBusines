@@ -373,3 +373,148 @@ h3{
   }
 }
 // ქვიზის ქარდი მთავრდება აქ...
+
+
+// ქვიზის ისტორია..
+.quiz-list {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.quiz-item {
+  margin-bottom: 15px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.quiz-header {
+  background-color: #28a745;
+  color: white;
+  width: 100%;
+  padding: 15px 20px;
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #218838;
+  }
+
+  .arrow {
+    transition: transform 0.3s ease;
+  }
+
+  .arrow.open {
+    transform: rotate(180deg);
+  }
+}
+
+.quiz-body {
+  max-height: 0;
+  overflow: hidden;
+  background-color: #f8f9fa;
+  transition: max-height 0.5s ease, padding 0.3s ease;
+  padding: 0 20px;
+
+  &.open {
+    max-height: 500px; 
+    padding: 20px;
+  }
+}
+
+.question-block {
+  margin-bottom: 20px;
+}
+
+.question-text {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.answers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.answer-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  color: white;
+  transition: background-color 0.3s ease;
+
+  &.blue {
+    background-color: #007bff;
+
+    &:hover {
+      background-color: #0069d9;
+    }
+  }
+
+  &.green {
+    background-color: #28a745;
+
+    &:hover {
+      background-color: #218838;
+    }
+  }
+
+  &.red {
+    background-color: #dc3545;
+
+    &:hover {
+      background-color: #c82333;
+    }
+  }
+}
+
+/* --- RESPONSIVE --- */
+
+@media (max-width: 768px) {
+  .quiz-header {
+    font-size: 16px;
+    padding: 12px 15px;
+  }
+
+  .question-text {
+    font-size: 14px;
+  }
+
+  .answer-button {
+    font-size: 14px;
+    padding: 8px 15px;
+    flex: 1 1 45%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .quiz-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .answers {
+    flex-direction: column;
+  }
+
+  .answer-button {
+    width: 100%;
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+
+// ქვიზის ისტორია მთავრდება აქ...
