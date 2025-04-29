@@ -232,6 +232,38 @@
 <!-- ქვიზების ისტორა მთავრდება აქ -->
 
 
+<div *ngFor="let history of quizHistory">
+  <div *ngFor="let question of history.quizQuestions">
+    <h1>{{ question.question }}</h1>
+
+    <div *ngFor="let answer of question.badAnswers">
+      <p
+        [ngClass]="
+          getAnswerClass(
+            answer.badanswer,
+            question.correctanswer,
+            question.userAnswer
+          )
+        "
+      >
+        {{ answer.badanswer }}
+      </p>
+    </div>
+
+    <p
+      [ngClass]="
+        getAnswerClass(
+          question.correctanswer,
+          question.correctanswer,
+          question.userAnswer
+        )
+      "
+    >
+      {{ question.correctanswer }}
+    </p>
+  </div>
+</div>
+
 <!-- Footer Section -->
 <div class="mainfooter">
   <app-footer-for-pupil />

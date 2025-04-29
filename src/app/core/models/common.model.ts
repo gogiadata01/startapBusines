@@ -181,7 +181,7 @@ export interface QuestionDto {
 }
 
 export interface IncorrectAnswerDto {
-  answer: string;
+  inccorectAnswer: string;
 }
 
 export interface BonusQuestionDto {
@@ -196,22 +196,41 @@ export interface CorrectAnswerDto {
   answer: string;
 }
 
+// export interface QuizSubmissionDto {
+//   time: any;
+//   QuizQuestions: QuizQuestions[];
+//   img?: string | null;
+// }
+
+// export interface QuizQuestions {
+//   Question: string;
+//   CorrectAnswer: string;
+//   UserAnswer: string;
+//   Img?: string | null;
+//   BadAnswers: BadAnswers[];
+// }
+
+// export interface BadAnswers {
+//   badanswer: string;
+// }
 export interface QuizSubmissionDto {
   time: string;
-  quizQuestions: QuizQuestions[];
+  quizQuestions: QuizQuestion[]; // 👈 camelCase
 }
 
-export interface QuizQuestions {
-  Question: string;
-  CorrectAnswer: string;
-  UserAnswer: string;
-  Img?: string | null;
-  badAnswers: BadAnswers[];
+export interface QuizQuestion {
+  question: string;
+  correctanswer: string;
+  userAnswer: string;
+  img?: string | null;
+  badAnswers: BadAnswer[];
 }
 
-export interface BadAnswers {
-  badanswer:string
+export interface BadAnswer {
+  badanswer: any;
 }
+
+
 
 
 

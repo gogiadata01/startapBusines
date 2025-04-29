@@ -88,77 +88,6 @@ loadFieldNames(): void {
 getCurrentUser(): void {
   this.userToken = this.authService.getCurrentUser()
 }
-// getTopUsers(): void {
-//   this.userService.getAllUsers().subscribe((users: UserDto[]) => {
-//     // Sort users by coins in descending order
-//     const sortedUsers = users.sort((a, b) => b.coin - a.coin);
-
-//     // Get the top 6 users
-//     const topSixUsers = sortedUsers.slice(0, 6);
-
-//     // Separate the top 3 for podium and next 3 for the list
-//     this.podiumEntries = topSixUsers.slice(0, 3);
-//     this.entries = topSixUsers.slice(3, 6);
-
-//     // console.log(this.podiumEntries, this.entries); // Debugging purposes
-//   });
-// }
-
-
-// პრასტოი ვერსია რომელიც აჩვენებს ტოპ 6 მონაწილეს
-// getTopUsers(): void {
-//   this.userid = this.autentication.getNameIdentifier(); // Logged-in user's ID
-
-//   this.userService.getAllUsers().subscribe((users: UserDto[]) => {
-//     const sortedUsers = users.sort((a, b) => b.coin - a.coin);
-
-//     // Top 3 podium entries always stay the same
-//     this.podiumEntries = sortedUsers.slice(0, 3);
-
-//     const userIndex = sortedUsers.findIndex(user => user.id == this.userid);
-
-//     // If the logged-in user is not in the top 3
-//     if (userIndex > 2) {
-//       const start = Math.max(userIndex - 2, 3); // Avoid showing top 3 again
-//       const end = userIndex + 1;
-//       this.entries = sortedUsers.slice(start, end); // Show 2 ahead of user + the user
-//     } else {
-//       // If user is in top 3, just show next 3 after top 3
-//       this.entries = sortedUsers.slice(3, 6);
-//     }
-//   });
-// }
-
-// განახლებული ვერსია 
-// getTopUsers(): void {
-//   this.userid = this.autentication.getNameIdentifier();
-
-//   this.userService.getAllUsers().subscribe((users: UserDto[]) => {
-//     const sortedUsers = users.sort((a, b) => b.coin - a.coin);
-//     const userIndex = sortedUsers.findIndex(user => user.id == this.userid);
-
-//     this.podiumEntries = sortedUsers.slice(0, 3).map((user, index) => ({
-//       user,
-//       position: index + 1,
-//     }));
-
-//     if (userIndex > 2) {
-//       const start = Math.max(userIndex - 2, 3);
-//       const end = userIndex + 1;
-//       this.entries = sortedUsers
-//         .map((user, index) => ({
-//           user,
-//           position: index + 1,
-//         }))
-//         .filter((entry, index) => index >= start && index <= userIndex);
-//     } else {
-//       this.entries = sortedUsers.slice(3, 6).map((user, index) => ({
-//         user,
-//         position: index + 4,
-//       }));
-//     }
-//   });
-// }
 
 getTopUsers(): void {
   this.userid = this.autentication.getNameIdentifier();
@@ -217,52 +146,10 @@ getTopUsers(): void {
   });
 }
 
-
-
-
-//  განახლებულო და გასატესტი მეთოდი რათა არამარტო ქულები 
-// შევადაროთ არამედ შევადაროთ თუ რა დროში დაწერა იუზერმა
-
-
-// getTopUsers(): void {
-//   this.userService.getAllUsers().subscribe((users: UserDto[]) => {
-//     // Sort users by coins in descending order, then by RemainingTime (lowest first)
-//     const sortedUsers = users.sort((a, b) => {
-//       // Sort by coins in descending order
-//       if (b.coin === a.coin) {
-//         // Convert RemainingTime to minutes for comparison (if it's in "hh:mm:ss" format)
-//         const aRemainingTimeInMinutes = this.convertRemainingTimeToMinutes(a.RemainingTime);
-//         const bRemainingTimeInMinutes = this.convertRemainingTimeToMinutes(b.RemainingTime);
-
-//         // Sort by RemainingTime (ascending order - lower time first)
-//         return aRemainingTimeInMinutes - bRemainingTimeInMinutes;
-//       }
-//       return b.coin - a.coin; // Sort by coins descending
-//     });
-
-//     // Get the top 6 users
-//     const topSixUsers = sortedUsers.slice(0, 6);
-
-//     // Separate the top 3 for the podium and next 3 for the list
-//     this.podiumEntries = topSixUsers.slice(0, 3);
-//     this.entries = topSixUsers.slice(3, 6);
-
-//     // console.log(this.podiumEntries, this.entries); // Debugging purposes
-//   });
-// }
-
-// // Function to convert RemainingTime (assuming it's in "hh:mm:ss" format) to minutes
-// convertRemainingTimeToMinutes(remainingTime: string): number {
-//   const [hours, minutes, seconds] = remainingTime.split(":").map(Number);
-//   return hours * 60 + minutes + seconds / 60; // Convert to total minutes
-// }
-
-// Helper to get full image URL
 getImageUrl(relativePath: string): string {
   return `${BASE_URL}${relativePath}`;
 }
-  // Fetch field programs based on loaded fields
-// Fetch field programs based on loaded fields
+
 createFieldProgramMapping(): void {
   this.fields.forEach((field) => {
     this.programCardService.getFieldProgram(field.fieldName).pipe(takeUntil(this.destroy$)).subscribe({

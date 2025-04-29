@@ -31,6 +31,12 @@ export class UserService {
       catchError(this.handleError)  // Added error handling
     );
   }
+  getQuizHistory(userId: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/quiz-history/${userId}`).pipe(
+      catchError(this.handleError)
+    );
+  }
+  
 
   signInUser(loginDto: UserSignInDto): Observable<any> {
     return this.http.post(`${this.apiUrl}/signin`, loginDto).pipe(

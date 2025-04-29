@@ -313,6 +313,7 @@ export class QuizeComponent implements OnInit , CanActivate {
   isCooldownActive: boolean = false;
   userid:any
   quizStartTime:any;
+  quizHistory!: QuizSubmissionDto[];
   constructor(
     private router: Router,
     private authService: AuthenticationService,
@@ -325,16 +326,14 @@ export class QuizeComponent implements OnInit , CanActivate {
   ) {}
 
   ngOnInit(): void {
+    this.userid = this.autentication.getNameIdentifier()
     this.checkCurrentUser();
     this.getQuiz();
-    // this.authService.currentUser$.subscribe(user => {
-    //   if (user) {
-    //     this.user = { ...user }; 
-    //   }
-    // });
+    this.getQuizeHistory();
     this.startQuizTimer();
-  
-    this.checkQuizAvailability();
+    console.log(this.userid)
+
+    this.checkQuizAvailability(); 
   
     Swal.fire({
       title: 'გაფრთხილება',
@@ -342,7 +341,6 @@ export class QuizeComponent implements OnInit , CanActivate {
       icon: 'info',
       confirmButtonText: 'OK',
     });
-    this.userid = this.autentication.getNameIdentifier()
   }
 
   canActivate(): boolean {
@@ -413,20 +411,25 @@ export class QuizeComponent implements OnInit , CanActivate {
       this.endQuiz();
     }
   }
-  checkQuizRestriction(): void {
-    const lastQuizTime = localStorage.getItem('lastQuizTime');
-    
-    if (lastQuizTime) {
-        const lastQuizTimestamp = parseInt(lastQuizTime, 10);  
-        const currentTimestamp = new Date().getTime();  
-        const timeDifference = currentTimestamp - lastQuizTimestamp;
-
-        this.canStartQuiz = timeDifference >= 900000; // 900000 ms = 15 minutes
-    } else {
-        this.canStartQuiz = true; 
-    }
-}
-
+  getQuizeHistory(): void {
+    this.userService.getQuizHistory(this.userid).subscribe({
+      next: (quizhistory) => {
+        this.quizHistory = quizhistory;
+        console.log('Quiz History:', this.quizHistory);  // Check this in the browser console
+      },
+      error: (err) => {
+        console.error('Error fetching event data:', err);
+      }
+    });
+  }
+  
+  getAnswerClass(answer: string, correctAnswer: string, userAnswer: string): string {
+    if (answer === correctAnswer) return 'correct-answer';
+    if (answer === userAnswer && answer !== correctAnswer) return 'wrong-answer';
+    return 'default-answer';
+  }
+  
+  
 
   startQuiz(): void {
     if (!this.user) {
@@ -445,7 +448,7 @@ export class QuizeComponent implements OnInit , CanActivate {
 
   
 
-    this.checkQuizRestriction(); 
+    // this.checkQuizRestriction(); 
 
     if (this.canStartQuiz) {
         this.quizStarted = true;
@@ -528,6 +531,7 @@ export class QuizeComponent implements OnInit , CanActivate {
     this.updateAnswerCounts();
     this.nextQuestion();
   }
+  
   startCooldownTimer() {
     const timer = setInterval(() => {
       this.timeUntilNextAttempt--;
@@ -591,20 +595,20 @@ export class QuizeComponent implements OnInit , CanActivate {
   //       console.error('Error updating time spent:', error);
   //     }
   //   );
-  //   this.userService.getUserById(this.userid).subscribe((user ) =>{
-  //     this.currentUser = user
-  //     if (this.currentUser) {
-  //       const newCoinValue = this.currentUser.coin + this.correctAnswersCount;
-  //       this.userService.updateUserCoin(this.currentUser.id, newCoinValue).subscribe(
-  //         () => {
-  //           this.showCompletionAlert();
-  //         },
-  //         (error) => {
-  //           console.error('Error updating coin:', error);
-  //         }
-  //       );
-  //     }
-  //   })
+    // this.userService.getUserById(this.userid).subscribe((user ) =>{
+    //   this.currentUser = user
+    //   if (this.currentUser) {
+    //     const newCoinValue = this.currentUser.coin + this.correctAnswersCount;
+    //     this.userService.updateUserCoin(this.currentUser.id, newCoinValue).subscribe(
+    //       () => {
+    //         this.showCompletionAlert();
+    //       },
+    //       (error) => {
+    //         console.error('Error updating coin:', error);
+    //       }
+    //     );
+    //   }
+    // })
   // }
   endQuiz(): void {
     if (this.quizIntervalSubscription) {
@@ -650,25 +654,47 @@ export class QuizeComponent implements OnInit , CanActivate {
       }
     })
     const submission: QuizSubmissionDto = {
-      time: `${Math.floor(timeSpent / 60)}:${timeSpent % 60}`, // e.g. "4:32"
-      quizQuestions: this.quiz?.questions.map((q, i) => ({
-        Question: q.question,
-        CorrectAnswer: q.correctanswer,
-        UserAnswer: this.selectedAnswers[i],
-        Img: q.img ?? undefined,
-        badAnswers: q.incorrectAnswers.map((bad: any) => ({
-          badanswer: bad.inccorectAnswer
-        }))
-      })) || []
+      time: this.quiz?.time ?? '00:00',
+      quizQuestions: this.quiz?.questions.map((q, i) => {
+        const questionData: any = {
+          question: q.question,
+          correctAnswer: q.correctanswer,
+          userAnswer: this.selectedAnswers[i],
+          img: "",
+          badAnswers: q.incorrectAnswers.map((bad) => ({
+            badanswer: bad.inccorectAnswer
+          }))
+        };
+    
+        // Only include img if it exists
+        if (q.img) {
+          questionData.img = q.img;
+        }
+    
+        return questionData;
+      }) || []
     };
-    this.quizService.submitQuiz(this.userid, submission).subscribe(
-      () => {
-        console.log('Quiz successfully submitted');
+    
+    console.log(this.quiz?.questions)
+    
+    console.log('%c[SUBMIT] Sending payload:', 'color: green; font-weight: bold;');
+    console.log(JSON.stringify(submission, null, 2));
+    
+    this.quizService.submitQuiz(this.userid, submission).subscribe({
+      next: (res) => {
+        console.log('%cQuiz successfully submitted!', 'color: blue; font-weight: bold;');
+        console.log(res);
       },
-      (error) => {
-        console.error('Error submitting quiz:', error);
+      error: (error) => {
+        console.error('%c[ERROR] Quiz submission failed', 'color: red; font-weight: bold;');
+        console.error('Status Code:', error.status);
+        console.error('Error Message:', error.message);
+        if (error.error) {
+          console.error('Backend Response Body:', error.error);
+        }
       }
-    );
+    });
+    
     
   }
   formatTime(seconds: number): string {

@@ -552,3 +552,16 @@ h3{
 
 
 // ქვიზის ისტორია მთავრდება აქ...
+.correct-answer {
+  color: green;
+  font-weight: bold;
+}
+
+.wrong-answer {
+  color: red;
+  font-weight: bold;
+}
+
+.default-answer {
+  color: black;
+}

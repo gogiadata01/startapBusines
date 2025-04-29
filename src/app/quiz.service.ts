@@ -64,13 +64,10 @@ export class QuizService {
     );
     
   }
-  submitQuiz(userId: number, submission: any): Observable<any> {
-    const url = `${this.apiUrl}/submit-quiz/${userId}`;
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post(url, submission, { headers }).pipe(
-      catchError(this.handleError)
-    );
-    }
+  submitQuiz(quizId: number, payload: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/submit-quiz/${quizId}`, payload);
+  }
+  
 
   // Centralized error handling method
   private handleError(error: HttpErrorResponse): Observable<never> {
