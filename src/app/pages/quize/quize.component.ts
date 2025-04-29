@@ -31,23 +31,141 @@ export class QuizeComponent implements OnInit , CanActivate {
       open: false,
       questions: [
         {
-          text: '1: კითხვაქეუყიფდპიეწუფბპიწეუფბპწეიუფბპწეიუფბპწეიფუბწეპიფბ',
+          text: '1: ვინ იყო ანტიკური ეგვიპტის პირველი ფარაონი?',
           answers: [
-            { label: 'პასუხი', color: 'blue' },
-            { label: 'პასუხი', color: 'green' },
-            { label: 'პასუხი', color: 'blue' },
-            { label: 'პასუხი', color: 'blue' }
+            { label: ' სიენი', color: 'blue' },
+            { label: 'მენესი', color: 'green' },
+            { label: 'მენუა', color: 'blue' },
+            { label: 'ამენჰოტეპი', color: 'blue' }
           ]
         },
         {
-          text: '2: კითხვფლჯეწჰფბიწეჯბფ;ეწიფუბ;ეწიფუბეწ;იფუბეწ;იფბეა',
+          text: '2: რომელი ორი სახელმწიფო ებრძოლა ერთმანეთს სამხრეთ კავკასიისთვის VI საუკუნეში?',
           answers: [
-            { label: 'პასუხი', color: 'green' },
-            { label: 'პასუხი', color: 'blue' },
-            { label: 'პასუხი', color: 'red' },
-            { label: 'პასუხი', color: 'blue' }
+            { label: 'რომის იპერია და ირანი', color: 'green' },
+            { label: 'ბიზანტია და ირანი ', color: 'blue' },
+            { label: 'ბიზანტია და პართია', color: 'red' },
+            { label: 'არაბთა სახალიფო და ირანი', color: 'blue' }
           ]
-        }
+        },
+        {
+          text: '3: ვისმა მკვლელობამ შექმნა საბაბი პირველი მსოფლიო ომის დაწყებისთვის?',
+          answers: [
+            { label: 'ჯორჯ I ', color: 'green' },
+            { label: 'ფრანც ფერდინანდი', color: 'blue' },
+            { label: 'ბიზანტია და პართია', color: 'red' },
+            { label: 'არაბთა სახალიფო და ირანი', color: 'blue' }
+          ]
+        },
+        {
+          text: '4: რომელი ნივთიერება გამოიყენება თერმომეტრებში ტემპერატურის საჩვენებლად?',
+          answers: [
+            { label: 'წყალი', color: 'green' },
+            { label: 'სპირტი ', color: 'blue' },
+            { label: 'ვერცხლისწყალი', color: 'red' },
+            { label: 'ვერცხლისწყალი', color: 'blue' }
+          ]
+        },
+        {
+          text: '5: რომელი მხატრული ხერხია გამოყენებული წინადადებაში: დათო ქარივით ავარდა კიბეებზე',
+          answers: [
+            { label: 'ჰიპერბოლა', color: 'green' },
+            { label: ' გაპიროვნება', color: 'blue' },
+            { label: ' შედარება ', color: 'red' },
+            { label: ' მეტაფორა', color: 'blue' }
+          ]
+        },
+        {
+          text: '6: რომელი მხატრული ხერხია გამოყენებული წინადადებაში: დათო ქარივით ავარდა კიბეებზე',
+          answers: [
+            { label: 'ჰიპერბოლა', color: 'green' },
+            { label: ' გაპიროვნება', color: 'blue' },
+            { label: ' შედარება ', color: 'red' },
+            { label: ' მეტაფორა', color: 'blue' }
+          ]
+        },
+        {
+          text: '7: რომელი მხატრული ხერხია გამოყენებული წინადადებაში: დათო ქარივით ავარდა კიბეებზე',
+          answers: [
+            { label: 'ჰიპერბოლა', color: 'green' },
+            { label: ' გაპიროვნება', color: 'blue' },
+            { label: ' შედარება ', color: 'red' },
+            { label: ' მეტაფორა', color: 'blue' }
+          ]
+        },
+        {
+          text: '8: რომელი მხატრული ხერხია გამოყენებული წინადადებაში: დათო ქარივით ავარდა კიბეებზე',
+          answers: [
+            { label: 'ჰიპერბოლა', color: 'green' },
+            { label: ' გაპიროვნება', color: 'blue' },
+            { label: ' შედარება ', color: 'red' },
+            { label: ' მეტაფორა', color: 'blue' }
+          ]
+        },
+        {
+          text: '9: რომელი მხატრული ხერხია გამოყენებული წინადადებაში: დათო ქარივით ავარდა კიბეებზე',
+          answers: [
+            { label: 'ჰიპერბოლა', color: 'green' },
+            { label: ' გაპიროვნება', color: 'blue' },
+            { label: ' შედარება ', color: 'red' },
+            { label: ' მეტაფორა', color: 'blue' }
+          ]
+        },
+        {
+          text: '10: რომელი მხატრული ხერხია გამოყენებული წინადადებაში: დათო ქარივით ავარდა კიბეებზე',
+          answers: [
+            { label: 'ჰიპერბოლა', color: 'green' },
+            { label: ' გაპიროვნება', color: 'blue' },
+            { label: ' შედარება ', color: 'red' },
+            { label: ' მეტაფორა', color: 'blue' }
+          ]
+        },
+        {
+          text: '11: რომელი მხატრული ხერხია გამოყენებული წინადადებაში: დათო ქარივით ავარდა კიბეებზე',
+          answers: [
+            { label: 'ჰიპერბოლა', color: 'green' },
+            { label: ' გაპიროვნება', color: 'blue' },
+            { label: ' შედარება ', color: 'red' },
+            { label: ' მეტაფორა', color: 'blue' }
+          ]
+        },
+        {
+          text: '12: რომელი მხატრული ხერხია გამოყენებული წინადადებაში: დათო ქარივით ავარდა კიბეებზე',
+          answers: [
+            { label: 'ჰიპერბოლა', color: 'green' },
+            { label: ' გაპიროვნება', color: 'blue' },
+            { label: ' შედარება ', color: 'red' },
+            { label: ' მეტაფორა', color: 'blue' }
+          ]
+        },
+        {
+          text: '13: რომელი მხატრული ხერხია გამოყენებული წინადადებაში: დათო ქარივით ავარდა კიბეებზე',
+          answers: [
+            { label: 'ჰიპერბოლა', color: 'green' },
+            { label: ' გაპიროვნება', color: 'blue' },
+            { label: ' შედარება ', color: 'red' },
+            { label: ' მეტაფორა', color: 'blue' }
+          ]
+        },
+        {
+          text: '14: რომელი მხატრული ხერხია გამოყენებული წინადადებაში: დათო ქარივით ავარდა კიბეებზე',
+          answers: [
+            { label: 'ჰიპერბოლა', color: 'green' },
+            { label: ' გაპიროვნება', color: 'blue' },
+            { label: ' შედარება ', color: 'red' },
+            { label: ' მეტაფორა', color: 'blue' }
+          ]
+        },
+        {
+          text: '15: რომელი მხატრული ხერხია გამოყენებული წინადადებაში: დათო ქარივით ავარდა კიბეებზე',
+          answers: [
+            { label: 'ჰიპერბოლა', color: 'green' },
+            { label: ' გაპიროვნება', color: 'blue' },
+            { label: ' შედარება ', color: 'red' },
+            { label: ' მეტაფორა', color: 'blue' }
+          ]
+        },
+        
       ]
     },
     {
