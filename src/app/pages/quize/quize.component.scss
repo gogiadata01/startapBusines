@@ -373,7 +373,6 @@ h3{
   }
 }
 // ქვიზის ქარდი მთავრდება აქ...
-<<<<<<< Updated upstream
 
 
 // ქვიზის ისტორია..
@@ -437,6 +436,7 @@ h3{
 .question-text {
   font-size: 16px;
   margin-bottom: 10px;
+  font-weight: 500;
 }
 
 .answers {
@@ -553,15 +553,13 @@ h3{
 
 
 // ქვიზის ისტორია მთავრდება აქ...
-=======
->>>>>>> Stashed changes
 .correct-answer {
-  color: green;
+  background-color: green;
   font-weight: bold;
 }
 
 .wrong-answer {
-  color: red;
+  background-color: red;
   font-weight: bold;
 }
 

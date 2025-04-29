@@ -215,7 +215,9 @@ export interface CorrectAnswerDto {
 // }
 export interface QuizSubmissionDto {
   time: string;
-  quizQuestions: QuizQuestion[]; // 👈 camelCase
+  quizQuestions: QuizQuestion[]; 
+  open?: boolean; 
+
 }
 
 export interface QuizQuestion {

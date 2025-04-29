@@ -169,8 +169,8 @@
   </div> -->
 </div>
 
-<!-- ქვიზის ქარდი -->
-<div class="title">
+<!-- ქვიზების განრიგი -->
+<!-- <div class="title">
   <h1>ქვიზების განრიგი</h1>
 </div>
 <div class="container">
@@ -199,80 +199,65 @@
       <div class="check-mark" *ngIf="quiz.completed">&#10003;</div>
     </div>
   </div>
-</div>
-<!-- ქვიზის ქარდი მთავრდება აქ -->
+</div> -->
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+<!-- ქვიზების განრიგი მთავრდება აქ -->
 
 <!-- ქვიზების ისტორი -->
-<div class="quiz-list">
-  <h1 class=" nav justify-content-center mb-5  text-primary-emphasis">ქვიზების ისტორია</h1>
-  <div class="quiz-item" *ngFor="let quiz of quizzesh; let i = index">
+
+<!-- <div class="quiz-list">
+  <h1 class="nav justify-content-center mb-5 text-primary-emphasis">
+    ქვიზების ისტორია
+  </h1>
+
+  <div class="quiz-item" *ngFor="let history of quizHistory; let i = index">
     <button class="quiz-header" (click)="toggleQuiz(i)">
-      <span class="quiz-title">{{ quiz.title }}</span>
-      <span class="arrow" [class.open]="quiz.open">&#9660;</span>
-      <span class="quiz-date">{{ quiz.date }}</span>
+      <span class="quiz-title">ქვიზი {{ i + 1 }}</span>
+      <span class="arrow" [class.open]="history.open">&#9660;</span>
+      <span class="quiz-date">{{ history.time }}</span>
     </button>
 
-    <div class="quiz-body" [class.open]="quiz.open">
-      <div class="question-block" *ngFor="let question of quiz.questions">
-        <div class="question-text">{{ question.text }}</div>
+    <div class="quiz-body" [class.open]="history.open">
+      <div
+        class="question-block"
+        *ngFor="let question of history.quizQuestions"
+      >
+        <div class="question-text">{{ question.question }}</div>
         <div class="answers">
-          <button *ngFor="let answer of question.answers"
-                  class="answer-button"
-                  [ngClass]="answer.color">
-            {{ answer.label }} 
+          <button
+            *ngFor="let answer of question.badAnswers"
+            class="answer-button"
+            [ngClass]="
+              getAnswerClass(
+                answer.badanswer,
+                question.correctanswer,
+                question.userAnswer
+              )
+            "
+          >
+            {{ answer.badanswer }}
+          </button>
+
+          <button
+            class="answer-button"
+            [ngClass]="
+              getAnswerClass(
+                question.correctanswer,
+                question.correctanswer,
+                question.userAnswer
+              )
+            "
+          >
+            {{ question.correctanswer }}
           </button>
         </div>
       </div>
     </div>
   </div>
-</div>
-
+</div> -->
 
 <!-- ქვიზების ისტორა მთავრდება აქ -->
 
-
-=======
-=======
->>>>>>> Stashed changes
-<div *ngFor="let history of quizHistory">
-  <div *ngFor="let question of history.quizQuestions">
-    <h1>{{ question.question }}</h1>
-
-    <div *ngFor="let answer of question.badAnswers">
-      <p
-        [ngClass]="
-          getAnswerClass(
-            answer.badanswer,
-            question.correctanswer,
-            question.userAnswer
-          )
-        "
-      >
-        {{ answer.badanswer }}
-      </p>
-    </div>
-
-    <p
-      [ngClass]="
-        getAnswerClass(
-          question.correctanswer,
-          question.correctanswer,
-          question.userAnswer
-        )
-      "
-    >
-      {{ question.correctanswer }}
-    </p>
-  </div>
-</div>
-
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 <!-- Footer Section -->
 <div class="mainfooter">
   <app-footer-for-pupil />
