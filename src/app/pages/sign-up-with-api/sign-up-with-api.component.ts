@@ -55,6 +55,8 @@ export class SignUpWithApiComponent  {
      return this.SignIn.get('Password');
   
     }
+    
+    // ავტორიზაცია ქულის მომატების გარეშე
 
   onSubmit(): void {
     if (this.SignIn.valid) {
@@ -101,13 +103,15 @@ export class SignUpWithApiComponent  {
   }
 
 
+
+    // ავტორიზაცია ქულის მომატებით
+
   // onSubmit(): void {
   //   if (this.SignIn.valid) {
   //     const userSignInDto: UserSignInDto = this.SignIn.value;
   
   //     this.UserService.signInUser(userSignInDto).subscribe({
   //       next: (response) => {
-  //         console.log('SIGN-IN RESPONSE:', response);  // <<< ADD THIS LINE
       
   //         const user: UserDto = {
   //           id: response.userId,
@@ -124,17 +128,16 @@ export class SignUpWithApiComponent  {
   //         this.authService.setToken(user.Token);
       
   //         const message = response.earnedCoins
-  //         ? `გილოცავ! შენ დაემატა +3 მონეტა დღევანდელი შესვლისთვის.` 
-  //         : "შენ უკვე შედიხარ დღეს, დამატებითი მონეტები არ დაემატა.";
+  //         ? `გილოცავ! შენ მიიღე 3 ქულა დღევანდელი შესვლისთვის.` 
+  //         : "შენი შემოსვლიდან არ გასულა 24 საათი ამიტომ არ მოგემატა ქულა";
         
-  //       console.log(`Earned coins: ${response.earnedCoins}`); // Log to debug if the flag is working as expected
         
   //       Swal.fire({
   //         title: "შესრულდა",
   //         text: message,
   //         icon: "success",
   //         showConfirmButton: false,
-  //         timer: 2000
+  //         timer: 4000
   //       });
         
       
