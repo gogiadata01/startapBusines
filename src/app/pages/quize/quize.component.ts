@@ -35,63 +35,63 @@ export class QuizeComponent implements OnInit , CanActivate {
   quizzes = [
     {
       number: 'I',
-      date: '24 მარტი',
-      time: '18:00',
-      completed: true
+      date: '10 მაისი',
+      time: '15:00',
+      completed: false
     },
     {
       number: 'II',
-      date: '29 მარტი',
-      time: '17:00',
-      completed: true
+      date: '14 მაისი ',
+      time: '18:00',
+      completed: false
     },
     {
       number: 'III',
-      date: '3 აპრილი',
-      time: '18:00',
-      completed: true
+      date: '18 მაისი',
+      time: '15:00',
+      completed: false
     },
     {
       number: 'IV',
-      date: '6 აპრილი',
-      time: '14:00',
-      completed: true
+      date: '21 მაისი',
+      time: '18:00',
+      completed: false
     },
     {
       number: 'V',
-      date: '8 აპრილი',
-      time: '18:00',
-      completed: true
+      date: '24 მაისი',
+      time: '15:00',
+      completed: false
     },
     {
       number: 'VI',
-      date: '12 აპრილი',
-      time: '14:00',
-      completed: true
+      date: '27 მაისი',
+      time: '18:00',
+      completed: false
     },
     {
       number: 'VII',
-      date: '14 აპრილი',
-      time: '18:00',
-      completed: true
+      date: '31 მაისი',
+      time: '15:00',
+      completed: false
     },
     {
       number: 'VIII',
-      date: '17 აპრილი',
+      date: '3 ივნისი',
       time: '18:00',
-      completed: true
+      completed: false
     },
     {
       number: 'IX',
-      date: '22 აპრილი',
+      date: '6 ივნისი',
       time: '18:00',
-      completed: true
+      completed: false
     },
     {
       number: 'X',
-      date: '24 აპრილი',
+      date: '10 ივნისი',
       time: '18:00',
-      completed: true
+      completed: false
     }
   ];
   // ქვიზის ქარდი მთავრდება აქ.
