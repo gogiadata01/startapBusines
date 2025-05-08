@@ -146,7 +146,7 @@ export class QuizeComponent implements OnInit , CanActivate {
     console.log(this.userid)
     this.quizHistory = this.quizHistory.map(q => ({ ...q, open: false }));
 
-    this.checkQuizAvailability(); 
+    // this.checkQuizAvailability(); 
   
     Swal.fire({
       title: 'გაფრთხილება',
@@ -304,27 +304,27 @@ export class QuizeComponent implements OnInit , CanActivate {
 
 
 
-    checkQuizAvailability() {
-    const lastAttempt = localStorage.getItem('lastQuizAttempt');
-    if (lastAttempt) {
-      const lastAttemptTime = new Date(lastAttempt).getTime();
-      const currentTime = Date.now();
-      const timeDifference = currentTime - lastAttemptTime;
+  //   checkQuizAvailability() {
+  //   const lastAttempt = localStorage.getItem('lastQuizAttempt');
+  //   if (lastAttempt) {
+  //     const lastAttemptTime = new Date(lastAttempt).getTime();
+  //     const currentTime = Date.now();
+  //     const timeDifference = currentTime - lastAttemptTime;
 
-      if (timeDifference < 5 * 60 * 1000) { // 5 minutes cooldown
-        const timeLeft = 5 * 60 - Math.floor(timeDifference / 1000);
-        this.timeUntilNextAttempt = timeLeft;
-        this.isCooldownActive = true;
-        this.canStartQuiz = false;
-        this.startCooldownTimer();
-      } else {
-        this.canStartQuiz = true;
-        this.isCooldownActive = false;
-      }
-    } else {
-      this.canStartQuiz = true;
-    }
-  }
+  //     if (timeDifference < 5 * 60 * 1000) { // 5 minutes cooldown
+  //       const timeLeft = 5 * 60 - Math.floor(timeDifference / 1000);
+  //       this.timeUntilNextAttempt = timeLeft;
+  //       this.isCooldownActive = true;
+  //       this.canStartQuiz = false;
+  //       this.startCooldownTimer();
+  //     } else {
+  //       this.canStartQuiz = true;
+  //       this.isCooldownActive = false;
+  //     }
+  //   } else {
+  //     this.canStartQuiz = true;
+  //   }
+  // }
   
   shuffle(array: string[]): void {
     for (let i = array.length - 1; i > 0; i--) {
@@ -466,6 +466,22 @@ export class QuizeComponent implements OnInit , CanActivate {
         );
       }
     })
+    console.log(this,this.userid,this.quiz?.time)
+    this.userService.addQuizCompletion({
+      userId: this.userid.toString(), // 🔥 Convert to string
+      completedDate: this.quiz?.time
+    })
+    .subscribe({
+      next: (response) => {
+        console.log('Quiz completion response:', response);
+      },
+      error: (err) => {
+        console.error('Failed to add quiz completion:', err);
+      }
+    });
+    
+    
+    
     const submission: QuizSubmissionDto = {
       time: this.quiz?.time ?? '00:00',
       quizQuestions: this.quiz?.questions.map((q, i) => {
@@ -507,6 +523,7 @@ export class QuizeComponent implements OnInit , CanActivate {
         }
       }
     });
+    
     
     
   }

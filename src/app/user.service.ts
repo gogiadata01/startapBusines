@@ -70,6 +70,7 @@ export class UserService {
     );
   }
 
+
   endQuiz(userId: number, correctAnswers: number): Observable<{ Message: string; CoinsEarned: number; TotalCoins: number }> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post<{ Message: string; CoinsEarned: number; TotalCoins: number }>(
@@ -80,6 +81,13 @@ export class UserService {
       catchError(this.handleError)
     );
   }
+  addQuizCompletion(data: { userId: string; completedDate: any }): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post(`${this.apiUrl}/AddQuizCompletion`, data, { headers }).pipe(
+      catchError(this.handleError)
+    );
+  }
+  
   private handleError(error: HttpErrorResponse): Observable<never> {
     let errorMessage = 'Unknown error!';
     if (error.error instanceof ErrorEvent) {
