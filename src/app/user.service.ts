@@ -81,11 +81,10 @@ export class UserService {
       catchError(this.handleError)
     );
   }
-  addQuizCompletion(data: { userId: string; completedDate: any }): Observable<any> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post(`${this.apiUrl}/AddQuizCompletion`, data, { headers }).pipe(
-      catchError(this.handleError)
-    );
+  addQuizCompletion(data: { userId: number; completedDate: any }): Observable<any> {
+    return this.http.post(`${this.apiUrl}/AddQuizCompletion`, data, {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    });
   }
   
   private handleError(error: HttpErrorResponse): Observable<never> {

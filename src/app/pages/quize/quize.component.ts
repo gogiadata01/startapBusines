@@ -116,6 +116,7 @@ export class QuizeComponent implements OnInit , CanActivate {
   user: any;
   quizFinished = false;
   canStartQuiz = true; 
+  showHistory= true;
   timeUntilNextAttempt = 0; 
   timeleft: number = 300;
   userToken!: string;
@@ -146,7 +147,7 @@ export class QuizeComponent implements OnInit , CanActivate {
     console.log(this.userid)
     this.quizHistory = this.quizHistory.map(q => ({ ...q, open: false }));
 
-    // this.checkQuizAvailability(); 
+    this.checkQuizAvailability(); 
   
     Swal.fire({
       title: 'გაფრთხილება',
@@ -186,29 +187,61 @@ export class QuizeComponent implements OnInit , CanActivate {
     });
   }
 
+  // getQuiz(): void {
+  //   if (!this.user) {
+  //     console.error('No current user found.');
+  //     return;
+  //   }
+
+  //   this.quizService.getQuizzes().subscribe(
+  //     (quizzes: QuizDto[]) => {
+  //       if (quizzes && quizzes.length > 0) {
+  //         this.quiz = quizzes[0];
+  //         this.bonusQuestion = this.quiz.bonusQuestion;
+  //         this.loadAnswers();
+  //       } else {
+  //         console.error('No quiz found for this time');
+  //       }
+  //       this.isLoading = false;
+  //     },
+  //     (error) => {
+  //       console.error('Error fetching quiz:', error);
+  //       this.isLoading = false;
+  //     }
+  //   );
+  // }
   getQuiz(): void {
     if (!this.user) {
       console.error('No current user found.');
       return;
     }
-
+  
     this.quizService.getQuizzes().subscribe(
       (quizzes: QuizDto[]) => {
         if (quizzes && quizzes.length > 0) {
           this.quiz = quizzes[0];
           this.bonusQuestion = this.quiz.bonusQuestion;
           this.loadAnswers();
+  
+          // 🔒 Hide quiz history if any quiz exists
+          this.showHistory = false;
         } else {
-          console.error('No quiz found for this time');
+          // ✅ Show quiz history if quiz list is empty
+          this.showHistory = true;
         }
+  
         this.isLoading = false;
       },
       (error) => {
         console.error('Error fetching quiz:', error);
         this.isLoading = false;
+  
+        // Optionally show history if there's an error
+        this.showHistory = true;
       }
     );
   }
+  
   nextQuestion(): void {
     if (this.isBonusQuestion) {
       this.quizCompleted = true;
@@ -304,27 +337,27 @@ export class QuizeComponent implements OnInit , CanActivate {
 
 
 
-  //   checkQuizAvailability() {
-  //   const lastAttempt = localStorage.getItem('lastQuizAttempt');
-  //   if (lastAttempt) {
-  //     const lastAttemptTime = new Date(lastAttempt).getTime();
-  //     const currentTime = Date.now();
-  //     const timeDifference = currentTime - lastAttemptTime;
+    checkQuizAvailability() {
+    const lastAttempt = localStorage.getItem('lastQuizAttempt');
+    if (lastAttempt) {
+      const lastAttemptTime = new Date(lastAttempt).getTime();
+      const currentTime = Date.now();
+      const timeDifference = currentTime - lastAttemptTime;
 
-  //     if (timeDifference < 5 * 60 * 1000) { // 5 minutes cooldown
-  //       const timeLeft = 5 * 60 - Math.floor(timeDifference / 1000);
-  //       this.timeUntilNextAttempt = timeLeft;
-  //       this.isCooldownActive = true;
-  //       this.canStartQuiz = false;
-  //       this.startCooldownTimer();
-  //     } else {
-  //       this.canStartQuiz = true;
-  //       this.isCooldownActive = false;
-  //     }
-  //   } else {
-  //     this.canStartQuiz = true;
-  //   }
-  // }
+      if (timeDifference < 5 * 60 * 1000) { // 5 minutes cooldown
+        const timeLeft = 5 * 60 - Math.floor(timeDifference / 1000);
+        this.timeUntilNextAttempt = timeLeft;
+        this.isCooldownActive = true;
+        this.canStartQuiz = false;
+        this.startCooldownTimer();
+      } else {
+        this.canStartQuiz = true;
+        this.isCooldownActive = false;
+      }
+    } else {
+      this.canStartQuiz = true;
+    }
+  }
   
   shuffle(array: string[]): void {
     for (let i = array.length - 1; i > 0; i--) {
@@ -466,18 +499,33 @@ export class QuizeComponent implements OnInit , CanActivate {
         );
       }
     })
-    console.log(this,this.userid,this.quiz?.time)
-    this.userService.addQuizCompletion({
-      userId: this.userid.toString(), // 🔥 Convert to string
-      completedDate: this.quiz?.time
-    })
-    .subscribe({
-      next: (response) => {
-        console.log('Quiz completion response:', response);
+    const quizCompletionPayload = {
+      userId: Number(this.userid), // make sure it's a number
+      completedDate: this.quiz?.time?.trim() // make sure it’s trimmed
+    };
+    
+    
+    this.userService.addQuizCompletion(quizCompletionPayload).subscribe({
+      next: (response) => {    
+        if (response.message.includes('დაემატა')) {
+          this.userService.getUserById(this.userid).subscribe((user ) =>{
+            this.currentUser = user
+            if (this.currentUser) {
+              const newCoinValue = this.currentUser.coin + 20;
+              this.userService.updateUserCoin(this.currentUser.id, newCoinValue).subscribe(
+                () => {
+                  this.showCompletionAlert1();
+                },
+                (error) => {
+                  console.error('Error updating coin:', error);
+                }
+              );
+            }
+          })
+        } else {
+          console.warn('ℹ️ Quiz saved, but no coin added:', response.message);
+        }
       },
-      error: (err) => {
-        console.error('Failed to add quiz completion:', err);
-      }
     });
     
     
@@ -537,6 +585,14 @@ export class QuizeComponent implements OnInit , CanActivate {
     Swal.fire({
       title: 'გილოცავ!',
       text: `შენ 15 კითხვიდან დააგროვე  ${this.correctAnswersCount} სწორი პასუხი, ამიტომ დაგერიცხა : ${this.correctAnswersCount} ქულა`,
+      icon: 'success',
+      confirmButtonText: 'OK',
+    });
+  }
+    showCompletionAlert1(): void {
+    Swal.fire({
+      title: 'გილოცავ!',
+      text: `შენ გაიარე 7 ქვიზი ზედიზედ და დაგემატა 20 ქულა`,
       icon: 'success',
       confirmButtonText: 'OK',
     });

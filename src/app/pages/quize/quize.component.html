@@ -91,7 +91,7 @@
       </div>
       <div class="Footer">
         <div class="start">
-          <!-- <div class="start">
+          <div class="start">
             <button
               [disabled]="!canStartQuiz || isCooldownActive"
               (click)="startQuiz()"
@@ -103,14 +103,12 @@
                   : "დაწყება"
               }}
             </button>
-          </div> -->
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <!-- <button (click)="clearLocalStorage()" class="btn btn-danger">
-    წაშალე LocalStorage
-  </button> -->
+
 </section>
 <div *ngIf="quizStarted" class="quizcontainer">
   <!-- Quiz container -->
@@ -205,9 +203,9 @@
 
 <!-- ქვიზების ისტორი -->
 
-<div class="quiz-list">
+<!-- <div *ngIf="showHistory" class="quiz-list">
   <h1 class="nav justify-content-center mb-5 text-primary-emphasis">
-    ქვიზების ისტორიაწ
+    ქვიზების ისტორია
   </h1>
 
   <div class="quiz-item" *ngFor="let history of quizHistory; let i = index">
@@ -254,7 +252,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <!-- ქვიზების ისტორა მთავრდება აქ -->
 
