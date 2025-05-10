@@ -346,8 +346,9 @@ export class QuizeComponent implements OnInit , CanActivate {
         this.timeUntilNextAttempt = res.timeUntilNextAttempt;
         this.isCooldownActive = !res.canStartQuiz;
   
+        // If cooldown is active, start the countdown timer
         if (this.isCooldownActive) {
-          this.startCooldownTimer(); // if you want to display countdown
+          this.startCooldownTimer();
         }
       },
       (error) => {
@@ -355,6 +356,20 @@ export class QuizeComponent implements OnInit , CanActivate {
       }
     );
   }
+  
+  startCooldownTimer() {
+    // Countdown logic: this will update every second
+    const countdownInterval = setInterval(() => {
+      if (this.timeUntilNextAttempt > 0) {
+        this.timeUntilNextAttempt--;
+      } else {
+        clearInterval(countdownInterval);
+        this.isCooldownActive = false;
+        this.canStartQuiz = true;
+      }
+    }, 1000);
+  }
+  
   
   shuffle(array: string[]): void {
     for (let i = array.length - 1; i > 0; i--) {
@@ -375,16 +390,6 @@ export class QuizeComponent implements OnInit , CanActivate {
     this.nextQuestion();
   }
   
-  startCooldownTimer() {
-    const timer = setInterval(() => {
-      this.timeUntilNextAttempt--;
-      if (this.timeUntilNextAttempt <= 0) {
-        this.isCooldownActive = false;
-        this.canStartQuiz = true;
-        clearInterval(timer);
-      }
-    }, 1000);
-  }
 
   clearLocalStorage(): void {
     localStorage.removeItem('lastQuizTime'); // მხოლოდ კონკრეტულის წაშლა
