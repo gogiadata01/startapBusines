@@ -67,6 +67,7 @@ export class QuizService {
 
   
   
+  
   submitQuiz(quizId: number, payload: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/submit-quiz/${quizId}`, payload);
   }

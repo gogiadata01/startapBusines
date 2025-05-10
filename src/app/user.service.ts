@@ -54,7 +54,11 @@ export class UserService {
     return this.http.put<any>(`${this.apiUrl}/update-remaining-time/${userId}`, additionalTime);
   }
   
-  
+  checkQuizAvailability(userId: number): Observable<{ canStartQuiz: boolean; timeUntilNextAttempt: number }> {
+    return this.http.get<{ canStartQuiz: boolean; timeUntilNextAttempt: number }>(
+      `${this.apiUrl}/check-quiz-availability/${userId}`
+    );
+  }
   updateUserCoin(id: any, newCoinValue: number): Observable<any> {
     const body = { newCoinValue }; // Wrap the value in an object
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
