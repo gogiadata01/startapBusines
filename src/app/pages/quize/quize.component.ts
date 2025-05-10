@@ -337,26 +337,23 @@ export class QuizeComponent implements OnInit , CanActivate {
 
 
 
-    checkQuizAvailability() {
-    const lastAttempt = localStorage.getItem('lastQuizAttempt');
-    if (lastAttempt) {
-      const lastAttemptTime = new Date(lastAttempt).getTime();
-      const currentTime = Date.now();
-      const timeDifference = currentTime - lastAttemptTime;
-
-      if (timeDifference < 5 * 60 * 1000) { // 5 minutes cooldown
-        const timeLeft = 5 * 60 - Math.floor(timeDifference / 1000);
-        this.timeUntilNextAttempt = timeLeft;
-        this.isCooldownActive = true;
-        this.canStartQuiz = false;
-        this.startCooldownTimer();
-      } else {
-        this.canStartQuiz = true;
-        this.isCooldownActive = false;
+  checkQuizAvailability() {
+    if (!this.user) return;
+  
+    this.userService.checkQuizAvailability(this.user.id).subscribe(
+      (res: { canStartQuiz: boolean; timeUntilNextAttempt: number }) => {
+        this.canStartQuiz = res.canStartQuiz;
+        this.timeUntilNextAttempt = res.timeUntilNextAttempt;
+        this.isCooldownActive = !res.canStartQuiz;
+  
+        if (this.isCooldownActive) {
+          this.startCooldownTimer(); // if you want to display countdown
+        }
+      },
+      (error) => {
+        console.error('Error checking quiz availability', error);
       }
-    } else {
-      this.canStartQuiz = true;
-    }
+    );
   }
   
   shuffle(array: string[]): void {
