@@ -147,7 +147,6 @@ export class QuizeComponent implements OnInit , CanActivate {
     console.log(this.userid)
     this.quizHistory = this.quizHistory.map(q => ({ ...q, open: false }));
 
-    this.checkQuizAvailability(); 
   
     Swal.fire({
       title: 'გაფრთხილება',
@@ -294,7 +293,7 @@ export class QuizeComponent implements OnInit , CanActivate {
 
   
 
-    // this.checkQuizRestriction(); 
+    this.checkQuizRestriction(); 
 
     if (this.canStartQuiz) {
         this.quizStarted = true;
@@ -318,6 +317,48 @@ export class QuizeComponent implements OnInit , CanActivate {
         });
     }
 }
+// startQuiz(): void {
+//   if (!this.user) {
+//     this.router.navigate(['/Register']);
+//     return;
+//   }
+
+//   if (!this.quiz || Object.keys(this.quiz).length === 0) { 
+//     Swal.fire({
+//         title: 'ქვიზი არ არის დაწყებული',
+//         text: 'ქვიზის დროსთან დაკავშირებული ინფორმაცია მოგივა მეილზე',
+//         icon: 'error',
+//         confirmButtonText: 'OK'
+//     });
+//     return; 
+//   }
+
+//   // Call backend to check if the quiz can be started
+//   this.(); 
+
+//   if (this.canStartQuiz) {
+//     this.quizStarted = true;
+//     this.showQuiz = true;
+//     this.isLoading = false;
+//     this.selectedAnswers = [];
+//     this.correctAnswersCount = 0;
+//     this.incorrectAnswersCount = 0;
+//     this.currentQuestionIndex = 0;
+//     this.isBonusQuestion = false;
+//     this.bonusQuestionAnswered = false;
+//     this.bonusAnswerSelected = null;
+//     this.loadAnswers();
+//     this.quizStartTime = new Date().getTime(); // Store quiz start time here
+//   } else {
+//     Swal.fire({
+//         title: 'შენ უკვე შეავსე ქვიზი',
+//         text: `დაელოდე მეილს და გაიგებ თუ როდის იქნება შემდეგი ქვიზის თარიღი`,
+//         icon: 'info',
+//         confirmButtonText: 'OK'
+//     });
+//   }
+// } 
+
 
 
   loadAnswers(): void {
@@ -337,25 +378,21 @@ export class QuizeComponent implements OnInit , CanActivate {
 
 
 
-  checkQuizAvailability() {
-    const lastAttempt = localStorage.getItem('lastQuizAttempt');
-    if (lastAttempt) {
-      const lastAttemptTime = new Date(lastAttempt).getTime();
-      const currentTime = Date.now();
-      const timeDifference = currentTime - lastAttemptTime;
+  checkQuizRestriction(): void {
+    const lastQuizTime = localStorage.getItem('lastQuizTime');
+    
+    if (lastQuizTime) {
+        const lastQuizTimestamp = parseInt(lastQuizTime, 10);  
+        const currentTimestamp = new Date().getTime();  
+        const timeDifference = currentTimestamp - lastQuizTimestamp;
 
-      if (timeDifference < 5 * 60 * 1000) { // 5 minutes cooldown
-        const timeLeft = 5 * 60 - Math.floor(timeDifference / 1000);
-        this.timeUntilNextAttempt = timeLeft;
-        this.isCooldownActive = true;
-        this.canStartQuiz = false;
-        this.startCooldownTimer();
-      } else {
-        this.canStartQuiz = true;
-        this.isCooldownActive = false;
-      }
+        this.canStartQuiz = timeDifference >= 900000; // 900000 ms = 15 minutes
+    } else {
+        this.canStartQuiz = true; 
     }
-  }
+}
+
+  
   startCooldownTimer() {
     // Countdown logic: this will update every second
     const countdownInterval = setInterval(() => {
@@ -473,7 +510,10 @@ export class QuizeComponent implements OnInit , CanActivate {
     }
     const now = new Date().getTime();
     localStorage.setItem('lastQuizTime', now.toString());
-  
+    this.quizService.saveQuizEndTime(this.userid).subscribe({
+      next: () => console.log("End time saved"),
+      error: err => console.error("Failed to save end time", err)
+    });
     // Send the elapsed time instead of remaining time
     this.userService.updateRemainingTime(this.userid, timeSpent).subscribe(
       (response) => {

@@ -66,7 +66,25 @@ export class QuizService {
   }
 
   
-  
+  // Save the quiz end time for a user
+saveQuizEndTime(userId: number): Observable<any> {
+  return this.http.post(`${this.apiUrl}/SaveQuizEndTime/${userId}`, {}).pipe(
+    catchError(this.handleError)
+  );
+}
+
+// Get the last quiz end time for a user
+getLastQuizEndTime(userId: number): Observable<Date | null> {
+  return this.http.get<Date | null>(`${this.apiUrl}/GetLastQuizEndTime/${userId}`).pipe(
+    catchError(this.handleError)
+  );
+}
+canStartQuiz(userId: number): Observable<any> {
+  return this.http.get<any>(`${this.apiUrl}/ /${userId}`).pipe(
+    catchError(this.handleError)
+  );
+}
+
   
   submitQuiz(quizId: number, payload: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/submit-quiz/${quizId}`, payload);
