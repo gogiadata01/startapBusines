@@ -133,8 +133,7 @@ img {
 }
 /*=============== REUSABLE CSS CLASSES ===============*/
 .container {
-  max-width: 1120px;
-  margin-inline: 1.5rem;
+  max-width: 100%;
 }
 
 .grid {
@@ -238,7 +237,6 @@ img {
   // left: 50%;
   // transform: translateX(-50%);
   width: 100%;
-  padding: 20px;
   position: relative;
 }
 .projects__description{
@@ -372,7 +370,7 @@ img {
    width: 100% !important;
   }
   .projects__container{
-    width: 90%;
+    width: 100%;
   }
 }
 /*=============== MEDIA QUERIES ===============*/
@@ -430,14 +428,12 @@ img {
   font-size: 12px;
 }
 }
-@media screen and (max-width: 1025px) {
-  .projects__card{
-    margin-left: 125px;
-  }
-}
+// @media screen and (max-width: 1025px) {
+// }
 @media screen and (min-width: 770px) {
   .projects__container {
     grid-template-columns: repeat(2, 350px);
+    justify-content: center;
   }
 }
 
