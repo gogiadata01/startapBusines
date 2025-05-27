@@ -11,7 +11,8 @@ body, html {
     transition: top 0.3s ease-in-out;
     position: fixed;
     opacity: 1;
-    background-color: #342833;
+    // background-color: #342833;
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
     top: 0;
     left:0;
     right:0;
@@ -28,9 +29,7 @@ body, html {
   .site-header {
     width: 100%;
     height: 600px;;
-    background-image: url('../../../assets/stu.jpg');
-    background-size: cover;
-    background-position: center;
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
     position: relative;
     overflow: hidden;
   }
@@ -71,7 +70,7 @@ body, html {
     text-decoration: none;
     
     &:hover {
-      color: #3e8e41;
+      background: linear-gradient(to right, #33c7ae, #203a43, #2c5364);
      
     }
   }
@@ -91,9 +90,10 @@ body, html {
     }
     }
     .container {
-      padding: 30px 0;
       justify-content: center;
-      
+      .div h2{
+        margin-bottom: 30px;
+      }
     }
   .cta-button {
     background-color: #4CAF50;
@@ -343,72 +343,83 @@ footer {
     color: white;
     margin-top: 2rem;
 }
-.subject{
+
+
+.subject {
   width: 100%;
   display: flex;
   justify-content: center;
-  
 
-.subject-selection{
-  
- margin: 40px;
-}
-
-}
-.subjectButtons{
-  width: 50%;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  
-}
-.subjectBtn {
-  width: 230px;
-  margin-bottom: 20px;
-  background-color: #342833;
-  border: 0px;
-  border-radius: 20px;
-  height: 40px;
-  transition: background-color 0.4s, transform 0.4s; 
-  color: white;
-
-  &:hover {
-    transform: scale(1.1); /* Scale up by 20% */
-    // color: wheat;
+  .subjectButtons {
+    width: 50%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    justify-items: center;
   }
 
-  &.active {
-    background-color: #A0C4A0 !important;
-    color: #fff;
+  .subjectBtn {
+    width: 150px;
+    height: 120px;
+    background: linear-gradient(to right, rgb(15, 32, 39), rgb(32, 58, 67), rgb(44, 83, 100));    border: none;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 500;
+    transition: transform 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    &.active {
+      background: linear-gradient(to right, #33c7ae, #203a43, #2c5364);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+    }
+    
+
+    .subjectIcon {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .subjectLabel {
+      font-size: 14px;
+      text-align: center;
+    }
   }
 }
-.FilterBtn{
+
+.FilterBtn {
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-bottom: 100px;
-  button{
+  margin: 40px 0 50px;
+
+  button {
     width: 150px;
     height: 50px;
-    background-color: #5B6773 ;
-    border: 0px;
+    background: linear-gradient(135deg, #33c7ae, #203a43, #2c5364);
+    border: 0;
     border-radius: 15px;
-    font-size: 20px;
-    font-weight: 300;
+    font-size: 18px;
     color: white;
-    margin-bottom: 40px;
-    transition: background-color 0.4s, transform 0.4s; 
-  
+    transition: transform 0.3s;
+
     &:hover {
-      transform: scale(1.1); /* Scale up by 20% */
-      // color: wheat;
+      transform: scale(1.1);
     }
-  
-    &.active {
-      background-color: #A0C4A0 !important;
-      color: #fff;
-    }  }
+  }
 }
+
+
 .afterTitle{
   width: 100%;
   display: flex;
@@ -467,18 +478,17 @@ footer {
       font-size: 20px;
     }
     .subjectButtons{
-      width: 70%;
+      width: 90% !important;
     }
     .afterTitle h3 {
       font-size: 24px;
       text-align: center;
     }  
     .georgian-button {
-      padding: 0.2rem 1.1rem !important;
+      // padding: 0.2rem 1.1rem !important;
       width: auto;
       height: 55px;
       display: flex;
-      margin-right: 40px;
   }
   h2 {
     font-size: 20px;
@@ -515,7 +525,7 @@ footer {
 #svg2{
   width: 35px;
   height: 100%;
-  color: #F0F3BD;
+  color: white;
 }
 
 
@@ -568,7 +578,7 @@ svg {
   display: flex;
 }
 .timeline {
-  width: 10%;
+  width: 5%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -622,10 +632,12 @@ svg {
 
 /* When the circle is active, it turns green */
 .circle.green {
-  background-color: #554C46;
+  // background-color: #554C46;
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+
 }
 .program{
-  width: 90%;
+  width: 95%;
   height: 100%;
 .FacultyTitle{
   width: 40%;
@@ -653,6 +665,30 @@ svg {
   width: 100%;
   display: flex;
   flex-direction: column;
+}
+.FieldName{
+  margin-bottom: 30px;
+}
+.MoreWievBtn{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+
+  button {
+    width: 150px;
+    height: 50px;
+    background: linear-gradient(135deg, #33c7ae, #203a43, #2c5364);
+    border: 0;
+    border-radius: 15px;
+    font-size: 18px;
+    color: white;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
 }
 @media screen and (max-width: 1345px) {
   div.FacultyTitle{
@@ -718,11 +754,13 @@ text-align: center;
   align-items: flex-start;
   position: relative;
   padding-left: 2rem; 
-  margin-bottom: 30px;
+  margin-bottom: 15px;
+  width: 100%;
 }
 
 .georgian-button {
-  background-color: #5b6773;
+  // background-color: #5b6773;
+  background: linear-gradient(to right, #4aa091, #203a43, #2c5364);   border-radius: 20px;
   color: white;
   padding: 0.625rem 1.25rem; 
   border: none;
@@ -731,6 +769,8 @@ text-align: center;
   font-family: 'Noto Sans Georgian', sans-serif;
   transition: background-color 0.3s, transform 0.3s;
   margin: 10px 0; /* შეცვლილი margin */
+  align-items: center;
+
 }
 
 
@@ -758,18 +798,21 @@ text-align: center;
     display: flex;
     flex-direction: row; /* შეცვლილი */
     justify-content: center;
-    max-width: 100%; 
+    padding-left: 0px;
     overflow: hidden; 
   }
 
   .georgian-button {
-    padding: 0.2rem 0.1rem; 
     width: auto; /* ავტომატური სიგანე */
-    height: 55px;
+    height: 80px;
     display: flex;
-    margin-right: 40px;
   }
-
+  .timeline{
+    width: 0%;
+  }
+  .program{
+    width: 100%;
+  }
   .dotted-arrow {
     top: 5rem; 
     right: 12px; 
@@ -785,6 +828,7 @@ text-align: center;
     font-size: 23px;
   }
 }
+
 
 .leaderboard-section {
   display: flex;
@@ -802,6 +846,7 @@ text-align: center;
   margin-right: 40px;
 
 }
+
 
 /* podium.component.scss */
 .podium-container {
@@ -841,7 +886,8 @@ text-align: center;
   .position {
     width: 50px;
     height: 35px;
-    background-color:#41343C;
+    // background-color:#41343C;
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
     color: white;
     display: flex;
     justify-content: center;
@@ -873,7 +919,8 @@ text-align: center;
 
 /* leaderboard-list.component.scss */
 .leaderboard-list {
-  background-color: #41343C;
+  // background-color: #41343C;
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
   border: 2px dashed #708090;
   border-radius: 19px;
   padding: 15px;
@@ -882,12 +929,12 @@ text-align: center;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 400px;
+  width: 420px;
   max-width: 100%;
 }
 
 .entry {
-  width: 100%;
+  width: 110%;
   display: flex;
   align-items: center;
   margin-bottom: 19px;
@@ -906,7 +953,7 @@ text-align: center;
 .position {
   font-weight: bold;
   margin-right: 20px;
-  min-width: 50px;
+  // min-width: 50px;
   color: whitesmoke;
 }
 

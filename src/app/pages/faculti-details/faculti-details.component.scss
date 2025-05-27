@@ -173,11 +173,13 @@ img {
 
 .projects__card {
   width: 90%;
-  height: 102%;
+  height: 97%;
+  min-height: 390px;
+  max-height: 390px;
   padding: 1rem 1rem 2rem;
   border-radius: 40px;
   transition: background-color 0.4s;
-  background-color: #F1F3BE;
+  background: linear-gradient(to right, #52ac9d, #2f6577, #335e71);  // margin-left: 25px;
   // margin-left: 25px;
 }
 
@@ -186,6 +188,7 @@ img {
   justify-content: center;
   position: relative;
   margin-bottom: 0.75rem;
+  padding-top: 20px;
 }
 
 .projects__img {
@@ -202,8 +205,17 @@ img {
 
 .projects__content {
   margin-bottom: 1.25rem;
+  height: 35%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
+.ImageBack{
+  width: 100%;
+  background-color: white;
+  height: 70%;
+  border-radius: 40px;
+}
 .projects__subtitle {
   position: relative;
   display: inline-block;
@@ -227,9 +239,9 @@ img {
 .projects__title {
   font-size: var(--h3-font-size);
   margin-bottom: 0.75rem;
-  color: black;
+  color: white;
   text-align: center;
-  font-weight: bold;
+  font-weight: 800;
 }
 .projects__description{
   text-align: center;

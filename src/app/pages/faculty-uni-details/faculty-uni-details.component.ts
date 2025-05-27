@@ -14,11 +14,12 @@ import { toJSDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-calendar';
 import {HomeUniCardService} from '../../home-uni-card.service'
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { NavbarWithWaveComponent } from "../navbar-with-wave/navbar-with-wave.component";
 
 @Component({
   selector: 'app-faculty-uni-details',
   standalone: true,
-  imports: [NavbarForPupilComponent,FooterForPupilComponent,NgIf,NgFor,CommonModule,RouterLink],
+  imports: [NavbarForPupilComponent, FooterForPupilComponent, NgIf, NgFor, CommonModule, RouterLink, NavbarWithWaveComponent],
   templateUrl: './faculty-uni-details.component.html',
   styleUrl: './faculty-uni-details.component.scss'
 })

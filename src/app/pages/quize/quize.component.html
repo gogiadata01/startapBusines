@@ -203,9 +203,7 @@
 <!-- ქვიზების ისტორი -->
 
 <div *ngIf="showHistory" class="quiz-list">
-  <h1 class="nav justify-content-center mb-5 text-primary-emphasis">
-    ქვიზების ისტორია
-  </h1>
+  <h1 class="nav justify-content-center mb-5">ქვიზების ისტორია</h1>
 
   <div class="quiz-item" *ngFor="let history of quizHistory; let i = index">
     <button class="quiz-header" (click)="toggleQuiz(i)">

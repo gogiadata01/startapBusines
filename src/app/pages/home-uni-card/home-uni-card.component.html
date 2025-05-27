@@ -1,4 +1,4 @@
-<app-navbar-with-wave/>
+<app-navbar-with-wave />
 <div class="Title">
   <h3>უნივერსიტეტები</h3>
 </div>
@@ -33,18 +33,25 @@
 <section class="projects section" id="projects">
   <div class="projects__container container grid">
     <article
-      *ngFor="let uni of (filteredUniCards.length > 0 ? filteredUniCards : UniCardBytitle); let i = index"
-      (click)="onCardClicked(uni.id,uni.title)"
+      *ngFor="
+        let uni of filteredUniCards.length > 0
+          ? filteredUniCards
+          : UniCardBytitle;
+        let i = index
+      "
+      (click)="onCardClicked(uni.id, uni.title)"
       class="projects__card"
     >
-      <div class="projects__image">
-        <img
-          [src]="uni.url"
-          alt="image"
-          class="projects__img"
-          width="312px"
-          height="193px"
-        />
+      <div class="ImageBack">
+        <div class="projects__image">
+          <img
+            [src]="uni.url"
+            alt="image"
+            class="projects__img"
+            width="312px"
+            height="193px"
+          />
+        </div>
       </div>
       <div class="projects__content">
         <h2 class="projects__title">{{ uni.title }}</h2>
@@ -52,4 +59,3 @@
     </article>
   </div>
 </section>
-

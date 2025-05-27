@@ -77,7 +77,7 @@ line{
       width: 145px;
       height: 45px;
       margin-bottom: 35px;
-      background-color: #CED4DA;
+      background: linear-gradient(to right, #4aa091, #203a43, #2c5364);    color: white;
       border-radius: 10px;
       border: 0px;
       font-size: 20px;
@@ -302,8 +302,8 @@ h3{
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-bottom: 30px;
-  h1{
+  margin: 40px 0px 30px 0px;
+    h1{
     color: #342833;
     font-size: 40px;
     font-weight: 200;
@@ -313,7 +313,7 @@ h3{
   position: relative;
   width: 180px;
   height: 180px;
-  background-color: #1E9565;
+  background: linear-gradient(to right, #4aa091, #203a43, #2c5364);   border-radius: 20px;
   border-radius: 25px;
   display: flex;
   flex-direction: column;
@@ -380,6 +380,10 @@ h3{
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+  h1{
+    font-size: 40px;
+    font-weight: 200;
+  }
 }
 
 .quiz-item {
@@ -389,7 +393,7 @@ h3{
 }
 
 .quiz-header {
-  background-color: #28a745;
+  background: linear-gradient(to right, #33c7ae, #203a43, #2c5364);
   color: white;
   width: 100%;
   padding: 15px 20px;

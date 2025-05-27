@@ -14,15 +14,17 @@
             (click)="OnCardClicked(program.programName, Uni.title)"
             class="projects__card"
           >
+          <div class="ImageBack">
             <div class="projects__image">
               <img
-                src="{{ Uni.url }}"
+                [src]="Uni.url"
                 alt="image"
                 class="projects__img"
                 width="312px"
                 height="193px"
               />
             </div>
+          </div>
 
             <div class="projects__content">
               <h2 class="projects__title">{{ Uni.title }}</h2>

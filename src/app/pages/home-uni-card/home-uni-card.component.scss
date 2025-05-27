@@ -265,11 +265,12 @@ img {
   bottom: 275px;
   width: 91%;
   height: 97%;
+  min-height: 390px;
+  max-height: 390px;
   padding: 1rem 1rem 2rem;
   border-radius: 40px;
   transition: background-color 0.4s;
-  background-color: #F1F3BE;
-  // margin-left: 25px;
+  background: linear-gradient(to right, #4aa091, #203a43, #2c5364);   border-radius: 20px;
   cursor: pointer;
 
 }
@@ -279,13 +280,18 @@ img {
   justify-content: center;
   position: relative;
   margin-bottom: 0.75rem;
+  padding-top: 20px;
 }
-
 .projects__img {
   border-radius: 25px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 24px;
 }
-
+.ImageBack{
+  width: 100%;
+  background-color: white;
+  height: 70%;
+  border-radius: 40px;
+}
 .projects__button {
   position: absolute;
   right: 1rem;
@@ -295,6 +301,10 @@ img {
 
 .projects__content {
   margin-bottom: 1.25rem;
+  height: 35%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .projects__subtitle {
@@ -320,7 +330,7 @@ img {
 .projects__title {
   font-size: var(--h3-font-size);
   margin-bottom: 0.75rem;
-  color: black;
+  color: white;
   text-align: center;
   font-weight: bold;
 }
@@ -552,15 +562,15 @@ img {
   
 }
 .searchbox:hover > .searchbtn{
-    background:white
+  background: linear-gradient(to right, #33c7ae, #203a43, #2c5364);
 } 
 .searchbtn{
- color:#d34e56;
+ color: white;
   float: right;
   width: 45px;
   height: 45px;
   border-radius: 50%;
-  background-color: #342833;
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
   display: flex;
   justify-content: center;
   align-items: center;

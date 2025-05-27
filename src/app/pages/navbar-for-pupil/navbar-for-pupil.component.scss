@@ -1,7 +1,4 @@
-.navbar{
-    background-color: #342833;
 
-}
 #svg{
     width: 120px;
     height: 100%;
@@ -10,7 +7,7 @@
 #svg2{
     width: 35px;
     height: 100%;
-    color: #F0F3BD;
+    color: white;
 }
 
 
@@ -32,6 +29,10 @@
       transform: scale(1.07);
     }
 }
+    .navbar{
+        background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      }
+
 
 
 /* Remove focus outline */
@@ -62,18 +63,19 @@ svg {
     box-shadow: none;
 }
 .header-content{
-    background-color: #342833;
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
   }
   .wave-container{
-    background-color: #342833;
-  
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+    height: 150px;
+
   }
   nav ul li a {
     color: white;
     text-decoration: none;
     
     &:hover {
-      color: #3e8e41;
+        background: linear-gradient(to right, #33c7ae, #203a43, #2c5364);
      
     }
     }
@@ -82,4 +84,10 @@ svg {
     }
     #secondNavbar2{
         background-color: white !important;
+      }
+
+      @media screen and (max-width: 1025px) {
+        .wave-container{
+            height: 50px;
+        }
       }

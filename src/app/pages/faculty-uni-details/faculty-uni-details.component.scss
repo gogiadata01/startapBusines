@@ -41,7 +41,8 @@ body{
       margin-bottom: 30px;
 
       div{
-        border: 1px solid #EE964B;
+     background: linear-gradient(to right, #4aa091, #203a43, #2c5364);
+
     width: 270px;
     height: 50px;
     display: flex;
@@ -52,6 +53,7 @@ body{
       padding-top: 7px;
       font-size: 20px !important;
       font-weight: 400 !important;
+      color: white;
     }
       }
     }
@@ -61,7 +63,6 @@ body{
       display: flex;
       justify-content: center;
       div{
-        border: 1px solid #EE964B;
     width: 270px;
     height: 50px;
     display: flex;
@@ -77,6 +78,7 @@ body{
     }
   }
 }
+
 .title{
   margin-top: 50px;
   width: 100%;
@@ -569,7 +571,6 @@ h1{
     justify-content: center;
   
     div {
-      border: 1px solid #EE964B;
       width: 270px;
       height: 50px;
       display: flex;

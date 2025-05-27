@@ -74,11 +74,16 @@
                   style="gap: 34px; align-items: center"
                 >
                   <div
-                    *ngFor="let program of filteredUniCards.length > 0 ? filteredUniCards : currentProgramNames"
+                    *ngFor="
+                      let program of filteredUniCards.length > 0
+                        ? filteredUniCards
+                        : currentProgramNames
+                    "
                     (click)="onCardClicked(program.programname)"
                     class="btn rounded-pill"
                     [ngStyle]="{
-                      'background-color': '#342833',
+                      background:
+                        'linear-gradient(to right, #0f2027, #203a43, #2c5364)',
                       color: '#fff',
                       'border-radius': '50px',
                       padding: '10px',
@@ -141,7 +146,10 @@
             <div class="program">
               <div class="ProgramNames col">
                 <div class="container">
-                  <div class="top1 flex-wrap" style="gap: 34px; align-items: center">
+                  <div
+                    class="top1 flex-wrap"
+                    style="gap: 34px; align-items: center"
+                  >
                     <div
                       *ngFor="let program of filteredUniCards"
                       (click)="onCardClicked(program.programName)"

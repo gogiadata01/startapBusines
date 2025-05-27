@@ -53,8 +53,7 @@
   
   
   div.Container {
-    background-color: #5D737E !important;
-    border-radius: 50px;
+    background: linear-gradient(to right, rgb(15, 32, 39), rgb(32, 58, 67), rgb(44, 83, 100));    border-radius: 50px;
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -125,8 +124,7 @@
   .row {
     display: flex;
     flex-wrap: wrap;
-    background-color: #F0F3BD;
-    border-radius: 25px;
+    background: linear-gradient(to right, #4aa091, #203a43, #2c5364);    border-radius: 25px;
   
   }
   
@@ -136,15 +134,14 @@
   
   .card {
     padding-top: 10px;
-    background-color: #F0F3BD;
-    color: black;
+    background-color: transparent;
     border: 0px;
     text-align: center;
     
     cursor: pointer;
     transition: background-color 0.3s ease;
   h1{
-    color:black;
+    color:white;
   }
     &:hover {
       color: green;
@@ -188,12 +185,10 @@
   
   .card1 {
     width: 480px;
-    background-color: #5D737E;
-    color: white;
+    background: linear-gradient(to right, #4aa091, #203a43, #2c5364);    color: white;
     padding: 20px;
     border-radius: 25px;
     text-align: center;
-    border: 2px dashed #F0F3BD;
   }
   .title{
 
@@ -204,7 +199,7 @@
     text-align: center;
     
   h2{
-    color: white;
+    color: black;
   }
   }
   .card-container1{
@@ -399,12 +394,12 @@
       font-size: 15px;
     }
   }
-  @media screen and (max-width: 426px) {
+  @media screen and (max-width: 500px) {
     div.site{
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 640px;
+      height: 750px;
     }
   
     div.Container{
@@ -530,3 +525,18 @@
       background-color: #5D737E;
     }
   }
+.accordion-item{
+  background: linear-gradient(to right, #4aa091, #203a43, #2c5364);
+  color: white;
+
+}
+.accordion-button {
+  background: linear-gradient(to right, #4aa091, #203a43, #2c5364);
+  border-radius: 10px !important;
+}
+.accordion-button:focus{
+box-shadow: none;
+}
+.accordion-flush > .accordion-item > .accordion-header .accordion-button {
+  border-radius: 10px !important;
+}

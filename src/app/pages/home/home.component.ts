@@ -57,12 +57,26 @@
     
     
     // Sample list of subjects; this should be populated based on your requirements
-    subjects: string[] = [
-      'ქართული', 'უცხო ენები', 'ქიმია', 'ფიზიკა', 
-      'ბიოლოგია', 'მათემატიკა', 'სამოქალაქო განათლება', 
-      'გეოგრაფია', 'მუსიკა', 'ხელოვნება', 'ისტორია', 'სპორტი'
-    ];
+    // subjects: string[] = [
+    //   'ქართული', 'უცხო ენები', 'ქიმია', 'ფიზიკა', 
+    //   'ბიოლოგია', 'მათემატიკა', 'სამოქალაქო განათლება', 
+    //   'გეოგრაფია', 'მუსიკა', 'ხელოვნება', 'ისტორია', 'სპორტი'
+    // ];
 
+    subjectsWithIcons = [
+      { name: 'ქართული', icon: 'fa-solid fa-book' },
+      { name: 'უცხო ენები', icon: 'fa-solid fa-language' },
+      { name: 'ქიმია', icon: 'fa-solid fa-flask-vial' },
+      { name: 'ფიზიკა', icon: 'fa-solid fa-atom' },
+      { name: 'ბიოლოგია', icon: 'fa-solid fa-dna' },
+      { name: 'მათემატიკა', icon: 'fa-solid fa-calculator' },
+      { name: 'სამოქალაქო განათლება', icon: 'fa-solid fa-gavel' },
+      { name: 'გეოგრაფია', icon: 'fa-solid fa-book-atlas' },
+      { name: 'მუსიკა', icon: 'fa-solid fa-music' },
+      { name: 'ხელოვნება', icon: 'fa-solid fa-palette' },
+      { name: 'ისტორია', icon: 'fa-solid fa-scroll' },
+      { name: 'სპორტი', icon: 'fa-solid fa-person-running' },
+    ];
     constructor(private authService: AuthenticationService,private router: Router,private cdr: ChangeDetectorRef, private User:AuthenticationService,private ngZone: NgZone  ,private userService :UserService, private EventCardService: EventCardService  ,  private programCardService: ProgramCardService, private autentication:AuthenticationService,
       ) {        
       }
@@ -296,7 +310,7 @@ onCircleClick(index: number): void {
     
     markAllSubjects(event: any): void {
       if (event.target.checked) {
-        this.selectedSubjects = [...this.subjects]; // Select all subjects
+        this.subjectsWithIcons = [...this.subjectsWithIcons]; // Select all subjects
       } else {
         this.selectedSubjects = []; // Deselect all subjects
       }
@@ -337,6 +351,10 @@ onCircleClick(index: number): void {
     onCardClicked1(cardkey:any) :void{
       this.router.navigate(['/Pupil/Events/',cardkey])
     }
+    MoreWiev(){
+      this.router.navigate(['/Pupil/UniFaculty'])
+    }
+
     @ViewChildren('circle') circlesRef!: QueryList<ElementRef>;
 
     // @HostListener('window:scroll', [])
