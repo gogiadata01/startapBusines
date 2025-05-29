@@ -548,6 +548,9 @@ footer {
     transform: scale(1.07);
   }
 }
+#nav{
+  z-index: 2;
+}
 
 /* Remove any border properties */
 .no-border {
