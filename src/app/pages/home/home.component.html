@@ -193,53 +193,9 @@
   </div>
 </div>
 
-<!-- სიახლეები -->
-<!-- <div class="scroll-button" (click)="scrollToNews()">
-  <span>იხილე სიახლეები</span>
-</div> -->
-
 <div class="scroll-button" *ngIf="showScrollButton" (click)="scrollToNews()">
   <span>იხილე სიახლეები</span>
 </div>
-
-<!-- 
-<section id="news-section" class="news-section" #newsSection>
-
-</section> -->
-
-<!-- <div
-  class="scroll-button"
-  *ngIf="showScrollButton"
-  (click)="scrollToNews()"
->
-  <span>იხილე სიახლეები</span>
-  <div class="arrow">↓</div>
-</div> -->
-
-<!-- სიახლეები მთავრდება აქ -->
-
-<!-- <label>
-    <input type="checkbox" (change)="markAllSubjects($event)" />
-    Select All
-  </label> -->
-
-<!-- <div class="subject">
-  <div class="subjectButtons">
-    <div *ngFor="let subject of subjects">
-      <button
-        class="subjectBtn"
-        type="button"
-        (click)="onSubjectChange(subject)"
-        [ngClass]="{ active: selectedSubjects.includes(subject) }"
-      >
-        {{ subject }}
-      </button>
-    </div>
-  </div>
-</div>
-<div class="FilterBtn">
-  <button (click)="filterMatchingPrograms()">გაფილტრე</button>
-</div> -->
 
 <div class="subject">
   <div class="subjectButtons">
@@ -317,15 +273,10 @@
           <p>დაელოდეთ პროგრამების ჩატვირთვას</p>
         </div>
 
-        <div *ngIf="currentFieldName">
-          <h2 class="FieldName">{{ currentFieldName }}</h2>
-          <div
-            *ngIf="currentProgramNames.length"
-            class="top1 flex-wrap"
-            style="gap: 34px; align-items: center"
-          >
+        <div>
+          <div class="top1 flex-wrap" style="gap: 34px; align-items: center">
             <div
-              *ngFor="let program of currentProgramNames"
+              *ngFor="let program of programs"
               (click)="onCardClicked(program.programname)"
               class="btn rounded-pill"
               [ngStyle]="{
@@ -364,7 +315,6 @@
   @for (Card of EventCard; track $index) {
   <div class="flip-card-container">
     <div class="flip-card">
-      <!-- FRONT -->
       <div class="flip-card-front">
         <div class="card">
           <img [src]="Card.url" alt="Event Image" />
@@ -377,7 +327,6 @@
         </div>
       </div>
 
-      <!-- BACK -->
       <div class="flip-card-back">
         <div class="back-content">
           <h4 class="card-description">{{ Card.description }}</h4>
@@ -405,6 +354,8 @@
   </div>
   }
 </div>
+
+
 
 <section class="leaderboard-section">
   <div class="podium-container">

@@ -105,11 +105,19 @@
     
     
     // Sample list of subjects; this should be populated based on your requirements
-    // subjects: string[] = [
-    //   'ქართული', 'უცხო ენები', 'ქიმია', 'ფიზიკა', 
-    //   'ბიოლოგია', 'მათემატიკა', 'სამოქალაქო განათლება', 
-    //   'გეოგრაფია', 'მუსიკა', 'ხელოვნება', 'ისტორია', 'სპორტი'
-    // ];
+    programs  = [
+      {programname: 'ბიზნესის ადმინისტრირება', width: ''},
+      {programname: 'სამართალი', width: ''},
+      {programname: 'კომპიუტერული მეცნიერება' , width: ''},
+      {programname: 'ფსიქოლოგია' , width: null},
+      {programname: 'მედიცინა' , width: ''},
+      {programname: 'ტურიზმი' , width: ''},
+      {programname: 'საერთაშორისო ურთიერთობები' , width: ''},
+      {programname: 'ქართული ფილოლოგია' , width: ''},
+      {programname: 'ინგლისური ფილოლოგია' , width: ''},
+      {programname: 'ჟურნალისტიკა' , width: ''},
+
+    ];
 
     subjectsWithIcons = [
       { name: 'ქართული', icon: 'fa-solid fa-book' },
@@ -128,7 +136,7 @@
     constructor(private authService: AuthenticationService,private router: Router,private cdr: ChangeDetectorRef, private User:AuthenticationService,private ngZone: NgZone  ,private userService :UserService, private EventCardService: EventCardService  ,  private programCardService: ProgramCardService, private autentication:AuthenticationService,
       ) {        
       }
-    @Input() text: string = 'არჩიეთ თქვენთვის შესაფერისი პროგრამა';
+    @Input() text: string = 'ყველაზე მოთხოვნადი პროგრამები';
 
 
 loadFieldNames(): void {
@@ -317,9 +325,7 @@ onCircleClick(index: number): void {
 
     cardStyle = {
       backgroundColor: '#ced4da',
-      height: '80px',
-
-    
+      height: '80px',    
   }
     @ViewChild('secondNavbar') secondNavbar!: ElementRef;
     private isNavbarVisible = false;
