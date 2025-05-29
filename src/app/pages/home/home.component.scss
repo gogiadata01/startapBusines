@@ -249,10 +249,11 @@ main {
 }
 
 .card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: hidden;
 }
 
 .card {
@@ -549,7 +550,12 @@ footer {
   }
 }
 #nav{
-  z-index: 5;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999; /* very high */
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
 }
 
 /* Remove any border properties */
