@@ -104,6 +104,7 @@ export interface EventCardDto{
   link:string;
   isFeatured:boolean;
   saregistracioForma:string;
+  description:string;
   numbering:number;
   types:EventTypeDto[];
 }

@@ -50,20 +50,20 @@ main {
     justify-content: center;
     gap: 1rem;
     position: relative;
-    bottom: 220px;
+    bottom: 230px;
 }
 
 .card {
-    background-color:#CED4DA;
-    border-radius: 35px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    width: 275px;
-    height: 280px;
-     margin: 1rem;
-    transition: transform 0.2s;
-    border: 1px dashed;
-    cursor: pointer;
+  background-color: #CED4DA;
+  border-radius: 35px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 260px;
+  height: 275px;
+  margin: 1rem;
+  transition: transform 0.2s;
+  border: 1px dashed;
+  cursor: pointer;
 }
 
 
@@ -73,16 +73,18 @@ main {
 }
 
 .card img {
-    width: 100%;
-    height: 130px;
-    object-fit: cover;
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
 }
 
 .card-content {
-    padding-top: 9px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  padding-top: 9px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
 }
 
 .card-content h2 {
@@ -91,40 +93,56 @@ main {
 }
 
 .card-content p {
-    font-size: 11px;
-    color: black;
-    font-weight: 600;
-    width: 240px;
-    text-align: center;
+  font-size: 11px;
+  color: black;
+  font-weight: 600;
+  width: 240px;
+  text-align: center;
 }
 
 .Date{
-    display: flex;
-    // width: 245px;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  width: 245px;
+  justify-content: center;
+  align-items: center;
 }
 .Buttons{
+  display: flex;
+  justify-content: center;
+  margin-top: 0px;
+}
+.Btn1{
+  margin-right: 4px;
+  button{
+    font-size: 14px;
     display: flex;
-    justify-content:  center;
-    margin-top: 20px;
-    .Btn{
-        display: flex;
-        align-items: center;
-        background-color: red;
-        margin-right: 5px;
+    color: white;
+    border-radius: 10px;
+    border: 1px dashed;
+    background-color: #5D737E;
     }
-    p{
-        font-size: 10px
-    };
+}
+.Btn2{
+    button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 26px;
+        color: white;
+        border-radius: 10px;
+        border: 1px dashed;
+        background-color: #5D737E;
+    }
 }
 footer {
     text-align: center;
     padding: 1rem 0;
     background-color: #ff6347;
     color: white;
-    margin-top: 2rem; /* Add this line for more space between main content and footer */
+    margin-top: 2rem;
 }
+
 
 @media screen and (max-width: 1024px) {
     .filter .Types{
@@ -165,3 +183,152 @@ footer {
         }
     }
 }
+
+
+.flip-card-container {
+    width: 260px;
+    height: 275px;
+    perspective: 1000px;
+    display: flex;
+    align-items: stretch;
+    margin: 1rem;
+  }
+  
+  .flip-card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease-in-out;
+  }
+  
+  .flip-card-container:hover .flip-card {
+    transform: rotateX(180deg);
+  }
+  
+  .flip-card-front,
+  .flip-card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden;
+    border-radius: 35px;
+  }
+  
+  .flip-card-front {
+    background-color: #ced4da;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .flip-card-front img {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+  }
+  
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+  
+    .card-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: black;
+      animation: floatText 3s ease-in-out infinite;
+      margin-top: 35px;
+    }
+  
+    .date p {
+      font-size: 12px;
+      color: #333;
+      font-weight: 600;
+    }
+  }
+  
+  @keyframes floatText {
+    0% {
+      transform: translateY(-50%) translateY(0px);
+    }
+    50% {
+      transform: translateY(-50%) translateY(-10px);
+    }
+    100% {
+      transform: translateY(-50%) translateY(0px);
+    }
+  }
+  
+  /* ========== BACK SIDE STYLING ========== */
+  
+  .flip-card-back {
+    background: linear-gradient(to right, #33c7ae, #203a43, #2c5364);
+    color: white;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotateX(180deg);
+    padding: 20px;
+    text-align: center;
+    border-radius: 35px;
+  }
+  
+  .back-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10px;
+    box-sizing: border-box;
+  }
+  
+  .card-description {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 15px;
+    color: #ffffff;
+    text-align: center;
+  }
+  
+  .buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .btn1 {
+    font-size: 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: white;
+    white-space: nowrap;
+  }
+  
+  .see-more-btn {
+    background-color: #ffffff;
+    color: #2c5364;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: center;
+  }
+  
+  .see-more-btn:hover {
+    background-color: #f1f1f1;
+  }
+  

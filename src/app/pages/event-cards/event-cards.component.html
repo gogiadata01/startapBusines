@@ -15,33 +15,50 @@
       </div>
     </div>
   </div>
+
   <div class="card-container">
-    <div
-      class="card"
-      *ngFor="let card of filteredEventCards"
-      (click)="onCardClicked(card.id)"
-    >
-      <img src="{{ card.url }}" />
-      <div class="card-content">
-        <p>{{ card.title }}</p>
-      </div>
-      <div class="Date">{{ card.time }}</div>
-      <div class="Buttons">
-        <ng-container *ngFor="let type of card.types">
-          <div
-            [ngStyle]="{
-              'background-color': getColor(type),
-              'font-size': '10px',
-              color: 'white',
-              padding: '5px',
-              'border-radius': '5px'
-            }"
-            class="Btn"
-          >
-            {{ type.type || type }}
+    @for (Card of filteredEventCards; track $index) {
+    <div class="flip-card-container">
+      <div class="flip-card">
+        <!-- FRONT -->
+        <div class="flip-card-front">
+          <div class="card">
+            <img [src]="Card.url" alt="Event Image" />
+            <div class="card-content">
+              <p class="card-title">{{ Card.title }}</p>
+              <div class="date">
+                <p>{{ Card.time }}</p>
+              </div>
+            </div>
           </div>
-        </ng-container>
+        </div>
+
+        <!-- BACK -->
+        <div class="flip-card-back">
+          <div class="back-content">
+            <h4 class="card-description">{{ Card.description }}</h4>
+
+            <div class="buttons">
+              <ng-container *ngFor="let type of Card.types">
+                <div
+                  class="btn1"
+                  [ngStyle]="{
+                    'background-color': getColor(type),
+                    color: 'white'
+                  }"
+                >
+                  {{ type.type || type }}
+                </div>
+              </ng-container>
+            </div>
+
+            <button class="see-more-btn" (click)="onCardClicked(Card.id)">
+              იხილე მეტი
+            </button>
+          </div>
+        </div>
       </div>
     </div>
+    }
   </div>
 </main>

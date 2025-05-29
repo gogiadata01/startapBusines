@@ -29,6 +29,7 @@ export class AddWithApiEventCardComponent {
       Time: [''],
       Link: [''],
       Numbering: [''],
+      Description: [''],
       saregistracioForma: [''],
       isFeatured: [false], // Add isFeatured field (default: false)
       Types: this.fb.array([])
