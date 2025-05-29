@@ -1,4 +1,4 @@
-  import { Component, HostListener, Input, OnInit, OnDestroy, NgZone, ViewChild } from '@angular/core';
+  import { Component, HostListener, Input, OnInit, OnDestroy, NgZone, ViewChild,} from '@angular/core';
   import { CommonModule ,NgFor } from '@angular/common';
   import { ElementRef, } from '@angular/core';
   import { Router } from '@angular/router';
@@ -32,7 +32,55 @@
     styleUrls: ['./home.component.scss']
   })
   
-  export class HomeComponent implements OnInit, OnDestroy   {
+  export class HomeComponent implements OnInit, OnDestroy    {
+
+
+    showScrollButton = true;
+
+    @ViewChild('newsSection') newsSection!: ElementRef;
+    @ViewChild('header', { static: true }) header!: ElementRef; // ჰედერის ზომისთვის
+    
+    // ღილაკზე დაჭერისას სქროლვა
+    scrollToNews() {
+      const headerHeight = this.header?.nativeElement?.offsetHeight || 0;
+      const extraOffset = -500; // დამატებითი სივრცე ჰედერსა და სექციას შორის
+    
+      const element = this.newsSection.nativeElement;
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - headerHeight - extraOffset;
+    
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth',
+      });
+    
+      element.classList.add('visible');
+    }
+    
+    @HostListener('window:scroll', [])
+    onScroll() {
+      const element = this.newsSection.nativeElement;
+      const rect = element.getBoundingClientRect();
+    
+      // როცა ელემენტი ჩანს ეკრანზე — დავმალოთ ღილაკი
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        this.showScrollButton = false;
+      } else {
+        this.showScrollButton = true;
+      }
+    }
+    
+
+  private checkVisibility() {
+    const element = this.newsSection.nativeElement;
+    const rect = element.getBoundingClientRect();
+    if (rect.top < window.innerHeight) {
+      element.classList.add('visible');
+    }
+  }
+
+
+
     // podiumEntries: UserDto[] = []; // For top 3 podium users
     // entries: UserDto[] = []; // For users ranked 4-6
     programCards: ProgramCardDto[] = [];

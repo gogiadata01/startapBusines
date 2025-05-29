@@ -1267,3 +1267,120 @@ text-align: center;
 .see-more-btn:hover {
   background-color: #f1f1f1;
 }
+
+// სიახლეები
+.scroll-button {
+  position: fixed;
+  right: 1rem;
+  top: 40%;
+  writing-mode: vertical-rl;
+  text-align: center;
+  background: linear-gradient(180deg, #0a3442, #123f54);
+  color: white;
+  padding: 1rem 0.5rem;
+  border-radius: 1rem 0 0 1rem;
+  cursor: pointer;
+  z-index: 999;
+  user-select: none;
+  animation: pulse 2.5s infinite ease-in-out alternate;
+  font-family: 'BPG Nino Mtavruli', sans-serif;
+  transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+
+  &:hover {
+    transform: translateX(-5px) scale(1.05);
+    background: linear-gradient(180deg, #0b3f50, #155066);
+    animation-play-state: paused;
+  }
+
+  span {
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+    letter-spacing: 2px;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    animation: glow 2.5s ease-in-out infinite alternate;
+  }
+
+  .arrow {
+    font-size: 1.5rem;
+    animation: bounce 1.5s infinite;
+  }
+
+  @media (max-width: 768px) {
+    top: auto;
+    bottom: 1rem;
+    right: 1rem;
+    writing-mode: horizontal-tb;
+    flex-direction: row;
+    border-radius: 1rem;
+    padding: 0.6rem 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9rem;
+    opacity: 0.85;
+    backdrop-filter: blur(3px);
+
+    span {
+      font-size: 1rem;
+      letter-spacing: 1px;
+    }
+
+    .arrow {
+      font-size: 1.2rem;
+      animation: none;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    right: 2rem;
+    padding: 1.2rem 0.6rem;
+
+    span {
+      font-size: 1.4rem;
+    }
+
+    .arrow {
+      font-size: 1.6rem;
+    }
+  }
+}
+
+// ანიმაციები
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 5px 0 rgba(18, 63, 84, 0.7);
+    transform: translateX(0) scale(1);
+  }
+  50% {
+    box-shadow: 0 0 20px 5px rgba(18, 63, 84, 0.9);
+    transform: translateX(2px) scale(1.02);
+  }
+  100% {
+    box-shadow: 0 0 5px 0 rgba(18, 63, 84, 0.7);
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
+  }
+  100% {
+    text-shadow: 0 0 15px rgba(255, 255, 255, 1);
+  }
+}
+
+
+
+// სიახლეები მთავრდება აქ...
