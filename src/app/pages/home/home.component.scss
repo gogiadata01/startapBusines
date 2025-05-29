@@ -552,9 +552,13 @@ footer {
 #nav{
   position: sticky;
   top: 0;
-  z-index: 9999; /* very high */
+  left: 0;
+  width: 100%;
+  background-color: white;
+  z-index: 1000;
   background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
 }
+
 
 /* Remove any border properties */
 .no-border {
