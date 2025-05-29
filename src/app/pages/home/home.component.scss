@@ -552,8 +552,6 @@ footer {
 #nav{
   position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
   z-index: 9999; /* very high */
   background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
 }
@@ -1200,6 +1198,15 @@ text-align: center;
   }
 }
 
+.flip-card-container,
+.flip-card,
+.flip-card-front,
+.flip-card-back {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform;
+  z-index: 1;
+}
 @keyframes floatText {
   0% {
     transform: translateY(0px);
