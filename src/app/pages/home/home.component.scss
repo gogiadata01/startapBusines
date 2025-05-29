@@ -1149,8 +1149,9 @@ text-align: center;
   position: absolute;
   top: 0;
   left: 0;
-  backface-visibility: hidden;
   border-radius: 35px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .flip-card-front {
@@ -1159,6 +1160,7 @@ text-align: center;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  z-index: 2;
 }
 
 .flip-card-front img {
@@ -1191,13 +1193,13 @@ text-align: center;
 
 @keyframes floatText {
   0% {
-    transform: translateY(-50%) translateY(0px);
+    transform: translateY(0px);
   }
   50% {
-    transform: translateY(-50%) translateY(-10px);
+    transform: translateY(-10px);
   }
   100% {
-    transform: translateY(-50%) translateY(0px);
+    transform: translateY(0px);
   }
 }
 
@@ -1206,14 +1208,13 @@ text-align: center;
 .flip-card-back {
   background: linear-gradient(to right, #33c7ae, #203a43, #2c5364);
   color: white;
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   transform: rotateX(180deg);
   padding: 20px;
   text-align: center;
-  border-radius: 35px;
+  z-index: 1;
 }
 
 .back-content {
