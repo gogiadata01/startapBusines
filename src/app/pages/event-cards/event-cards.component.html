@@ -20,7 +20,6 @@
     @for (Card of filteredEventCards; track $index) {
     <div class="flip-card-container">
       <div class="flip-card">
-        <!-- FRONT -->
         <div class="flip-card-front">
           <div class="card">
             <img [src]="Card.url" alt="Event Image" />
@@ -32,12 +31,11 @@
             </div>
           </div>
         </div>
-
-        <!-- BACK -->
+  
         <div class="flip-card-back">
           <div class="back-content">
             <h4 class="card-description">{{ Card.description }}</h4>
-
+  
             <div class="buttons">
               <ng-container *ngFor="let type of Card.types">
                 <div
@@ -51,7 +49,7 @@
                 </div>
               </ng-container>
             </div>
-
+  
             <button class="see-more-btn" (click)="onCardClicked(Card.id)">
               იხილე მეტი
             </button>
