@@ -499,15 +499,18 @@ h1{
         flex-direction: column;
         .stadinglanguage{
           width: 141px;
+          margin-bottom: 20px;
         }
         .kvalifikacia{
           width: 141px;
-    
+          margin-bottom: 35px;
+
         }
         .dafinanseba{
           width: 245px;
           margin-top: 15px;
-    
+          margin-bottom: 20px;
+
         }
         .divbottom{
           width: 230px;
@@ -516,9 +519,10 @@ h1{
       }
       h2{
         font-size: 15px;
-
+        font-weight: bold;
       }
     }
+
   }
   .lowerPart{
     .box{

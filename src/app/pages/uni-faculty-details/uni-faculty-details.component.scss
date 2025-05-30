@@ -456,7 +456,7 @@ h1{
         font-size: 15px;
         }
 }
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 500px) {
   .top{
       flex-direction: column;
 
@@ -499,24 +499,24 @@ h1{
         flex-direction: column;
         .stadinglanguage{
           width: 141px;
+          margin-bottom: 20px;
         }
         .kvalifikacia{
           width: 141px;
-    
+          margin-bottom: 35px;
         }
         .dafinanseba{
           width: 245px;
-          margin-top: 15px;
-    
+          margin-bottom: 20px;
         }
         .divbottom{
-          width: 230px;
+          width: 370px;
 
         }
       }
       h2{
         font-size: 15px;
-
+        font-weight: bold;
       }
     }
   }
