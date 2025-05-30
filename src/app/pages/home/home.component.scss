@@ -550,13 +550,9 @@ footer {
   }
 }
 #nav{
-  position: sticky;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: white;
   z-index: 1000;
   background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  isolation: isolate;
 }
 
 
@@ -1131,6 +1127,16 @@ text-align: center;
   color: #1E9565 !important ;
   font-weight: bold;
 }
+body {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+#nav {
+  z-index: 1000;
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  isolation: isolate;
+}
 
 .flip-card-container {
   width: 260px;
@@ -1139,6 +1145,8 @@ text-align: center;
   display: flex;
   align-items: stretch;
   margin: 1rem;
+  contain: layout paint;
+  will-change: transform;
 }
 
 .flip-card {
@@ -1161,7 +1169,6 @@ text-align: center;
   top: 0;
   left: 0;
   border-radius: 35px;
-  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
 
@@ -1202,14 +1209,6 @@ text-align: center;
   }
 }
 
-.flip-card-container,
-.flip-card,
-.flip-card-front,
-.flip-card-back {
-  backface-visibility: hidden;
-  will-change: transform;
-  z-index: 0;
-}
 @keyframes floatText {
   0% {
     transform: translateY(0px);
@@ -1287,6 +1286,7 @@ text-align: center;
 .see-more-btn:hover {
   background-color: #f1f1f1;
 }
+
 
 // სიახლეები
 .scroll-button {
