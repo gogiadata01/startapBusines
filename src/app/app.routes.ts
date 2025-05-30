@@ -29,7 +29,6 @@ import { QuizeComponent } from './pages/quize/quize.component';
 import { PersonalPageComponent } from './pages/personal-page/personal-page.component';
 import { RecoveryPassowrdComponent } from './pages/recovery-passowrd/recovery-passowrd.component';
 import { UniEventPageComponent } from './pages/uni-event-page/uni-event-page.component';
-import { DummyComponent } from './dummy/dummy.component';
 
 
 
@@ -105,10 +104,7 @@ export const routes: Routes = [
   {
     path: "Home",
     component: NavbarComponent,
-  },
-  { path: 'dummy', 
-  component:DummyComponent  
-}
+  }
 
 
 ];
