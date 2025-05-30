@@ -4,6 +4,7 @@
       <!-- First Navbar -->
       <div class="container-fluid">
         <svg
+          (click)="refreshWithScroll()"
           routerLink="/"
           id="svg"
           xmlns="http://www.w3.org/2000/svg"
@@ -83,7 +84,7 @@
       <nav id="nav" class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container-fluid">
           <svg
-            routerLink="/"
+            (click)="refreshWithScroll()"
             id="svg"
             xmlns="http://www.w3.org/2000/svg"
             width="639"
@@ -354,8 +355,6 @@
   </div>
   }
 </div>
-
-
 
 <section class="leaderboard-section">
   <div class="podium-container">

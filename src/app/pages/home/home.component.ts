@@ -351,7 +351,6 @@ onCircleClick(index: number): void {
       });
       this.filterMatchingPrograms();  // Automatically filter programs on initialization
       this.isLoggedIn = this.User.isUserLoggedIn(); // Check login status
-
     }
     onSubjectChange(subject: string): void {
       const index = this.selectedSubjects.indexOf(subject);
@@ -361,6 +360,24 @@ onCircleClick(index: number): void {
         this.selectedSubjects.push(subject); // Add subject if it's not selected
       }
     }
+    refreshWithScroll(): void {
+      const checkIfAtTopAndReload = () => {
+        if (window.scrollY === 0) {
+          window.removeEventListener('scroll', checkIfAtTopAndReload);
+          location.reload();
+        }
+      };
+    
+      window.addEventListener('scroll', checkIfAtTopAndReload);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+      // Fallback: in case scroll event doesn't fire (e.g., already at top)
+      if (window.scrollY === 0) {
+        location.reload();
+      }
+    }
+    
+    
     
     markAllSubjects(event: any): void {
       if (event.target.checked) {
