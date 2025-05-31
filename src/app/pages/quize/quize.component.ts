@@ -61,13 +61,13 @@ export class QuizeComponent implements OnInit , CanActivate {
       number: 'V',
       date: '24 მაისი',
       time: '15:00',
-      completed: false
+      completed: true
     },
     {
       number: 'VI',
       date: '27 მაისი',
       time: '18:00',
-      completed: false
+      completed: true
     },
     {
       number: 'VII',
