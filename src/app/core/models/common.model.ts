@@ -274,3 +274,73 @@ export interface UniversityProgramVisit {
   programName: string;
   visitDate?: Date;
 }
+
+export interface UnicardEnDto {
+  id?: number;
+  url_en: string;
+  title_en: string;
+  mainText_en?: string;
+  history_en?: string;
+  forPupil_en?: string;
+  scholarshipAndFunding_en?: string;
+  exchangePrograms_en?: string;
+  labs_en?: string;
+  studentsLife_en?: string;
+  paymentMethods_en?: string;
+  events_en: EventEnDto[];
+  sections_en: SectionEnDto[];
+  sections2_en: Section2EnDto[];
+  archevitiSavaldebuloSaganebi_en: ArchevitiSavaldebuloSaganiEnDto[];
+}
+
+export interface EventEnDto {
+  url_en: string;
+  title_en: string;
+  text_en: string;
+  time_en: string;
+  link_en: string;
+}
+
+export interface SectionEnDto {
+  title_en: string;
+  programNames_en: ProgramnameEnDto[];
+}
+
+export interface ProgramnameEnDto {
+  programName_en: string;
+  jobs_en: string;
+  swavlebisEna_en: string;
+  kvalifikacia_en: string;
+  dafinanseba_en: string;
+  kreditebisRaodenoba_en: string;
+  adgilebisRaodenoba_en: string;
+  fasi_en: string;
+  kodi_en: string;
+  programisAgwera_en: string;
+}
+
+export interface Section2EnDto {
+  title_en: string;
+  savaldebuloSagnebi_en: SavaldebuloSagnebiEnDto[];
+}
+
+export interface SavaldebuloSagnebiEnDto {
+  sagnisSaxeli_en: string;
+  koeficienti_en: string;
+  minimaluriZgvari_en: string;
+  prioriteti_en: string;
+  adgilebisRaodenoba_en: string;
+}
+
+export interface ArchevitiSavaldebuloSaganiEnDto {
+  title_en: string;
+  archevitiSavaldebuloSagnebi_en: ArchevitiSavaldebuloSagnebiEnDto[];
+}
+
+export interface ArchevitiSavaldebuloSagnebiEnDto {
+  sagnisSaxeli_en: string;
+  koeficienti_en: string;
+  minimaluriZgvari_en: string;
+  prioriteti_en: string;
+  adgilebisRaodenoba_en: string;
+}

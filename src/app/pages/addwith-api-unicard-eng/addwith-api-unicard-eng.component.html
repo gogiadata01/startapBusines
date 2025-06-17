@@ -1,0 +1,190 @@
+<form [formGroup]="UniCardForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="url_en">URL</label>
+      <input id="url_en" formControlName="url_en">
+    </div>
+  
+    <div>
+      <label for="title_en">title</label>
+      <input id="title_en" formControlName="title_en">
+    </div>
+  
+    <div>
+      <label for="mainText_en">Main Text</label>
+      <textarea id="mainText_en" formControlName="mainText_en"></textarea>
+    </div>
+  
+    <div>
+      <label for="history_en">history </label>
+      <textarea id="history_en" formControlName="history_en"></textarea>
+    </div>
+    
+    <div>
+      <label for="forPupil_en">forPupil</label>
+      <textarea id="forPupil_en" formControlName="forPupil_en"></textarea>
+    </div>
+    
+    <div>
+      <label for="scholarshipAndFunding_en">scholarshipAndFunding</label>
+      <textarea id="scholarshipAndFunding_en" formControlName="scholarshipAndFunding_en"></textarea>
+    </div>
+    
+    <div>
+      <label for="exchangePrograms_en">exchangePrograms</label>
+      <textarea id="exchangePrograms_en" formControlName="exchangePrograms_en"></textarea>
+    </div>
+    
+    <div>
+      <label for="labs_en">labs</label>
+      <textarea id="labs_en" formControlName="labs_en"></textarea>
+    </div>
+  
+    <div>
+      <label for="studentsLife_en">studentsLife</label>
+      <textarea id="studentsLife_en" formControlName="studentsLife_en"></textarea>
+    </div>
+  
+    <div>
+      <label for="paymentMethods_en">paymentMethods</label>
+      <textarea id="paymentMethods_en" formControlName="paymentMethods_en"></textarea>
+    </div>
+  
+    <!-- Add other input fields here -->
+  
+    <div formArrayName="events_en">
+      <h3>Events</h3>
+      <div *ngFor="let event of events_en.controls; let i = index" [formGroupName]="i">
+        <label for="event-url-{{i}}">Event URL</label>
+        <input id="event-url-{{i}}" formControlName="url_en">
+  
+        <label for="event-title-{{i}}">Event Title</label>
+        <input id="event-title-{{i}}" formControlName="title_en">
+  
+        <label for="event-text-{{i}}">Event Text</label>
+        <textarea id="event-text-{{i}}" formControlName="text_en"></textarea>
+  
+        <button type="button" (click)="removeEvent(i)">Remove Event</button>
+      </div>
+      <button type="button" (click)="addEvent()">Add Event</button>
+    </div>
+  
+    <div formArrayName="sections_en">
+      <h3>Sections</h3>
+      <div *ngFor="let section of sections_en.controls; let i = index" [formGroupName]="i">
+        <label for="section-title-{{i}}">Section Title</label>
+        <input id="section-title-{{i}}" formControlName="title_en">
+  
+        <div formArrayName="programNames_en">
+          <h4>Program Names</h4>
+          <div *ngFor="let programName of section.get('programNames_en')?.value; let j = index" [formGroupName]="j">
+            <label for="program-name-{{i}}-{{j}}">Program Name</label>
+            <input id="program-name-{{i}}-{{j}}" formControlName="programName_en">
+  
+            <label for="Jobs-{{i}}-{{j}}">Jobs</label>
+            <input id="Jobs-{{i}}-{{j}}" formControlName="jobs_en">
+  
+            <label for="SwavlebisEna-{{i}}-{{j}}">SwavlebisEna</label>
+            <input id="SwavlebisEna-{{i}}-{{j}}" formControlName="swavlebisEna_en">
+  
+            <label for="Kvalifikacia-{{i}}-{{j}}">Kvalifikacia</label>
+            <input id="Kvalifikacia-{{i}}-{{j}}" formControlName="kvalifikacia_en">
+            
+            <label for="Dafinanseba-{{i}}-{{j}}">Dafinanseba</label>
+            <input id="Dafinanseba-{{i}}-{{j}}" formControlName="dafinanseba_en">
+  
+            <label for="KreditebisRaodenoba-{{i}}-{{j}}">KreditebisRaodenoba</label>
+            <input id="KreditebisRaodenoba-{{i}}-{{j}}" formControlName="kreditebisRaodenoba_en">
+  
+            <label for="AdgilebisRaodenoba-{{i}}-{{j}}">AdgilebisRaodenoba</label>
+            <input id="AdgilebisRaodenoba-{{i}}-{{j}}" formControlName="adgilebisRaodenoba_en">
+            
+            <label for="Fasi-{{i}}-{{j}}">Fasi</label>
+            <input id="Fasi-{{i}}-{{j}}" formControlName="fasi_en">
+  
+            <label for="Kodi-{{i}}-{{j}}">Kodi</label>
+            <input id="Kodi-{{i}}-{{j}}" formControlName="kodi_en">
+  
+            <label for="ProgramisAgwera-{{i}}-{{j}}">ProgramisAgwera</label>
+            <input id="ProgramisAgwera-{{i}}-{{j}}" formControlName="programisAgwera_en">
+  
+            <button type="button" (click)="removeProgramName(i, j)">Remove Program Name</button>
+          </div>
+          <button type="button" (click)="addProgramName(i)">Add Program Name</button>
+        </div>
+  
+        <button type="button" (click)="removeSection(i)">Remove Section</button>
+      </div>
+      <button type="button" (click)="addSection()">Add Section</button>
+    </div>
+  
+    <div formArrayName="sections2_en">
+      <h3>Sections 2</h3>
+      <div *ngFor="let section2 of sections2_en.controls; let i = index" [formGroupName]="i">
+        <label for="section2-title-{{i}}">Section Title</label>
+        <input id="section2-title-{{i}}" formControlName="title_en">
+  
+        <div formArrayName="savaldebuloSagnebi_en">
+          <h4>Savaldebulo Sagnebi</h4>
+          <div *ngFor="let sagani of section2.get('savaldebuloSagnebi_en')?.value; let j = index" [formGroupName]="j">
+            <label for="sagnis-saxeli-{{i}}-{{j}}">Sagnis Saxeli</label>
+            <input id="sagnis-saxeli-{{i}}-{{j}}" formControlName="sagnisSaxeli_en">
+  
+            <label for="koeficienti-{{i}}-{{j}}">Koeficienti</label>
+            <input id="koeficienti-{{i}}-{{j}}" formControlName="koeficienti_en">
+  
+            <label for="minimaluri-zgvari-{{i}}-{{j}}">Minimaluri Zgvari</label>
+            <input id="minimaluri-zgvari-{{i}}-{{j}}" formControlName="minimaluriZgvari_en">
+  
+            <label for="prioriteti-{{i}}-{{j}}">Prioriteti</label>
+            <input id="prioriteti-{{i}}-{{j}}" formControlName="prioriteti_en">
+  
+            <label for="adgilebisRaodenoba-{{i}}-{{j}}">AdgilebisRaodenoba</label>
+            <input id="adgilebisRaodenoba-{{i}}-{{j}}" formControlName="adgilebisRaodenoba_en">
+  
+            <button type="button" (click)="removeSavaldebuloSagnebi(i, j)">Remove Savaldebulo Sagani</button>
+          </div>
+          <button type="button" (click)="addSavaldebuloSagnebi(i)">Add Savaldebulo Sagani</button>
+        </div>
+  
+        <button type="button" (click)="removeSection2(i)">Remove Section</button>
+      </div>
+      <button type="button" (click)="addSection2()">Add Section 2</button>
+    </div>
+  
+    <div formArrayName="archevitiSavaldebuloSaganebi_en">
+      <h3>Archeviti Savaldebulo Saganebi</h3>
+      <div *ngFor="let archeviti of archevitiSavaldebuloSaganebi_en.controls; let i = index" [formGroupName]="i">
+        <label for="archeviti-title-{{i}}">Title</label>
+        <input id="archeviti-title-{{i}}" formControlName="title_en">
+  
+        <div formArrayName="archevitiSavaldebuloSagnebi_en">
+          <h4>Archeviti Savaldebulo Sagnebi</h4>
+          <div *ngFor="let sagani of archeviti.get('archevitiSavaldebuloSagnebi_en')?.value; let j = index" [formGroupName]="j">
+            <label for="archeviti-sagnis-saxeli-{{i}}-{{j}}">Sagnis Saxeli</label>
+            <input id="archeviti-sagnis-saxeli-{{i}}-{{j}}" formControlName="sagnisSaxeli_en">
+  
+            <label for="archeviti-koeficienti-{{i}}-{{j}}">Koeficienti</label>
+            <input id="archeviti-koeficienti-{{i}}-{{j}}" formControlName="koeficienti_en">
+  
+            <label for="archeviti-minimaluri-zgvari-{{i}}-{{j}}">Minimaluri Zgvari</label>
+            <input id="archeviti-minimaluri-zgvari-{{i}}-{{j}}" formControlName="minimaluriZgvari_en">
+  
+            <label for="archeviti-prioriteti-{{i}}-{{j}}">Prioriteti</label>
+            <input id="archeviti-prioriteti-{{i}}-{{j}}" formControlName="prioriteti_en">
+  
+            <label for="archeviti-AdgilebisRaodenoba-{{i}}-{{j}}">AdgilebisRaodenoba</label>
+            <input id="archeviti-AdgilebisRaodenoba-{{i}}-{{j}}" formControlName="adgilebisRaodenoba_en">
+  
+            <button type="button" (click)="removeArchevitiSavaldebuloSagnebi(i, j)">Remove Archeviti Sagani</button>
+          </div>
+          <button type="button" (click)="addArchevitiSavaldebuloSagnebi(i)">Add Archeviti Sagani</button>
+        </div>
+  
+        <button type="button" (click)="removeArcheviti(i)">Remove Archeviti</button>
+      </div>
+      <button type="button" (click)="addArcheviti()">Add Archeviti</button>
+    </div>
+  
+    <button type="submit" [disabled]="!UniCardForm.valid">Submit</button>
+  </form>
+  

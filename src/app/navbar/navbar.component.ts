@@ -10,10 +10,11 @@ import {AddWithApiHomeUniCardComponent} from '../pages/add-with-api-uni-card/add
 import {AddWithApiProgramCardComponent} from '../pages/add-with-api-program-card/add-with-api-program-card.component'
 import {AddWithApiEventCardComponent} from '../pages/add-with-api-event-card/add-with-api-event-card.component'
 import { AddQuizWithApiComponent } from "../pages/add-quiz-with-api/add-quiz-with-api.component";
+import { AddwithApiUnicardEngComponent } from "../pages/addwith-api-unicard-eng/addwith-api-unicard-eng.component";
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, AddWithApiHomeUniCardComponent, AddWithApiProgramCardComponent, AddWithApiEventCardComponent, AddQuizWithApiComponent],
+  imports: [RouterLink, AddWithApiHomeUniCardComponent, AddWithApiProgramCardComponent, AddWithApiEventCardComponent, AddQuizWithApiComponent, AddwithApiUnicardEngComponent],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
