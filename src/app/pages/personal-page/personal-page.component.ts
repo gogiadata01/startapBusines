@@ -17,7 +17,7 @@ import { UserService } from '../../user.service';
 @Component({
   selector: 'app-personal-page',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink, NavbarForPupilComponent],
+  imports: [CommonModule,ReactiveFormsModule, RouterLink,NgIf,NavbarForPupilComponent],
   templateUrl: './personal-page.component.html',
   styleUrl: './personal-page.component.scss'
 })
@@ -27,6 +27,9 @@ export class PersonalPageComponent implements OnInit {
   private destroy$ = new Subject<void>();
   private photoHeight: number = 0; // Ensure it's declared properly
   currentUser: UserDto | null = null;
+  language: 'ka' | 'en' = 'ka';
+  isLoggedIn = false;
+
   userid:any
   constructor(
     private router: Router,
@@ -37,12 +40,8 @@ export class PersonalPageComponent implements OnInit {
     private UserService:UserService
   ) { }
   ngOnInit(): void {
-    // this.User.currentUser$.subscribe((user) =>{
-    //   this.currentUser = user;
-    //   if (!this.currentUser) {
-    //     this.router.navigateByUrl('/SignUp'); 
-    //   }
-    // } )
+    const savedLang = localStorage.getItem('language') as 'ka' | 'en';
+    if (savedLang) this.language = savedLang;
     const user = this.User.getCurrentUser()
     if(!user){
               this.router.navigateByUrl('/SignUp'); 
@@ -56,6 +55,11 @@ export class PersonalPageComponent implements OnInit {
       this.currentUser = user
       console.log(this.currentUser)
     })
+  }
+  switchLanguage(lang: 'ka' | 'en'): void {
+    this.language = lang;
+    localStorage.setItem('language', lang); // შეინახე ენა
+    location.reload()
   }
   LogOut(){
     this.User.removeToken()

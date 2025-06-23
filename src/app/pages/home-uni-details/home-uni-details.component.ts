@@ -9,17 +9,19 @@ import {FooterForPupilComponent} from '../footer-for-pupil/footer-for-pupil.comp
 import {CarouselComponent} from '../../carousel/carousel.component';
 import { NavbarForPupilComponent } from '../navbar-for-pupil/navbar-for-pupil.component';
 import {HomeUniCardService} from '../../home-uni-card.service'
-import {UniCardDto} from '../../core/models/common.model'
+import {UniCardDto,UnicardEnDto} from '../../core/models/common.model'
 import { Subject, fromEvent } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { gsap } from 'gsap';
 import { ChangeDetectorRef } from '@angular/core';
 import { NavbarWithWaveComponent } from "../navbar-with-wave/navbar-with-wave.component";
-
+import {UniCardEngService} from "../../uni-card-eng.service"
+import {NewlineToParagraphsPipe} from "../../newline-to-paragraphs.pipe"
+import { NavbarWithoutLanguageComponent } from "../navbar-without-language/navbar-without-language.component";
 @Component({
   selector: 'app-home-uni-details',
   standalone: true,
-  imports: [NgIf, NavbarForPupilComponent, FooterForPupilComponent, NgFor, RouterLink, CommonModule, NavbarWithWaveComponent],
+  imports: [NewlineToParagraphsPipe, NgIf, NavbarForPupilComponent, FooterForPupilComponent, NgFor, RouterLink, CommonModule, NavbarWithWaveComponent, NavbarWithoutLanguageComponent],
   templateUrl: './home-uni-details.component.html',
   styleUrl: './home-uni-details.component.scss'
 })
@@ -30,11 +32,17 @@ export class HomeUniDetailsComponent {
   categories:any=[{title:"პროგრამები"},
   {title:"სიახლეები"},
   {title:"გზამკვლევი"}]
+  categorieseng:any=[{title:"Programs"},
+  {title:"News"},
+  {title:"Guide"}]
   category = ""
+  categoryeng = ""
   card: any;
   sections: any = [];
   UniCard!: UniCardDto;
-  constructor(private route: ActivatedRoute,private router: Router,private HomeUniCardService:HomeUniCardService,     private cdr: ChangeDetectorRef,
+  UniCarden!: UnicardEnDto;
+
+  constructor(private UniCardEnService: UniCardEngService,private route: ActivatedRoute,private router: Router,private HomeUniCardService:HomeUniCardService,     private cdr: ChangeDetectorRef,
     private ngZone: NgZone
   ) {
 }
@@ -42,12 +50,25 @@ export class HomeUniDetailsComponent {
 private isNavbarVisible = false;
 private destroy$ = new Subject<void>();
 private photoHeight = 0;
+language: 'ka' | 'en' = 'ka';
+
 ngOnInit(): void {
+  this.language = (localStorage.getItem('language') as 'ka' | 'en') || 'ka';
   this.HomeUniCardService.getUniCard(this.getid())
   .subscribe({
     next:(Unicard)=> {
      this.UniCard = Unicard
       console.log('Program Cards:',this.UniCard); // Check if data is correctly coming
+    },
+    error: (err) => {
+      console.error('Error fetching program data:', err);
+    }
+  })
+  this.UniCardEnService.getUniCard(this.getid())
+  .subscribe({
+    next:(UniCarden)=> {
+     this.UniCarden = UniCarden
+      console.log('Program Cards:',this.UniCarden); // Check if data is correctly coming
     },
     error: (err) => {
       console.error('Error fetching program data:', err);

@@ -7,7 +7,7 @@
   import { QuizeComponent } from '../quize/quize.component';
   import { ChangeDetectorRef } from '@angular/core';
   import {ProgramCardService} from '../../program-card.service'
-  import {ProgramCardDto,FieldDto,ProgramNamesDto} from '../../core/models/common.model'
+  import {ProgramCardDto,FieldDto,ProgramNamesDto,ProgramCardEnDto,FieldEnDto,ProgramNamesEnDto} from '../../core/models/common.model'
   import {EventCardService} from '../../event-card.service'
   import {EventCardDto, } from "../../core/models/common.model";
   import { RouterLink } from '@angular/router';
@@ -17,7 +17,7 @@
   import { gsap } from 'gsap';
   import {UserDto} from '../../core/models/common.model';
   import {LeaderboardEntry} from '../../core/models/common.model';
-
+  import {ProgramCardEnService} from "../../program-card-en.service"
   import {UserService} from '../../user.service'
   import {  AfterViewInit,  ViewChildren, QueryList } from '@angular/core';
   import {AuthenticationService} from '../../authentication.service'
@@ -87,14 +87,18 @@
     circles: number[] = Array.from({ length: 6 }, (_, i) => i);
     activeCircleIndex: number = 0;
     fields: FieldDto[] = [];
+    // fieldsEng: FieldEnDto[] = [];
     currentFieldName: string | null = null;
+    // currentFielEngName: string | null = null;
     currentProgramNames: ProgramNamesDto[] = [];
+    currentProgramNamesEng: ProgramNamesEnDto[] = [];
     fieldProgramMapping: { [key: string]: ProgramNamesDto[] } = {};    EventCard:EventCardDto[] = []
     selectedField: string | null = null; // Track the selected field
     fieldPrograms: ProgramNamesDto[] = []; // Use ProgramNamesDto instead of ProgramCardDto
     fieldNames: string[] = [];
     selectedSubjects: string[] = []; // Array to hold selected subjects
     matchingPrograms: any[] = []; // Ensures it's initialized to an empty array
+    matchingProgramsEn: any[] = []; // Ensures it's initialized to an empty array
     errorMessage: string | null = null; // Variable for error messages
     activeFieldIndex: number = 0;    // Track the index of the currently selected field
     isLoggedIn = false;
@@ -102,7 +106,8 @@
     userid:any
     podiumEntries: LeaderboardEntry[] = [];
     entries: LeaderboardEntry[] = [];
-    
+    language: 'ka' | 'en' = 'ka';
+
     
     // Sample list of subjects; this should be populated based on your requirements
     programs  = [
@@ -116,6 +121,19 @@
       {programname: 'ქართული ფილოლოგია' , width: ''},
       {programname: 'ინგლისური ფილოლოგია' , width: ''},
       {programname: 'ჟურნალისტიკა' , width: ''},
+
+    ];
+    programseng  = [
+      {programname: 'Business Administration', width: ''},
+      {programname: 'Law', width: ''},
+      {programname: 'Computer Science' , width: ''},
+      {programname: 'Psychology' , width: null},
+      {programname: 'Medicine' , width: ''},
+      {programname: 'Tourism' , width: ''},
+      {programname: 'International relations' , width: ''},
+      {programname: 'Georgian Philology' , width: ''},
+      {programname: 'English Philology' , width: ''},
+      {programname: 'Journalism' , width: ''},
 
     ];
 
@@ -133,10 +151,25 @@
       { name: 'ისტორია', icon: 'fa-solid fa-scroll' },
       { name: 'სპორტი', icon: 'fa-solid fa-person-running' },
     ];
-    constructor(private authService: AuthenticationService,private router: Router,private cdr: ChangeDetectorRef, private User:AuthenticationService,private ngZone: NgZone  ,private userService :UserService, private EventCardService: EventCardService  ,  private programCardService: ProgramCardService, private autentication:AuthenticationService,
+    subjectsWithIconsEng = [
+      { name: 'Georgian', icon: 'fa-solid fa-book' },
+      { name: 'Foreign languages', icon: 'fa-solid fa-language' },
+      { name: 'Chemistry', icon: 'fa-solid fa-flask-vial' },
+      { name: 'Physics', icon: 'fa-solid fa-atom' },
+      { name: 'Biology', icon: 'fa-solid fa-dna' },
+      { name: 'Mathematics', icon: 'fa-solid fa-calculator' },
+      { name: 'Civic education', icon: 'fa-solid fa-gavel' },
+      { name: 'Geography', icon: 'fa-solid fa-book-atlas' },
+      { name: 'Music', icon: 'fa-solid fa-music' },
+      { name: 'Art', icon: 'fa-solid fa-palette' },
+      { name: 'History', icon: 'fa-solid fa-scroll' },
+      { name: 'Sports', icon: 'fa-solid fa-person-running' },
+    ];
+    constructor(private ProgramCardEnService: ProgramCardEnService,private authService: AuthenticationService,private router: Router,private cdr: ChangeDetectorRef, private User:AuthenticationService,private ngZone: NgZone  ,private userService :UserService, private EventCardService: EventCardService  ,  private programCardService: ProgramCardService, private autentication:AuthenticationService,
       ) {        
       }
     @Input() text: string = 'ყველაზე მოთხოვნადი პროგრამები';
+    @Input() textEng: string = 'Most popular programs';
 
 
 loadFieldNames(): void {
@@ -155,6 +188,22 @@ loadFieldNames(): void {
     }
   });
 }
+// loadFieldNamesEng(): void {
+//   this.ProgramCardEnService.getAllFieldNames().pipe(takeUntil(this.destroy$)).subscribe({
+//     next: (fieldseng: FieldEnDto[]) => {
+//       this.fieldsEng = fieldseng;
+
+//       // Automatically select and load the first field if available
+//       if (this.fieldsEng.length > 0) {
+//         this.activeFieldIndex = 0; // Automatically set the first field as active
+//         this.updateCurrentFieldAndProgramsEng(0); // Load programs for the first field
+//       }
+//     },
+//     error: (err) => {
+//       // console.error('Error fetching field names:', err);
+//     }
+//   });
+// }
 getCurrentUser(): void {
   this.userToken = this.authService.getCurrentUser()
 }
@@ -252,6 +301,17 @@ onCircleClick(index: number): void {
       }
     }
   }
+  // updateCurrentFieldAndProgramsEng(index: number): void {
+  //   if (this.fieldsEng.length > index) {
+  //     const selectedField = this.fieldsEng[index];
+  //     this.currentFielEngName = selectedField.fieldName_en || null;
+  
+  //     if (this.currentFielEngName) {
+  //       // Fetch program names based on the selected field
+  //       this.loadProgramNamesByFieldeng(this.currentFielEngName);
+  //     }
+  //   }
+  // }
   loadProgramNamesByField(fieldName: string): void {
     this.programCardService.getProgramsByField(fieldName).pipe(takeUntil(this.destroy$)).subscribe({
       next: (programNames: ProgramNamesDto[]) => {  // programNames is of type ProgramNamesDto[]
@@ -264,6 +324,18 @@ onCircleClick(index: number): void {
       }
     });
   }
+  // loadProgramNamesByFieldeng(fieldName: string): void {
+  //   this.ProgramCardEnService.getProgramsByField(fieldName).pipe(takeUntil(this.destroy$)).subscribe({
+  //     next: (programNames: ProgramNamesEnDto[]) => {  // programNames is of type ProgramNamesDto[]
+  //       this.currentProgramNamesEng = programNames;    // Assign to your currentProgramNames
+  //       this.cdr.detectChanges();  // If you're using ChangeDetectorRef to manually trigger change detection
+  //     },
+  //     error: (err) => {
+  //       console.error(`Error fetching program names for field: ${fieldName}`, err);
+  //       this.currentProgramNamesEng = [];  // Handle the error by clearing the data
+  //     }
+  //   });
+  // }
   
   
   
@@ -333,10 +405,14 @@ onCircleClick(index: number): void {
     private photoHeight = 0;
 
     ngOnInit() {
+      const savedLang = localStorage.getItem('language') as 'ka' | 'en';
+      if (savedLang) this.language = savedLang;
+
       this.getTopUsers();
       this.getCurrentUser();
       this.GetAllEventCard()
       this.loadFieldNames(); // Fetch all field names
+      // this.loadFieldNamesEng()
       const photoElement = document.querySelector('.photo-class') as HTMLElement;
       if (photoElement) {
         this.photoHeight = photoElement.offsetHeight;
@@ -349,8 +425,14 @@ onCircleClick(index: number): void {
             this.onWindowScroll();
           });
       });
-      this.filterMatchingPrograms();  // Automatically filter programs on initialization
+      this.filterMatchingPrograms(); 
+      this.filterMatchingProgramsEn()
       this.isLoggedIn = this.User.isUserLoggedIn(); // Check login status
+    }
+    switchLanguage(lang: 'ka' | 'en'): void {
+      this.language = lang;
+      localStorage.setItem('language', lang); // შეინახე ენა
+      location.reload()
     }
     onSubjectChange(subject: string): void {
       const index = this.selectedSubjects.indexOf(subject);
@@ -413,7 +495,31 @@ onCircleClick(index: number): void {
           }
         });
     }
-
+    filterMatchingProgramsEn() {
+      if (this.selectedSubjects.length === 0) {
+        this.errorMessage = "Please select at least one subject.";
+        return;
+      }
+    
+      this.ProgramCardEnService.getProgramCardDetailsBySubjects(this.selectedSubjects)
+        .subscribe({
+          next: (programCards: ProgramCardEnDto[]) => {
+            this.matchingProgramsEn = programCards; // Update matching programs
+    
+            // Delay scrolling until the new content renders
+            setTimeout(() => {
+              if (this.resultTitleElement) {
+                const yOffset = -100; // adjust to ensure the title is fully visible
+                const y = this.resultTitleElement.nativeElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+              }
+            }, 0);
+          },
+          error: (err) => {
+            this.errorMessage = err.message;
+          }
+        });
+    }
     
     
   

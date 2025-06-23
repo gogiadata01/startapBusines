@@ -1,216 +1,243 @@
-<app-navbar-with-wave />
+<app-navbar-without-language />
 <main>
-  <div class="site">
-    <div class="Container">
-      <div class="box">
-        <div class="img">
-          <img src="{{ UniCard.url }}" alt="" />
-        </div>
-      </div>
-      <div class="text-container">
-        <span class="border"></span>
-        <h1>{{ UniCard.title }}</h1>
-        <p>
-          {{ UniCard.history }}
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <div class="container">
-    <div class="row">
-      @for (card of categories; track $index){
-      <div class="col-lg-4">
-        <div (click)="category = card.title" class="card">
-          <h1 [ngClass]="{ 'selected-card': category === card.title }">
-            {{ card.title }}
-          </h1>
-        </div>
-      </div>
-      }
-    </div>
-  </div>
-  <div [ngSwitch]="category">
-    <div *ngSwitchDefault>
-      <div
-        style="display: block"
-        #Program
-        *ngFor="let section of UniCard.sections"
-      >
-        <div class="title">
-          <h2>{{ section.title }}</h2>
-        </div>
-        <div class="container1">
-          <div class="row1">
-            @for (program of section.programNames; track $index) {
-            <div
-              (click)="FaclutyClicked(program.programName)"
-              class="col-lg-4"
-              id="col-lg-4"
-            >
-              <div class="card1">
-                {{ program.programName }}
-              </div>
-            </div>
-            }
+  <ng-container *ngIf="language === 'en'">
+    <div class="site">
+      <div class="Container">
+        <div class="box">
+          <div class="img">
+            <img src="{{ UniCarden.url_en }}" alt="" />
           </div>
         </div>
+        <div class="text-container">
+          <span class="border"></span>
+          <h1>{{ UniCarden.title_en }}</h1>
+          <p [innerHTML]="UniCarden.history_en | newlineToParagraphs">
+            <!-- {{ UniCard.history }} -->
+          </p>
+        </div>
       </div>
     </div>
-    <div *ngSwitchCase="'სიახლეები'">
-      <div class="card-container1">
-        @for (Card of UniCard.events; track $index){
-        <div class="card3" (click)="onCardClicked1(UniCard.id,Card.id)">
-          <img class="eventimg" src="{{ Card.url }}" />
-          <div class="card-content2">
-            <p>{{ Card.title }}</p>
-            <div class="Date">
-              {{ Card.time }}
-            </div>
+  </ng-container>
+  <ng-container *ngIf="language === 'ka'">
+    <div class="site">
+      <div class="Container">
+        <div class="box">
+          <div class="img">
+            <img src="{{ UniCard.url }}" alt="" />
+          </div>
+        </div>
+        <div class="text-container">
+          <span class="border"></span>
+          <h1>{{ UniCard.title }}</h1>
+          <p [innerHTML]="UniCard.history | newlineToParagraphs">
+            <!-- {{ UniCard.history }} -->
+          </p>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="language === 'ka'">
+    <div class="container">
+      <div class="row">
+        @for (card of categories; track $index){
+        <div class="col-lg-4">
+          <div (click)="category = card.title" class="card">
+            <h1 [ngClass]="{ 'selected-card': category === card.title }">
+              {{ card.title }}
+            </h1>
           </div>
         </div>
         }
       </div>
     </div>
-    <div *ngSwitchCase="'გზამკვლევი'">
-      <div class="guide" *ngIf="UniCard">
-        <div class="accord">
-          <div class="accordion accordion-flush" id="accordionFlushExample">
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button
-                  class="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#flush-collapseTwo"
-                  aria-expanded="false"
-                  aria-controls="flush-collapseTwo"
-                >
-                  სტუდენტური ცხოვრება
-                </button>
-              </h2>
+    <div [ngSwitch]="category">
+      <div *ngSwitchDefault>
+        <div
+          style="display: block"
+          #Program
+          *ngFor="let section of UniCard.sections"
+        >
+          <div class="title">
+            <h2>{{ section.title }}</h2>
+          </div>
+          <div class="container1">
+            <div class="row1">
+              @for (program of section.programNames; track $index) {
               <div
-                id="flush-collapseTwo"
-                class="accordion-collapse collapse"
-                data-bs-parent="#accordionFlushExample"
+                (click)="FaclutyClicked(program.programName)"
+                class="col-lg-4"
+                id="col-lg-4"
               >
-                <div class="accordion-body">
-                  {{ UniCard.studentsLife }}
+                <div class="card1">
+                  {{ program.programName }}
                 </div>
               </div>
+              }
             </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button
-                  class="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#flush-collapseThree"
-                  aria-expanded="false"
-                  aria-controls="flush-collapseThree"
-                >
-                  მოსწავლისთვის
-                </button>
-              </h2>
-              <div
-                id="flush-collapseThree"
-                class="accordion-collapse collapse"
-                data-bs-parent="#accordionFlushExample"
-              >
-                <div class="accordion-body">
-                  {{ UniCard.forPupil }}
-                </div>
+          </div>
+        </div>
+      </div>
+      <div *ngSwitchCase="'სიახლეები'">
+        <div class="card-container1">
+          @for (Card of UniCard.events; track $index){
+          <div class="card3" (click)="onCardClicked1(UniCard.id, Card.id)">
+            <img class="eventimg" src="{{ Card.url }}" />
+            <div class="card-content2">
+              <p>{{ Card.title }}</p>
+              <div class="Date">
+                {{ Card.time }}
               </div>
             </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button
-                  class="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#flush-collapseFive"
-                  aria-expanded="false"
-                  aria-controls="flush-collapseFive"
+          </div>
+          }
+        </div>
+      </div>
+      <div *ngSwitchCase="'გზამკვლევი'">
+        <div class="guide" *ngIf="UniCard">
+          <div class="accord">
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseTwo"
+                    aria-expanded="false"
+                    aria-controls="flush-collapseTwo"
+                  >
+                    სტუდენტური ცხოვრება
+                  </button>
+                </h2>
+                <div
+                  id="flush-collapseTwo"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#accordionFlushExample"
                 >
-                  ლაბები
-                </button>
-              </h2>
-              <div
-                id="flush-collapseFive"
-                class="accordion-collapse collapse"
-                data-bs-parent="#accordionFlushExample"
-              >
-                <div class="accordion-body">
-                  {{ UniCard.labs }}
+                  <div class="accordion-body">
+                    {{ UniCard.studentsLife }}
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button
-                  class="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#flush-collapseFour"
-                  aria-expanded="false"
-                  aria-controls="flush-collapseFour"
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseThree"
+                    aria-expanded="false"
+                    aria-controls="flush-collapseThree"
+                  >
+                    მოსწავლისთვის
+                  </button>
+                </h2>
+                <div
+                  id="flush-collapseThree"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#accordionFlushExample"
                 >
-                  გაცვლითი პროგრამები
-                </button>
-              </h2>
-              <div
-                id="flush-collapseFour"
-                class="accordion-collapse collapse"
-                data-bs-parent="#accordionFlushExample"
-              >
-                <div class="accordion-body">
-                  {{ UniCard.exchangePrograms }}
+                  <div class="accordion-body">
+                    {{ UniCard.forPupil }}
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button
-                  class="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#flush-collapseOne"
-                  aria-expanded="false"
-                  aria-controls="flush-collapseOne"
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseFive"
+                    aria-expanded="false"
+                    aria-controls="flush-collapseFive"
+                  >
+                    ლაბები
+                  </button>
+                </h2>
+                <div
+                  id="flush-collapseFive"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#accordionFlushExample"
                 >
-                  სტიპენდიები და დაფინანსება
-                </button>
-              </h2>
-              <div
-                id="flush-collapseOne"
-                class="accordion-collapse collapse"
-                data-bs-parent="#accordionFlushExample"
-              >
-                <div class="accordion-body">
-                  {{ UniCard.scholarshipAndFunding }}
+                  <div class="accordion-body">
+                    {{ UniCard.labs }}
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button
-                  class="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#flush-collapseten"
-                  aria-expanded="false"
-                  aria-controls="flush-collapseten"
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseFour"
+                    aria-expanded="false"
+                    aria-controls="flush-collapseFour"
+                  >
+                    გაცვლითი პროგრამები
+                  </button>
+                </h2>
+                <div
+                  id="flush-collapseFour"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#accordionFlushExample"
                 >
-                  გადახდის მეთოდები
-                </button>
-              </h2>
-              <div
-                id="flush-collapseten"
-                class="accordion-collapse collapse"
-                data-bs-parent="#accordionFlushExample"
-              >
-                <div class="accordion-body">
-                  {{ UniCard.paymentMethods }}
+                  <div class="accordion-body">
+                    {{ UniCard.exchangePrograms }}
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseOne"
+                    aria-expanded="false"
+                    aria-controls="flush-collapseOne"
+                  >
+                    სტიპენდიები და დაფინანსება
+                  </button>
+                </h2>
+                <div
+                  id="flush-collapseOne"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#accordionFlushExample"
+                >
+                  <div
+                    [innerHTML]="
+                      UniCard.scholarshipAndFunding | newlineToParagraphs
+                    "
+                    class="accordion-body"
+                  >
+                    <!-- {{ UniCard.scholarshipAndFunding }} -->
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseten"
+                    aria-expanded="false"
+                    aria-controls="flush-collapseten"
+                  >
+                    გადახდის მეთოდები
+                  </button>
+                </h2>
+                <div
+                  id="flush-collapseten"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#accordionFlushExample"
+                >
+                  <div class="accordion-body">
+                    {{ UniCard.paymentMethods }}
+                  </div>
                 </div>
               </div>
             </div>
@@ -218,7 +245,216 @@
         </div>
       </div>
     </div>
-  </div>
+  </ng-container>
+  <ng-container *ngIf="language === 'en'">
+    <div class="container">
+      <div class="row">
+        @for (card of categorieseng; track $index){
+        <div class="col-lg-4">
+          <div (click)="categoryeng = card.title" class="card">
+            <h1 [ngClass]="{ 'selected-card': categoryeng === card.title }">
+              {{ card.title }}
+            </h1>
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+    <div [ngSwitch]="categoryeng">
+      <div *ngSwitchDefault>
+        <div
+          style="display: block"
+          #Program
+          *ngFor="let section of UniCarden.sections_en"
+        >
+          <div class="title">
+            <h2>{{ section.title_en }}</h2>
+          </div>
+          <div class="container1">
+            <div class="row1">
+              @for (program of section.programNames_en; track $index) {
+              <div
+                (click)="FaclutyClicked(program.programName_en)"
+                class="col-lg-4"
+                id="col-lg-4"
+              >
+                <div class="card1">
+                  {{ program.programName_en }}
+                </div>
+              </div>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngSwitchCase="'News'">
+        <div class="card-container1">
+          @for (Card of UniCarden.events_en; track $index){
+          <div class="card3" (click)="onCardClicked1(UniCarden.id, Card.id)">
+            <img class="eventimg" src="{{ Card.url_en }}" />
+            <div class="card-content2">
+              <p>{{ Card.text_en }}</p>
+              <div class="Date">
+                {{ Card.time_en }}
+              </div>
+            </div>
+          </div>
+          }
+        </div>
+      </div>
+      <div *ngSwitchCase="'Guide'">
+        <div class="guide" *ngIf="UniCarden">
+          <div class="accord">
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseTwo"
+                    aria-expanded="false"
+                    aria-controls="flush-collapseTwo"
+                  >
+                    Student life
+                  </button>
+                </h2>
+                <div
+                  id="flush-collapseTwo"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#accordionFlushExample"
+                >
+                  <div class="accordion-body">
+                    {{ UniCarden.studentsLife_en }}
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseThree"
+                    aria-expanded="false"
+                    aria-controls="flush-collapseThree"
+                  >
+                    For the student
+                  </button>
+                </h2>
+                <div
+                  id="flush-collapseThree"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#accordionFlushExample"
+                >
+                  <div class="accordion-body">
+                    {{ UniCarden.forPupil_en }}
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseFive"
+                    aria-expanded="false"
+                    aria-controls="flush-collapseFive"
+                  >
+                    Laboratory
+                  </button>
+                </h2>
+                <div
+                  id="flush-collapseFive"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#accordionFlushExample"
+                >
+                  <div class="accordion-body">
+                    {{ UniCarden.labs_en }}
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseFour"
+                    aria-expanded="false"
+                    aria-controls="flush-collapseFour"
+                  >
+                    Exchange programs
+                  </button>
+                </h2>
+                <div
+                  id="flush-collapseFour"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#accordionFlushExample"
+                >
+                  <div class="accordion-body">
+                    {{ UniCarden.exchangePrograms_en }}
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseOne"
+                    aria-expanded="false"
+                    aria-controls="flush-collapseOne"
+                  >
+                    Scholarships and funding
+                  </button>
+                </h2>
+                <div
+                  id="flush-collapseOne"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#accordionFlushExample"
+                >
+                  <div
+                    [innerHTML]="
+                      UniCarden.scholarshipAndFunding_en | newlineToParagraphs
+                    "
+                    class="accordion-body"
+                  >
+                    <!-- {{ UniCard.scholarshipAndFunding }} -->
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseten"
+                    aria-expanded="false"
+                    aria-controls="flush-collapseten"
+                  >
+                    Payment methods
+                  </button>
+                </h2>
+                <div
+                  id="flush-collapseten"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#accordionFlushExample"
+                >
+                  <div class="accordion-body">
+                    {{ UniCarden.paymentMethods_en }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
 </main>
 
 <app-footer-for-pupil></app-footer-for-pupil>

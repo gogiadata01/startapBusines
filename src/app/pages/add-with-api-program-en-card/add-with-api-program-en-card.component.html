@@ -1,0 +1,48 @@
+<form [formGroup]="ProgramCard" (ngSubmit)="onSubmit()">
+    <div formArrayName="Fields_en">
+      <div *ngFor="let field of Fields_en.controls; let fieldIndex = index" [formGroupName]="fieldIndex">
+        <!-- Field Name -->
+        <div>
+          <label for="FieldName_en-{{ fieldIndex }}">Field Name:</label>
+          <input id="FieldName_en-{{ fieldIndex }}" formControlName="FieldName_en" />
+        </div>
+  
+        <!-- Program Names -->
+        <div formArrayName="ProgramNames_en">
+          <div *ngFor="let programName of ProgramNames_en(fieldIndex).controls; let programNameIndex = index" [formGroupName]="programNameIndex">
+            <!-- Program Name -->
+            <div>
+              <label for="programname-{{ fieldIndex }}-{{ programNameIndex }}">Program Name:</label>
+              <input id="programname-{{ fieldIndex }}-{{ programNameIndex }}" formControlName="ProgramName_en" />
+            </div>
+  
+            <!-- Checkboxes -->
+            <div formArrayName="CheckBoxes_en">
+              <div *ngFor="let checkBox of CheckBoxes_en(fieldIndex, programNameIndex).controls; let checkBoxIndex = index" [formGroupName]="checkBoxIndex">
+                <!-- Checkbox Name -->
+                <div>
+                  <label for="ChackBoxName-{{ fieldIndex }}-{{ programNameIndex }}-{{ checkBoxIndex }}">Checkbox Name:</label>
+                  <input id="ChackBoxName-{{ fieldIndex }}-{{ programNameIndex }}-{{ checkBoxIndex }}" formControlName="CheckBoxName_en" />
+                </div>
+                <button type="button" (click)="removeCheckBox(fieldIndex, programNameIndex, checkBoxIndex)">Remove Checkbox</button>
+              </div>
+            </div>
+  
+            <button type="button" (click)="addCheckBox(fieldIndex, programNameIndex)">Add Checkbox</button>
+            <button type="button" (click)="removeProgramName(fieldIndex, programNameIndex)">Remove Program Name</button>
+          </div>
+        </div>
+  
+        <button type="button" (click)="addProgramName(fieldIndex)">Add Program Name</button>
+        <button type="button" (click)="removeField(fieldIndex)">Remove Field</button>
+      </div>
+    </div>
+  
+    <button type="button" (click)="addField()">Add Field</button>
+  
+    <!-- Submit Button -->
+    <div>
+      <button type="submit" [disabled]="!ProgramCard.valid">Submit</button>
+    </div>
+  </form>
+  

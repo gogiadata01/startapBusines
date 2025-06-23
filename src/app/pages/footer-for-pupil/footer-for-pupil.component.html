@@ -20,7 +20,12 @@
           </svg>
         </div>
         <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-          <h6 class="text-uppercase fw-bold mb-4">საკონტაქტო</h6>
+          <ng-container *ngIf="language === 'ka'">
+            <h6 class="text-uppercase fw-bold mb-4">საკონტაქტო</h6>
+          </ng-container>
+          <ng-container *ngIf="language === 'en'">
+            <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+          </ng-container>
           <p>
             <a href="#!" class="text-reset text-white">
               <svg
@@ -57,7 +62,12 @@
           </p>
         </div>
         <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-          <h6 class="text-uppercase fw-bold mb-4">გამოგვყევით</h6>
+          <ng-container *ngIf="language === 'ka'">
+            <h6 class="text-uppercase fw-bold mb-4">გამოგვყევით</h6>
+          </ng-container>
+          <ng-container *ngIf="language === 'en'">
+            <h6 class="text-uppercase fw-bold mb-4">Follow us</h6>
+          </ng-container>
           <div
             class="footericon"
             style="

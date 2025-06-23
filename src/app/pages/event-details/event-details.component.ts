@@ -24,11 +24,13 @@ import { CommonModule, NgFor, NgIf } from '@angular/common';
 export class EventDetailsComponent implements OnInit, OnDestroy {
   EventCard!:EventCardDto
   isLoggedIn = false;
-
+  language: 'ka' | 'en' = 'ka';
   constructor(private cdr: ChangeDetectorRef, private ngZone: NgZone ,private route: ActivatedRoute,private EventCardService: EventCardService, private router: Router,    private User: AuthenticationService,
     ) {
   }
   ngOnInit() {
+    const savedLang = localStorage.getItem('language') as 'ka' | 'en';
+    if (savedLang) this.language = savedLang;
     this.EventCardService.getEventCardById(this.getid())
     .subscribe({
       next:(Eventcard) =>{
@@ -92,6 +94,7 @@ onWindowScroll() {
     }
   }
 }
+
 slideDownNavbar() {
   gsap.to(this.secondNavbar.nativeElement, { y: 0, duration: 0.3, ease: 'power2.out' });
 }
@@ -103,6 +106,10 @@ slideUpNavbar() {
 ngOnDestroy() {
   this.destroy$.next();
   this.destroy$.complete();
+}
+switchLanguage(lang: 'ka' | 'en'): void {
+  this.language = lang;
+  localStorage.setItem('language', lang); // შეინახე ენა
 }
 @ViewChild('secondNavbar') secondNavbar!: ElementRef;
 private isNavbarVisible = false;

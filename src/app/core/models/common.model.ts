@@ -3,9 +3,9 @@ export interface UniCardDto {
   url: string;
   title: string;
   mainText?: string;
-  history?: string;
+  history?: any;
   forPupil?: string;
-  scholarshipAndFunding?: string;
+  scholarshipAndFunding?: any;
   exchangePrograms?: string;
   labs?: string;
   studentsLife?: string;
@@ -43,7 +43,7 @@ export interface ArchevitiSavaldebuloSaganiDto {
 
 export interface ProgramnameDto {
   programName?: string;
-  jobs?: string;
+  jobs?: any;
   swavlebisEna?: string;
   kvalifikacia?: string;
   dafinanseba?: string;
@@ -51,7 +51,7 @@ export interface ProgramnameDto {
   adgilebisRaodenoba?: string;
   fasi?: string;
   kodi?: string;
-  programisAgwera? : string;
+  programisAgwera? : any;
   mizani:string
 
 }
@@ -94,6 +94,27 @@ export interface ProgramNamesDto{
 export interface CheckBoxesDto{
   chackBoxName:string
 }
+export interface ProgramCardEnDto {
+  fields_en: FieldEnDto[];
+}
+
+export interface FieldEnDto {
+  id:number
+  fieldName_en: string;
+  programNames_en: ProgramNamesEnDto[];
+}
+
+export interface ProgramNamesEnDto {
+  id?:number;
+  programName_en: any;
+  checkBoxes_en: CheckBoxesEnDto[];
+  width?:string
+}
+
+export interface CheckBoxesEnDto {
+  checkBoxName_en: string;
+}
+
 
 export interface EventCardDto{
   id?:number
@@ -145,6 +166,7 @@ export interface UniCardForFacultyDetails{
 export interface Programname {
   programName: string;
 }
+
 // export interface QuizDto {
 //   time: string;
 //   questions: QuestionDto[];
@@ -280,9 +302,9 @@ export interface UnicardEnDto {
   url_en: string;
   title_en: string;
   mainText_en?: string;
-  history_en?: string;
+  history_en?: any;
   forPupil_en?: string;
-  scholarshipAndFunding_en?: string;
+  scholarshipAndFunding_en?: any;
   exchangePrograms_en?: string;
   labs_en?: string;
   studentsLife_en?: string;
@@ -294,6 +316,7 @@ export interface UnicardEnDto {
 }
 
 export interface EventEnDto {
+  id?:number
   url_en: string;
   title_en: string;
   text_en: string;
@@ -343,4 +366,13 @@ export interface ArchevitiSavaldebuloSagnebiEnDto {
   minimaluriZgvari_en: string;
   prioriteti_en: string;
   adgilebisRaodenoba_en: string;
+}
+export interface UniCardForFacultyDetailsEn{
+  id?:number;
+  url_en: string;
+  title_en: string;
+  programNames_en?: ProgramNamene[];
+}
+export interface ProgramNamene {
+  programName_en: string;
 }

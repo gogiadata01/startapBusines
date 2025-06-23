@@ -34,26 +34,79 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link mx-2" routerLink="/Pupil/UniFaculty"
-                >პროგრამები</a
-              >
+              <ng-container *ngIf="language === 'ka'">
+                <a class="nav-link mx-2" routerLink="/Pupil/UniFaculty"
+                  >პროგრამები</a
+                >
+              </ng-container>
+              <ng-container *ngIf="language === 'en'">
+                <a class="nav-link mx-2" routerLink="/Pupil/UniFaculty"
+                  >Programs</a
+                >
+              </ng-container>
             </li>
             <li class="nav-item">
-              <a class="nav-link mx-2" routerLink="/Pupil/Uni"
-                >უნივერსიტეტები</a
-              >
+              <ng-container *ngIf="language === 'ka'">
+                <a class="nav-link mx-2" routerLink="/Pupil/Uni"
+                  >უნივერსიტეტები</a
+                >
+              </ng-container>
+              <ng-container *ngIf="language === 'en'">
+                <a class="nav-link mx-2" routerLink="/Pupil/Uni"
+                  >Universities</a
+                >
+              </ng-container>
             </li>
             <li class="nav-item">
-              <a class="nav-link mx-2" routerLink="/Pupil/Events">სიახლეები</a>
+              <ng-container *ngIf="language === 'ka'">
+                <a class="nav-link mx-2" routerLink="/Pupil/Events"
+                  >სიახლეები</a
+                >
+              </ng-container>
+              <ng-container *ngIf="language === 'en'">
+                <a class="nav-link mx-2" routerLink="/Pupil/Events">News</a>
+              </ng-container>
             </li>
             <li class="nav-item">
-              <a class="nav-link mx-2" routerLink="/Pupil/Quize">ქვიზები</a>
+              <ng-container *ngIf="language === 'ka'">
+                <a class="nav-link mx-2" routerLink="/Pupil/Quize">ქვიზები</a>
+              </ng-container>
+              <ng-container *ngIf="language === 'en'">
+                <a class="nav-link mx-2" routerLink="/Pupil/Quize">Quizzes</a>
+              </ng-container>
             </li>
             <li class="nav-item" *ngIf="!isLoggedIn">
-              <a class="nav-link mx-2" routerLink="/Register">რეგისტრაცია</a>
+              <ng-container *ngIf="language === 'ka'">
+                <a class="nav-link mx-2" routerLink="/Register">რეგისტრაცია</a>
+              </ng-container>
+              <ng-container *ngIf="language === 'en'">
+                <a class="nav-link mx-2" routerLink="/Register">Registration</a>
+              </ng-container>
             </li>
           </ul>
           <ul class="navbar-nav ms-auto">
+            <li class="nav-item mx-2">
+              <ng-container *ngIf="language === 'ka'">
+                <a (click)="switchLanguage('en')" class="nav-link text-dark h5">
+                  <img
+                    width="35px"
+                    height="30px"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTv4pqQjfMWVDUVWX50GXeP4YK1OzQKgFB8FQ&s"
+                    alt=""
+                  />
+                </a>
+              </ng-container>
+              <ng-container *ngIf="language === 'en'">
+                <a (click)="switchLanguage('ka')" class="nav-link text-dark h5">
+                  <img
+                    width="35px"
+                    height="30px"
+                    src="https://www.countryflags.com/wp-content/uploads/united-kingdom-flag-png-xl.png"
+                    alt=""
+                  />
+                </a>
+              </ng-container>
+            </li>
             <li class="nav-item mx-2">
               <a routerLink="/Pupil/PersonalPage" class="nav-link text-dark h5">
                 <svg
@@ -114,28 +167,89 @@
           <div class="collapse navbar-collapse" id="secondNavbar">
             <ul class="navbar-nav ms-auto text-dark">
               <li class="nav-item">
-                <a class="nav-link mx-2" routerLink="/Pupil/UniFaculty"
-                  >პროგრამები</a
-                >
+                <ng-container *ngIf="language === 'ka'">
+                  <a class="nav-link mx-2" routerLink="/Pupil/UniFaculty"
+                    >პროგრამები</a
+                  >
+                </ng-container>
+                <ng-container *ngIf="language === 'en'">
+                  <a class="nav-link mx-2" routerLink="/Pupil/UniFaculty"
+                    >Programs</a
+                  >
+                </ng-container>
               </li>
               <li class="nav-item">
-                <a class="nav-link mx-2" routerLink="/Pupil/Uni"
-                  >უნივერსიტეტები</a
-                >
+                <ng-container *ngIf="language === 'ka'">
+                  <a class="nav-link mx-2" routerLink="/Pupil/Uni"
+                    >უნივერსიტეტები</a
+                  >
+                </ng-container>
+                <ng-container *ngIf="language === 'en'">
+                  <a class="nav-link mx-2" routerLink="/Pupil/Uni"
+                    >Universities</a
+                  >
+                </ng-container>
               </li>
               <li class="nav-item">
-                <a class="nav-link mx-2" routerLink="/Pupil/Events"
-                  >სიახლეები</a
-                >
+                <ng-container *ngIf="language === 'ka'">
+                  <a class="nav-link mx-2" routerLink="/Pupil/Events"
+                    >სიახლეები</a
+                  >
+                </ng-container>
+                <ng-container *ngIf="language === 'en'">
+                  <a class="nav-link mx-2" routerLink="/Pupil/Events">News</a>
+                </ng-container>
               </li>
               <li class="nav-item">
-                <a class="nav-link mx-2" routerLink="/Pupil/Quize">ქვიზები</a>
+                <ng-container *ngIf="language === 'ka'">
+                  <a class="nav-link mx-2" routerLink="/Pupil/Quize">ქვიზები</a>
+                </ng-container>
+                <ng-container *ngIf="language === 'en'">
+                  <a class="nav-link mx-2" routerLink="/Pupil/Quize">Quizzes</a>
+                </ng-container>
               </li>
               <li class="nav-item" *ngIf="!isLoggedIn">
-                <a class="nav-link mx-2" routerLink="/Register">რეგისტრაცია</a>
+                <ng-container *ngIf="language === 'ka'">
+                  <a class="nav-link mx-2" routerLink="/Register"
+                    >რეგისტრაცია</a
+                  >
+                </ng-container>
+                <ng-container *ngIf="language === 'en'">
+                  <a class="nav-link mx-2" routerLink="/Register"
+                    >Registration</a
+                  >
+                </ng-container>
               </li>
             </ul>
             <ul class="navbar-nav ms-auto">
+              <li class="nav-item mx-2">
+                <ng-container *ngIf="language === 'ka'">
+                  <a
+                    (click)="switchLanguage('en')"
+                    class="nav-link text-dark h5"
+                  >
+                    <img
+                      width="35px"
+                      height="30px"
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTv4pqQjfMWVDUVWX50GXeP4YK1OzQKgFB8FQ&s"
+                      alt=""
+                    />
+                  </a>
+                </ng-container>
+                <ng-container *ngIf="language === 'en'">
+                  <a
+                    (click)="switchLanguage('ka')"
+                    class="nav-link text-dark h5"
+                  >
+                    <img
+                      width="35px"
+                      height="30px"
+                      src="https://www.countryflags.com/wp-content/uploads/united-kingdom-flag-png-xl.png"
+                      alt=""
+                    />
+                  </a>
+                </ng-container>
+              </li>
               <li class="nav-item mx-2">
                 <a
                   routerLink="/Pupil/PersonalPage"

@@ -1,10 +1,10 @@
-<header #header class="site-header">
+<!-- ნავბარი იწყება აქ -->
+<header class="site-header">
   <div class="header-content">
     <nav id="firstNavbar" class="navbar navbar-expand-lg navbar-light">
       <!-- First Navbar -->
-      <div class="container-fluid">
+      <div class="container-fluid" id="cotainerfluid">
         <svg
-          (click)="refreshWithScroll()"
           routerLink="/"
           id="svg"
           xmlns="http://www.w3.org/2000/svg"
@@ -87,28 +87,6 @@
           </ul>
           <ul class="navbar-nav ms-auto">
             <li class="nav-item mx-2">
-              <ng-container *ngIf="language === 'ka'">
-                <a (click)="switchLanguage('en')" class="nav-link text-dark h5">
-                  <img
-                    width="35px"
-                    height="30px"
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTv4pqQjfMWVDUVWX50GXeP4YK1OzQKgFB8FQ&s"
-                    alt=""
-                  />
-                </a>
-              </ng-container>
-              <ng-container *ngIf="language === 'en'">
-                <a (click)="switchLanguage('ka')" class="nav-link text-dark h5">
-                  <img
-                    width="35px"
-                    height="30px"
-                    src="https://www.countryflags.com/wp-content/uploads/united-kingdom-flag-png-xl.png"
-                    alt=""
-                  />
-                </a>
-              </ng-container>
-            </li>
-            <li class="nav-item mx-2">
               <a routerLink="/Pupil/PersonalPage" class="nav-link text-dark h5">
                 <svg
                   id="svg2"
@@ -134,10 +112,10 @@
 
     <!-- second -->
     <div #secondNavbar class="second-navbar">
-      <nav id="nav" class="navbar navbar-expand-lg navbar-light shadow">
-        <div class="container-fluid">
+      <nav id="color" class="navbar navbar-expand-lg navbar-light shadow">
+        <div class="container-fluid" id="fluid">
           <svg
-            (click)="refreshWithScroll()"
+            routerLink="/"
             id="svg"
             xmlns="http://www.w3.org/2000/svg"
             width="639"
@@ -224,34 +202,6 @@
             </ul>
             <ul class="navbar-nav ms-auto">
               <li class="nav-item mx-2">
-                <ng-container *ngIf="language === 'ka'">
-                  <a
-                    (click)="switchLanguage('en')"
-                    class="nav-link text-dark h5"
-                  >
-                    <img
-                      width="35px"
-                      height="30px"
-                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTv4pqQjfMWVDUVWX50GXeP4YK1OzQKgFB8FQ&s"
-                      alt=""
-                    />
-                  </a>
-                </ng-container>
-                <ng-container *ngIf="language === 'en'">
-                  <a
-                    (click)="switchLanguage('ka')"
-                    class="nav-link text-dark h5"
-                  >
-                    <img
-                      width="35px"
-                      height="30px"
-                      src="https://www.countryflags.com/wp-content/uploads/united-kingdom-flag-png-xl.png"
-                      alt=""
-                    />
-                  </a>
-                </ng-container>
-              </li>
-              <li class="nav-item mx-2">
                 <a
                   routerLink="/Pupil/PersonalPage"
                   class="nav-link text-dark h5"
@@ -278,19 +228,6 @@
         </div>
       </nav>
     </div>
-
-    <div class="title">
-      <ng-container *ngIf="language === 'ka'">
-        <h1 class="text-white text-3xl">
-          აქ შეხვდებით თქვენთვის ყველა სასურველ ინფორმაციას
-        </h1>
-      </ng-container>
-      <ng-container *ngIf="language === 'en'">
-        <h1 class="text-white text-3xl">
-          Here you will find all the information you need
-        </h1>
-      </ng-container>
-    </div>
   </div>
   <div class="wave-container">
     <svg
@@ -305,353 +242,3 @@
     </svg>
   </div>
 </header>
-<!-- <div class="language-switch">
-  <button (click)="switchLanguage('ka')">ქართული</button>
-  <button (click)="switchLanguage('en')">English</button>
-</div> -->
-<!-- ჰედერი და ნავბარი მთავრდება აქ -->
-<ng-container *ngIf="language === 'ka'">
-  <div class="subject-selection">
-    <div class="button-container">
-      <button class="georgian-button">
-        აირჩიე საგანი და მიიღე შენთვის შესაფერისი პროგრამა
-      </button>
-    </div>
-  </div>
-</ng-container>
-
-<ng-container *ngIf="language === 'en'">
-  <div class="subject-selection">
-    <div class="button-container">
-      <button class="georgian-button">
-        Choose a subject and get the program that suits you
-      </button>
-    </div>
-  </div>
-</ng-container>
-
-<div class="scroll-button" *ngIf="showScrollButton" (click)="scrollToNews()">
-  <ng-container *ngIf="language === 'ka'">
-    <span>იხილე სიახლეები</span>
-  </ng-container>
-  <ng-container *ngIf="language === 'en'">
-    <span>See the news</span>
-  </ng-container>
-</div>
-<ng-container *ngIf="language === 'ka'">
-  <div class="subject">
-    <div class="subjectButtons">
-      <div *ngFor="let subject of subjectsWithIcons">
-        <button
-          class="subjectBtn"
-          type="button"
-          (click)="onSubjectChange(subject.name)"
-          [ngClass]="{ active: selectedSubjects.includes(subject.name) }"
-        >
-          <i [class]="subject.icon" class="subjectIcon"></i>
-          <div class="subjectLabel">{{ subject.name }}</div>
-        </button>
-      </div>
-    </div>
-  </div>
-</ng-container>
-
-<ng-container *ngIf="language === 'en'">
-  <div class="subject">
-    <div class="subjectButtons">
-      <div *ngFor="let subject of subjectsWithIconsEng">
-        <button
-          class="subjectBtn"
-          type="button"
-          (click)="onSubjectChange(subject.name)"
-          [ngClass]="{ active: selectedSubjects.includes(subject.name) }"
-        >
-          <i [class]="subject.icon" class="subjectIcon"></i>
-          <div class="subjectLabel">{{ subject.name }}</div>
-        </button>
-      </div>
-    </div>
-  </div>
-</ng-container>
-
-<ng-container *ngIf="language === 'ka'">
-  <div class="FilterBtn">
-    <button (click)="filterMatchingPrograms()">გაფილტრე</button>
-  </div>
-</ng-container>
-<ng-container *ngIf="language === 'en'">
-  <div class="FilterBtn">
-    <button (click)="filterMatchingProgramsEn()">Filter</button>
-  </div>
-</ng-container>
-<ng-container *ngIf="language === 'ka'">
-  <div *ngIf="matchingPrograms.length > 0">
-    <div class="afterTitle">
-      <h3 #resultTitle>შენთვის შერჩეული პროგრამებია</h3>
-    </div>
-    <div class="afterPrograms">
-      <div
-        id="afterProgram"
-        class="top1 flex-wrap"
-        style="gap: 34px; align-items: center"
-      >
-        @for (item of matchingPrograms; track $index) { @for (program of
-        item.programNames; track $index) {
-        <div
-          (click)="onCardClicked(program.programName)"
-          class="btn rounded-pill"
-          [ngStyle]="{
-            background: 'linear-gradient(to right, #0f2027, #203a43, #2c5364)',
-            color: '#fff',
-            'border-radius': '50px',
-            padding: '10px',
-            'max-width': '350px',
-            'box-sizing': 'border-box',
-            display: 'flex',
-            'align-items': 'center',
-            'justify-content': 'center',
-            width: program.width
-          }"
-        >
-          <div>{{ program.programName }}</div>
-        </div>
-        } }
-      </div>
-    </div>
-  </div>
-</ng-container>
-
-<ng-container *ngIf="language === 'en'">
-  <div *ngIf="matchingProgramsEn.length > 0">
-    <div class="afterTitle">
-      <h3 #resultTitle>შენთვის შერჩეული პროგრამებია</h3>
-    </div>
-    <div class="afterPrograms">
-      <div
-        id="afterProgram"
-        class="top1 flex-wrap"
-        style="gap: 34px; align-items: center"
-      >
-        @for (item of matchingProgramsEn; track $index) { @for (program of
-        item.programNames_en; track $index) {
-        <div
-          (click)="onCardClicked(program.programName_en)"
-          class="btn rounded-pill"
-          [ngStyle]="{
-            background: 'linear-gradient(to right, #0f2027, #203a43, #2c5364)',
-            color: '#fff',
-            'border-radius': '50px',
-            padding: '10px',
-            'max-width': '350px',
-            'box-sizing': 'border-box',
-            display: 'flex',
-            'align-items': 'center',
-            'justify-content': 'center',
-            width: program.width
-          }"
-        >
-          <div>{{ program.programName_en }}</div>
-        </div>
-        } }
-      </div>
-    </div>
-  </div>
-</ng-container>
-
-<div *ngIf="matchingPrograms.length === 0 && !errorMessage">
-  <p>No programs match the selected subjects.</p>
-</div>
-<div *ngIf="matchingProgramsEn.length === 0 && !errorMessage">
-  <p>No programs match the selected subjects.</p>
-</div>
-
-<div class="button-container">
-  <button class="georgian-button">
-    <ng-container *ngIf="language === 'ka'">
-      {{ text }}
-    </ng-container>
-    <ng-container *ngIf="language === 'en'">
-      {{ textEng }}
-    </ng-container>
-  </button>
-</div>
-
-<div class="Bottom">
-  <div class="timeline"></div>
-  <div class="program">
-    <div class="FacultyTitle"></div>
-    <div class="ProgramNames col">
-      <div class="container">
-        <div *ngIf="!fields.length" class="no-programs">
-          <p>დაელოდეთ პროგრამების ჩატვირთვას</p>
-        </div>
-
-        <div>
-          <ng-container *ngIf="language === 'ka'">
-            <div class="top1 flex-wrap" style="gap: 34px; align-items: center">
-              <div
-                *ngFor="let program of programs"
-                (click)="onCardClicked(program.programname)"
-                class="btn rounded-pill"
-                [ngStyle]="{
-                  background:
-                    'linear-gradient(to right, #0f2027, #203a43, #2c5364)',
-                  color: 'white',
-                  'border-radius': '50px',
-                  padding: '10px',
-                  'max-width': '350px',
-                  'box-sizing': 'border-box',
-                  display: 'flex',
-                  'align-items': 'center',
-                  'justify-content': 'center',
-                  width: program.width,
-                  'font-weight': '450'
-                }"
-                [ngClass]="'scale-button'"
-              >
-                <div>{{ program.programname }}</div>
-              </div>
-            </div>
-          </ng-container>
-
-          <ng-container *ngIf="language === 'en'">
-            <div class="top1 flex-wrap" style="gap: 34px; align-items: center">
-              <div
-                *ngFor="let program of programseng"
-                (click)="onCardClicked(program.programname)"
-                class="btn rounded-pill"
-                [ngStyle]="{
-                  background:
-                    'linear-gradient(to right, #0f2027, #203a43, #2c5364)',
-                  color: 'white',
-                  'border-radius': '50px',
-                  padding: '10px',
-                  'max-width': '350px',
-                  'box-sizing': 'border-box',
-                  display: 'flex',
-                  'align-items': 'center',
-                  'justify-content': 'center',
-                  width: program.width,
-                  'font-weight': '450'
-                }"
-                [ngClass]="'scale-button'"
-              >
-                <div>{{ program.programname }}</div>
-              </div>
-            </div>
-          </ng-container>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<ng-container *ngIf="language === 'ka'">
-  <div class="MoreWievBtn">
-    <button (click)="MoreWiev()">მეტის ნახვა</button>
-  </div>
-</ng-container>
-
-<ng-container *ngIf="language === 'en'">
-  <div class="MoreWievBtn">
-    <button (click)="MoreWiev()">See more</button>
-  </div>
-</ng-container>
-
-<div #newsSection class="eventTitle">
-  <ng-container *ngIf="language === 'ka'">
-    <h2>მთავარი ივენთები</h2>
-  </ng-container>
-  <ng-container *ngIf="language === 'en'">
-    <h2>Main Events</h2>
-  </ng-container>
-</div>
-<div class="card-container">
-  @for (Card of EventCard; track $index) {
-  <div class="flip-card-container">
-    <div class="flip-card">
-      <div class="flip-card-front">
-        <div class="card">
-          <img [src]="Card.url" alt="Event Image" />
-          <div class="card-content">
-            <p class="card-title">{{ Card.title }}</p>
-            <div class="date">
-              <p>{{ Card.time }}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="flip-card-back">
-        <div class="back-content">
-          <h4 class="card-description">{{ Card.description }}</h4>
-
-          <div class="buttons">
-            <ng-container *ngFor="let type of Card.types">
-              <div
-                class="btn1"
-                [ngStyle]="{
-                  'background-color': getColor(type),
-                  color: 'white'
-                }"
-              >
-                {{ type.type || type }}
-              </div>
-            </ng-container>
-          </div>
-
-          <button class="see-more-btn" (click)="onCardClicked1(Card.id)">
-            იხილე მეტი
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-  }
-</div>
-
-<!-- <section class="leaderboard-section">
-  <div class="podium-container">
-    <div class="podium">
-      <div
-        *ngFor="let entry of podiumEntries; let i = index"
-        class="podium-entry position-{{ i + 1 }}"
-      >
-        <img src="../../../assets/img/Logo-1.png" alt="" class="avatar" />
-        <div class="name">{{ entry.user.name }}</div>
-        <div class="coins">
-          <i class="fa-solid fa-coins"></i>
-          {{ entry.user.coin }}
-        </div>
-        <div class="position">{{ i + 1 }}</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="leaderboard-list">
-    <div class="title-container">Leaderboard</div>
-
-    <div
-      class="entry"
-      *ngFor="let entry of entries; let i = index"
-      [ngClass]="{ 'current-user': entry.user.id == userid }"
-    >
-      <div class="Logo">
-        <img src="../../../assets/img/Logo-1.png" alt="" class="avatar" />
-      </div>
-      <span class="position">{{
-        entry.position.toString().padStart(2, "0")
-      }}</span>
-      <span
-        [ngClass]="{ 'current-user': entry.user.id === userid }"
-        class="name"
-        >{{ entry.user.name }}</span
-      >
-      <span class="coins1">
-        <i class="fa-solid fa-coins"></i>
-        {{ entry.user.coin }}
-      </span>
-    </div>
-  </div>
-</section> -->
-
-<app-footer-for-pupil />

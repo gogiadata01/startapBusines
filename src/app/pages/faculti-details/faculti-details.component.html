@@ -1,42 +1,80 @@
-<app-navbar-with-wave/>
+<app-navbar-without-language />
 <div class="title">
   <h2>{{ ProgramName }}</h2>
 </div>
+<ng-container *ngIf="language === 'ka'">
+  <section class="projects section" id="projects">
+    <div class="projects__container container grid">
+      <ng-container *ngFor="let Uni of UniCard; trackBy: trackByIndex">
+        <ng-container
+          *ngFor="let program of Uni.programNames; trackBy: trackByIndex"
+        >
+          <ng-container>
+            <article
+              (click)="OnCardClicked(program.programName, Uni.title)"
+              class="projects__card"
+            >
+              <div class="ImageBack">
+                <div class="projects__image">
+                  <img
+                    [src]="Uni.url"
+                    alt="image"
+                    class="projects__img"
+                    width="312px"
+                    height="193px"
+                  />
+                </div>
+              </div>
 
-<section class="projects section" id="projects">
-  <div class="projects__container container grid">
-    <ng-container *ngFor="let Uni of UniCard; trackBy: trackByIndex">
-      <ng-container
-        *ngFor="let program of Uni.programNames; trackBy: trackByIndex"
-      >
-        <ng-container>
-          <article
-            (click)="OnCardClicked(program.programName, Uni.title)"
-            class="projects__card"
-          >
-          <div class="ImageBack">
-            <div class="projects__image">
-              <img
-                [src]="Uni.url"
-                alt="image"
-                class="projects__img"
-                width="312px"
-                height="193px"
-              />
-            </div>
-          </div>
-
-            <div class="projects__content">
-              <h2 class="projects__title">{{ Uni.title }}</h2>
-            </div>
-          </article>
+              <div class="projects__content">
+                <h2 class="projects__title">{{ Uni.title }}</h2>
+              </div>
+            </article>
+          </ng-container>
         </ng-container>
       </ng-container>
-    </ng-container>
-  </div>
-  <div *ngIf="UniCard.length === 0" class="UniCardNull">
-    <h2>ამ პროგრამაზე ჯერ ჯერობით არ არის უნივერსიტეტები</h2>
-  </div>
-</section>
+    </div>
+    <div *ngIf="UniCard.length === 0" class="UniCardNull">
+      <h2>ამ პროგრამაზე ჯერ ჯერობით არ არის უნივერსიტეტები</h2>
+    </div>
+  </section>
+</ng-container>
+<ng-container *ngIf="language === 'en'">
+  <section class="projects section" id="projects">
+    <div class="projects__container container grid">
+      <ng-container *ngFor="let Uni of UniCarden; trackBy: trackByIndex">
+        <ng-container
+          *ngFor="let program of Uni.programNames_en; trackBy: trackByIndex"
+        >
+          <ng-container>
+            <article
+              (click)="OnCardClicked(program.programName_en, Uni.title_en)"
+              class="projects__card"
+            >
+              <div class="ImageBack">
+                <div class="projects__image">
+                  <img
+                    [src]="Uni.url_en"
+                    alt="image"
+                    class="projects__img"
+                    width="312px"
+                    height="193px"
+                  />
+                </div>
+              </div>
+
+              <div class="projects__content">
+                <h2 class="projects__title">{{ Uni.title_en }}</h2>
+              </div>
+            </article>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+    </div>
+    <div *ngIf="UniCard.length === 0" class="UniCardNull">
+      <h2>ამ პროგრამაზე ჯერ ჯერობით არ არის უნივერსიტეტები</h2>
+    </div>
+  </section>
+</ng-container>
 
 <app-footer-for-pupil></app-footer-for-pupil>

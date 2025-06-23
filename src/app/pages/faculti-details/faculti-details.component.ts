@@ -2,7 +2,7 @@ import { Component,OnInit,OnDestroy, NgZone, ViewChild ,ElementRef, } from '@ang
 import { CommonModule } from '@angular/common';
 import {UniversityProgramVisitService} from '../../university-program-visit.service'
 import { ActivatedRoute } from '@angular/router';
-import {ProgramCardDto, UniCardDto, UniCardForFacultyDetails} from "../../core/models/common.model";
+import {ProgramCardDto, UniCardDto, UniCardForFacultyDetails, ProgramCardEnDto, UnicardEnDto, UniCardForFacultyDetailsEn, } from "../../core/models/common.model";
 import { NgIf,NgFor } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { data } from 'jquery';
@@ -20,30 +20,40 @@ import {  AfterViewInit,  ViewChildren, QueryList } from '@angular/core';
 import { Subject, fromEvent } from 'rxjs';
 import { ChangeDetectorRef } from '@angular/core';
 import { takeUntil } from 'rxjs/operators';
+import {UniCardEngService} from "../../uni-card-eng.service"
 import { NavbarWithWaveComponent } from "../navbar-with-wave/navbar-with-wave.component";
+import { NavbarWithoutLanguageComponent } from "../navbar-without-language/navbar-without-language.component";
 @Component({
   selector: 'app-faculti-details',
   standalone: true,
-  imports: [NgIf, NgFor, NavbarForPupilComponent, FooterForPupilComponent, CommonModule, RouterLink, NavbarWithWaveComponent],
+  imports: [NgIf, NgFor, NavbarForPupilComponent, FooterForPupilComponent, CommonModule, RouterLink, NavbarWithWaveComponent, NavbarWithoutLanguageComponent],
   templateUrl: './faculti-details.component.html',
   styleUrl: './faculti-details.component.scss'
 })
 export class FacultiDetailsComponent implements OnInit{
   ProgramCard!: ProgramCardDto;
   UniCard: UniCardForFacultyDetails[] = [];
+  UniCarden: UniCardForFacultyDetailsEn[] = [];
   ProgramName:any;
+  language: 'ka' | 'en' = 'ka';
 
   private prioritizedUniversities: string[] = [
     'საქართველოს უნივერსიტეტი',
     // 'თბილისის ივანე ჯავახიშვილის სახელობის სახელმწიფო უნივერსიტეტი',
     // 'ნიუ ვიჟენ უნივერსიტეტი'
   ];
-  constructor(private UniversityProgramVisit:UniversityProgramVisitService,private ngZone: NgZone,private cdr: ChangeDetectorRef,private programCardService:ProgramCardService,private UniCardService: HomeUniCardService,private route: ActivatedRoute,private router: Router) {
+  constructor(private UniCardEngService :UniCardEngService,private UniversityProgramVisit:UniversityProgramVisitService,private ngZone: NgZone,private cdr: ChangeDetectorRef,private programCardService:ProgramCardService,private UniCardService: HomeUniCardService,private route: ActivatedRoute,private router: Router) {
   }
 
 ngOnInit(): void {
+  this.language = (localStorage.getItem('language') as 'ka' | 'en') || 'ka';
    this.ProgramName = this.route.snapshot.paramMap.get('n')
-  this.GetAllUniCard()
+   
+   if (this.language === 'ka') {
+    this.GetAllUniCard();
+  } else if (this.language === 'en') {
+    this.GetAllUniCardEn();
+  }
 }
 GetAllUniCard() {
   this.UniCardService.getUniCardByProgramName(this.ProgramName).subscribe({
@@ -64,6 +74,26 @@ GetAllUniCard() {
     }
   });
 }
+GetAllUniCardEn() {
+  this.UniCardEngService.getUniCardByProgramName(this.ProgramName).subscribe({
+    next: (UniCarden) => {
+      this.UniCarden = UniCarden;
+      console.log('Original Uni Cards:', this.UniCarden);
+
+      // Sort the university cards
+      this.sortUniCards();
+
+      // Detect changes after sorting
+      this.cdr.detectChanges();
+
+      console.log('Sorted Uni Cards:', this.UniCarden);
+    },
+    error: (err) => {
+      console.error('ამ პროგრამაზე ჯერ არ არსებობს უნივერსიტეტი');
+    }
+  });
+}
+
 
 
 private sortUniCards(): void {

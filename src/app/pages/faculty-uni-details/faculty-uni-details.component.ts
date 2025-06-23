@@ -1,7 +1,7 @@
 import { Component,OnInit,  ViewChild ,ElementRef, } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import {ProgramCardDto,ProgramnameDto,SavaldebuloSagnebiDto,ArchevitiSavaldebuloSagnebiDto, UniCardDto} from "../../core/models/common.model";
+import {ProgramCardDto,ProgramnameDto,SavaldebuloSagnebiDto,ArchevitiSavaldebuloSagnebiDto, UniCardDto, UnicardEnDto} from "../../core/models/common.model";
 import { NgIf,NgFor } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
@@ -15,7 +15,7 @@ import {HomeUniCardService} from '../../home-uni-card.service'
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { NavbarWithWaveComponent } from "../navbar-with-wave/navbar-with-wave.component";
-
+import {UniCardEngService} from "../../uni-card-eng.service"
 @Component({
   selector: 'app-faculty-uni-details',
   standalone: true,
@@ -25,8 +25,10 @@ import { NavbarWithWaveComponent } from "../navbar-with-wave/navbar-with-wave.co
 })
 export class FacultyUniDetailsComponent {
   UniCard!: UniCardDto;  
+  UniCardEn!: UnicardEnDto;  
   ProgramNames!:any  
   programname:any
+  language: 'ka' | 'en' = 'ka';
 categories: any[] = [
   { title: "პროგრამის აღწერა" },
   { title: "დასაქმება" }
@@ -34,30 +36,49 @@ categories: any[] = [
 
   category = ""
   constructor(
+    private UniCardEngService :UniCardEngService,
     private uniCardService: HomeUniCardService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
 
   ngOnInit(): void {
+    this.language = (localStorage.getItem('language') as 'ka' | 'en') || 'ka';
+
     const programName = this.getProgramName();
     this.programname = this.getId();
 
-    console.log('Fetching data for title:', this.programname, 'and programName:', programName);
 
-    this.uniCardService.getUniCardByTitleAndProgramName(programName , this.programname).subscribe({
-      next: (data: UniCardDto[]) => {
-        if (data.length > 0) {
-          this.UniCard = data[0];  // Extract the single object from the array
-          console.log('Fetched uniCard:', this.UniCard);
-        } else {
-          console.error('No data found');
+    if (this.language === 'ka') {
+      this.uniCardService.getUniCardByTitleAndProgramName(programName , this.programname).subscribe({
+        next: (data: UniCardDto[]) => {
+          if (data.length > 0) {
+            this.UniCard = data[0];  // Extract the single object from the array
+            console.log('Fetched uniCard:', this.UniCard);
+          } else {
+            console.error('No data found');
+          }
+        },
+        error: (err) => {
+          console.error('Error fetching program data:', err);
         }
-      },
-      error: (err) => {
-        console.error('Error fetching program data:', err);
-      }
-    });
+      });
+    }
+    if (this.language === 'en') {
+      this.UniCardEngService.getUniCardByTitleAndProgramName(programName , this.programname).subscribe({
+        next: (data: UnicardEnDto[]) => {
+          if (data.length > 0) {
+            this.UniCardEn = data[0];  // Extract the single object from the array
+            console.log('Fetched uniCard:', this.UniCardEn);
+          } else {
+            console.error('No data found');
+          }
+        },
+        error: (err) => {
+          console.error('Error fetching program data:', err);
+        }
+      });
+    }
   }
 
   getId(): string | null {

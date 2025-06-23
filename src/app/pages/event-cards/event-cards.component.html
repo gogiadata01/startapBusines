@@ -1,18 +1,35 @@
 <app-navbar-with-wave />
 
 <div class="title">
-  <h3>ივენთები</h3>
+  <ng-container *ngIf="language === 'ka'">
+    <h3>ივენთები</h3>
+  </ng-container>
+  <ng-container *ngIf="language === 'en'">
+    <h3>Events</h3>
+  </ng-container>
 </div>
 <main>
   <div class="filter">
     <div class="Types">
-      <div
-        *ngFor="let item of categories"
-        (click)="onCategoryClick(item.title)"
-        [ngClass]="{ active: category === item.title }"
-      >
-        <h4>{{ item.title }}</h4>
-      </div>
+      <ng-container *ngIf="language === 'ka'">
+        <div
+          *ngFor="let item of categories"
+          (click)="onCategoryClick(item.title)"
+          [ngClass]="{ active: category === item.title }"
+        >
+          <h4>{{ item.title }}</h4>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="language === 'en'">
+        <div
+          *ngFor="let item of categoriesEng"
+          (click)="onCategoryClick(item.title)"
+          [ngClass]="{ active: category === item.title }"
+        >
+          <h4>{{ item.title }}</h4>
+        </div>
+      </ng-container>
     </div>
   </div>
 
@@ -31,11 +48,11 @@
             </div>
           </div>
         </div>
-  
+
         <div class="flip-card-back">
           <div class="back-content">
             <h4 class="card-description">{{ Card.description }}</h4>
-  
+
             <div class="buttons">
               <ng-container *ngFor="let type of Card.types">
                 <div
@@ -49,7 +66,7 @@
                 </div>
               </ng-container>
             </div>
-  
+
             <button class="see-more-btn" (click)="onCardClicked(Card.id)">
               იხილე მეტი
             </button>

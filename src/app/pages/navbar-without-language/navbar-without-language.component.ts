@@ -12,13 +12,13 @@ import {UserDto} from '../../core/models/common.model'
 import { takeUntil } from 'rxjs/operators';
 import {AuthenticationService} from '../../authentication.service'
 @Component({
-  selector: 'app-navbar-with-wave',
+  selector: 'app-navbar-without-language',
   standalone: true,
   imports: [RouterLink,NgIf],
-  templateUrl: './navbar-with-wave.component.html',
-  styleUrl: './navbar-with-wave.component.scss'
+  templateUrl: './navbar-without-language.component.html',
+  styleUrl: './navbar-without-language.component.scss'
 })
-export class NavbarWithWaveComponent implements OnInit, OnDestroy {
+export class NavbarWithoutLanguageComponent  implements OnInit, OnDestroy {
   @ViewChild('secondNavbar') secondNavbar!: ElementRef;
   private isNavbarVisible = false;
   private destroy$ = new Subject<void>();

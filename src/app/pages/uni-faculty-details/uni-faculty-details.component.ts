@@ -1,59 +1,91 @@
-import { Component,OnInit,  ViewChild ,ElementRef, } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
-import { NgIf,NgFor } from '@angular/common';
-import { RouterLink } from '@angular/router';
-import { Router } from '@angular/router';
-import { data } from 'jquery';
-import { UniProgramComponent } from '../../core/UniProgram/uni-program.component';
-import {FooterForPupilComponent} from '../footer-for-pupil/footer-for-pupil.component';
-import {CarouselComponent} from '../../carousel/carousel.component';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { NgIf, NgFor } from '@angular/common';
+import { UnicardEnDto, UniCardDto } from '../../core/models/common.model';
+import { FooterForPupilComponent } from '../footer-for-pupil/footer-for-pupil.component';
 import { NavbarForPupilComponent } from '../navbar-for-pupil/navbar-for-pupil.component';
-import { toJSDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-calendar';
-import {HomeUniCardService} from '../../home-uni-card.service'
-import {ProgramCardDto,ProgramnameDto,SavaldebuloSagnebiDto,ArchevitiSavaldebuloSagnebiDto, UniCardDto} from "../../core/models/common.model";
+import { HomeUniCardService } from '../../home-uni-card.service';
+import { UniCardEngService } from '../../uni-card-eng.service';
+import {NewlineToParagraphsPipe} from "../../newline-to-paragraphs.pipe"
+import { NavbarWithoutLanguageComponent } from "../navbar-without-language/navbar-without-language.component";
 
 @Component({
   selector: 'app-uni-faculty-details',
   standalone: true,
-  imports: [NavbarForPupilComponent,FooterForPupilComponent,NgIf,NgFor,CommonModule],
+  imports: [
+    NavbarForPupilComponent,
+    FooterForPupilComponent,
+    NgIf,
+    NgFor,
+    CommonModule,
+    NewlineToParagraphsPipe,
+    NavbarWithoutLanguageComponent
+],
   templateUrl: './uni-faculty-details.component.html',
   styleUrl: './uni-faculty-details.component.scss'
 })
-export class UniFacultyDetailsComponent {
-  UniCard!: UniCardDto;  
-  ProgramNames!:any  
-  programname:any
-categories: any[] = [
-  { title: "პროგრამის აღწერა" },
-  { title: "დასაქმება" }
-];
+export class UniFacultyDetailsComponent implements OnInit {
+  UniCard?: UniCardDto;
+  UniCarden?: UnicardEnDto;
+  programname: any;
+  categories: any[] = [
+    { title: "პროგრამის აღწერა" },
+    { title: "დასაქმება" }
+  ];
+  category = "";
+  language: 'ka' | 'en' = 'ka';
 
-  category = ""
   constructor(
     private uniCardService: HomeUniCardService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private uniCardEnService: UniCardEngService
   ) {}
+
   ngOnInit(): void {
+    this.language = (localStorage.getItem('language') as 'ka' | 'en') || 'ka';
+
     const programName = this.getProgramName();
-    this.programname = this.getId();
+    const id = this.getId();
+    this.programname = id;
 
-    console.log('Fetching data for title:', this.programname, 'and programName:', programName);
+    console.log('Fetching data for ID:', id, 'Program Name:', programName, 'Lang:', this.language);
 
-    this.uniCardService.getUniCardByIdAndProgramName(this.programname , programName).subscribe({
-      next: (data: UniCardDto[]) => {
-        if (data.length > 0) {
-          this.UniCard = data[0];  // Extract the single object from the array
-          console.log('Fetched uniCard:', this.UniCard);
-        } else {
-          console.error('No data found');
+    if (!id || !programName) {
+      console.error('Missing ID or Program Name in URL');
+      return;
+    }
+
+    if (this.language === 'ka') {
+      this.uniCardService.getUniCardByIdAndProgramName(id, programName).subscribe({
+        next: (data: UniCardDto[]) => {
+          if (data.length > 0) {
+            this.UniCard = data[0];
+            console.log('Georgian UniCard:', this.UniCard);
+          } else {
+            console.error('No data found for KA');
+          }
+        },
+        error: (err) => {
+          console.error('Error fetching KA data:', err);
         }
-      },
-      error: (err) => {
-        console.error('Error fetching program data:', err);
-      }
-    });
+      });
+    } else if (this.language === 'en') {
+      this.uniCardEnService.getUniCardByIdAndProgramName(id, programName).subscribe({
+        next: (data: UnicardEnDto[]) => {
+          if (data.length > 0) {
+            this.UniCarden = data[0];
+            console.log('English UniCard:', this.UniCarden);
+          } else {
+            console.error('No data found for EN');
+          }
+        },
+        error: (err) => {
+          console.error('Error fetching EN data:', err);
+        }
+      });
+    }
   }
 
   getId(): string | null {
@@ -64,3 +96,4 @@ categories: any[] = [
     return this.route.snapshot.paramMap.get('n');
   }
 }
+

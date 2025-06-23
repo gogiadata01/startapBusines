@@ -33,26 +33,58 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link mx-2" routerLink="/Pupil/UniFaculty"
-                >პროგრამები</a
-              >
+              <ng-container *ngIf="language === 'ka'">
+                <a class="nav-link mx-2" routerLink="/Pupil/UniFaculty"
+                  >პროგრამები</a
+                >
+              </ng-container>
+              <ng-container *ngIf="language === 'en'">
+                <a class="nav-link mx-2" routerLink="/Pupil/UniFaculty"
+                  >Programs</a
+                >
+              </ng-container>
             </li>
             <li class="nav-item">
-              <a class="nav-link mx-2" routerLink="/Pupil/Uni"
-                >უნივერსიტეტები</a
-              >
+              <ng-container *ngIf="language === 'ka'">
+                <a class="nav-link mx-2" routerLink="/Pupil/Uni"
+                  >უნივერსიტეტები</a
+                >
+              </ng-container>
+              <ng-container *ngIf="language === 'en'">
+                <a class="nav-link mx-2" routerLink="/Pupil/Uni"
+                  >Universities</a
+                >
+              </ng-container>
             </li>
             <li class="nav-item">
-              <a class="nav-link mx-2" routerLink="/Pupil/Events">სიახლეები</a>
+              <ng-container *ngIf="language === 'ka'">
+                <a class="nav-link mx-2" routerLink="/Pupil/Events"
+                  >სიახლეები</a
+                >
+              </ng-container>
+              <ng-container *ngIf="language === 'en'">
+                <a class="nav-link mx-2" routerLink="/Pupil/Events">News</a>
+              </ng-container>
             </li>
             <li class="nav-item">
-              <a class="nav-link mx-2" routerLink="/Pupil/Quize">ქვიზები</a>
+              <ng-container *ngIf="language === 'ka'">
+                <a class="nav-link mx-2" routerLink="/Pupil/Quize">ქვიზები</a>
+              </ng-container>
+              <ng-container *ngIf="language === 'en'">
+                <a class="nav-link mx-2" routerLink="/Pupil/Quize">Quizzes</a>
+              </ng-container>
             </li>
             <li class="nav-item" *ngIf="!isLoggedIn">
-              <a class="nav-link mx-2" routerLink="/Register">რეგისტრაცია</a>
+              <ng-container *ngIf="language === 'ka'">
+                <a class="nav-link mx-2" routerLink="/Register">რეგისტრაცია</a>
+              </ng-container>
+              <ng-container *ngIf="language === 'en'">
+                <a class="nav-link mx-2" routerLink="/Register">Registration</a>
+              </ng-container>
             </li>
           </ul>
           <ul class="navbar-nav ms-auto">
+
             <li class="nav-item mx-2">
               <a routerLink="/Pupil/PersonalPage" class="nav-link text-dark h5">
                 <svg

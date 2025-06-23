@@ -18,6 +18,48 @@ export class UniCardEngService {
       catchError(this.handleError)  // Error handling
     );
   }
+  getData(): Observable<UnicardEnDto[]> {
+    return this.http.get<UnicardEnDto[]>(this.apiUrl).pipe(
+      catchError(this.handleError)  // Error handling
+    );
+  }
+  getUniCard(id: any): Observable<UnicardEnDto> {
+    return this.http.get<UnicardEnDto>(`${this.apiUrl}/${id}`).pipe(
+      catchError(this.handleError)
+    );
+  }
+  getUniCardByProgramName(programName: string): Observable<UnicardEnDto[]> {
+    const params = new HttpParams().set('programName', programName);
+    return this.http.get<UnicardEnDto[]>(`${this.apiUrl}/by-program-name`, { params }).pipe(
+      catchError(this.handleError)  // Error handling
+    );
+  }
+  getUniCardByIdAndProgramName(id: any, programName: any): Observable<UnicardEnDto[]> {
+    const params = new HttpParams()
+      .set('id', id.toString())
+      .set('programName', programName);
+
+    return this.http.get<UnicardEnDto[]>(`${this.apiUrl}/searchById`, { params }).pipe(
+      catchError(this.handleError)  // Error handling
+    );
+  }
+  getUniCardByTitleMainTextUrl(title: any): Observable<UnicardEnDto[]> {
+    const params = new HttpParams().set('title', title);
+
+    return this.http.get<UnicardEnDto[]>(`${this.apiUrl}/searchByTitleMainTextUrl`, { params }).pipe(
+      catchError((error) => {
+        console.error('Error in search:', error);
+        return throwError(() => new Error('Search failed, please try again.'));
+      })
+    );
+  }
+  getUniCardByTitleAndProgramName(title: any, programName: any): Observable<any> {
+    const params = new HttpParams()
+      .set('title', title)
+      .set('programName', programName);
+
+    return this.http.get<any>(`${this.apiUrl}/search`, { params });
+  }
   private handleError(error: HttpErrorResponse): Observable<never> {
     let errorMessage = 'Unknown error!';
     if (error.error instanceof ErrorEvent) {

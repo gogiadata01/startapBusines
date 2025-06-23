@@ -125,3 +125,96 @@
 	display: flex;
 	margin-bottom: -310px;
   }
+  
+#svg{
+    width: 120px;
+    height: 100%;
+    cursor: pointer;
+}
+#svg2{
+    width: 35px;
+    height: 100%;
+    color: white;
+}
+
+
+.nav-link{
+    padding: 10px;
+    border-radius: 25px;
+    text-align: center;
+    
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  
+    &:hover {
+      background-color: #c1ccd5 ;
+    }
+
+        transition: transform 0.3s ease;
+  
+    &:hover {
+      transform: scale(1.07);
+    }
+}
+    .navbar{
+        background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      }
+
+
+
+/* Remove focus outline */
+
+/* Remove any border properties */
+.no-border {
+    border: none;
+    border-width: 0;
+    box-shadow: none; /* Remove box-shadow if any */
+}:focus{
+    outline: none;
+
+}
+
+/* Ensure other focus states are also handled */
+.no-border:focus-visible {
+    outline: none;
+}
+
+/* Apply to all SVGs if needed */
+svg:focus {
+    outline: none;
+}
+
+svg {
+    border: none;
+    border-width: 0;
+    box-shadow: none;
+}
+.header-content{
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  }
+  .wave-container{
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+    height: 150px;
+
+  }
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    
+    &:hover {
+        background: linear-gradient(to right, #33c7ae, #203a43, #2c5364);
+     
+    }
+    }
+    #firstNavbarl{
+        background-color: white !important;
+    }
+    #secondNavbar2{
+        background-color: white !important;
+      }
+
+      @media screen and (max-width: 1025px) {
+        .wave-container{
+            height: 50px;
+        }
+      }

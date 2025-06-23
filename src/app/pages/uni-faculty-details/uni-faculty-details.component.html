@@ -10,94 +10,189 @@
       </div>
     </div>
     <div class="right">
-      @for (item of UniCard.sections; track $index) { @for (program of
-      item.programNames; track $index) {
-      <div class="title">
-        <h3>{{ UniCard.title }}</h3>
-      </div>
-      <div class="price">
-        <div>
-          <h4>{{ program.fasi }}</h4>
+      <ng-container *ngIf="language === 'en' && UniCarden">
+        @for (item of UniCarden.sections_en; track $index) { @for (program of
+        item.programNames_en; track $index) {
+        <div class="title">
+          <h3>{{ UniCarden.title_en }}</h3>
         </div>
-      </div>
-      } }
+        <div class="price">
+          <div>
+            <h4>{{ program.fasi_en }}</h4>
+          </div>
+        </div>
+        } }
+      </ng-container>
+
+      <ng-container *ngIf="language === 'ka' && UniCard">
+        @for (item of UniCard.sections; track $index) { @for (program of
+        item.programNames; track $index) {
+        <div class="title">
+          <h3>{{ UniCard.title }}</h3>
+        </div>
+        <div class="price">
+          <div>
+            <h4>{{ program.fasi }}</h4>
+          </div>
+        </div>
+        } }
+      </ng-container>
     </div>
   </div>
-  <ng-container *ngFor="let section of UniCard.sections">
-    <ng-container *ngFor="let programname of section.programNames">
-      <div class="static">
+
+  <ng-container *ngIf="language === 'ka' && UniCard">
+    <ng-container *ngFor="let section of UniCard.sections">
+      <ng-container *ngFor="let programname of section.programNames">
+        <div class="static">
+          <div class="title">
+            <h3>{{ programname.programName }}</h3>
+          </div>
+          <div class="Bottom">
+            <div>
+              <div class="stadinglanguage">
+                <div>
+                  <h2>სწავლების ენა</h2>
+                </div>
+                <div class="divbottom">
+                  <h4>{{ programname.swavlebisEna }}</h4>
+                </div>
+              </div>
+              <div class="kvalifikacia">
+                <div>
+                  <h2>კვალიფიკაცია</h2>
+                </div>
+                <div class="divbottom">
+                  <h4>{{ programname.kvalifikacia }}</h4>
+                </div>
+              </div>
+              <div class="dafinanseba">
+                <div>
+                  <h2>დაფინანსება</h2>
+                </div>
+                <div class="divbottom">
+                  <h4>{{ programname.dafinanseba }}</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="lowerPart">
+          <div class="box">
+            <div class="kreditebi">
+              <div>
+                <h4>კრედიტების რაოდენობა</h4>
+              </div>
+              <div class="kreditebitext">
+                <p>{{ programname.kreditebisRaodenoba }}</p>
+              </div>
+            </div>
+            <div class="adgilebisraodenoba">
+              <div>
+                <h4>ადგილების რაოდენობა</h4>
+              </div>
+              <div class="adgilebisraodenobatext">
+                <p>{{ programname.adgilebisRaodenoba }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="title">
-          <h3>{{ programname.programName }}</h3>
+          <h3>პროგრამის აღწერა</h3>
         </div>
-        <div class="Bottom">
+        <div class="programisAgwera">
           <div>
-            <div class="stadinglanguage">
-              <div>
-                <h2>სწავლების ენა</h2>
-              </div>
-              <div class="divbottom">
-                <h4>{{ programname.swavlebisEna }}</h4>
-              </div>
-            </div>
-            <div class="kvalifikacia">
-              <div>
-                <h2>კვალიფიკაცია</h2>
-              </div>
-              <div class="divbottom">
-                <h4>{{ programname.kvalifikacia }}</h4>
-              </div>
-            </div>
-            <div class="dafinanseba">
-              <div>
-                <h2>დაფინანსება</h2>
-              </div>
-              <div class="divbottom">
-                <h4>{{ programname.dafinanseba }}</h4>
-              </div>
-            </div>
+            <p
+              [innerHTML]="programname.programisAgwera | newlineToParagraphs"
+            ></p>
           </div>
         </div>
-      </div>
-      <div class="lowerPart">
-        <div class="box">
-          <div class="kreditebi">
+        <div class="title">
+          <h3>დასაქმება</h3>
+        </div>
+        <div class="programisAgwera">
+          <div>
+            <p [innerHTML]="programname.jobs | newlineToParagraphs"></p>
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+
+  <ng-container *ngIf="language === 'en' && UniCarden">
+    <ng-container *ngFor="let section of UniCarden.sections_en">
+      <ng-container *ngFor="let programname of section.programNames_en">
+        <div class="static">
+          <div class="title">
+            <h3>{{ programname.programName_en }}</h3>
+          </div>
+          <div class="Bottom">
             <div>
-              <h4>კრედიტების რაოდენობა</h4>
-            </div>
-            <div class="kreditebitext">
-              <p>{{ programname.kreditebisRaodenoba }}</p>
+              <div class="stadinglanguage">
+                <div>
+                  <h2>Language of instruction</h2>
+                </div>
+                <div class="divbottom">
+                  <h4>{{ programname.swavlebisEna_en }}</h4>
+                </div>
+              </div>
+              <div class="kvalifikacia">
+                <div>
+                  <h2>Qualification</h2>
+                </div>
+                <div class="divbottom">
+                  <h4>{{ programname.kvalifikacia_en }}</h4>
+                </div>
+              </div>
+              <div class="dafinanseba">
+                <div>
+                  <h2>Financing</h2>
+                </div>
+                <div class="divbottom">
+                  <h4>{{ programname.dafinanseba_en }}</h4>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="adgilebisraodenoba">
-            <div>
-              <h4>ადგილების რაოდენობა</h4>
+        </div>
+        <div class="lowerPart">
+          <div class="box">
+            <div class="kreditebi">
+              <div>
+                <h4>Number of credits</h4>
+              </div>
+              <div class="kreditebitext">
+                <p>{{ programname.kreditebisRaodenoba_en }}</p>
+              </div>
             </div>
-            <div class="adgilebisraodenobatext">
-              <p>{{ programname.adgilebisRaodenoba }}</p>
+            <div class="adgilebisraodenoba">
+              <div>
+                <h4>Number of seats</h4>
+              </div>
+              <div class="adgilebisraodenobatext">
+                <p>{{ programname.adgilebisRaodenoba_en }}</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="title">
-        <h3>პროგრამის აღწერა</h3>
-      </div>
-      <div class="programisAgwera">
-        <div>
-          <p>
-            {{ programname.programisAgwera }}
-          </p>
+        <div class="title">
+          <h3>Program description</h3>
         </div>
-      </div>
-      <div class="title">
-        <h3>დასაქმება</h3>
-      </div>
-      <div class="programisAgwera">
-        <div>
-          <p>
-            {{ programname.jobs }}
-          </p>
+        <div class="programisgwera">
+          <div>
+            <p
+              [innerHTML]="programname.programisAgwera_en | newlineToParagraphs"
+            ></p>
+          </div>
         </div>
-      </div>
+        <div class="title">
+          <h3>Employment</h3>
+        </div>
+        <div class="programisAgwera">
+          <div>
+            <p [innerHTML]="programname.jobs_en | newlineToParagraphs"></p>
+          </div>
+        </div>
+      </ng-container>
     </ng-container>
   </ng-container>
 </main>

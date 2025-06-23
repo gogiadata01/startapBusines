@@ -24,6 +24,7 @@ import { NavbarWithWaveComponent } from "../navbar-with-wave/navbar-with-wave.co
 export class EventCardsComponent implements OnInit {
   EventCard: EventCardDto[] = [];
   filteredEventCards: EventCardDto[] = [];
+  language: 'ka' | 'en' = 'ka';
   categories: any = [
     { title: "ყველა" },
     { title: "ღია კარის დღე" },
@@ -31,13 +32,23 @@ export class EventCardsComponent implements OnInit {
     { title: "ვორკშოპი" },
     { title: "სიახლე" }
   ];
+  categoriesEng: any = [
+    { title: "All" },
+    { title: "Open Day" },
+    { title: "Camp" },
+    { title: "Workshop" },
+    { title: "News" }
+  ];
   category = "";
+  categoryEng = "";
+
 
   constructor(private cdr: ChangeDetectorRef, private ngZone: NgZone ,private router: Router, private eventCardService: EventCardService) {}
 
   ngOnInit(): void {
     this.getAllEventCards();
-
+    const savedLang = localStorage.getItem('language') as 'ka' | 'en';
+    if (savedLang) this.language = savedLang;
   }
 
 
